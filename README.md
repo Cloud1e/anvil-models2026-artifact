@@ -60,7 +60,7 @@ The Docker image is required for ARepair-based repair stages. Quick-start comman
 
 ## Quick Start
 
-The following commands exercise all three final entrypoints using stored outputs. They completed successfully in the artifact validation run recorded at `logs/orchestration/consolidate_final_scripts_report.log`.
+The following commands exercise all three final entrypoints using stored outputs. They completed successfully in the artifact validation run recorded at `logs/orchestration/final_scripts_validation_report.log`.
 
 ```bash
 cd anvil-artifact
