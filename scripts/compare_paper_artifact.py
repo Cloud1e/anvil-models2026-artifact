@@ -12,7 +12,7 @@ import json
 import re
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, Iterable, List, Tuple
+from typing import Dict, Iterable, List, Optional, Tuple
 
 
 MODELS = [
@@ -71,6 +71,34 @@ def artifact_root() -> Path:
 
 ROOT = artifact_root()
 PAPER_TABLES = ROOT.parent / "Models-2026---Alloy-Synthesis" / "tables"
+
+
+def read_wide_csv(path: Path) -> Tuple[Dict[str, Dict[str, str]], List[str]]:
+    rows: Dict[str, Dict[str, str]] = {}
+    order: List[str] = []
+    with path.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        if not reader.fieldnames or "row" not in reader.fieldnames:
+            raise ValueError(f"Wide CSV is missing a row column: {path}")
+        columns = [c for c in reader.fieldnames if c != "row"]
+        for record in reader:
+            row_id = record.get("row", "")
+            if not row_id:
+                continue
+            order.append(row_id)
+            rows[row_id] = {col: record.get(col, "") for col in columns}
+    return rows, order
+
+
+def paper_table_path(table_name: str, fallback_csv: Path) -> Optional[Path]:
+    table = PAPER_TABLES / f"{table_name}.tex"
+    if table.is_file():
+        return table
+    if fallback_csv.is_file():
+        return None
+    raise FileNotFoundError(
+        f"Could not find external paper table {table} or artifact-local fallback {fallback_csv}"
+    )
 
 
 def strip_latex(cell: str) -> str:
@@ -171,7 +199,10 @@ def write_long(path: Path, rows: List[Dict[str, str]], fieldnames: List[str]) ->
 
 
 def parse_rq1_paper() -> Tuple[Dict[str, Dict[str, str]], List[str]]:
-    table = PAPER_TABLES / "results-synthesis.tex"
+    fallback = ROOT / "RQ1_Generation" / "comparison" / "paper_results-synthesis.csv"
+    table = paper_table_path("results-synthesis", fallback)
+    if table is None:
+        return read_wide_csv(fallback)
     rows: Dict[str, Dict[str, str]] = {}
     order: List[str] = []
     for cells in iter_latex_data_rows(table):
@@ -200,12 +231,21 @@ def parse_rq1_paper() -> Tuple[Dict[str, Dict[str, str]], List[str]]:
 def latest_rq1_log() -> Path:
     logs = sorted((ROOT / "RQ1_Generation" / "logs").glob("rq1_overnight_*.log"))
     if not logs:
-        raise FileNotFoundError("No RQ1 overnight log found under RQ1_Generation/logs")
+        fallback = ROOT / "RQ1_Generation" / "comparison" / "artifact_results-synthesis.csv"
+        if fallback.is_file():
+            return fallback
+        raise FileNotFoundError(
+            "No RQ1 overnight log found under RQ1_Generation/logs and no "
+            "RQ1_Generation/comparison/artifact_results-synthesis.csv fallback exists"
+        )
     return logs[-1]
 
 
 def parse_rq1_artifact() -> Tuple[Dict[str, Dict[str, str]], List[str]]:
-    lines = latest_rq1_log().read_text(encoding="utf-8", errors="ignore").splitlines()
+    source = latest_rq1_log()
+    if source.name == "artifact_results-synthesis.csv":
+        return read_wide_csv(source)
+    lines = source.read_text(encoding="utf-8", errors="ignore").splitlines()
     model_key = {slug: key for key, slug in MODELS}
     current_model = None
     current_task = None
@@ -309,9 +349,12 @@ def load_repair_counts(path: Path) -> Dict[str, int]:
 
 
 def parse_rq2_paper(table_name: str) -> Tuple[Dict[str, Dict[str, str]], List[str]]:
+    fallback = ROOT / "RQ2_Validation" / "comparison" / f"paper_{table_name}.csv"
+    path = paper_table_path(table_name, fallback)
+    if path is None:
+        return read_wide_csv(fallback)
     rows: Dict[str, Dict[str, str]] = {}
     order: List[str] = []
-    path = PAPER_TABLES / f"{table_name}.tex"
     for cells in iter_latex_data_rows(path):
         if len(cells) != 26:
             continue
@@ -362,9 +405,13 @@ def parse_rq2_artifact(task: str) -> Tuple[Dict[str, Dict[str, str]], List[str]]
 
 
 def parse_rq3_paper() -> Tuple[Dict[str, Dict[str, str]], List[str]]:
+    fallback = ROOT / "RQ3_Repair" / "comparison" / "paper_results-arepair-faulty-alloy-2-alloy.csv"
+    table = paper_table_path("results-arepair-faulty-alloy-2-alloy", fallback)
+    if table is None:
+        return read_wide_csv(fallback)
     rows: Dict[str, Dict[str, str]] = {}
     order: List[str] = []
-    for cells in iter_latex_data_rows(PAPER_TABLES / "results-arepair-faulty-alloy-2-alloy.tex"):
+    for cells in iter_latex_data_rows(table):
         if len(cells) != 19:
             continue
         row_id = "Total" if cells[0] == "Total" else cells[0]
@@ -584,7 +631,7 @@ def process_rq(rq: str, rq_dir: Path, tables: List[Tuple[str, Dict[str, Dict[str
         "matches": len(diff) - len(mismatches),
         "mismatches": len(mismatches),
         "mismatch_rows": mismatches,
-        "diff_csv": str(comparison / "diff_report.csv"),
+        "diff_csv": str((comparison / "diff_report.csv").relative_to(ROOT)),
     }
     (comparison / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     return summary
@@ -654,7 +701,7 @@ def main() -> None:
             "RQ2": rq2_summary,
             "RQ3": rq3_summary,
         },
-        "combined_diff_csv": str(orch / "paper_artifact_diff_latest.csv"),
+        "combined_diff_csv": str((orch / "paper_artifact_diff_latest.csv").relative_to(ROOT)),
     }
     (orch / "paper_artifact_diff_latest_summary.json").write_text(json.dumps(combined, indent=2), encoding="utf-8")
 
