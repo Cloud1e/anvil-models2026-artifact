@@ -1,0 +1,5 @@
+pred Balanced() {
+  all n1, n2: Node | {
+    let s1 = #n1.(left + right), s2 = #n2.(left + right) | s1 = s2 or s1 = s2.plus[1] or s1 = s2.minus[1]
+  }
+}

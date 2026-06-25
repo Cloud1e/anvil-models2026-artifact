@@ -1,0 +1,57 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int),val: (one Element),idx': (one Int),val': (one Element) {
+(((idx != idx') && ((idx.(Array.i2e)) = val) && ((idx'.(Array.i2e)) = val')) => (idx = idx'))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+Syntax error in /workspace/ARepair/.hidden/tmp.als at line 13 column 21:
+The name "Element" cannot be found.
+	at edu.mit.csail.sdg.parser.CompModule.hint(CompModule.java:856)
+	at edu.mit.csail.sdg.parser.CompModule$Context.resolve(CompModule.java:368)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:603)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprVar.accept(ExprVar.java:91)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:520)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.mergeModelAndTests(AlloyUtil.java:173)
+	at alloyfl.coverage.util.TestRunner.runTests(TestRunner.java:33)
+	at patcher.Patcher.patch(Patcher.java:86)
+	at patcher.Patcher.main(Patcher.java:341)
+Exception in thread "main" java.lang.NullPointerException
+	at parser.ast.nodes.ModelUnit.<init>(ModelUnit.java:32)
+	at alloyfl.coverage.util.TestRunner.runTests(TestRunner.java:45)
+	at patcher.Patcher.patch(Patcher.java:86)
+	at patcher.Patcher.main(Patcher.java:341)

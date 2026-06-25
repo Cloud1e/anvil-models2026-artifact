@@ -1,0 +1,7 @@
+RUN_ID=20260624_001253
+STEP=syntax_checks
+PWD=.
+COMMAND=bash -lc bash -n RQ1_Generation/run.sh && bash -n RQ2_Validation/run.sh && bash -n RQ3_Repair/run.sh && python3 -m py_compile RQ3_Repair/classify_faulty_models.py
+
+
+STEP_EXIT_CODE=0

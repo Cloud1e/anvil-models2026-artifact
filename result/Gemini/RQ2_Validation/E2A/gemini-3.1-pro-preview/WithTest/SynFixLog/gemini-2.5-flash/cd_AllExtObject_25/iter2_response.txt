@@ -1,0 +1,6 @@
+```alloy
+pred AllExtObject() {
+  // Each class other than Object is a sub-class of Object.
+  Object.~ext* & (Class - Object) = Class - Object
+}
+```

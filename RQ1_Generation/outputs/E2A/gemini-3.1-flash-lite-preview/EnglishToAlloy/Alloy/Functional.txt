@@ -1,0 +1,65 @@
+all x: S | lone x.r
+Correct
+
+all x: S, y, z: S | y in x.r and z in x.r => y = z
+Correct
+
+no x: S | some y, z: S | y != z and y in x.r and z in x.r
+Correct
+
+all x: S | #x.r <= 1
+Wrong
+
+all disj y, z: S | no (y.~r & z.~r)
+Correct
+
+all x: S | lone (x.r)
+Correct
+
+all x: S | (r.x) in (S -> lone S)
+Syntax Error
+
+all x: S | all disj y, z: x.r | none
+Syntax Error
+
+all x: S | r[x] in (none + S) and lone r[x]
+Correct
+
+all x: S | no r[x] & (S - r[x]) and (lone r[x])
+Correct
+
+all x: S | lone (r[x])
+Correct
+
+no r.r & iden
+Wrong
+
+all x: S | (x.r) in (none + S) and #x.r < 2
+Wrong
+
+all x: S | all y: x.r | y = (x.r)
+Correct
+
+all x: S | one y: S | y in x.r or no x.r
+Wrong
+
+all x: S | (some x.r implies one x.r)
+Correct
+
+all x: S | #(x.r) <= 1
+Wrong
+
+all x: S | (x.r).~(x.r) in iden
+Syntax Error
+
+all x: S | no (x.r & (S - (x.r))) and lone (x.r)
+Correct
+
+all x: S | (x.r) in (S lone)
+Syntax Error
+
+Total: 20
+Unique: 20
+Correct: 11
+Syntax Error: 4
+Wrong: 5

@@ -1,0 +1,20 @@
+all s, t, u: S | s->t in r and t->u in r => s->u in r
+all s: S | s.r.r in s.r
+r.r in r
+no s, t, u: S | s->t in r and t->u in r and s->u not in r
+r = r.^r
+all s: S | s.r in s.^r and s.^r.r in s.^r
+r in ^r and r.r in r
+all s: S | (s.r).r in s.r
+all s: S | (r.r) in r
+r = r + (r.r) implies r = r
+all x: S | x.r.r in x.r
+r in ^r
+no x, y, z: S | x->y in r and y->z in r and x->z not in r
+all x: S | (x.r).r in x.r
+r.r = r & r
+all x: S | x.^r = x.r
+all x: S | r.r[x] in r[x]
+r = r + r.r
+r in r.r
+r.r subset r

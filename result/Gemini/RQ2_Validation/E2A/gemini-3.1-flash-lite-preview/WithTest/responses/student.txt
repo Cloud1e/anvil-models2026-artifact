@@ -1,0 +1,40 @@
+Contains: (x in This.header.*link.elem) implies result = True else result = False
+Contains: (some n: This.header.*link | n.elem = x) implies result = True else result = False
+Contains: (result = True) iff (x in This.header.*link.elem)
+Contains: (x in This.header.*link.elem) = (result = True)
+Contains: (result = True) iff (some n: This.header.*link | n.elem = x)
+Contains: (some n: This.header.*link | n.elem = x) iff (result = True)
+Contains: (result = True) = (x in This.header.*link.elem)
+Contains: (result = True) = (some n: This.header.*link | n.elem = x)
+Contains: (x in This.header.*link.elem) implies result = True else result = False -- aug9
+Contains: (some n: This.header.*link | n.elem = x) implies result = True else result = False -- aug10
+Count: {n: This.header.*link | n.elem = x} = result
+Count: #({n: This.header.*link | n.elem = x}) = result
+Count: {n: This.header.*link | n.elem = x} = result -- aug3
+Count: #({n: This.header.*link | n.elem = x}) = result -- aug4
+Count: {n: This.header.*link | n.elem = x} = result -- aug5
+Count: #({n: This.header.*link | n.elem = x}) = result -- aug6
+Count: {n: This.header.*link | n.elem = x} = result -- aug7
+Count: #({n: This.header.*link | n.elem = x}) = result -- aug8
+Count: {n: This.header.*link | n.elem = x} = result -- aug9
+Count: #({n: This.header.*link | n.elem = x}) = result -- aug10
+Loop: all n: This.header.*link | n in n.^link
+Loop: no This.header or all n: This.header.*link | some m: Node | m in n.^link and n in m.^link
+Loop: all n: This.header.*link | n.^link & n != none
+Loop: all n: This.header.*link | n in ^(n.link)
+Loop: all n: This.header.*link | n in n.*link and (some m: Node | n->m in ^link implies some k: Node | m->k in ^link and k->n in ^link)
+Loop: all n: This.header.*link | n in n.link or n in n.^link
+Loop: all n: This.header.*link | n in n.*link and (all m: Node | n->m in ^link implies some k: Node | m->k in ^link and k->n in ^link)
+Loop: all n: This.header.*link | n in ^link.n
+Loop: all n: This.header.*link | n in n.^link -- aug9
+Loop: no This.header or all n: This.header.*link | some m: Node | m in n.^link and n in m.^link -- aug10
+Sorted: all n, m: This.header.*link | n->m in ^link implies n.elem <= m.elem
+Sorted: all n: This.header.*link | all m: n.^link | n.elem <= m.elem
+Sorted: all n: This.header.*link | all m: n.*link | n.elem <= m.elem
+Sorted: all n, m: This.header.*link | n->m in *link implies n.elem <= m.elem
+Sorted: all n: This.header.*link | all m: n.link | n.elem <= m.elem
+Sorted: all n, m: This.header.*link | n->m in ^link implies n.elem <= m.elem -- aug6
+Sorted: all n: This.header.*link | all m: n.^link | n.elem <= m.elem -- aug7
+Sorted: all n: This.header.*link | all m: n.*link | n.elem <= m.elem -- aug8
+Sorted: all n, m: This.header.*link | n->m in *link implies n.elem <= m.elem -- aug9
+Sorted: all n: This.header.*link | all m: n.link | n.elem <= m.elem -- aug10

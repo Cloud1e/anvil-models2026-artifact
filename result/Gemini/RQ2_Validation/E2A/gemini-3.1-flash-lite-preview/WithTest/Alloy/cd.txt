@@ -1,0 +1,135 @@
+ObjectNoExt: no Object.ext
+Correct
+
+ObjectNoExt: Object.ext = none
+Correct
+
+ObjectNoExt: all o: Object | no o.ext
+Correct
+
+ObjectNoExt: all o: Object | o.ext = none
+Correct
+
+ObjectNoExt: Object not in Class.ext
+Wrong
+
+ObjectNoExt: no (Object & Class.ext)
+Wrong
+
+ObjectNoExt: none = Object.ext
+Correct
+
+ObjectNoExt: all o: Object | not (some o.ext)
+Correct
+
+ObjectNoExt: (Object.ext) in none
+Correct
+
+ObjectNoExt: not (some o: Object | some o.ext)
+Correct
+
+AllExtObject: all c: Class - Object | c in Object.^ext
+Wrong
+
+AllExtObject: Class - Object in Object.^ext
+Wrong
+
+AllExtObject: all c: Class | c != Object => c in Object.^ext
+Wrong
+
+AllExtObject: (Class - Object) in (Object.^ext)
+Wrong
+
+AllExtObject: all c: Class - Object | some d: Object | c in d.^ext
+Wrong
+
+AllExtObject: not (some c: Class - Object | c not in Object.^ext)
+Wrong
+
+AllExtObject: all c: Class | (not c = Object) => (c in Object.^ext)
+Wrong
+
+AllExtObject: all x: Class | x != Object implies x in Object.^ext
+Wrong
+
+AllExtObject: Object.^ext = Class - Object
+Wrong
+
+AllExtObject: (Class - Object) in ^(Object.ext)
+Syntax Error
+SYN_MSG:
+^ can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Class}
+END_SYN_MSG
+
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and AllExtObject[]
+Correct
+
+ClassHierarchy: AllExtObject[] and Acyclic[] and ObjectNoExt[]
+Correct
+
+ClassHierarchy: Acyclic[] and ObjectNoExt[] and AllExtObject[]
+Correct
+
+ClassHierarchy: ObjectNoExt[] and AllExtObject[] and Acyclic[]
+Correct
+
+ClassHierarchy: AllExtObject[] and ObjectNoExt[] and Acyclic[]
+Correct
+
+ClassHierarchy: Acyclic[] and AllExtObject[] and ObjectNoExt[]
+Correct
+
+ClassHierarchy: (no Object.ext) and (no ^ext & iden) and (Class - Object in Object.^ext)
+Correct
+
+ClassHierarchy: (all o: Object | no o.ext) and (all c: Class | c not in c.^ext) and (Class - Object in Object.^ext)
+Correct
+
+ClassHierarchy: (Object.ext = none) and (all c: Class | c not in c.^ext) and (Class - Object in Object.^ext)
+Correct
+
+ClassHierarchy: (all o: Object | o.ext = none) and (all c: Class | c not in c.^ext) and (all c: Class - Object | c in Object.^ext)
+Correct
+
+Acyclic: no ^ext & iden
+Correct
+
+Acyclic: all c: Class | c not in c.^ext
+Correct
+
+Acyclic: no c: Class | c in c.^ext
+Correct
+
+Acyclic: all c: Class | c not in (c.ext + c.ext.ext + c.ext.ext.ext)
+Correct
+
+Acyclic: no (Class <: ^ext) & iden
+Correct
+
+Acyclic: all c: Class | c.^ext & c = none
+Correct
+
+Acyclic: not (some c: Class | c in c.^ext)
+Correct
+
+Acyclic: iden & ^ext = none
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Class->this/Class}
+Right type = {none}
+END_SYN_MSG
+
+Acyclic: all c: Class | not (some d: Class | d in c.^ext and d = c)
+Correct
+
+Acyclic: no ^ext & iden -- aug10
+Correct
+
+Total: 40
+Unique: 40
+Correct: 27
+Syntax Error: 2
+Wrong: 11

@@ -1,0 +1,143 @@
+Acyclic: no c: Class | c in c.^ext
+Correct
+
+Acyclic: all c: Class | not (c in c.^ext)
+Correct
+
+Acyclic: all c: Class | c.^ext & c = none
+Correct
+
+Acyclic: no ^ext & iden
+Correct
+
+Acyclic: all c: Class | c not in c.^ext
+Correct
+
+Acyclic: all c: Class | c not in c.*ext - c
+Wrong
+
+Acyclic: no c: Class | c in c.ext + c.ext.ext + c.ext.ext.ext
+Correct
+
+Acyclic: all c: Class | lone c.*ext & c
+Wrong
+
+Acyclic: all c: Class | not (some t: Class | t in c.ext and t in c.^~ext)
+Correct
+
+Acyclic: no (ext.~(^ext)) & iden
+Wrong
+
+AllExtObject: all c: Class - Object | Object in c.^~ext
+Wrong
+
+AllExtObject: all c: Class | c != Object implies c in Object.^~ext
+Correct
+
+AllExtObject: (Class - Object) in Object.^~ext
+Correct
+
+AllExtObject: all c: Class | c = Object or c in Object.^~ext
+Correct
+
+AllExtObject: all c: Class - Object | c in {x: Class | Object in x.^~ext}
+Wrong
+
+AllExtObject: no (Class - Object) - Object.^~ext
+Correct
+
+AllExtObject: all c: Class | c in Object implies c = Object else c in Object.^~ext
+Correct
+
+AllExtObject: Class = Object + Object.^~ext
+Correct
+
+AllExtObject: all c: Class - Object | c.^ext.*ext = Object
+Wrong
+
+AllExtObject: all c: Class | not (c = Object) => c in Object.^~ext
+Correct
+
+ClassHierarchy: ObjectNoExt and Acyclic and AllExtObject
+Correct
+
+ClassHierarchy: {ObjectNoExt, Acyclic, AllExtObject}
+Syntax Error
+SYN_MSG:
+There are 2 possible tokens that can appear here:
+,  : 
+END_SYN_MSG
+
+ClassHierarchy: ObjectNoExt implies (Acyclic implies AllExtObject)
+Wrong
+
+ClassHierarchy: all x: {ObjectNoExt, Acyclic, AllExtObject} | x
+Syntax Error
+SYN_MSG:
+There are 2 possible tokens that can appear here:
+,  : 
+END_SYN_MSG
+
+ClassHierarchy: (no Object.ext) and (all c: Class | c !in c.^ext) and (all c: Class - Object | c in Object.^~ext)
+Correct
+
+ClassHierarchy: ObjectNoExt && Acyclic && AllExtObject
+Correct
+
+ClassHierarchy: ObjectNoExt | Acyclic | AllExtObject
+Syntax Error
+SYN_MSG:
+There are 31 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { } ~ 
+END_SYN_MSG
+
+ClassHierarchy: all c: Class | (c=Object => no c.ext) and (c !in c.^ext) and (c!=Object => c in Object.^~ext)
+Correct
+
+ClassHierarchy: ObjectNoExt and (all c: Class | c !in c.^ext and (c != Object implies c in Object.^~ext))
+Correct
+
+ClassHierarchy: {c: Class | no c.ext} = {Object} and Acyclic and AllExtObject
+Correct
+
+ObjectNoExt: no ext.Object
+Wrong
+
+ObjectNoExt: Object.ext = none
+Correct
+
+ObjectNoExt: not some Object.ext
+Correct
+
+ObjectNoExt: all c: Class | c = Object implies no c.ext
+Correct
+
+ObjectNoExt: #Object.ext = 0
+Correct
+
+ObjectNoExt: lone c: Class | c in Object.ext is none
+Syntax Error
+SYN_MSG:
+The name "is" cannot be found.
+END_SYN_MSG
+
+ObjectNoExt: Object not in Class.ext
+Wrong
+
+ObjectNoExt: none = Object.ext
+Correct
+
+ObjectNoExt: all x: Object.ext | false
+Syntax Error
+SYN_MSG:
+The name "false" cannot be found.
+END_SYN_MSG
+
+ObjectNoExt: not (some c: Class | Object->c in ext)
+Correct
+
+Total: 40
+Unique: 40
+Correct: 26
+Syntax Error: 5
+Wrong: 9

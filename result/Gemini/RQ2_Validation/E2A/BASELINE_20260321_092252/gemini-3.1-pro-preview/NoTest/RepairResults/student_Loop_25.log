@@ -1,0 +1,880 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+(all x: (one ((This.header).(*link))) {
+(x !in (x.(^link)))
+})
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 57896191359
+ [INFO] Expression generation time: 281993417
+ [INFO] Search space: 24
+ [INFO] Fix failed, number of combinations tried: 9
+ [INFO] Expression generation time: 81054250
+ [INFO] Search space: 150
+ [INFO] Fix succeeded, number of combinations tried: 15
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+(all x: (one ((This.header).link)) {
+(x !in (x.(^link)))
+})
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] Fault localization time: 56165665442
+ [INFO] Expression generation time: 195206750
+ [INFO] Search space: 9
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 77651709
+ [INFO] Search space: 9
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 1599749710
+ [INFO] Search space: 50
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 46718125
+ [INFO] Search space: 12
+ [INFO] Fix failed, number of combinations tried: 7
+ [INFO] Expression generation time: 1730041
+ [INFO] Search space: 150
+ [INFO] Fix failed, number of combinations tried: 15
+ [INFO] Expression generation time: 121294833
+ [INFO] Search space: 847
+ [INFO] Fix failed, number of combinations tried: 29
+ [INFO] Expression generation time: 962930917
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 1256541
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 2723750
+ [INFO] Search space: 31500
+ [INFO] Fix failed, number of combinations tried: 46
+ [INFO] Expression generation time: 1471750
+ [INFO] Search space: 840
+ [INFO] Fix succeeded, number of combinations tried: 39
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+(all x: (one ((This.header).link)) {
+(x !in (x.(^(link-iden))))
+})
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 3:
+ [INFO] Fault localization time: 58428529736
+ [INFO] Expression generation time: 139293417
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 1767583
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 87580250
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 54606375
+ [INFO] Search space: 3
+ [INFO] Fix failed, number of combinations tried: 3
+ [INFO] Expression generation time: 531246917
+ [INFO] Search space: 40
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 43562584
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 2589875
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 37809292
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 80667
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 1911833
+ [INFO] Search space: 540
+ [INFO] Fix failed, number of combinations tried: 18
+ [INFO] Expression generation time: 182264625
+ [INFO] Search space: 396
+ [INFO] Fix failed, number of combinations tried: 23
+ [INFO] Expression generation time: 1246161708
+ [INFO] Search space: 2160
+ [INFO] Fix failed, number of combinations tried: 31
+ [INFO] Expression generation time: 384250
+ [INFO] Search space: 4320
+ [INFO] Fix failed, number of combinations tried: 33
+ [INFO] Expression generation time: 1134625
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 1212833
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 125016334
+ [INFO] Search space: 10
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 56042
+ [INFO] Search space: 10
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 70333
+ [INFO] Search space: 10
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 133375
+ [INFO] Search space: 110
+ [INFO] Fix failed, number of combinations tried: 21
+ [INFO] Expression generation time: 240152584
+ [INFO] Search space: 225
+ [INFO] Fix failed, number of combinations tried: 30
+ [INFO] Expression generation time: 248333
+ [INFO] Search space: 900
+ [INFO] Fix failed, number of combinations tried: 34
+ [INFO] Expression generation time: 101625
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 18548792
+ [INFO] Search space: 168
+ [INFO] Fix failed, number of combinations tried: 33
+ [INFO] Expression generation time: 24945667
+ [INFO] Search space: 29400
+ [INFO] Fix failed, number of combinations tried: 60
+ [INFO] Expression generation time: 48195916
+ [INFO] Search space: 1575
+ [INFO] Fix failed, number of combinations tried: 37
+ [INFO] Expression generation time: 277000
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 262125
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 735292
+ [INFO] Search space: 31500
+ [INFO] Fix failed, number of combinations tried: 46
+ [INFO] Expression generation time: 27910500
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 1322459
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 42536792
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 11
+ [INFO] Expression generation time: 183917
+ [INFO] Search space: 100
+ [INFO] Fix failed, number of combinations tried: 20
+ [INFO] Expression generation time: 6731667
+ [INFO] Search space: 20
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 15978000
+ [INFO] Search space: 240
+ [INFO] Fix failed, number of combinations tried: 20
+ [INFO] Expression generation time: 218872292
+ [INFO] Search space: 336
+ [INFO] Fix failed, number of combinations tried: 24
+ [INFO] Expression generation time: 168958
+ [INFO] Search space: 1680
+ [INFO] Fix failed, number of combinations tried: 29
+ [INFO] Expression generation time: 31489000
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 945167
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 127148792
+ [INFO] Search space: 24
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 55792
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 70250
+ [INFO] Search space: 15
+ [INFO] Fix failed, number of combinations tried: 8
+ [INFO] Expression generation time: 165417
+ [INFO] Search space: 21
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 115500
+ [INFO] Search space: 84
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 31766083
+ [INFO] Search space: 84
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 188458
+ [INFO] Search space: 420
+ [INFO] Fix failed, number of combinations tried: 19
+ [INFO] Expression generation time: 128209
+ [INFO] Search space: 30
+ [INFO] Fix failed, number of combinations tried: 13
+ [INFO] Expression generation time: 113084
+ [INFO] Search space: 36
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 104208
+ [INFO] Search space: 144
+ [INFO] Fix failed, number of combinations tried: 16
+ [INFO] Expression generation time: 227624458
+ [INFO] Search space: 144
+ [INFO] Fix failed, number of combinations tried: 16
+ [INFO] Expression generation time: 2830584
+ [INFO] Search space: 720
+ [INFO] Fix failed, number of combinations tried: 21
+ [INFO] Expression generation time: 131125
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 7258667
+ [INFO] Search space: 8
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 7418750
+ [INFO] Search space: 8
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 13512209
+ [INFO] Search space: 128
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 34542
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 124875
+ [INFO] Search space: 420
+ [INFO] Fix failed, number of combinations tried: 43
+ [INFO] Expression generation time: 182792
+ [INFO] Search space: 15
+ [INFO] Fix failed, number of combinations tried: 15
+ [INFO] Expression generation time: 199542
+ [INFO] Search space: 60
+ [INFO] Fix failed, number of combinations tried: 19
+ [INFO] Expression generation time: 123875
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 114125
+ [INFO] Search space: 420
+ [INFO] Fix failed, number of combinations tried: 43
+ [INFO] Expression generation time: 194042
+ [INFO] Search space: 8100
+ [INFO] Fix failed, number of combinations tried: 42
+ [INFO] Expression generation time: 297250
+ [INFO] Search space: 36
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 146583
+ [INFO] Search space: 36
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 90875
+ [INFO] Search space: 420
+ [INFO] Fix failed, number of combinations tried: 43
+ [INFO] Expression generation time: 5005166
+ [INFO] Search space: 102060000
+ [INFO] Fix failed, number of combinations tried: 95
+ [INFO] Expression generation time: 10479167
+ [INFO] Search space: 37800
+ [INFO] Fix failed, number of combinations tried: 44
+ [INFO] Expression generation time: 18097750
+ [INFO] Search space: 15120
+ [INFO] Fix failed, number of combinations tried: 38
+ [INFO] Expression generation time: 421500
+ [INFO] Search space: 30240
+ [INFO] Fix failed, number of combinations tried: 40
+ [INFO] Expression generation time: 476458
+ [INFO] Search space: 30240
+ [INFO] Fix failed, number of combinations tried: 40
+ [INFO] Expression generation time: 297958
+ [INFO] Search space: 151200
+ [INFO] Fix failed, number of combinations tried: 45
+ [INFO] Expression generation time: 217590583
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 60666
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 3529083
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 89000
+ [INFO] Search space: 30
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 23952125
+ [INFO] Search space: 60
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 1111061959
+ [INFO] Search space: 512
+ [INFO] Fix succeeded, number of combinations tried: 24
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+(all x: (one ((This.header).link)) {
+(x !in (x.(^(link - iden))))
+})
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one (link.Node)) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 4:
+ [INFO] Fault localization time: 57403424068
+ [INFO] Expression generation time: 123159125
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 1102541
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 91661750
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 55232833
+ [INFO] Search space: 3
+ [INFO] Fix failed, number of combinations tried: 3
+ [INFO] Expression generation time: 500292459
+ [INFO] Search space: 40
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 33629625
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 972084
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 32804542
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 123125
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 1426459
+ [INFO] Search space: 540
+ [INFO] Fix failed, number of combinations tried: 18
+ [INFO] Expression generation time: 200258625
+ [INFO] Search space: 396
+ [INFO] Fix failed, number of combinations tried: 23
+ [INFO] Expression generation time: 1248083917
+ [INFO] Search space: 2160
+ [INFO] Fix failed, number of combinations tried: 31
+ [INFO] Expression generation time: 946958
+ [INFO] Search space: 4320
+ [INFO] Fix failed, number of combinations tried: 33
+ [INFO] Expression generation time: 112708
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 142584
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 176910708
+ [INFO] Search space: 10
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 233458
+ [INFO] Search space: 10
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 289875
+ [INFO] Search space: 10
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 215250
+ [INFO] Search space: 110
+ [INFO] Fix failed, number of combinations tried: 21
+ [INFO] Expression generation time: 248690500
+ [INFO] Search space: 225
+ [INFO] Fix failed, number of combinations tried: 30
+ [INFO] Expression generation time: 876042
+ [INFO] Search space: 900
+ [INFO] Fix failed, number of combinations tried: 34
+ [INFO] Expression generation time: 121000
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 11697583
+ [INFO] Search space: 168
+ [INFO] Fix failed, number of combinations tried: 33
+ [INFO] Expression generation time: 15269833
+ [INFO] Search space: 29400
+ [INFO] Fix failed, number of combinations tried: 60
+ [INFO] Expression generation time: 46988417
+ [INFO] Search space: 1575
+ [INFO] Fix failed, number of combinations tried: 37
+ [INFO] Expression generation time: 963791
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 1669750
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 422042
+ [INFO] Search space: 31500
+ [INFO] Fix failed, number of combinations tried: 46
+ [INFO] Expression generation time: 37380541
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 4752625
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 39177000
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 11
+ [INFO] Expression generation time: 192666
+ [INFO] Search space: 100
+ [INFO] Fix failed, number of combinations tried: 20
+ [INFO] Expression generation time: 8176125
+ [INFO] Search space: 20
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 6186708
+ [INFO] Search space: 240
+ [INFO] Fix failed, number of combinations tried: 20
+ [INFO] Expression generation time: 237458334
+ [INFO] Search space: 336
+ [INFO] Fix failed, number of combinations tried: 24
+ [INFO] Expression generation time: 215875
+ [INFO] Search space: 1680
+ [INFO] Fix failed, number of combinations tried: 29
+ [INFO] Expression generation time: 31446333
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 2261667
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 156490833
+ [INFO] Search space: 24
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 27459
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 446459
+ [INFO] Search space: 30
+ [INFO] Fix failed, number of combinations tried: 13
+ [INFO] Expression generation time: 1114917
+ [INFO] Search space: 36
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 293250
+ [INFO] Search space: 144
+ [INFO] Fix failed, number of combinations tried: 16
+ [INFO] Expression generation time: 233534333
+ [INFO] Search space: 144
+ [INFO] Fix failed, number of combinations tried: 16
+ [INFO] Expression generation time: 108958
+ [INFO] Search space: 720
+ [INFO] Fix failed, number of combinations tried: 21
+ [INFO] Expression generation time: 54708
+ [INFO] Search space: 15
+ [INFO] Fix failed, number of combinations tried: 8
+ [INFO] Expression generation time: 65417
+ [INFO] Search space: 21
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 79000
+ [INFO] Search space: 84
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 28040625
+ [INFO] Search space: 84
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 189458
+ [INFO] Search space: 420
+ [INFO] Fix failed, number of combinations tried: 19
+ [INFO] Expression generation time: 296500
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 4104125
+ [INFO] Search space: 8
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 1773875
+ [INFO] Search space: 8
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 5425000
+ [INFO] Search space: 128
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 64208
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 1464750
+ [INFO] Search space: 420
+ [INFO] Fix failed, number of combinations tried: 43
+ [INFO] Expression generation time: 385542
+ [INFO] Search space: 15
+ [INFO] Fix failed, number of combinations tried: 15
+ [INFO] Expression generation time: 184709
+ [INFO] Search space: 60
+ [INFO] Fix failed, number of combinations tried: 19
+ [INFO] Expression generation time: 110542
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 120583
+ [INFO] Search space: 420
+ [INFO] Fix failed, number of combinations tried: 43
+ [INFO] Expression generation time: 112917
+ [INFO] Search space: 8100
+ [INFO] Fix failed, number of combinations tried: 42
+ [INFO] Expression generation time: 76833
+ [INFO] Search space: 36
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 46458
+ [INFO] Search space: 36
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 330792
+ [INFO] Search space: 420
+ [INFO] Fix failed, number of combinations tried: 43
+ [INFO] Expression generation time: 4992416
+ [INFO] Search space: 102060000
+ [INFO] Fix failed, number of combinations tried: 95
+ [INFO] Expression generation time: 15505708
+ [INFO] Search space: 37800
+ [INFO] Fix failed, number of combinations tried: 44
+ [INFO] Expression generation time: 17885542
+ [INFO] Search space: 15120
+ [INFO] Fix failed, number of combinations tried: 38
+ [INFO] Expression generation time: 338250
+ [INFO] Search space: 30240
+ [INFO] Fix failed, number of combinations tried: 40
+ [INFO] Expression generation time: 261583
+ [INFO] Search space: 30240
+ [INFO] Fix failed, number of combinations tried: 40
+ [INFO] Expression generation time: 347750
+ [INFO] Search space: 151200
+ [INFO] Fix failed, number of combinations tried: 45
+ [INFO] Expression generation time: 233034709
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 1511625
+ [INFO] Search space: 25
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 837985167
+ [INFO] Search space: 256
+ [INFO] Fix failed, number of combinations tried: 20
+ [INFO] Expression generation time: 348891333
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 1276292
+ [INFO] Search space: 36
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 13938477922
+ [INFO] Search space: 784
+ [INFO] Fix failed, number of combinations tried: 32
+ [INFO] Expression generation time: 4225250
+ [INFO] Search space: 25
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 2036000
+ [INFO] Search space: 100
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 67334
+ [INFO] Search space: 360
+ [INFO] Fix failed, number of combinations tried: 22
+ [INFO] Expression generation time: 76916
+ [INFO] Search space: 128
+ [INFO] Fix failed, number of combinations tried: 18
+ [INFO] Expression generation time: 10795625
+ [INFO] Search space: 2048
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 209880917
+ [INFO] Search space: 2048
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 122500
+ [INFO] Search space: 10240
+ [INFO] Fix failed, number of combinations tried: 33
+ [INFO] Expression generation time: 2758208
+ [INFO] Search space: 12
+ [INFO] Fix failed, number of combinations tried: 7
+ [INFO] Expression generation time: 913166
+ [INFO] Search space: 390
+ [INFO] Fix failed, number of combinations tried: 23
+ [INFO] Expression generation time: 9802500
+ [INFO] Search space: 1764
+ [INFO] Fix failed, number of combinations tried: 37
+ [INFO] Expression generation time: 249946041
+ [INFO] Search space: 7056
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 99208
+ [INFO] Search space: 7056
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 171292
+ [INFO] Search space: 7056
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 92417
+ [INFO] Search space: 169
+ [INFO] Fix failed, number of combinations tried: 26
+ [INFO] Expression generation time: 122208
+ [INFO] Search space: 676
+ [INFO] Fix failed, number of combinations tried: 30
+ [INFO] Expression generation time: 302083
+ [INFO] Search space: 21504
+ [INFO] Fix failed, number of combinations tried: 58
+ [INFO] Expression generation time: 72459
+ [INFO] Search space: 512
+ [INFO] Fix failed, number of combinations tried: 24
+ [INFO] Expression generation time: 212292
+ [INFO] Search space: 2048
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 125917
+ [INFO] Search space: 42467328
+ [INFO] Fix failed, number of combinations tried: 76
+ [INFO] Expression generation time: 732833
+ [INFO] Search space: 3397386240
+ [INFO] Fix failed, number of combinations tried: 89
+ [INFO] Expression generation time: 264708
+ [INFO] Search space: 3397386240
+ [INFO] Fix failed, number of combinations tried: 89
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+(all x: (one ((This.header).link)) {
+(x !in (x.(^(link - iden))))
+})
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one (link.Node)) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+(all x: (one ((This.header).link)) {
+(x !in (x.(^(link - iden))))
+})
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one (link.Node)) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+

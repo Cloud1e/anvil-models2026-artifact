@@ -1,0 +1,156 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one ((Array.i2e).Element)) {
+(some other_idx: (one ((Array.i2e).Element)) {
+((idx != other_idx) && ((idx.(Array.i2e)) = (other_idx.(Array.i2e))))
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 11547607713
+ [INFO] Expression generation time: 175784750
+ [INFO] Search space: 16
+ [INFO] Fix succeeded, number of combinations tried: 8
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one ((Array.i2e).Element)) {
+(some other_idx: (one ((Array.i2e).Element)) {
+((idx != other_idx) && ((idx.(none.i2e)) = (other_idx.(Array.i2e))))
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] Fault localization time: 7100262128
+ [INFO] Expression generation time: 80128250
+ [INFO] Search space: 144
+ [INFO] Fix failed, number of combinations tried: 18
+ [INFO] Expression generation time: 1019939917
+ [INFO] Search space: 2704
+ [INFO] Fix failed, number of combinations tried: 34
+ [INFO] Expression generation time: 112738708
+ [INFO] Search space: 75712
+ [INFO] Fix succeeded, number of combinations tried: 45
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one ((Array.i2e).Element)) {
+(some other_idx: (one 1) {
+((idx != other_idx) && ((idx.(none.i2e)) = (other_idx.(Array.i2e))))
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 3:
+ [INFO] All tests pass.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one ((Array.i2e).Element)) {
+(some other_idx: (one 1) {
+((idx != other_idx) && ((idx.(none.i2e)) = (other_idx.(Array.i2e))))
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one ((Array.i2e).Element)) {
+(some other_idx: (one 1) {
+((idx != other_idx) && (none = (other_idx.(Array.i2e))))
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+

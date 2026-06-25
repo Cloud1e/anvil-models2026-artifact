@@ -1,0 +1,3 @@
+pred ConsistentPreAndNxt() {
+  all n, m: Node | n.nxt = m implies m.pre = n else not (m.pre = n)
+}

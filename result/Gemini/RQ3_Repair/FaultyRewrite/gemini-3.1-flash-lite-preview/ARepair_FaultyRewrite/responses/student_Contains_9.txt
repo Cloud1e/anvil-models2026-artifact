@@ -1,0 +1,4 @@
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  {b: Boolean | (x in This.header.*link.elem => b = True else b = False)} = result
+}

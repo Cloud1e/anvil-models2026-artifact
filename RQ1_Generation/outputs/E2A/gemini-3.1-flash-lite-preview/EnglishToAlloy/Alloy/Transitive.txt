@@ -1,0 +1,65 @@
+all x, y, z: S | x->y in r and y->z in r implies x->z in r
+Correct
+
+all x: S | x.r.r in x.r
+Correct
+
+r.r in r
+Correct
+
+all x: S | (r.r)[x] in r[x]
+Correct
+
+r.r = r & iden or r.r in r
+Correct
+
+all disj x, y, z: S | x->y in r and y->z in r implies x->z in r
+Wrong
+
+r in r.~(~r) and r.r in r
+Wrong
+
+all x: S | x.r in S implies x.r.r in x.r
+Correct
+
+r.r in r and r.r.r in r
+Correct
+
+all x, y: S | y in x.r implies y.r in x.r
+Correct
+
+r = r + r.r
+Correct
+
+all x: S | x.r.r in x.r and x.r.r.r in x.r
+Correct
+
+no x, y, z: S | x->y in r and y->z in r and x->z not in r
+Correct
+
+r.r in r and r.r.r in r and r.r.r.r in r
+Correct
+
+all x: S | (x.r).r in x.r
+Correct
+
+r.r in r and (r.r).r in r
+Correct
+
+all x: S | x.r in x.r.^(r)
+Wrong
+
+r in r + r.r + r.r.r
+Wrong
+
+all x: S | x.r.r in x.r and x.r.r.r in x.r and x.r.r.r.r in x.r
+Correct
+
+r.r in r and r.r.r in r and r.r.r.r in r and r.r.r.r.r in r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 16
+Syntax Error: 0
+Wrong: 4

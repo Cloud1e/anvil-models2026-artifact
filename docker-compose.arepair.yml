@@ -1,0 +1,17 @@
+services:
+  arepair:
+    platform: linux/amd64  # Force AMD64 platform for ARepair's native libraries
+    build:
+      context: .
+      dockerfile: Dockerfile.arepair
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    environment:
+      - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+      - PATH=/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      # Enable DEBUG logs for ARepair fault localization (e.g., "Most suspicious node").
+      - AREPAIR_LOG_LEVEL=DEBUG

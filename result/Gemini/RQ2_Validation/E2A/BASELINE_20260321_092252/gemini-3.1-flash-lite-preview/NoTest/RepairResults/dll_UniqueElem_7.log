@@ -1,0 +1,255 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(all n: (one Node) {
+(lone (n.(~elem)))
+})
+}
+pred Sorted[] {
+(all n: (one Node) {
+((some (n.nxt)) => ((n.elem) <= ((n.nxt).elem)))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 13527229132
+ [INFO] Expression generation time: 149335875
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 70230750
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 362299042
+ [INFO] Search space: 14
+ [INFO] Fix succeeded, number of combinations tried: 14
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(all n: (one Node) {
+(lone (Node-n))
+})
+}
+pred Sorted[] {
+(all n: (one Node) {
+((some (n.nxt)) => ((n.elem) <= ((n.nxt).elem)))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] Fault localization time: 5508541753
+ [INFO] Expression generation time: 167999001
+ [INFO] Search space: 9
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 68503708
+ [INFO] Search space: 3
+ [INFO] Fix failed, number of combinations tried: 3
+ [INFO] Expression generation time: 108125
+ [INFO] Search space: 9
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 91750
+ [INFO] Search space: 3
+ [INFO] Fix failed, number of combinations tried: 3
+ [INFO] Expression generation time: 353660667
+ [INFO] Search space: 56
+ [INFO] Fix failed, number of combinations tried: 18
+ [INFO] Expression generation time: 98292
+ [INFO] Search space: 196
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 13591709
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 16
+ [INFO] Expression generation time: 24939000
+ [INFO] Search space: 448
+ [INFO] Fix failed, number of combinations tried: 26
+ [INFO] Expression generation time: 1022358250
+ [INFO] Search space: 704
+ [INFO] Fix failed, number of combinations tried: 34
+ [INFO] Expression generation time: 1279250
+ [INFO] Search space: 3520
+ [INFO] Fix failed, number of combinations tried: 39
+ [INFO] Expression generation time: 6343833
+ [INFO] Search space: 3
+ [INFO] Fix failed, number of combinations tried: 3
+ [INFO] Expression generation time: 427541
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 2051917
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 29416
+ [INFO] Search space: 3
+ [INFO] Fix failed, number of combinations tried: 3
+ [INFO] Expression generation time: 1235916
+ [INFO] Search space: 9
+ [INFO] Fix failed, number of combinations tried: 9
+ [INFO] Expression generation time: 62625
+ [INFO] Search space: 9
+ [INFO] Fix failed, number of combinations tried: 9
+ [INFO] Expression generation time: 2524250
+ [INFO] Search space: 27
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 73081834
+ [INFO] Search space: 196
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 139309417
+ [INFO] Search space: 1936
+ [INFO] Fix failed, number of combinations tried: 48
+ [INFO] Expression generation time: 5528750
+ [INFO] Search space: 8
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 1058208
+ [INFO] Search space: 8
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 8327459
+ [INFO] Search space: 128
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 705083
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 307417
+ [INFO] Search space: 99
+ [INFO] Fix failed, number of combinations tried: 50
+ [INFO] Expression generation time: 684583
+ [INFO] Search space: 2178
+ [INFO] Fix failed, number of combinations tried: 72
+ [INFO] Expression generation time: 458416
+ [INFO] Search space: 3872
+ [INFO] Fix failed, number of combinations tried: 52
+ [INFO] Expression generation time: 994625
+ [INFO] Search space: 15488
+ [INFO] Fix failed, number of combinations tried: 56
+ [INFO] Expression generation time: 826000
+ [INFO] Search space: 15488
+ [INFO] Fix failed, number of combinations tried: 56
+ [INFO] Expression generation time: 382791
+ [INFO] Search space: 77440
+ [INFO] Fix failed, number of combinations tried: 61
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(all n: (one Node) {
+(lone (Node-n))
+})
+}
+pred Sorted[] {
+(all n: (one Node) {
+((some (n.nxt)) => ((n.elem) <= ((n.nxt).elem)))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(all n: (one Node) {
+(lone (Node - n))
+})
+}
+pred Sorted[] {
+(all n: (one Node) {
+((some (n.nxt)) => ((n.elem) <= ((n.nxt).elem)))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+

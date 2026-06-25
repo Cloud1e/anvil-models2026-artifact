@@ -1,0 +1,67 @@
+no idx: Array.i2e.Element | some other_idx: Array.i2e.Element | idx != other_idx && Array.i2e[idx] = Array.i2e[other_idx]
+Wrong
+
+disjoint Array.i2e[Int]
+Syntax Error
+SYN_MSG:
+There are 1 possible tokens that can appear here:
+[ 
+END_SYN_MSG
+
+no idx: Int, val: Element, idx': Int, val': Element | idx != idx' && Array.i2e[idx] = val && Array.i2e[idx'] = val' implies idx = idx'
+Wrong
+
+no val: Element | some idx, idx': Int | Array.i2e[idx] = val && Array.i2e[idx'] = val && idx != idx'
+Wrong
+
+let elems = Array.i2e.Element | no idx, idx': Int | idx != idx' && Array.i2e[idx] = Array.i2e[idx']
+Wrong
+
+disjoint dom = { i: Int | i in Array.i2e.Element } and range = Array.i2e.Element
+Syntax Error
+SYN_MSG:
+There are 1 possible tokens that can appear here:
+[ 
+END_SYN_MSG
+
+no i, i': Int | i != i' && Array.i2e[i] = Array.i2e[i']
+Wrong
+
+fun Array_Inv (elems: set Element): set Int {
+Syntax Error
+SYN_MSG:
+There are 31 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { } ~ 
+END_SYN_MSG
+
+{i: Int | some e: elems | Array.i2e[i] = e}
+Syntax Error
+SYN_MSG:
+The name "elems" cannot be found.
+END_SYN_MSG
+
+}
+Syntax Error
+SYN_MSG:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+END_SYN_MSG
+
+no e: Element | #(Array_Inv({e}) & dom Array.i2e) > 1
+Syntax Error
+SYN_MSG:
+There are 1 possible tokens that can appear here:
+) 
+END_SYN_MSG
+
+#Array.i2e.Element = #(Array.i2e.Element.Int)
+Wrong
+
+no idx: Int, idx': Int, elem: Element | idx != idx' && Array.i2e[idx] = elem && Array.i2e[idx'] = elem
+Wrong
+
+Total: 13
+Unique: 13
+Correct: 0
+Syntax Error: 6
+Wrong: 7

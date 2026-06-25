@@ -1,0 +1,10 @@
+pred crossRiver [from, from', to, to': set Object] {
+  if (from' = from - Farmer && to' = to - to.eats + Farmer) then (
+    some (from - Farmer) or no (from - Farmer)
+  ) else {
+    some item: from - Farmer {
+      from' = from - Farmer - item
+      to' = to - to.eats + Farmer + item
+    }
+  }
+}

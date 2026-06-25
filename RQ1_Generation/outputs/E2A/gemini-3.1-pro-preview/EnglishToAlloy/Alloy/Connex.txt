@@ -1,0 +1,65 @@
+all x, y: S | x->y in r or y->x in r
+Correct
+
+all x, y: S | y in x.r or x in y.r
+Correct
+
+all x, y: S | x in r.y or y in r.x
+Correct
+
+all x, y: S | x->y in r + ~r
+Correct
+
+S->S in r + ~r
+Correct
+
+r + ~r = S->S
+Correct
+
+S->S = r + ~r
+Correct
+
+no S->S - r - ~r
+Correct
+
+no S->S - (r + ~r)
+Correct
+
+no x, y: S | x->y not in r and y->x not in r
+Correct
+
+no x, y: S | x->y not in r + ~r
+Correct
+
+all x: S | x.r + x.~r = S
+Correct
+
+all x: S | S in x.r + x.~r
+Correct
+
+all x: S | x.(r + ~r) = S
+Correct
+
+all x: S | S in x.(r + ~r)
+Correct
+
+all x: S | S = x.r + r.x
+Correct
+
+all x: S | S in x.r + r.x
+Correct
+
+all x: S | no S - (x.r + x.~r)
+Correct
+
+all x: S | no S - x.r - r.x
+Correct
+
+all x: S | no y: S | y not in x.r and x not in y.r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 20
+Syntax Error: 0
+Wrong: 0

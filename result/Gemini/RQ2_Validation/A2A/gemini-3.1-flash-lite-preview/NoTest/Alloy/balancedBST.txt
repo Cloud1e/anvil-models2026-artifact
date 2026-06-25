@@ -1,0 +1,116 @@
+Sorted: all n: Node | (all nl: n.left.*(left+right) | nl.elem < n.elem) and (all nr: n.right.*(left+right) | nr.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all nl: n.left.*(left+right) | n.elem > nl.elem) and (all nr: n.right.*(left+right) | n.elem < nr.elem)
+Correct
+
+Sorted: all n: Node | (no n.left or all nl: n.left.*(left+right) | nl.elem < n.elem) and (no n.right or all nr: n.right.*(left+right) | nr.elem > n.elem)
+Correct
+
+Sorted: all n: Node, nl: n.left.*(left+right), nr: n.right.*(left+right) | nl.elem < n.elem and nr.elem > n.elem
+Wrong
+
+Sorted: all n: Node | (all x: Node | x in n.left.*(left+right) => x.elem < n.elem) and (all x: Node | x in n.right.*(left+right) => x.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all nl: n.left.*(left+right) | nl.elem - n.elem < 0) and (all nr: n.right.*(left+right) | nr.elem - n.elem > 0)
+Wrong
+
+Sorted: all n: Node | (all nl: n.left.*(left+right) | not (nl.elem >= n.elem)) and (all nr: n.right.*(left+right) | not (nr.elem <= n.elem))
+Correct
+
+Sorted: all n: Node | (all nl: n.left.*(left+right) | nl.elem < n.elem) && (all nr: n.right.*(left+right) | n.elem < nr.elem)
+Correct
+
+Sorted: all n: Node | (all x: n.left.*(left+right) | x.elem < n.elem) and (all y: n.right.*(left+right) | y.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all nl: n.left.*(left+right) | n.elem > nl.elem) && (all nr: n.right.*(left+right) | n.elem < nr.elem)
+Correct
+
+HasAtMostOneChild: no n.left or no n.right
+Correct
+
+HasAtMostOneChild: not (some n.left and some n.right)
+Correct
+
+HasAtMostOneChild: #n.(left+right) <= 1
+Correct
+
+HasAtMostOneChild: #(n.left + n.right) < 2
+Correct
+
+HasAtMostOneChild: no (n.left and n.right)
+Syntax Error
+SYN_MSG:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Node}
+END_SYN_MSG
+
+HasAtMostOneChild: n.left = none or n.right = none
+Correct
+
+HasAtMostOneChild: ! (some n.left && some n.right)
+Correct
+
+HasAtMostOneChild: lone n.left or lone n.right
+Wrong
+
+HasAtMostOneChild: ! (some n.left and some n.right)
+Correct
+
+HasAtMostOneChild: no n.left || no n.right
+Correct
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (abs[Depth[n1] - Depth[n2]] <= 1)
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] && HasAtMostOneChild[n2]) => (Depth[n1] - Depth[n2] >= -1 && Depth[n1] - Depth[n2] <= 1)
+Wrong
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] implies (HasAtMostOneChild[n2] implies abs[Depth[n1] - Depth[n2]] <= 1)
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | let d1 = Depth[n1], d2 = Depth[n2] | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (d1 = d2 or d1 = d2.plus[1] or d1 = d2.minus[1])
+Correct
+
+Balanced: all x, y: Node | (HasAtMostOneChild[x] and HasAtMostOneChild[y]) => (Depth[x] - Depth[y] <= 1 and Depth[y] - Depth[x] <= 1)
+Wrong
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] && HasAtMostOneChild[n2]) => (Depth[n1] in (Depth[n2]-1 .. Depth[n2]+1))
+Syntax Error
+SYN_MSG:
+There are 21 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | not (HasAtMostOneChild[n1] and HasAtMostOneChild[n2] and (abs[Depth[n1] - Depth[n2]] > 1))
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (minus[Depth[n1], Depth[n2]] <= 1 and minus[Depth[n1], Depth[n2]] >= -1)
+Correct
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (abs[minus[Depth[n1], Depth[n2]]] < 2)
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] && HasAtMostOneChild[n2]) => (Depth[n1] - Depth[n2] in -1 + 0 + 1)
+Wrong
+
+Total: 30
+Unique: 30
+Correct: 18
+Syntax Error: 6
+Wrong: 6

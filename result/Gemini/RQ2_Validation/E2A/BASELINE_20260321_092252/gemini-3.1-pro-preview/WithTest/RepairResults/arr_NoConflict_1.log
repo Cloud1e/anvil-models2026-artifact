@@ -1,0 +1,160 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int),e1,e2: (one Element) {
+((e1 != e2) && ((idx.(Array.i2e)) = e1) && ((idx.(Array.i2e)) = e2))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 9861956463
+ [INFO] Expression generation time: 209828125
+ [INFO] Search space: 16
+ [INFO] Fix failed, number of combinations tried: 8
+ [INFO] Expression generation time: 8946125
+ [INFO] Search space: 25
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 422165833
+ [INFO] Search space: 1000000
+ [INFO] Fix failed, number of combinations tried: 60
+ [INFO] Expression generation time: 185960083
+ [INFO] Search space: 64000000
+ [INFO] Fix failed, number of combinations tried: 72
+ [INFO] Expression generation time: 1390333
+ [INFO] Search space: 128000000
+ [INFO] Fix failed, number of combinations tried: 74
+ [INFO] Expression generation time: 2616583
+ [INFO] Search space: 64
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 1238542
+ [INFO] Search space: 196
+ [INFO] Fix failed, number of combinations tried: 18
+ [INFO] Expression generation time: 883584
+ [INFO] Search space: 1000000
+ [INFO] Fix failed, number of combinations tried: 60
+ [INFO] Expression generation time: 11889042
+ [INFO] Search space: 640000000
+ [INFO] Fix failed, number of combinations tried: 79
+ [INFO] Expression generation time: 1671250
+ [INFO] Search space: 1280000000
+ [INFO] Fix failed, number of combinations tried: 81
+ [INFO] Expression generation time: 1872542
+ [INFO] Search space: 1280000000
+ [INFO] Fix failed, number of combinations tried: 81
+ [INFO] Expression generation time: 2271500
+ [INFO] Search space: 6400000000
+ [INFO] Fix failed, number of combinations tried: 86
+ [INFO] Expression generation time: 31416
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 17705750
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 1600125
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 418375
+ [INFO] Search space: 9
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 174042
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 49917
+ [INFO] Search space: 5
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 74167
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 49042
+ [INFO] Search space: 25
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 42924875
+ [INFO] Search space: 49
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 93125
+ [INFO] Search space: 72
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 85209
+ [INFO] Search space: 1372
+ [INFO] Fix failed, number of combinations tried: 25
+ [INFO] Expression generation time: 100833
+ [INFO] Search space: 1715
+ [INFO] Fix failed, number of combinations tried: 26
+ [INFO] Expression generation time: 2072792
+ [INFO] Search space: 3430
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 318792
+ [INFO] Search space: 3430
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 156416
+ [INFO] Search space: 17150
+ [INFO] Fix failed, number of combinations tried: 33
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int),e1,e2: (one Element) {
+((e1 != e2) && ((idx.(Array.i2e)) = e1) && ((idx.(Array.i2e)) = e2))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int),e1,e2: (one Element) {
+((e1 != e2) && ((idx.(Array.i2e)) = e1) && ((idx.(Array.i2e)) = e2))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+

@@ -1,0 +1,40 @@
+Loop: some n: This.header.*link | n in n.^link
+Loop: some n: Node | n in n.^link
+Loop: some n: This.header.*link | n in n.link.^link
+Loop: some n: Node | n in n.link.^link
+Loop: ! (all n: This.header.*link | n !in n.^link)
+Loop: ! (all n: Node | n !in n.^link)
+Loop: some n: This.header.*link | n in n.link.*link
+Loop: some n: Node | n in n.link.*link
+Loop: some n: This.header.*link | some m: n.link | n in m.*link
+Loop: some n: Node | some m: n.link | n in m.*link
+Sorted: all n: This.header.*link | all m: n.link | n.elem <= m.elem
+Sorted: all n: This.header.*link, m: n.link | n.elem <= m.elem
+Sorted: all n: Node, m: n.link | n.elem <= m.elem
+Sorted: all n: Node | all m: n.link | n.elem <= m.elem
+Sorted: all n: This.header.*link | some m: n.link => n.elem <= m.elem
+Sorted: all n: Node | some m: n.link => n.elem <= m.elem
+Sorted: all n: This.header.*link | n.link != none => n.elem <= n.link.elem
+Sorted: all n: Node | n.link != none => n.elem <= n.link.elem
+Sorted: all n: This.header.*link | no m: n.link | n.elem > m.elem
+Sorted: all n: Node | no m: n.link | n.elem > m.elem
+Count: result = #{n: This.header.*link | n.elem = x}
+Count: result = #{n: Node | n.elem = x}
+Count: result = #(This.header.*link & elem.x)
+Count: result = #(Node & elem.x)
+Count: #{n: This.header.*link | n.elem = x} = result
+Count: #{n: Node | n.elem = x} = result
+Count: result = #(elem.x & This.header.*link)
+Count: result = #(elem.x & Node)
+Count: result = #{n: This.header.*link | x = n.elem}
+Count: result = #{n: Node | x = n.elem}
+Contains: result = True <=> (some n: This.header.*link | n.elem = x)
+Contains: result = True <=> (some n: Node | n.elem = x)
+Contains: result = True <=> (x in This.header.*link.elem)
+Contains: result = True <=> (x in Node.elem)
+Contains: (some n: This.header.*link | n.elem = x) => result = True else result = False
+Contains: (some n: Node | n.elem = x) => result = True else result = False
+Contains: result = (x in This.header.*link.elem => True else False)
+Contains: result = (x in Node.elem => True else False)
+Contains: result = False <=> (all n: This.header.*link | n.elem != x)
+Contains: result = False <=> (all n: Node | n.elem != x)

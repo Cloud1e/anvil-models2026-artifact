@@ -1,0 +1,20 @@
+no iden & r
+all s: S | s !in s.r
+no s: S | s in s.r
+iden & r = none
+all s: S | no s & s.r
+disjoint[iden, r]
+r in (S -> S) - iden
+all s: S | s -> s !in r
+no s: S | s -> s in r
+no s: S | s in r.s
+all s: S | s !in r.s
+no {s: S | s in s.r}
+all s: S | s.r & s = none
+all s: S | s.r in S - s
+all s: S | not (s in s.r)
+iden & r in none
+r & iden = iden - iden
+no s: S | s.r & s != none
+all s: S | s.r - s = s.r
+all s: S | s -> s & r = none

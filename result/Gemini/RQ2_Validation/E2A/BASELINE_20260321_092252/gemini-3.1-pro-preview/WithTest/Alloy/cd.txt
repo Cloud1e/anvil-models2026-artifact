@@ -1,0 +1,143 @@
+ObjectNoExt: no Object.ext
+Correct
+
+ObjectNoExt: Object.ext = none
+Correct
+
+ObjectNoExt: not some Object.ext
+Correct
+
+ObjectNoExt: all c: Class | c not in Object.ext
+Correct
+
+ObjectNoExt: no c: Class | c in Object.ext
+Correct
+
+ObjectNoExt: all x: Class | x not in Object.ext
+Correct
+
+ObjectNoExt: no x: Class | x in Object.ext
+Correct
+
+ObjectNoExt: Object.ext in none
+Correct
+
+ObjectNoExt: none = Object.ext
+Correct
+
+ObjectNoExt: not some c: Class | Object->c in ext
+Correct
+
+Acyclic: no c: Class | c in c.^ext
+Correct
+
+Acyclic: all c: Class | c not in c.^ext
+Correct
+
+Acyclic: no iden & ^ext
+Correct
+
+Acyclic: ^ext & iden = none
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Class->this/Class}
+Right type = {none}
+END_SYN_MSG
+
+Acyclic: no (^ext & iden)
+Correct
+
+Acyclic: all x: Class | x not in x.^ext
+Correct
+
+Acyclic: no x: Class | x in x.^ext
+Correct
+
+Acyclic: not some c: Class | c in c.^ext
+Correct
+
+Acyclic: not some x: Class | x in x.^ext
+Correct
+
+Acyclic: none = iden & ^ext
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {none}
+Right type = {this/Class->this/Class}
+END_SYN_MSG
+
+AllExtObject: all c: Class - Object | Object in c.^ext
+Correct
+
+AllExtObject: all x: Class - Object | Object in x.^ext
+Correct
+
+AllExtObject: no c: Class - Object | Object not in c.^ext
+Correct
+
+AllExtObject: all c: Class | c != Object implies Object in c.^ext
+Correct
+
+AllExtObject: all x: Class | x != Object implies Object in x.^ext
+Correct
+
+AllExtObject: not some c: Class - Object | Object not in c.^ext
+Correct
+
+AllExtObject: not some x: Class - Object | Object not in x.^ext
+Correct
+
+AllExtObject: Class - Object in Object.~^ext
+Correct
+
+AllExtObject: Class in Object.~^ext + Object
+Correct
+
+AllExtObject: all c: Class - Object | some (c.^ext & Object)
+Correct
+
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and AllExtObject[]
+Correct
+
+ClassHierarchy: Acyclic[] and ObjectNoExt[] and AllExtObject[]
+Correct
+
+ClassHierarchy: AllExtObject[] and ObjectNoExt[] and Acyclic[]
+Correct
+
+ClassHierarchy: AllExtObject[] and Acyclic[] and ObjectNoExt[]
+Correct
+
+ClassHierarchy: ObjectNoExt[] && Acyclic[] && AllExtObject[]
+Correct
+
+ClassHierarchy: Acyclic[] && ObjectNoExt[] && AllExtObject[]
+Correct
+
+ClassHierarchy: AllExtObject[] && ObjectNoExt[] && Acyclic[]
+Correct
+
+ClassHierarchy: AllExtObject[] && Acyclic[] && ObjectNoExt[]
+Correct
+
+ClassHierarchy: ObjectNoExt() and Acyclic() and AllExtObject()
+Syntax Error
+SYN_MSG:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+END_SYN_MSG
+
+ClassHierarchy: Acyclic() and ObjectNoExt() and AllExtObject()
+Syntax Error
+SYN_MSG:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+END_SYN_MSG
+
+Total: 40
+Unique: 40
+Correct: 36
+Syntax Error: 4
+Wrong: 0

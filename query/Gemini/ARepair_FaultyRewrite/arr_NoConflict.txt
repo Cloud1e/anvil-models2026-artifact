@@ -1,0 +1,49 @@
+Task:
+Rewrite the body of a faulty Alloy predicate into 10 alternative syntactic forms.
+Keep the predicate name and parameters exactly the same.
+Do not intentionally fix any potential bug in the predicate. Each rewritten predicate should preserve the current (buggy) behavior.
+
+Faulty model:
+sig Element {}
+
+one sig Array {
+  // Maps indexes to elements of Element.
+  i2e: Int -> Element,
+  // Represents the length of the array.
+  length: Int
+}
+
+// Assume all objects are in the array.
+fact Reachable {
+  Element = Array.i2e[Int]
+}
+
+// Faulty InBound fact taken from realbugs/arr1.als.
+fact InBound {
+  // All indexes should be greater than or equal to 0 and less than the array length.
+  all i: Int | i >= 0 && i < Array.length
+  // Array length should be greater than or equal to 0.
+  Array.length >= 0
+}
+
+pred NoConflict() {
+  // Each index maps to at most one element.
+  all idx: Array.i2e.Element | lone Array.i2e[idx]
+}
+
+run NoConflict for 3
+
+Target predicate name:
+NoConflict
+
+Guidelines:
+- Keep the same predicate header (name and parameter list).
+- Keep the overall meaning and buggy behavior as close as possible to the original predicate.
+- You may freely restructure the body (e.g., change quantifier nesting, reorder conjuncts, use helper lets), as long as it is valid Alloy.
+- Ensure that each rewriting is a complete predicate definition for NoConflict.
+- Do not add or remove other predicates, functions, signatures, facts, or comments in the module.
+
+Output:
+- Return 10 rewritten versions of the target predicate as Alloy code.
+- Separate each version clearly (for example, by a blank line).
+- Do not include any explanations or commentary, only Alloy code.

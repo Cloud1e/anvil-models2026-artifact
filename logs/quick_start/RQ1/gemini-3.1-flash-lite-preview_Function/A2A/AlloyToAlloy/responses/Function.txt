@@ -1,0 +1,20 @@
+all s: S | #s.r = 1
+all s: S | lone s.r and some s.r
+all s: S | r[s] in S and no (r[s] & (S - r[s])) and some r[s]
+all s: S | one x: S | x in s.r
+all s: S | (some s.r) and (all x, y: s.r | x = y)
+all s: S | r[s] != none and (all x, y: r[s] | x = y)
+all s: S | r.s is not the right way, s.r is one
+all s: S | lone s.r and (all s': S | some s.r)
+all s: S | r[s] in S and #r[s] = 1
+all s: S | some x: S | s->x in r and all y: S | s->y in r implies y = x
+all s: S | {x: S | s->x in r} = {x: S | x = (s.r)} and #s.r = 1
+all s: S | (r.univ & s) in S and one (s.r)
+all s: S | one x: S | s.r = x
+all s: S | r[s] in S and (all x: s.r | all y: s.r | x = y) and some s.r
+all s: S | (s.r in S) and (all x: S | x in s.r iff x = (s.r)) and some s.r
+all s: S | one (s.r :> S)
+all s: S | (r.s' where s'=s) has cardinality 1
+all s: S | #(s.r) = 1
+all s: S | some x: S | s.r = x and no (s.r - x)
+all s: S | lone x: S | x in s.r and some x: S | x in s.r

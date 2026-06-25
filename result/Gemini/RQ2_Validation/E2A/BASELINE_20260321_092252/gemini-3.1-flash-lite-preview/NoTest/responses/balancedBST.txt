@@ -1,0 +1,30 @@
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all y: n.right.*(left + right) | y.elem > n.elem)
+Sorted: all n: Node | (all x: n.^left.*(left + right) | x.elem < n.elem) and (all y: n.^right.*(left + right) | y.elem > n.elem)
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all y: n.right.*(left + right) | n.elem < y.elem)
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all y: (n.right.*(left + right)) | y.elem > n.elem)
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all y: n.right.*(left + right) | n.elem < y.elem)
+Sorted: all n: Node | (all n.left.*(left + right).elem < n.elem) and (all n.right.*(left + right).elem > n.elem)
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all x: n.right.*(left + right) | x.elem > n.elem)
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all x: n.right.*(left + right) | x.elem > n.elem)
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all x: n.right.*(left + right) | x.elem > n.elem)
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all x: n.right.*(left + right) | x.elem > n.elem)
+HasAtMostOneChild: lone n.left + n.right
+HasAtMostOneChild: no n.left or no n.right
+HasAtMostOneChild: not (some n.left and some n.right)
+HasAtMostOneChild: (no n.left) or (no n.right)
+HasAtMostOneChild: #(n.left + n.right) <= 1
+HasAtMostOneChild: (some n.left implies no n.right) and (some n.right implies no n.left)
+HasAtMostOneChild: not (some n.left and some n.right)
+HasAtMostOneChild: #n.left + #n.right <= 1
+HasAtMostOneChild: not (some n.left and some n.right)
+HasAtMostOneChild: #(n.left) + #(n.right) <= 1
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth[n1], d2 = Depth[n2] | d1 - d2 <= 1 and d2 - d1 <= 1)
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies abs[Depth[n1] - Depth[n2]] <= 1
+Balanced: all n1, n2: {n: Node | HasAtMostOneChild[n]} | abs[Depth[n1] - Depth[n2]] <= 1
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] <= 1) and (Depth[n2] - Depth[n1] <= 1)
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (Depth[n1] in (Depth[n2] - 1)..(Depth[n2] + 1))
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] = Depth[n2] or Depth[n1] = Depth[n2].plus[1] or Depth[n1] = Depth[n2].minus[1])
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1].minus[Depth[n2]] <= 1) and (Depth[n2].minus[Depth[n1]] <= 1)
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] < 2) and (Depth[n2] - Depth[n1] < 2)
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] <= 1) and (not (Depth[n1] - Depth[n2] < -1))
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] <= 1 and Depth[n1] - Depth[n2] >= -1)

@@ -1,0 +1,35 @@
+some p.member_of & r.located_in
+Wrong
+
+some r.located_in & p.member_of
+Wrong
+
+not (p.member_of & r.located_in = none)
+Wrong
+
+not (r.located_in & p.member_of = none)
+Wrong
+
+not (no p.member_of & r.located_in)
+Wrong
+
+not (no r.located_in & p.member_of)
+Wrong
+
+#(p.member_of & r.located_in) > 0
+Wrong
+
+#(r.located_in & p.member_of) > 0
+Wrong
+
+some g: p.member_of | g in r.located_in
+Wrong
+
+some g: r.located_in | g in p.member_of
+Wrong
+
+Total: 10
+Unique: 10
+Correct: 0
+Syntax Error: 0
+Wrong: 10

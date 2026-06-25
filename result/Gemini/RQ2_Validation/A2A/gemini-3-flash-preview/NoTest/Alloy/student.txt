@@ -1,0 +1,129 @@
+Contains: Loop[This] and Sorted[This] and ((some n: This.header.*link | n.elem = x) => result = True else result = False)
+Correct
+
+Contains: Sorted[This] and Loop[This] and (x in This.header.*link.elem implies result = True else result = False)
+Correct
+
+Contains: Loop[This] and Sorted[This] and ((some n: Node | n in This.header.*link and n.elem = x) <=> result = True)
+Correct
+
+Contains: Sorted[This] and Loop[This] and (result = True iff (some n: This.header.*link | n.elem = x))
+Correct
+
+Contains: Loop[This] and Sorted[This] and (no n: This.header.*link | n.elem = x) => result = False else result = True
+Wrong
+
+Contains: Sorted[This] and Loop[This] and (x in This.header.*link.elem implies result = True) and (x not in This.header.*link.elem implies result = False)
+Correct
+
+Contains: Loop[This] and Sorted[This] and (result = True iff x in This.header.*link.elem)
+Correct
+
+Contains: Sorted[This] and Loop[This] and (some n: This.header.*link | n.elem = x) implies result = True else result = False
+Wrong
+
+Contains: Loop[This] and Sorted[This] and (result = False iff (all n: This.header.*link | n.elem != x))
+Correct
+
+Contains: Sorted[This] and Loop[This] and (x in This.header.*link.elem <=> result = True) and (not (x in This.header.*link.elem) <=> result = False)
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #{n: This.header.*link | n.elem = x}
+Correct
+
+Count: Sorted[This] and Loop[This] and result = #{n: Node | n in This.header.*link and n.elem = x}
+Correct
+
+Count: Loop[This] and Sorted[This] and result = (sum n: This.header.*link | (n.elem = x => 1 else 0))
+Correct
+
+Count: Sorted[This] and Loop[This] and result = #{n: This.header.*link | x = n.elem}
+Correct
+
+Count: Loop[This] and Sorted[This] and #{n: This.header.*link | n.elem = x} = result
+Correct
+
+Count: Sorted[This] and Loop[This] and result = #(This.header.*link & {n: Node | n.elem = x})
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #({n: Node | n in This.header.*link and x = n.elem})
+Correct
+
+Count: Sorted[This] and Loop[This] and #({n: Node | n in This.header.*link and n.elem = x}) = result
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #{n: Node | n in This.header.*link and x in n.elem}
+Correct
+
+Count: Sorted[This] and Loop[This] and result = #(This.header.*link & {n: Node | x = n.elem})
+Correct
+
+Loop: no This.header or (one n: This.header.*link | n = n.link)
+Correct
+
+Loop: This.header = none or (one n: Node | n in This.header.*link and n.link = n)
+Correct
+
+Loop: no This.header or (some n: This.header.*link | n = n.link and (all m: This.header.*link | m = m.link implies m = n))
+Correct
+
+Loop: #{n: This.header.*link | n.link = n} = 1 or This.header = none
+Correct
+
+Loop: This.header != none => (one n: This.header.*link | n in n.link) else (no This.header)
+Correct
+
+Loop: no This.header or (one n: This.header.*link | some m: Node | m = n and m = n.link)
+Correct
+
+Loop: no This.header or (one n: This.header.*link | n.link in n and some n.link)
+Correct
+
+Loop: This.header = none or 1 = #{n: Node | n in This.header.*link and n = n.link}
+Correct
+
+Loop: all l: List | l = This implies (no l.header or (one n: l.header.*link | n.link = n))
+Correct
+
+Loop: (no This.header) or (one n: This.header.*link | n = n.link and n.link = n)
+Correct
+
+Sorted: all n: This.header.*link | no n.link or n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | (some n.link implies n.elem <= n.link.elem)
+Correct
+
+Sorted: all n, m: Node | (n in This.header.*link and m = n.link) implies n.elem <= m.elem
+Correct
+
+Sorted: no n: This.header.*link | some n.link and n.elem > n.link.elem
+Correct
+
+Sorted: all n: This.header.*link, m: n.link | n.elem <= m.elem
+Correct
+
+Sorted: all n: This.header.*link | n.link != none => n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | some m: n.link implies n.elem <= m.elem
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+Sorted: all n: Node | n in This.header.*link and some n.link implies n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | n.link = none or n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | (all m: n.link | n.elem <= m.elem)
+Correct
+
+Total: 40
+Unique: 40
+Correct: 37
+Syntax Error: 1
+Wrong: 2

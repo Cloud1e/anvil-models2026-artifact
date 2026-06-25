@@ -1,0 +1,294 @@
+OTHER Test Suite Detailed Report
+Timestamp: 2026-06-22_18-29-39
+
+Model run commands: 0
+==============================
+Candidate 1
+CanEnter: some (p.member_of & r.located_in)
+
+Test test1005   expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test9      expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=1 actual=1 OK
+Test test5      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test3      expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test16     expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 22/22)
+
+==============================
+Candidate 2
+CanEnter: p.member_of & r.located_in != none
+
+Test test1005   expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test9      expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=1 actual=1 OK
+Test test5      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test3      expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test16     expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 22/22)
+
+==============================
+Candidate 3
+CanEnter: some g: p.member_of | g in r.located_in
+
+Test test1005   expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test9      expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=1 actual=1 OK
+Test test5      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test3      expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test16     expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 22/22)
+
+==============================
+Candidate 4
+CanEnter: some g: r.located_in | g in p.member_of
+
+Test test1005   expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test9      expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=1 actual=1 OK
+Test test5      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test3      expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test16     expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 22/22)
+
+==============================
+Candidate 5
+CanEnter: #(p.member_of & r.located_in) > 0
+
+Test test1005   expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test9      expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=1 actual=1 OK
+Test test5      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test3      expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test16     expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 22/22)
+
+==============================
+Candidate 6
+CanEnter: not no (p.member_of & r.located_in)
+
+Test test1005   expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test9      expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=1 actual=1 OK
+Test test5      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test3      expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test16     expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 22/22)
+
+==============================
+Candidate 7
+CanEnter: some (r.located_in & p.member_of)
+
+Test test1005   expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test9      expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=1 actual=1 OK
+Test test5      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test3      expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test16     expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 22/22)
+
+==============================
+Candidate 8
+CanEnter: some g: Group | g in p.member_of and g in r.located_in
+
+Test test1005   expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test9      expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=1 actual=1 OK
+Test test5      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test3      expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test16     expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 22/22)
+
+==============================
+Candidate 9
+CanEnter: #(p.member_of & r.located_in) != 0
+
+Test test1005   expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test9      expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=1 actual=1 OK
+Test test5      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test3      expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test16     expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 22/22)
+
+==============================
+Candidate 10
+CanEnter: not (p.member_of & r.located_in = none)
+
+Test test1005   expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test9      expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=1 actual=1 OK
+Test test5      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test3      expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test16     expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 22/22)
+

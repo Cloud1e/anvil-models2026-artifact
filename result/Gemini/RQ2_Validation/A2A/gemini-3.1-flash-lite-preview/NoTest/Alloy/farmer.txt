@@ -1,0 +1,84 @@
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+Correct
+
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some i : from - Farmer | to' = to + Farmer + i and from' = from - Farmer - i - from'.eats)
+Correct
+
+crossRiver: if Farmer in from then (from' = from - Farmer - from'.eats and to' = to + Farmer) else (some i : from - Farmer | from' = from - Farmer - i - from'.eats and to' = to + Farmer + i)
+Syntax Error
+SYN_MSG:
+There are 31 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { } ~ 
+END_SYN_MSG
+
+crossRiver: {f, t, f', t' : set Object | (f' = f - Farmer - f'.eats and t' = t + Farmer) or (some i : f - Farmer | f' = f - Farmer - i - f'.eats and t' = t + Farmer + i)}[from, to, from', to']
+Syntax Error
+SYN_MSG:
+This cannot be a set-of expression.
+END_SYN_MSG
+
+crossRiver: (from' = (from - Farmer) - from'.eats and to' = to + Farmer) or (some i : (from - Farmer) | from' = (from - Farmer - i) - from'.eats and to' = (to + i) + Farmer)
+Correct
+
+crossRiver: (to' = to + Farmer and from' = (from - Farmer) - from'.eats) or (some i : from - Farmer | to' = to + i + Farmer and from' = from - i - Farmer - from'.eats)
+Correct
+
+crossRiver: (from' = from.minus[Farmer].minus[from'.eats] and to' = to.plus[Farmer]) or (some i : from.minus[Farmer] | from' = from.minus[Farmer].minus[i].minus[from'.eats] and to' = to.plus[i].plus[Farmer])
+Syntax Error
+SYN_MSG:
+Name cannot be resolved; possible incorrect function/predicate call; perhaps you used ( ) when you should have used [ ]
+
+This cannot be a correct call to fun integer/minus.
+The parameters are
+  n1: {Int}
+  n2: {Int}
+so the arguments cannot be
+  from (type = {this/Object})
+  this/Farmer (type = {this/Farmer})
+
+END_SYN_MSG
+
+crossRiver: (to' = to + Farmer and no from' & (Farmer + from'.eats) and from' = from - Farmer - from'.eats) or (some i : from - Farmer | to' = to + i + Farmer and from' = from - i - Farmer - from'.eats)
+Correct
+
+crossRiver: (to' - to = Farmer and from - from' = Farmer + from'.eats) or (some i : from - Farmer | to' - to = Farmer + i and from - from' = Farmer + i + from'.eats)
+Wrong
+
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some i : from - Farmer | to' = to + i + Farmer and from' = from - Farmer - i - from'.eats)
+Correct
+
+solvePuzzle: Object in ord/last.far
+Correct
+
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain
+Correct
+
+solvePuzzle: all o : Object | o in ord/last.far
+Correct
+
+solvePuzzle: no Object - ord/last.far
+Correct
+
+solvePuzzle: ord/last.far = (Farmer + Fox) + (Chicken + Grain)
+Correct
+
+solvePuzzle: (ord/last.far & Object) = Object
+Correct
+
+solvePuzzle: not (some o : Object | o not in ord/last.far)
+Correct
+
+solvePuzzle: #ord/last.far = #Object
+Correct
+
+solvePuzzle: ord/last.far = {o : Object | o in o}
+Correct
+
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain and no (Object - ord/last.far)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 16
+Syntax Error: 3
+Wrong: 1

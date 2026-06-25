@@ -1,0 +1,171 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Room {}
+one sig secure_lab extends Room {}
+abstract sig Person {
+owns: (set Key)
+}
+sig Employee extends Person {}
+sig Researcher extends Person {}
+sig Key {
+authorized: (one Employee),
+opened_by: (one Room)
+}
+pred CanEnter[p: Person,r: Room] {
+(some k: (one Key) {
+(((k.opened_by) = r) && ((p->k) in owns))
+})
+}
+
+fact fact_1 {
+(no (Employee.owns))
+}
+assert no_thief_in_seclab {
+(all p: (one Person) {
+((CanEnter[p,secure_lab]) => (p in Researcher))
+})
+}
+
+check no_thief_in_seclab
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 8253888920
+ [INFO] Expression generation time: 142574291
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 4842708
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 71564583
+ [INFO] Search space: 8
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 726458
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 62666
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 30209
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 30750
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 11543625
+ [INFO] Search space: 12
+ [INFO] Fix failed, number of combinations tried: 7
+ [INFO] Expression generation time: 9001167
+ [INFO] Search space: 12
+ [INFO] Fix failed, number of combinations tried: 7
+ [INFO] Expression generation time: 65580167
+ [INFO] Search space: 256
+ [INFO] Fix failed, number of combinations tried: 16
+ [INFO] Expression generation time: 243791
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 7421125
+ [INFO] Search space: 8
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 8386667
+ [INFO] Search space: 2
+ [INFO] Fix failed, number of combinations tried: 2
+ [INFO] Expression generation time: 77255750
+ [INFO] Search space: 32
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 48562083
+ [INFO] Search space: 15
+ [INFO] Fix failed, number of combinations tried: 8
+ [INFO] Expression generation time: 2029709
+ [INFO] Search space: 45
+ [INFO] Fix failed, number of combinations tried: 11
+ [INFO] Expression generation time: 195888667
+ [INFO] Search space: 2496
+ [INFO] Fix failed, number of combinations tried: 36
+ [INFO] Expression generation time: 346375
+ [INFO] Search space: 5408
+ [INFO] Fix failed, number of combinations tried: 44
+ [INFO] Expression generation time: 3813792
+ [INFO] Search space: 89856
+ [INFO] Fix failed, number of combinations tried: 56
+ [INFO] Expression generation time: 30039083
+ [INFO] Search space: 15814656
+ [INFO] Fix failed, number of combinations tried: 75
+ [INFO] Expression generation time: 207183292
+ [INFO] Search space: 73801728
+ [INFO] Fix failed, number of combinations tried: 81
+ [INFO] Expression generation time: 1126875
+ [INFO] Search space: 73801728
+ [INFO] Fix failed, number of combinations tried: 81
+ [INFO] Expression generation time: 1098208
+ [INFO] Search space: 369008640
+ [INFO] Fix failed, number of combinations tried: 86
+ [INFO] Expression generation time: 40291
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 14000
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Room {}
+one sig secure_lab extends Room {}
+abstract sig Person {
+owns: (set Key)
+}
+sig Employee extends Person {}
+sig Researcher extends Person {}
+sig Key {
+authorized: (one Employee),
+opened_by: (one Room)
+}
+pred CanEnter[p: Person,r: Room] {
+(some k: (one Key) {
+(((k.opened_by) = r) && ((p->k) in owns))
+})
+}
+
+fact fact_1 {
+(no (Employee.owns))
+}
+assert no_thief_in_seclab {
+(all p: (one Person) {
+((CanEnter[p,secure_lab]) => (p in Researcher))
+})
+}
+
+check no_thief_in_seclab
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Room {}
+one sig secure_lab extends Room {}
+abstract sig Person {
+owns: (set Key)
+}
+sig Employee extends Person {}
+sig Researcher extends Person {}
+sig Key {
+authorized: (one Employee),
+opened_by: (one Room)
+}
+pred CanEnter[p: Person,r: Room] {
+(some k: (one Key) {
+(((k.opened_by) = r) && ((p->k) in owns))
+})
+}
+
+fact fact_1 {
+(no (Employee.owns))
+}
+assert no_thief_in_seclab {
+(all p: (one Person) {
+((CanEnter[p,secure_lab]) => (p in Researcher))
+})
+}
+
+check no_thief_in_seclab

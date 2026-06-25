@@ -1,0 +1,68 @@
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+Correct
+
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some item : from - Farmer | to' = to + Farmer + item and from' = from - Farmer - item - from'.eats)
+Correct
+
+crossRiver: (from' = (from - Farmer) - (from - Farmer).eats and to' = to + Farmer) or (some item : from - Farmer | from' = (from - Farmer - item) - (from - Farmer - item).eats and to' = to + Farmer + item)
+Wrong
+
+crossRiver: (no i : from - Farmer | i in from'.eats) and (from' = from - Farmer and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item and no i : from' | i in from'.eats and to' = to + Farmer + item)
+Wrong
+
+crossRiver: (from' = from - Farmer - {x: Object | x in from'.eats} and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item - {x: Object | x in from'.eats} and to' = to + Farmer + item)
+Correct
+
+crossRiver: (to' = to + Farmer and from' = (from - Farmer) - (from'.eats)) or (some item : from - Farmer | to' = to + item + Farmer and from' = (from - Farmer - item) - (from'.eats))
+Correct
+
+crossRiver: (from' = from - Farmer - (from'.eats) and to' = to + Farmer) or (some i : from - Farmer | from' = from - (Farmer + i) - (from'.eats) and to' = to + Farmer + i)
+Correct
+
+crossRiver: (from' = from \ (Farmer + from'.eats) and to' = to + Farmer) or (some item : from \ Farmer | from' = from \ (Farmer + item + from'.eats) and to' = to + Farmer + item)
+Syntax Error
+SYN_MSG:
+Syntax error at the \ character.
+END_SYN_MSG
+
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : from - Farmer | to' = to + item + Farmer and from' = from - Farmer - item - from'.eats)
+Correct
+
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = Farmer + item + to)
+Correct
+
+solvePuzzle: ord/last.far = Object
+Correct
+
+solvePuzzle: Object in ord/last.far
+Correct
+
+solvePuzzle: all o : Object | o in ord/last.far
+Correct
+
+solvePuzzle: no Object - ord/last.far
+Correct
+
+solvePuzzle: Object = ord/last.far
+Correct
+
+solvePuzzle: (Object & ord/last.far) = Object
+Correct
+
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain
+Correct
+
+solvePuzzle: no (Object & (State - ord/last).far) and Object in ord/last.far
+Correct
+
+solvePuzzle: ord/last.far = (Object & ord/last.far) and no (Object - ord/last.far)
+Correct
+
+solvePuzzle: Object = (ord/last.far) and no (ord/last.near)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 17
+Syntax Error: 1
+Wrong: 2

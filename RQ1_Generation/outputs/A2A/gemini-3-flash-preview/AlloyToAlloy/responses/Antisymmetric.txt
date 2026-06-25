@@ -1,0 +1,20 @@
+r & ~r in iden
+no (r & ~r) - iden
+all disj s, t: S | s->t in r implies t->s not in r
+all s: S | s.r & r.s in s
+all s, t: S | s->t in r and s != t implies t->s not in r
+all s: S | (s.r & r.s) - s = none
+no s, t: S | s->t in r and t->s in r and s != t
+r.transpose & r in iden
+no (r - iden) & ~r
+all s: S | no t: s.r - s | s in t.r
+all s, t: S | t in s.r and s in t.r implies s = t
+no {s, t: S | s->t in r and t->s in r and s != t}
+all s: S | s.r & s.~r in s
+all s, t: S | s->t in r and t->s in r implies not s != t
+all s: S | r.s & s.r in s
+no disj s, t: S | s in t.r and t in s.r
+iden & (r & ~r) = (r & ~r)
+all s: S | no t: S - s | s->t in r and t->s in r
+all s: S | s.(r & ~r) in s
+(r & ~r) - iden = none

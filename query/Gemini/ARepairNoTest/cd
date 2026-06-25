@@ -1,0 +1,31 @@
+Synthesize the following Alloy model by filling in the predicate bodies marked with '// your code go here'. The predicates should be correct with respect to the properties described in the comments.
+For each predicate that needs repair, provide exactly 10 unique solutions. Format: each line should be "predicateName: body", where body is the expression inside the braces.
+
+sig Class {
+  ext: lone Class
+}
+
+one sig Object extends Class {}
+
+pred ObjectNoExt() {
+  // Object does not extend any class.
+  // your code go here
+}
+
+pred Acyclic() {
+  // No class is a sub-class of itself (transitively).
+  // your code go here
+}
+
+pred AllExtObject() {
+  // Each class other than Object is a sub-class of Object.
+  // your code go here
+}
+
+pred ClassHierarchy() {
+  // your code go here
+}
+
+run ClassHierarchy for 3
+
+Return exactly 10 lines per predicate (total = 10 × number of predicates), each line formatted as "predicateName: body" with no numbering or commentary before/after the list. Do not include introductions, explanations, or any extra text outside these lines.

@@ -1,0 +1,65 @@
+all x: S | one x.r
+Correct
+
+all x: S | one r[x]
+Correct
+
+r in S -> one S
+Correct
+
+all x: S | #x.r = 1
+Correct
+
+all x: S | #r[x] = 1
+Correct
+
+~r.r in iden and S in r.S
+Correct
+
+~r.r in iden and r.S = S
+Correct
+
+all x: S | one (x <: r)
+Correct
+
+all x: S | #(x <: r) = 1
+Correct
+
+all x: S | some x.r and lone x.r
+Correct
+
+all x: S | some r[x] and lone r[x]
+Correct
+
+all x: S | one y: S | x->y in r
+Correct
+
+all x: S | one y: S | x.r = y
+Correct
+
+all x: S | one y: S | r[x] = y
+Correct
+
+all x: S | some y: S | x.r = y
+Correct
+
+all x: S | some y: S | r[x] = y
+Correct
+
+no x: S | #x.r != 1
+Correct
+
+no x: S | #r[x] != 1
+Correct
+
+all x: S | x.r != none and lone x.r
+Correct
+
+all x: S | some y: S | x->y in r and (all z: S | x->z in r implies y = z)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 20
+Syntax Error: 0
+Wrong: 0

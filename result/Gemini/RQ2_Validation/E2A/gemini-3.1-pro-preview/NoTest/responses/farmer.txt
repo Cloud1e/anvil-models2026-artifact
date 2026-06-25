@@ -1,0 +1,20 @@
+crossRiver: some cross: set Object { cross = from - from' and Farmer in cross and #cross <= 2 and to' = to + cross and from' = from - cross and no x, y: from' { x->y in eats } }
+crossRiver: Farmer in from and from' in from and to in to' and (from - from') = (to' - to) and Farmer in (to' - to) and #(to' - to) <= 2 and no (eats & from'->from')
+crossRiver: some cross: set from { Farmer in cross and #cross <= 2 and to' = to + cross and from' = from - cross and no o1, o2: from' { o1->o2 in eats } }
+crossRiver: some m: set Object { m = from - from' and Farmer in m and (#m = 1 or #m = 2) and to' = to + m and from' = from - m and no x: from' { some y: from' { x->y in eats } } }
+crossRiver: some c: set Object { c = to' - to and c = from - from' and Farmer in c and #c <= 2 and to' = to + c and from' = from - c and no (eats & from'->from') }
+crossRiver: from' = from - (to' - to) and to' = to + (from - from') and Farmer in (from - from') and #(from - from') <= 2 and no i, j: from' { i->j in eats }
+crossRiver: from' in from and to in to' and (from - from') = (to' - to) and Farmer in (to' - to) and #(to' - to) <= 2 and no x: from' { x.eats in from' }
+crossRiver: some m: set Object { m in from and Farmer in m and #m <= 2 and from' = from - m and to' = to + m and not (some x, y: from' { x->y in eats }) }
+crossRiver: some moved: set Object { moved = from - from' and Farmer in moved and #moved <= 2 and from' = from - moved and to' = to + moved and no a: from' { a.eats & from' != none } }
+crossRiver: Farmer in from and ((some i: from - Farmer { from' = from - Farmer - i and to' = to + Farmer + i }) or (from' = from - Farmer and to' = to + Farmer)) and no a, b: from' { a->b in eats }
+solvePuzzle: ord/last.far = Object
+solvePuzzle: no ord/last.near
+solvePuzzle: Object in ord/last.far
+solvePuzzle: ord/last.near = none
+solvePuzzle: all x: Object { x in ord/last.far }
+solvePuzzle: no x: Object { x in ord/last.near }
+solvePuzzle: Farmer in ord/last.far and Fox in ord/last.far and Chicken in ord/last.far and Grain in ord/last.far
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain
+solvePuzzle: Object = ord/last.far
+solvePuzzle: #ord/last.far = 4

@@ -1,0 +1,12 @@
+Complete the following sketch of the Alloy predicate (without markdown or comments or ```) by selecting values for the holes with respect to the given constraints such that the predicate is correct with respect to the property described in the comments:
+
+sig S {
+   r: set S
+}
+pred Transitive{
+//If element x in S is related to y and y is related to z, then x is also related to z
+all s, t, u: S | s->t in r and t->u in r implies \E,e\ \CO,co\ \E,e\
+}
+
+co := {| =|in|!=|!in |}
+e := {| r|s|t|((s|t)->(s|t)) |}

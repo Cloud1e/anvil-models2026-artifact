@@ -1,0 +1,20 @@
+no ^link & iden
+^link & iden = none
+no n: Node | n in n.^link
+all n: Node | n.^link & n = none
+all n: Node | disjoint[n, n.^link]
+^link in (Node -> Node) - iden
+no n: Node | n in n.^~link
+not some n: Node | n in n.^link
+all n: Node | n !in n.link.*link
+all n: Node | n not in ^link.n
+all n: Node | no (n.^link & n)
+all n, m: Node | n->m in ^link implies n != m
+all n: Node | all m: n.link | n !in m.*link
+all n: Node | n . ^link :> n = none
+all n: Node | n <: ^link . n = none
+{n: Node | n in n.^link} = none
+no iden & ^(~link)
+^link - iden = ^link
+all n: Node | no m: n.^link | m = n
+all n: Node | n.^link in Node - n

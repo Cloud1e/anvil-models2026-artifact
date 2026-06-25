@@ -1,0 +1,40 @@
+Contains: Loop[This] and Sorted[This] and ((some n: This.header.*link | n.elem = x) => result = True else result = False)
+Contains: Sorted[This] and Loop[This] and (x in This.header.*link.elem implies result = True else result = False)
+Contains: Loop[This] and Sorted[This] and ((some n: Node | n in This.header.*link and n.elem = x) <=> result = True)
+Contains: Sorted[This] and Loop[This] and (result = True iff (some n: This.header.*link | n.elem = x))
+Contains: Loop[This] and Sorted[This] and (no n: This.header.*link | n.elem = x) => result = False else result = True
+Contains: Sorted[This] and Loop[This] and (x in This.header.*link.elem implies result = True) and (x not in This.header.*link.elem implies result = False)
+Contains: Loop[This] and Sorted[This] and (result = True iff x in This.header.*link.elem)
+Contains: Sorted[This] and Loop[This] and (some n: This.header.*link | n.elem = x) implies result = True else result = False
+Contains: Loop[This] and Sorted[This] and (result = False iff (all n: This.header.*link | n.elem != x))
+Contains: Sorted[This] and Loop[This] and (x in This.header.*link.elem <=> result = True) and (not (x in This.header.*link.elem) <=> result = False)
+Count: Loop[This] and Sorted[This] and result = #{n: This.header.*link | n.elem = x}
+Count: Sorted[This] and Loop[This] and result = #{n: Node | n in This.header.*link and n.elem = x}
+Count: Loop[This] and Sorted[This] and result = (sum n: This.header.*link | (n.elem = x => 1 else 0))
+Count: Sorted[This] and Loop[This] and result = #{n: This.header.*link | x = n.elem}
+Count: Loop[This] and Sorted[This] and #{n: This.header.*link | n.elem = x} = result
+Count: Sorted[This] and Loop[This] and result = #(This.header.*link & {n: Node | n.elem = x})
+Count: Loop[This] and Sorted[This] and result = #({n: Node | n in This.header.*link and x = n.elem})
+Count: Sorted[This] and Loop[This] and #({n: Node | n in This.header.*link and n.elem = x}) = result
+Count: Loop[This] and Sorted[This] and result = #{n: Node | n in This.header.*link and x in n.elem}
+Count: Sorted[This] and Loop[This] and result = #(This.header.*link & {n: Node | x = n.elem})
+Loop: no This.header or (one n: This.header.*link | n = n.link)
+Loop: This.header = none or (one n: Node | n in This.header.*link and n.link = n)
+Loop: no This.header or (some n: This.header.*link | n = n.link and (all m: This.header.*link | m = m.link implies m = n))
+Loop: #{n: This.header.*link | n.link = n} = 1 or This.header = none
+Loop: This.header != none => (one n: This.header.*link | n in n.link) else (no This.header)
+Loop: no This.header or (one n: This.header.*link | some m: Node | m = n and m = n.link)
+Loop: no This.header or (one n: This.header.*link | n.link in n and some n.link)
+Loop: This.header = none or 1 = #{n: Node | n in This.header.*link and n = n.link}
+Loop: all l: List | l = This implies (no l.header or (one n: l.header.*link | n.link = n))
+Loop: (no This.header) or (one n: This.header.*link | n = n.link and n.link = n)
+Sorted: all n: This.header.*link | no n.link or n.elem <= n.link.elem
+Sorted: all n: This.header.*link | (some n.link implies n.elem <= n.link.elem)
+Sorted: all n, m: Node | (n in This.header.*link and m = n.link) implies n.elem <= m.elem
+Sorted: no n: This.header.*link | some n.link and n.elem > n.link.elem
+Sorted: all n: This.header.*link, m: n.link | n.elem <= m.elem
+Sorted: all n: This.header.*link | n.link != none => n.elem <= n.link.elem
+Sorted: all n: This.header.*link | some m: n.link implies n.elem <= m.elem
+Sorted: all n: Node | n in This.header.*link and some n.link implies n.elem <= n.link.elem
+Sorted: all n: This.header.*link | n.link = none or n.elem <= n.link.elem
+Sorted: all n: This.header.*link | (all m: n.link | n.elem <= m.elem)

@@ -1,0 +1,31 @@
+[Wed Jun 24 00:12:53 CDT 2026] Consolidating final scripts
+[Wed Jun 24 00:12:53 CDT 2026] Artifact root: .
+[Wed Jun 24 00:12:53 CDT 2026] Final entrypoints:
+[Wed Jun 24 00:12:53 CDT 2026]   RQ1_Generation/run.sh --quick|--full
+[Wed Jun 24 00:12:53 CDT 2026]   RQ2_Validation/run.sh --quick|--full
+[Wed Jun 24 00:12:53 CDT 2026]   RQ3_Repair/run.sh --quick|--full
+[Wed Jun 24 00:12:53 CDT 2026] Syntax checks
+[Wed Jun 24 00:12:53 CDT 2026] START syntax_checks: bash -lc bash -n RQ1_Generation/run.sh && bash -n RQ2_Validation/run.sh && bash -n RQ3_Repair/run.sh && python3 -m py_compile RQ3_Repair/classify_faulty_models.py
+[Wed Jun 24 00:12:54 CDT 2026] END syntax_checks exit=0 log=logs/orchestration/final_scripts_quick_20260624_001253/syntax_checks.log
+[Wed Jun 24 00:12:54 CDT 2026] Archiving historical debug scripts
+[Wed Jun 24 00:12:54 CDT 2026] ARCHIVED scripts/run_overnight_sequential.sh -> logs/orchestration/_dev_history/scripts/run_overnight_sequential.sh
+[Wed Jun 24 00:12:54 CDT 2026] ARCHIVED scripts/run_rq2_rq3_sequential.sh -> logs/orchestration/_dev_history/scripts/run_rq2_rq3_sequential.sh
+[Wed Jun 24 00:12:54 CDT 2026] ARCHIVED scripts/run_rq3_oracle_fix_and_rq2_ab.sh -> logs/orchestration/_dev_history/scripts/run_rq3_oracle_fix_and_rq2_ab.sh
+[Wed Jun 24 00:12:54 CDT 2026] ARCHIVED logs/orchestration/smoke_run_stage_control.sh -> logs/orchestration/_dev_history/orchestration/smoke_run_stage_control.sh
+[Wed Jun 24 00:12:54 CDT 2026] Archiving historical debug logs and scratch directories
+[Wed Jun 24 00:12:54 CDT 2026] Quick validation
+[Wed Jun 24 00:12:54 CDT 2026] START rq1_quick: bash RQ1_Generation/run.sh --quick
+[Wed Jun 24 00:12:59 CDT 2026] END rq1_quick exit=0 log=logs/orchestration/final_scripts_quick_20260624_001253/rq1_quick.log
+[Wed Jun 24 00:12:59 CDT 2026] START rq2_quick: bash RQ2_Validation/run.sh --quick
+[Wed Jun 24 00:14:05 CDT 2026] END rq2_quick exit=0 log=logs/orchestration/final_scripts_quick_20260624_001253/rq2_quick.log
+[Wed Jun 24 00:14:05 CDT 2026] START rq3_quick: bash RQ3_Repair/run.sh --quick
+[Wed Jun 24 00:16:30 CDT 2026] END rq3_quick exit=0 log=logs/orchestration/final_scripts_quick_20260624_001253/rq3_quick.log
+[Wed Jun 24 00:16:30 CDT 2026] Quick Start commands validated:
+[Wed Jun 24 00:16:30 CDT 2026]   bash RQ1_Generation/run.sh --quick
+[Wed Jun 24 00:16:30 CDT 2026]   bash RQ2_Validation/run.sh --quick
+[Wed Jun 24 00:16:30 CDT 2026]   bash RQ3_Repair/run.sh --quick
+[Wed Jun 24 00:16:30 CDT 2026] Full reproduction commands:
+[Wed Jun 24 00:16:30 CDT 2026]   bash RQ1_Generation/run.sh --full
+[Wed Jun 24 00:16:30 CDT 2026]   bash RQ2_Validation/run.sh --full  # internally uses AREPAIR_VALIDATION=testsuite
+[Wed Jun 24 00:16:30 CDT 2026]   bash RQ3_Repair/run.sh --full      # classification primary is Example --check-one
+[Wed Jun 24 00:16:30 CDT 2026] RESULT success: final scripts consolidated and quick validation passed

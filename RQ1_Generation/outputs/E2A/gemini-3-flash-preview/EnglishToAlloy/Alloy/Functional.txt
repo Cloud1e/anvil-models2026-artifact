@@ -1,0 +1,65 @@
+all s: S | lone s.r
+Correct
+
+all s: S | #s.r <= 1
+Wrong
+
+~r.r in iden
+Correct
+
+no s: S | #s.r > 1
+Wrong
+
+all s, x, y: S | (s->x in r and s->y in r) implies x = y
+Correct
+
+all s: S | some s.r implies one s.r
+Correct
+
+no s, x, y: S | s->x in r and s->y in r and x != y
+Correct
+
+all s: S | lone x: S | s->x in r
+Correct
+
+all s: S | s.r = none or one s.r
+Correct
+
+all s: S | #s.r < 2
+Wrong
+
+all s: S | lone r[s]
+Correct
+
+all s: S | #r[s] <= 1
+Wrong
+
+all s: S | (all x, y: s.r | x = y)
+Correct
+
+all s: S | lone {x: S | x in s.r}
+Correct
+
+all s: S | lone (s <: r)
+Correct
+
+all s: S | #(s <: r) <= 1
+Wrong
+
+no s: S | (some x, y: s.r | x != y)
+Correct
+
+all s: S | not (some x, y: s.r | x != y)
+Correct
+
+all s: S | some s.r iff one s.r
+Correct
+
+all s: S | lone x: S | x in r[s]
+Correct
+
+Total: 20
+Unique: 20
+Correct: 15
+Syntax Error: 0
+Wrong: 5

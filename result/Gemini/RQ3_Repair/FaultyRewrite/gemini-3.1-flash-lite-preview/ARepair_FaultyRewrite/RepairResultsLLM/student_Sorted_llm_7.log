@@ -1,0 +1,1293 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { lone List } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { one List } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { some List } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all l: List | lone l.header } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | lone n.link } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | lone n.elem } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | one n.elem } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | some n.elem } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { some Boolean } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred SortedMUTATED[This: List] {
+(let nodes = ((This.header).(^(*link))) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+EQUIV: check { all This: List | Sorted[This] <=> SortedMUTATED[This] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred SortedMUTATED[This: List] {
+(let nodes = ((This.header).(*(*link))) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+EQUIV: check { all This: List | Sorted[This] <=> SortedMUTATED[This] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred SortedMUTATED[This: List] {
+(let nodes = ((This.header).(*(^link))) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+EQUIV: check { all This: List | Sorted[This] <=> SortedMUTATED[This] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred SortedMUTATED[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) !> ((n.link).elem))
+})
+})
+}
+EQUIV: check { all This: List | Sorted[This] <=> SortedMUTATED[This] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+pred CardinalityConstraints[] {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred CardinalityConstraintsMUTATED[] {
+((one l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+EQUIV: check { CardinalityConstraints[] <=> CardinalityConstraintsMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+pred CardinalityConstraints[] {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred CardinalityConstraintsMUTATED[] {
+((some l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+EQUIV: check { CardinalityConstraints[] <=> CardinalityConstraintsMUTATED[] } for 3
+ [INFO] Fault localization time: 32694769474
+[DEBUG] Test num: 98
+[DEBUG] Rank Node 0:
+[DEBUG] link
+[DEBUG] Affected paragraph names: [Sorted]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 67): [test1001, test1006, test1007, test1008, test1009, test1011, test35, test33, test24, test19, test32, test28, test25, test29, test30, test27, test21, test26, test20, test31, test36, test34, test23, test22, test40, test38, test39, test37, test1003, test1004, test1005, test48, test49, test56, test50, test45, test53, test44, test47, test54, test41, test51, test46, test43, test57, test42, test52, test55, test1010, test59, test70, test69, test64, test67, test66, test61, test75, test65, test68, test62, test71, test72, test63, test74, test58, test60, test73]
+[DEBUG] Hole link
+[DEBUG] Size: 2
+[DEBUG] Fragments: [link, (none->none)]
+ [INFO] Expression generation time: 312313042
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [link]
+[DEBUG] Hole 0, Fragment: link, FailToPass: 0
+[DEBUG] Hole values: [(none->none)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Rank Node 1:
+[DEBUG] (*link)
+[DEBUG] Affected paragraph names: [Sorted]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 67): [test1001, test1006, test1007, test1008, test1009, test1011, test35, test33, test24, test19, test32, test28, test25, test29, test30, test27, test21, test26, test20, test31, test36, test34, test23, test22, test40, test38, test39, test37, test1003, test1004, test1005, test48, test49, test56, test50, test45, test53, test44, test47, test54, test41, test51, test46, test43, test57, test42, test52, test55, test1010, test59, test70, test69, test64, test67, test66, test61, test75, test65, test68, test62, test71, test72, test63, test74, test58, test60, test73]
+[DEBUG] Hole link
+[DEBUG] Size: 2
+[DEBUG] Fragments: [link, (none->none)]
+ [INFO] Expression generation time: 215250
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [link]
+[DEBUG] Hole 0, Fragment: link, FailToPass: 0
+[DEBUG] Hole values: [(none->none)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Hole (*link)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [link, (none->none), (~link), (*link), (^link)]
+ [INFO] Expression generation time: 112016541
+ [INFO] Search space: 5
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [link]
+[DEBUG] Test from pass to fail: test1007
+[DEBUG] Hole values: [(none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [(~link)]
+[DEBUG] Test from fail to pass: test1006
+[DEBUG] Test from pass to fail: test1007
+[DEBUG] Hole values: [(*link)]
+[DEBUG] Hole 3, Fragment: (*link), FailToPass: 0
+[DEBUG] Hole values: [(^link)]
+[DEBUG] Test from pass to fail: test1007
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Rank Node 2:
+[DEBUG] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one nodes) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+[DEBUG] Affected paragraph names: [Sorted]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 67): [test1001, test1006, test1007, test1008, test1009, test1011, test35, test33, test24, test19, test32, test28, test25, test29, test30, test27, test21, test26, test20, test31, test36, test34, test23, test22, test40, test38, test39, test37, test1003, test1004, test1005, test48, test49, test56, test50, test45, test53, test44, test47, test54, test41, test51, test46, test43, test57, test42, test52, test55, test1010, test59, test70, test69, test64, test67, test66, test61, test75, test65, test68, test62, test71, test72, test63, test74, test58, test60, test73]
+[DEBUG] Hole n
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Node, nodes, n]
+[DEBUG] Hole link
+[DEBUG] Size: 2
+[DEBUG] Fragments: [link, (none->none)]
+ [INFO] Expression generation time: 94381334
+ [INFO] Search space: 8
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, link]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, link]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [nodes, link]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, link]
+[DEBUG] Hole 3, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [n, link]
+[DEBUG] Hole 0, Fragment: link, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole n
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Node, nodes, n]
+[DEBUG] Hole elem
+[DEBUG] Size: 2
+[DEBUG] Fragments: [elem, (none->none)]
+[DEBUG] Hole (n.link)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Node, nodes, n]
+[DEBUG] Hole elem
+[DEBUG] Size: 2
+[DEBUG] Fragments: [elem, (none->none)]
+ [INFO] Expression generation time: 2151292
+ [INFO] Search space: 64
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, elem, (n.link), elem]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, elem, (n.link), elem]
+[DEBUG] Test from pass to fail: test33
+[DEBUG] Hole values: [nodes, elem, (n.link), elem]
+[DEBUG] Test from pass to fail: test33
+[DEBUG] Hole values: [n, elem, (n.link), elem]
+[DEBUG] Hole 3, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [n, elem, (n.link), elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none), (n.link), elem]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [n, elem, none, elem]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [n, elem, Node, elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, nodes, elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, n, elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.link), elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, elem, (n.link), (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+ [INFO] Fix failed, number of combinations tried: 12
+[DEBUG] Hole nodes
+[DEBUG] Size: 11
+[DEBUG] Fragments: [none, Node, nodes, (Node-nodes), (List.header), (Node.link), (This.header), (nodes.link), (link.Node), (link.nodes), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (nodes.elem), (n.elem)]
+[DEBUG] Hole ((n.link).elem)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (nodes.elem), (n.elem)]
+ [INFO] Expression generation time: 1917826085
+ [INFO] Search space: 539
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.link).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.link).elem)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [nodes, (n.elem), ((n.link).elem)]
+[DEBUG] Hole 2, Fragment: nodes, FailToPass: 0
+[DEBUG] Hole values: [(Node-nodes), (n.elem), ((n.link).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(List.header), (n.elem), ((n.link).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Node.link), (n.elem), ((n.link).elem)]
+[DEBUG] Test from pass to fail: test1007
+[DEBUG] Hole values: [(This.header), (n.elem), ((n.link).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(nodes.link), (n.elem), ((n.link).elem)]
+[DEBUG] Test from pass to fail: test1007
+[DEBUG] Hole values: [(link.Node), (n.elem), ((n.link).elem)]
+[DEBUG] Test from fail to pass: test1006
+[DEBUG] Test from fail to pass: test1008
+[DEBUG] Test from fail to pass: test1009
+[DEBUG] Test from fail to pass: test32
+[DEBUG] Test from fail to pass: test28
+[DEBUG] Test from fail to pass: test29
+[DEBUG] Hole 8, Fragment: (link.Node), FailToPass: 6
+[DEBUG] Hole values: [(link.nodes), (n.elem), ((n.link).elem)]
+[DEBUG] Test from fail to pass: test1006
+[DEBUG] Test from fail to pass: test1008
+[DEBUG] Test from fail to pass: test1009
+[DEBUG] Test from fail to pass: test32
+[DEBUG] Test from fail to pass: test28
+[DEBUG] Test from fail to pass: test29
+[DEBUG] Hole 9, Fragment: (link.nodes), FailToPass: 6
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.link).elem)]
+[DEBUG] Hole 10, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Set best fragment for hole: (link.Node)
+[DEBUG] Hole values: [(link.Node), none, ((n.link).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [(link.Node), Int, ((n.link).elem)]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(link.Node), 0, ((n.link).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(link.Node), 1, ((n.link).elem)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(link.Node), (Node.elem), ((n.link).elem)]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(link.Node), (nodes.elem), ((n.link).elem)]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(link.Node), (n.elem), ((n.link).elem)]
+[DEBUG] Hole 6, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [(link.Node), (n.elem), Int]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(link.Node), (n.elem), 0]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(link.Node), (n.elem), 1]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(link.Node), (n.elem), (Node.elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(link.Node), (n.elem), (nodes.elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(link.Node), (n.elem), (n.elem)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix succeeded, number of combinations tried: 25
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one (link.Node)) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] All tests pass.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one (link.Node)) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(let nodes = ((This.header).(*link)) {
+(all n: (one (link.Node)) {
+((n.elem) <= ((n.link).elem))
+})
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+

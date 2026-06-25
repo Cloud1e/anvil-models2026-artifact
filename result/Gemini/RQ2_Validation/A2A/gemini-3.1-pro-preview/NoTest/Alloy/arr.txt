@@ -1,0 +1,35 @@
+all idx: Int | lone Array.i2e[idx]
+Correct
+
+all idx: Int | #Array.i2e[idx] <= 1
+Correct
+
+~(Array.i2e) . Array.i2e in iden
+Wrong
+
+Array.i2e in Int -> lone Element
+Correct
+
+all idx: Int, disj e1, e2: Element | not (idx -> e1 in Array.i2e and idx -> e2 in Array.i2e)
+Correct
+
+no idx: Int | #Array.i2e[idx] > 1
+Correct
+
+all idx: Array.i2e.Element | #Array.i2e[idx] < 2
+Correct
+
+no idx: Int, disj e1, e2: Element | idx -> e1 in Array.i2e and idx -> e2 in Array.i2e
+Correct
+
+all idx: Array.i2e.Element, e1, e2: Element | (idx -> e1 in Array.i2e and idx -> e2 in Array.i2e) implies e1 = e2
+Correct
+
+all idx: Array.i2e.Element | lone idx.(Array.i2e)
+Correct
+
+Total: 10
+Unique: 10
+Correct: 9
+Syntax Error: 0
+Wrong: 1

@@ -1,0 +1,769 @@
+RQ3 quick: model=gemini-3.1-flash-lite-preview; classification only
+Running faulty-model Alloy-to-Alloy + ARepair pipeline. Log: /Users/chenbo/Desktop/anvil-final-isolation-test/anvil-artifact/logs/faulty_rewrite_20260624_104129.log
+=== Step 1 (host): Skipped LLM predicate rewrite (default / --skip-llm) ===
+
+=== Step 1.5 (host): Classify faulty models as Cor/Syn/Sem before ARepair ===
+[faulty] classify --info-root result/Gemini/RQ3_Repair/FaultyRewrite/gemini-3.1-flash-lite-preview/ARepair_FaultyRewrite
+=== Classify faulty models (original + LLM), total cases: 143 ===
+mode: check-one primary + testsuite/predEquiv diagnostics; progress every 10 cases
+[1/143] balancedBST_Balanced_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[2/143] balancedBST_Sorted_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[3/143] cd_Acyclic_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[4/143] cd_AllExtObject_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[5/143] cd_ObjectNoExt_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[6/143] dll_ConsistentPreAndNxt_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[7/143] dll_Sorted_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[8/143] dll_UniqueElem_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[9/143] farmer_crossRiver_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: farmer.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[10/143] grade_PolicyAllowsGrading_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=10/10, predEquiv=10/10
+[11/143] student_Contains_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[12/143] student_Loop_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[13/143] student_Sorted_original (original)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[14/143] balancedBST_Balanced_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[15/143] balancedBST_Balanced_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[16/143] balancedBST_Balanced_llm_3 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[17/143] balancedBST_Balanced_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[18/143] balancedBST_Balanced_llm_5 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[19/143] balancedBST_Balanced_llm_6 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[20/143] balancedBST_Balanced_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=20/20, predEquiv=20/20
+[21/143] balancedBST_Balanced_llm_8 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[22/143] balancedBST_Balanced_llm_9 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[23/143] balancedBST_Balanced_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[24/143] balancedBST_Sorted_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[25/143] balancedBST_Sorted_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[26/143] balancedBST_Sorted_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[27/143] balancedBST_Sorted_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[28/143] balancedBST_Sorted_llm_5 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[29/143] balancedBST_Sorted_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[30/143] balancedBST_Sorted_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=30/30, predEquiv=30/30
+[31/143] balancedBST_Sorted_llm_8 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[32/143] balancedBST_Sorted_llm_9 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[33/143] balancedBST_Sorted_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: balancedBST.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[34/143] cd_Acyclic_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[35/143] cd_Acyclic_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[36/143] cd_Acyclic_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[37/143] cd_Acyclic_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[38/143] cd_Acyclic_llm_5 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: cd.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[39/143] cd_Acyclic_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[40/143] cd_Acyclic_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=40/40, predEquiv=40/40
+[41/143] cd_Acyclic_llm_8 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[42/143] cd_Acyclic_llm_9 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[43/143] cd_Acyclic_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[44/143] cd_AllExtObject_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[45/143] cd_AllExtObject_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[46/143] cd_AllExtObject_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[47/143] cd_AllExtObject_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[48/143] cd_AllExtObject_llm_5 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[49/143] cd_AllExtObject_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[50/143] cd_AllExtObject_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=50/50, predEquiv=50/50
+[51/143] cd_AllExtObject_llm_8 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[52/143] cd_AllExtObject_llm_9 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: cd.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[53/143] cd_AllExtObject_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[54/143] cd_ObjectNoExt_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[55/143] cd_ObjectNoExt_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[56/143] cd_ObjectNoExt_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[57/143] cd_ObjectNoExt_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[58/143] cd_ObjectNoExt_llm_5 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[59/143] cd_ObjectNoExt_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[60/143] cd_ObjectNoExt_llm_7 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: cd.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=60/60, predEquiv=60/60
+[61/143] cd_ObjectNoExt_llm_8 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[62/143] cd_ObjectNoExt_llm_9 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[63/143] cd_ObjectNoExt_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: cd.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[64/143] dll_ConsistentPreAndNxt_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[65/143] dll_ConsistentPreAndNxt_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[66/143] dll_ConsistentPreAndNxt_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[67/143] dll_ConsistentPreAndNxt_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[68/143] dll_ConsistentPreAndNxt_llm_5 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[69/143] dll_ConsistentPreAndNxt_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[70/143] dll_ConsistentPreAndNxt_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=65/70, predEquiv=65/70
+[71/143] dll_ConsistentPreAndNxt_llm_8 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[72/143] dll_ConsistentPreAndNxt_llm_9 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[73/143] dll_ConsistentPreAndNxt_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[74/143] dll_Sorted_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[75/143] dll_Sorted_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[76/143] dll_Sorted_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[77/143] dll_Sorted_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[78/143] dll_Sorted_llm_5 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[79/143] dll_Sorted_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[80/143] dll_Sorted_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=72/80, predEquiv=72/80
+[81/143] dll_Sorted_llm_8 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[82/143] dll_Sorted_llm_9 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[83/143] dll_Sorted_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[84/143] dll_UniqueElem_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[85/143] dll_UniqueElem_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[86/143] dll_UniqueElem_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[87/143] dll_UniqueElem_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[88/143] dll_UniqueElem_llm_5 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[89/143] dll_UniqueElem_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[90/143] dll_UniqueElem_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=82/90, predEquiv=82/90
+[91/143] dll_UniqueElem_llm_8 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: dll.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[92/143] dll_UniqueElem_llm_9 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[93/143] dll_UniqueElem_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: dll.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[94/143] farmer_crossRiver_llm_1 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: farmer.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[95/143] farmer_crossRiver_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: farmer.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[96/143] farmer_crossRiver_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: farmer.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[97/143] farmer_crossRiver_llm_4 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: farmer.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[98/143] farmer_crossRiver_llm_5 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: farmer.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[99/143] farmer_crossRiver_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: farmer.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[100/143] farmer_crossRiver_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: farmer.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=92/100, predEquiv=92/100
+[101/143] farmer_crossRiver_llm_8 (llm)
+  -> check-one: code_type=SAME_CODE, result=Cor
+  -> testsuite: farmer.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[102/143] farmer_crossRiver_llm_9 (llm)
+  -> check-one: code_type=SAME_CODE, result=Cor
+  -> testsuite: farmer.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[103/143] farmer_crossRiver_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: farmer.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[104/143] grade_PolicyAllowsGrading_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[105/143] grade_PolicyAllowsGrading_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[106/143] grade_PolicyAllowsGrading_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[107/143] grade_PolicyAllowsGrading_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[108/143] grade_PolicyAllowsGrading_llm_5 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[109/143] grade_PolicyAllowsGrading_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[110/143] grade_PolicyAllowsGrading_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=100/110, predEquiv=100/110
+[111/143] grade_PolicyAllowsGrading_llm_8 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[112/143] grade_PolicyAllowsGrading_llm_9 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[113/143] grade_PolicyAllowsGrading_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: grade.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[114/143] student_Contains_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[115/143] student_Contains_llm_2 (llm)
+  -> check-one: code_type=SYNTAX_ERROR, result=Syn
+  -> testsuite: student.als
+  -> testsuite: code_type=SYNTAX_ERROR, result=Syn
+  -> predEquiv (gold<->faulty pred): code_type=SYNTAX_ERROR, result=Syn (bounded check P<=>P__cand)
+[116/143] student_Contains_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[117/143] student_Contains_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[118/143] student_Contains_llm_5 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[119/143] student_Contains_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[120/143] student_Contains_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=105/120, predEquiv=105/120
+[121/143] student_Contains_llm_8 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[122/143] student_Contains_llm_9 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[123/143] student_Contains_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[124/143] student_Loop_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[125/143] student_Loop_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[126/143] student_Loop_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[127/143] student_Loop_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[128/143] student_Loop_llm_5 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[129/143] student_Loop_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[130/143] student_Loop_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=113/130, predEquiv=113/130
+[131/143] student_Loop_llm_8 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[132/143] student_Loop_llm_9 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[133/143] student_Loop_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[134/143] student_Sorted_llm_1 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[135/143] student_Sorted_llm_2 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[136/143] student_Sorted_llm_3 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[137/143] student_Sorted_llm_4 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[138/143] student_Sorted_llm_5 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[139/143] student_Sorted_llm_6 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[140/143] student_Sorted_llm_7 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+  -> [check-one diagnostics] cumulative agree: testsuite=121/140, predEquiv=121/140
+[141/143] student_Sorted_llm_8 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=CORRECT_CODE, result=Cor
+  -> predEquiv (gold<->faulty pred): code_type=SAME_CODE, result=Cor (bounded check P<=>P__cand)
+[142/143] student_Sorted_llm_9 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+[143/143] student_Sorted_llm_10 (llm)
+  -> check-one: code_type=DIFF_OUTPUT, result=Sem
+  -> testsuite: student.als
+  -> testsuite: code_type=DIFF_OUTPUT, result=Sem
+  -> predEquiv (gold<->faulty pred): code_type=DIFF_OUTPUT, result=Sem (bounded check P<=>P__cand)
+
+=== Classification summary ===
+{
+  "validation": "check_one_primary_with_testsuite_and_pred_equiv_diagnostics",
+  "total": 143,
+  "Cor": 2,
+  "Syn": 13,
+  "Sem": 128,
+  "Unknown": 0,
+  "by_kind": {
+    "original": {
+      "Cor": 0,
+      "Syn": 0,
+      "Sem": 13,
+      "Unknown": 0
+    },
+    "llm": {
+      "Cor": 2,
+      "Syn": 13,
+      "Sem": 115,
+      "Unknown": 0
+    }
+  },
+  "checkOne_vs_testsuite_compared": 143,
+  "checkOne_vs_testsuite_agree": 123,
+  "checkOne_vs_predEquiv_compared": 143,
+  "checkOne_vs_predEquiv_agree": 123
+}
+Classification written to: /Users/chenbo/Desktop/anvil-final-isolation-test/anvil-artifact/result/Gemini/RQ3_Repair/FaultyRewrite/gemini-3.1-flash-lite-preview/ARepair_FaultyRewrite/classification.json
+
+=== Step 2+3: Skipped ARepair (default / --skip-arepair) ===
+RQ3 quick completed.

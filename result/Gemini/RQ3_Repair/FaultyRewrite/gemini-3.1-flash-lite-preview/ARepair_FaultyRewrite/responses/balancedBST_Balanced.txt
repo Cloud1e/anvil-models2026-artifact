@@ -1,0 +1,49 @@
+pred Balanced() {
+  all n1, n2: Node | lone (#(n1.(left + right)) - #(n2.(left + right)))
+}
+
+pred Balanced() {
+  all n1: Node, n2: Node | let d1 = #n1.(left + right), d2 = #n2.(left + right) | lone (d1 - d2)
+}
+
+pred Balanced() {
+  all n1, n2: Node | {
+    let diff = #n1.(left + right) - #n2.(left + right) | diff in -1..1
+  }
+}
+
+pred Balanced() {
+  all n1, n2: Node | #n1.(left + right) - #n2.(left + right) in (-1 + 0 + 1)
+}
+
+pred Balanced() {
+  all n1, n2: Node | abs[#n1.(left + right) - #n2.(left + right)] <= 1
+}
+
+pred Balanced() {
+  all n1, n2: Node | #(n1.left + n1.right) - #(n2.left + n2.right) in -1..1
+}
+
+pred Balanced() {
+  all n1: Node | all n2: Node | {
+    not (#n1.(left+right) - #n2.(left+right) < -1) and not (#n1.(left+right) - #n2.(left+right) > 1)
+  }
+}
+
+pred Balanced() {
+  all n1, n2: Node | {
+    #{n1.left, n1.right} - #{n2.left, n2.right} in -1..1
+  }
+}
+
+pred Balanced() {
+  all n1, n2: Node | {
+    #{c: Node | c = n1.left or c = n1.right} - #{c: Node | c = n2.left or c = n2.right} in -1..1
+  }
+}
+
+pred Balanced() {
+  all n1, n2: Node | {
+    let s1 = #n1.(left + right), s2 = #n2.(left + right) | s1 = s2 or s1 = s2.plus[1] or s1 = s2.minus[1]
+  }
+}

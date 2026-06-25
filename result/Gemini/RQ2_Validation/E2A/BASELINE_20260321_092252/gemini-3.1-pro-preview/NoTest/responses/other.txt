@@ -1,0 +1,10 @@
+some p.member_of & r.located_in
+some r.located_in & p.member_of
+not (p.member_of & r.located_in = none)
+not (r.located_in & p.member_of = none)
+not (no p.member_of & r.located_in)
+not (no r.located_in & p.member_of)
+#(p.member_of & r.located_in) > 0
+#(r.located_in & p.member_of) > 0
+some g: p.member_of | g in r.located_in
+some g: r.located_in | g in p.member_of

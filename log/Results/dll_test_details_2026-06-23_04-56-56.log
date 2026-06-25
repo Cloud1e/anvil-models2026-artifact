@@ -1,0 +1,1714 @@
+DLL Test Suite Detailed Report
+Timestamp: 2026-06-23_04-56-56
+
+Model run commands: 1
+==============================
+Candidate 1
+ConsistentPreAndNxt: nxt = ~pre
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 2
+ConsistentPreAndNxt: pre = ~nxt
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 3
+ConsistentPreAndNxt: all n: Node | n.nxt.pre = n and n.pre.nxt = n
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=0 FAIL
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=0 FAIL
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=0 FAIL
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=0 FAIL
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 50/50)
+
+==============================
+Candidate 4
+ConsistentPreAndNxt: all n1, n2: Node | n1.nxt = n2 <=> n2.pre = n1
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 5
+ConsistentPreAndNxt: all n: Node | (some n.nxt => n.nxt.pre = n) and (some n.pre => n.pre.nxt = n)
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 6
+ConsistentPreAndNxt: all n: Node | n.nxt in pre.n and n.pre in nxt.n
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 7
+ConsistentPreAndNxt: ~nxt = pre
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 8
+ConsistentPreAndNxt: nxt.~pre = iden & (nxt . ~nxt + iden) and pre.~nxt = iden & (pre . ~pre + iden)
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=0 FAIL
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=0 FAIL
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=0 FAIL
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=0 FAIL
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 50/50)
+
+==============================
+Candidate 9
+ConsistentPreAndNxt: all n: Node | n in n.nxt.pre iff n in n.pre.nxt
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=1 FAIL
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=0 FAIL
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=1 FAIL
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=0 FAIL
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=0 FAIL
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=0 FAIL
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=1 FAIL
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 50/50)
+
+==============================
+Candidate 10
+ConsistentPreAndNxt: nxt in ~pre and pre in ~nxt
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 11
+Sorted: all n: Node | (some n.nxt) implies n.elem <= n.nxt.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 12
+Sorted: all n, m: Node | m = n.nxt => n.elem <= m.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 13
+Sorted: all n: Node | let nextNode = n.nxt | some nextNode implies n.elem <= nextNode.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 14
+Sorted: no n: Node | some n.nxt and n.elem > n.nxt.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 15
+Sorted: all n: Node | n.nxt.elem >= n.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=0 FAIL
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=0 FAIL
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 50/50)
+
+==============================
+Candidate 16
+Sorted: all n: Node | n.nxt in Node => n.elem <= n.nxt.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=0 FAIL
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=0 FAIL
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 50/50)
+
+==============================
+Candidate 17
+Sorted: all n1, n2: Node | n2 = n1.nxt implies n1.elem <= n2.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 18
+Sorted: all disj n1, n2: Node | n2 = n1.nxt => n1.elem <= n2.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 19
+Sorted: all n: Node | n.nxt != none => n.elem <= n.nxt.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 20
+Sorted: all n: Node | n.elem <= n.nxt.elem or no n.nxt
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 21
+UniqueElem: all n1, n2: Node | n1.elem = n2.elem => n1 = n2
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 22
+UniqueElem: all disj n1, n2: Node | n1.elem != n2.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 23
+UniqueElem: #elem[Node] = #Node
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 24
+UniqueElem: all n: Node | lone n.elem.~elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 25
+UniqueElem: no disj n1, n2: Node | n1.elem = n2.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 26
+UniqueElem: all n: Node | # (elem.n.elem) = 1
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=0 FAIL
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=0 FAIL
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=0 FAIL
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=0 FAIL
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 50/50)
+
+==============================
+Candidate 27
+UniqueElem: all n1, n2: Node | n1 != n2 implies n1.elem != n2.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=1 OK
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 50/50)
+
+==============================
+Candidate 28
+UniqueElem: (elem.~elem) = iden
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=0 FAIL
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=0 FAIL
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=0 FAIL
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=0 FAIL
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 50/50)
+
+==============================
+Candidate 29
+UniqueElem: all n: Node | n = (elem.n.elem)
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=0 FAIL
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=0 FAIL
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=0 FAIL
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=0 FAIL
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 50/50)
+
+==============================
+Candidate 30
+UniqueElem: lone n: Node | n.elem = n.elem
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test46     expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test48     expect=0 actual=0 OK
+Test test17     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=0 actual=0 OK
+Test test45     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test44     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test1      expect=0 actual=0 OK
+Test test19     expect=1 actual=0 FAIL
+Test test15     expect=0 actual=0 OK
+Test test16     expect=1 actual=0 FAIL
+Test test26     expect=1 actual=1 OK
+Test test39     expect=1 actual=1 OK
+Test test47     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test41     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test13     expect=0 actual=0 OK
+Test test35     expect=0 actual=0 OK
+Test test20     expect=1 actual=0 FAIL
+Test test6      expect=0 actual=0 OK
+Test test18     expect=1 actual=0 FAIL
+Test test38     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test43     expect=0 actual=0 OK
+Test test31     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test32     expect=0 actual=0 OK
+Test test33     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 50/50)
+

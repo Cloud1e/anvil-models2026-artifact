@@ -1,0 +1,75 @@
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - from'.eats - eats.from'
+Wrong
+
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = (from - (to' - to)) - from'.eats - eats.from'
+Wrong
+
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - (from'.eats + eats.from')
+Wrong
+
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = (from - (to' - to)) - (from'.eats + eats.from')
+Wrong
+
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - eats.from' - from'.eats
+Wrong
+
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = (from - (to' - to)) - eats.from' - from'.eats
+Wrong
+
+crossRiver: to subset to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - from'.eats - eats.from'
+Syntax Error
+SYN_MSG:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Object}
+END_SYN_MSG
+
+crossRiver: to in to' and Farmer in (to' - to) and #(to' - to) <= 2 and (to' - to) - Farmer subset from and from' = from - (to' - to) - from'.eats - eats.from'
+Syntax Error
+SYN_MSG:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Object}
+END_SYN_MSG
+
+crossRiver: let c = to' - to | to in to' and Farmer in c and #c <= 2 and c - Farmer in from and from' = from - c - from'.eats - eats.from'
+Wrong
+
+crossRiver: let c = to' - to | to in to' and Farmer in c and #c <= 2 and c - Farmer in from and from' = from - c - (from'.eats + eats.from')
+Wrong
+
+solvePuzzle: ord/last.far = Object
+Correct
+
+solvePuzzle: Object = ord/last.far
+Correct
+
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain
+Correct
+
+solvePuzzle: Farmer + Fox + Chicken + Grain = ord/last.far
+Correct
+
+solvePuzzle: Object in ord/last.far
+Correct
+
+solvePuzzle: ord/last.far = Object + none
+Correct
+
+solvePuzzle: ord/last.far in Object and Object in ord/last.far
+Correct
+
+solvePuzzle: no Object - ord/last.far
+Correct
+
+solvePuzzle: Object - ord/last.far = none
+Correct
+
+solvePuzzle: ord/last.far = Object - none
+Correct
+
+Total: 20
+Unique: 20
+Correct: 10
+Syntax Error: 2
+Wrong: 8

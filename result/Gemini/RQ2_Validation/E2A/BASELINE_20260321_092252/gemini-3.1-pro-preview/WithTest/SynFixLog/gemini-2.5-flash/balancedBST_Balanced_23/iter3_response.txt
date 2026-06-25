@@ -1,0 +1,10 @@
+pred Balanced() {
+  all n : Node {
+    // A tree is balanced if for every node, the number of nodes in its left
+    // and right subtrees differs by at most 1.
+    let sizeLeft = #{n.left.*(left + right)},
+        sizeRight = #{n.right.*(left + right)}
+      // Equivalent to abs(sizeLeft - sizeRight) <= 1
+      (sizeLeft - sizeRight <= 1) and (sizeRight - sizeLeft <= 1)
+  }
+}

@@ -1,0 +1,20 @@
+all x: S | one x.r
+all x: S | one r[x]
+r in S -> one S
+all x: S | #x.r = 1
+all x: S | #r[x] = 1
+~r.r in iden and S in r.S
+~r.r in iden and r.S = S
+all x: S | one (x <: r)
+all x: S | #(x <: r) = 1
+all x: S | some x.r and lone x.r
+all x: S | some r[x] and lone r[x]
+all x: S | one y: S | x->y in r
+all x: S | one y: S | x.r = y
+all x: S | one y: S | r[x] = y
+all x: S | some y: S | x.r = y
+all x: S | some y: S | r[x] = y
+no x: S | #x.r != 1
+no x: S | #r[x] != 1
+all x: S | x.r != none and lone x.r
+all x: S | some y: S | x->y in r and (all z: S | x->z in r implies y = z)

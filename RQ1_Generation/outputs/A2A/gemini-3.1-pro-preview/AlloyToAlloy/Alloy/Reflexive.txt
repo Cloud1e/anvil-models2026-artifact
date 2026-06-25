@@ -1,0 +1,65 @@
+all x: S | x in x.r
+Correct
+
+all x: S | x in r.x
+Correct
+
+no x: S | x->x not in r
+Correct
+
+no x: S | x not in x.r
+Correct
+
+no x: S | x not in r.x
+Correct
+
+not some x: S | x->x not in r
+Correct
+
+not some x: S | x not in x.r
+Correct
+
+not some x: S | x not in r.x
+Correct
+
+iden & S->S in r
+Correct
+
+S <: iden in r
+Correct
+
+iden :> S in r
+Correct
+
+r = r + (iden & S->S)
+Correct
+
+no (iden & S->S) - r
+Correct
+
+(iden & S->S) - r = none
+Syntax Error
+
+{x: S | x->x in r} = S
+Correct
+
+{x: S | x in x.r} = S
+Correct
+
+no S - {x: S | x->x in r}
+Correct
+
+all x, y: S | x = y implies x->y in r
+Correct
+
+no x, y: S | x = y and x->y not in r
+Correct
+
+all x: S | some x & x.r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 19
+Syntax Error: 1
+Wrong: 0

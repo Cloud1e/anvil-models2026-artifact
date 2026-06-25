@@ -1,0 +1,20 @@
+no n: Node | n in n.^link
+all n: Node | n !in n.^link
+no iden & ^link
+^link & iden = none
+all n: Node | no (n & n.^link)
+all n: Node | n.^link & n = none
+all n: Node | n !in n.link.*link
+no n: Node | n in n.link.*link
+all n: Node | n -> n not in ^link
+no n: Node | n -> n in ^link
+all n: Node | disj[n, n.^link]
+all n: Node | n.^link in Node - n
+all n: Node | n in Node - n.^link
+all n: Node | no m: n.^link | m = n
+no n: Node | some (n & n.^link)
+all n: Node | no m: Node | m = n and n in m.^link
+all n: Node | #(n.^link & n) = 0
+no n: Node | some m: n.^link | m = n
+all n: Node | not n in n.^link
+all n: Node | n.^link & n in none

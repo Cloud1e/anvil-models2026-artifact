@@ -1,0 +1,35 @@
+s = a.associated_with.instructor_of
+Wrong
+
+s in Professor
+Wrong
+
+s in Student implies s not in a.assigned_to
+Wrong
+
+s not in a.assigned_to
+Wrong
+
+no (s & a.assigned_to)
+Wrong
+
+s in Person - a.assigned_to
+Wrong
+
+s in a.associated_with.instructor_of or (s in a.associated_with.assistant_for and s not in a.assigned_to)
+Correct
+
+s in Professor or (s in a.associated_with.assistant_for and s not in a.assigned_to)
+Wrong
+
+s in (a.associated_with.instructor_of + a.associated_with.assistant_for) - a.assigned_to
+Correct
+
+all p: a.assigned_to | s != p
+Wrong
+
+Total: 10
+Unique: 10
+Correct: 2
+Syntax Error: 0
+Wrong: 8

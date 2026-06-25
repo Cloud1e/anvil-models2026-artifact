@@ -1,0 +1,31 @@
+Give me exactly 10 unique solutions to the problem of synthesizing the body of the following Alloy predicate (without markdown or comments or ```) that are equivalent to the given predicate but syntactically different.
+
+sig Room {}
+one sig secure_lab extends Room {}
+
+abstract sig Person {
+  owns : set Key
+}
+sig Employee extends Person {}
+sig Researcher extends Person {}
+
+sig Key {
+  authorized: one Employee,
+  opened_by: one Room
+}
+
+pred CanEnter(p: Person, r:Room) {
+	r in p.owns.opened_by
+}
+
+fact {
+  no Employee.owns
+}
+
+// Should help create tests.
+assert no_thief_in_seclab {
+  all p : Person | CanEnter[p, secure_lab] implies p in Researcher
+}
+check no_thief_in_seclab
+
+Return exactly 10 lines for the predicate CanEnter only, each line containing one predicate body. Do not include RepOk, any fact, or any other predicate. No numbering, bullet points, explanations, or other text before/after these lines. Only return the predicate body (the expression inside the braces).

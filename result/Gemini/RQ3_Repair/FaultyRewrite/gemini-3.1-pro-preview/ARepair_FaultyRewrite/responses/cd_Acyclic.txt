@@ -1,0 +1,41 @@
+```alloy
+pred Acyclic() {
+  all c: Class | c != c.ext
+}
+
+pred Acyclic() {
+  not some c: Class | c = c.ext
+}
+
+pred Acyclic() {
+  no c: Class | c in c.ext
+}
+
+pred Acyclic() {
+  no c: Class | c.ext = c
+}
+
+pred Acyclic() {
+  all c: Class | c not in c.ext
+}
+
+pred Acyclic() {
+  no ext & iden
+}
+
+pred Acyclic() {
+  all x, y: Class | x -> y in ext implies x != y
+}
+
+pred Acyclic() {
+  all c: Class | no c & c.ext
+}
+
+pred Acyclic() {
+  no iden & ext
+}
+
+pred Acyclic() {
+  not some c: Class | c in c.ext
+}
+```

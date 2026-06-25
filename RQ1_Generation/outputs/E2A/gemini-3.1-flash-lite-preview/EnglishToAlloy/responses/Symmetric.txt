@@ -1,0 +1,20 @@
+all x, y: S | x->y in r implies y->x in r
+all x: S | r[x] in {y: S | x in r[y]}
+r = ~r
+all x, y: S | y in r[x] iff x in r[y]
+r = r.~(iden) + ~r
+all x: S | all y: S | x->y in r => y->x in r
+all x: S | r[x].~r = r.x
+no x, y: S | x->y in r and y->x not in r
+r.~r = r.~r
+all x, y: S | (x->y in r) => (y->x in r)
+r in ~r
+~r = r
+all x: S | r[x] = {y: S | x in r[y]}
+r = r & ~r + ~(r - ~r)
+all x: S | (r.x) = (~r).x
+r = r & ~r
+all x: S | all y: S | (x in r[y]) <=> (y in r[x])
+r = {x, y: S | x->y in r and y->x in r}
+r = ~r and r = r
+all x, y: S | (x->y in r) <=> (y->x in r)

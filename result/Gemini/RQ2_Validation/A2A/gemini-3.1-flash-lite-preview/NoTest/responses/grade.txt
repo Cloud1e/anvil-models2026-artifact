@@ -1,0 +1,10 @@
+(s in a.associated_with.(assistant_for + instructor_of)) and (not s in a.assigned_to)
+(s in a.associated_with.assistant_for or s in a.associated_with.instructor_of) and (s not in a.assigned_to)
+s in (a.associated_with.assistant_for + a.associated_with.instructor_of) and no (s & a.assigned_to)
+s !in a.assigned_to and (s in a.associated_with.assistant_for or s in a.associated_with.instructor_of)
+(s in a.associated_with.assistant_for or s in a.associated_with.instructor_of) and (all x: a.assigned_to | s != x)
+s !in a.assigned_to and s in a.associated_with.(assistant_for + instructor_of)
+not s in a.assigned_to and (some p: a.associated_with | s in p.assistant_for or s in p.instructor_of)
+s in (a.associated_with.assistant_for + a.associated_with.instructor_of) and s not in a.assigned_to
+(s in a.associated_with.assistant_for or s in a.associated_with.instructor_of) and s !in a.assigned_to
+not (s in a.assigned_to) and (s in a.associated_with.assistant_for or s in a.associated_with.instructor_of)

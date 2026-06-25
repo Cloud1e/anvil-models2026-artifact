@@ -1,0 +1,20 @@
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some item : from - Farmer | to' = to + Farmer + item and from' = from - Farmer - item - from'.eats)
+crossRiver: (from' = (from - Farmer) - (from - Farmer).eats and to' = to + Farmer) or (some item : from - Farmer | from' = (from - Farmer - item) - (from - Farmer - item).eats and to' = to + Farmer + item)
+crossRiver: (no i : from - Farmer | i in from'.eats) and (from' = from - Farmer and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item and no i : from' | i in from'.eats and to' = to + Farmer + item)
+crossRiver: (from' = from - Farmer - {x: Object | x in from'.eats} and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item - {x: Object | x in from'.eats} and to' = to + Farmer + item)
+crossRiver: (to' = to + Farmer and from' = (from - Farmer) - (from'.eats)) or (some item : from - Farmer | to' = to + item + Farmer and from' = (from - Farmer - item) - (from'.eats))
+crossRiver: (from' = from - Farmer - (from'.eats) and to' = to + Farmer) or (some i : from - Farmer | from' = from - (Farmer + i) - (from'.eats) and to' = to + Farmer + i)
+crossRiver: (from' = from \ (Farmer + from'.eats) and to' = to + Farmer) or (some item : from \ Farmer | from' = from \ (Farmer + item + from'.eats) and to' = to + Farmer + item)
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : from - Farmer | to' = to + item + Farmer and from' = from - Farmer - item - from'.eats)
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = Farmer + item + to)
+solvePuzzle: ord/last.far = Object
+solvePuzzle: Object in ord/last.far
+solvePuzzle: all o : Object | o in ord/last.far
+solvePuzzle: no Object - ord/last.far
+solvePuzzle: Object = ord/last.far
+solvePuzzle: (Object & ord/last.far) = Object
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain
+solvePuzzle: no (Object & (State - ord/last).far) and Object in ord/last.far
+solvePuzzle: ord/last.far = (Object & ord/last.far) and no (Object - ord/last.far)
+solvePuzzle: Object = (ord/last.far) and no (ord/last.near)

@@ -1,0 +1,17 @@
+```alloy
+pred Sorted() {
+  all n : Node {
+    // All elements in the left subtree (including n.left itself, if it exists)
+    // must be less than n.elem.
+    all l_descendant : n.left.*(left + right) {
+      l_descendant.elem < n.elem
+    }
+
+    // All elements in the right subtree (including n.right itself, if it exists)
+    // must be greater than n.elem.
+    all r_descendant : n.right.*(left + right) {
+      r_descendant.elem > n.elem
+    }
+  }
+}
+```

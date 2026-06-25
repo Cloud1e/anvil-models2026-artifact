@@ -1,0 +1,65 @@
+r & ~r in iden
+Correct
+
+no (r & ~r) - iden
+Correct
+
+all x, y: S | x->y in r and y->x in r implies x = y
+Correct
+
+all x, y: S | y in x.r and x in y.r implies x = y
+Correct
+
+all x: S | x.r & r.x in x
+Correct
+
+no x, y: S | x != y and x->y in r and y->x in r
+Correct
+
+all disj x, y: S | x->y in r implies y->x not in r
+Correct
+
+all x, y: S | x in y.r and y in x.r implies x = y
+Correct
+
+no x, y: S | x->y in r and y->x in r and x != y
+Correct
+
+no disj x, y: S | x->y in r and y->x in r
+Correct
+
+all x: S | no y: S - x | x->y in r and y->x in r
+Correct
+
+all x: S | all y: x.r | y->x in r implies x = y
+Correct
+
+(r & ~r) - iden = none
+Syntax Error
+
+all x, y: S | x != y and x->y in r implies y->x not in r
+Correct
+
+all x: S | x.r & r.x - x = none
+Correct
+
+~r & r in iden
+Correct
+
+no x, y: S | x in y.r and y in x.r and x != y
+Correct
+
+no disj x, y: S | x in y.r and y in x.r
+Correct
+
+all x, y: S | (x in y.r and y in x.r) => x = y
+Correct
+
+all x, y: S | x->y in r and y->x
+Syntax Error
+
+Total: 20
+Unique: 20
+Correct: 18
+Syntax Error: 2
+Wrong: 0

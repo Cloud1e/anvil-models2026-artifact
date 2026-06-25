@@ -1,0 +1,777 @@
+RQ1 quick: model=gemini-3.1-flash-lite-preview property=Function
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one x.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | lone x.r and some x.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | #x.r = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one y: S | y in x.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | (some y: S | y in x.r) and (all y, z: x.r | y = z)
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | x.r in S and all disj y, z: x.r | none
+}
+check { Function <=> Function2 } for 5
+Type error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc11605946839496589387.als at line 9 column 46:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{none}
+	at edu.mit.csail.sdg.ast.Expr.typecheck_as_formula(Expr.java:186)
+	at edu.mit.csail.sdg.ast.Expr.resolve_as_formula(Expr.java:259)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:593)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:440)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprList.accept(ExprList.java:301)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2274)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one y: S | x->y in r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | {y: S | x->y in r} = {y: S | y = (x.r)} and one x.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | some y: S | y in x.r and all z: x.r | z = y
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | r[x] in S and one r[x]
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | r.r.r.r = r.r.r.r and one x.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | {y: S | x->y in r} = {y: S | y in S and all z: S | z in x.r => z = y} and some x.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one y: S | r[x] = y
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | {y: S | x->y in r} = {y: S | y in S and y = (x.r)} and #x.r = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | lone r[x] and some r[x]
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | {y: S | y in x.r} = {y: S | y = (x.r)} and one x.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | {y: S | x->y in r} = {y: S | y = (x.r)} and #x.r = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | # {y: S | x->y in r} = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | (x.r in S) and (all y, z: S | y in x.r and z in x.r => y = z) and (some x.r)
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one y: S | x.r = y
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+\begin{table}
+\centering
+\caption{Result GEMINI - EnglishToAlloy}\label{tab_GEMINI_EnglishToAlloy}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Predicate & Unique & Cor & Syn & Sem \\
+\hline
+Function & 20 & 19 & 1 & 0 \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+\end{tabular}
+\end{table}
+
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | #s.r = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | lone s.r and some s.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | r[s] in S and no (r[s] & (S - r[s])) and some r[s]
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={S$0, S$1}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/S={S$0, S$1}
+this/S<:r={S$0->S$0, S$0->S$1, S$1->S$0, S$1->S$1}
+
+DIFF_OUTPUT
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | one x: S | x in s.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | (some s.r) and (all x, y: s.r | x = y)
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | r[s] != none and (all x, y: r[s] | x = y)
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | r.s is not the right way, s.r is one
+}
+check { Function <=> Function2 } for 5
+Syntax error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc14310215781600891021.als at line 9 column 36:
+There are 31 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { } ~ 
+	at edu.mit.csail.sdg.parser.CompParser.syntax_error(CompParser.java:2218)
+	at edu.mit.csail.sdg.parser.CompParser.parse(CompParser.java:2079)
+	at edu.mit.csail.sdg.parser.CompParser.alloy_parseStream(CompParser.java:2259)
+	at edu.mit.csail.sdg.parser.CompUtil.parseRecursively(CompUtil.java:217)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:363)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2282)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | lone s.r and (all s': S | some s.r)
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | r[s] in S and #r[s] = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | some x: S | s->x in r and all y: S | s->y in r implies y = x
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | {x: S | s->x in r} = {x: S | x = (s.r)} and #s.r = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | (r.univ & s) in S and one (s.r)
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | one x: S | s.r = x
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | r[s] in S and (all x: s.r | all y: s.r | x = y) and some s.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | (s.r in S) and (all x: S | x in s.r iff x = (s.r)) and some s.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | one (s.r :> S)
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | (r.s' where s'=s) has cardinality 1
+}
+check { Function <=> Function2 } for 5
+Syntax error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc12757152334818613774.als at line 9 column 18:
+There are 1 possible tokens that can appear here:
+) 
+	at edu.mit.csail.sdg.parser.CompParser.syntax_error(CompParser.java:2218)
+	at edu.mit.csail.sdg.parser.CompParser.parse(CompParser.java:2079)
+	at edu.mit.csail.sdg.parser.CompParser.alloy_parseStream(CompParser.java:2259)
+	at edu.mit.csail.sdg.parser.CompUtil.parseRecursively(CompUtil.java:217)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:363)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2282)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | #(s.r) = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | some x: S | s.r = x and no (s.r - x)
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all s: S | lone x: S | x in s.r and some x: S | x in s.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={S$0}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/S={S$0}
+this/S<:r={}
+
+DIFF_OUTPUT
+\begin{table}
+\centering
+\caption{Result GEMINI - AlloyToAlloy}\label{tab_GEMINI_AlloyToAlloy}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Predicate & Unique & Cor & Syn & Sem \\
+\hline
+Function & 20 & 16 & 2 & 2 \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+ &  &  &  &  \\
+\hline
+\end{tabular}
+\end{table}
+
+RQ1 quick completed. Outputs under logs/quick_start/RQ1/gemini-3.1-flash-lite-preview_Function/{E2A,A2A}.

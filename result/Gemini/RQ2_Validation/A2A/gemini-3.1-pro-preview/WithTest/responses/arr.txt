@@ -1,0 +1,10 @@
+all i: Int | lone Array.i2e[i]
+all i: Int | lone i.(Array.i2e)
+~(Array.i2e) . (Array.i2e) in iden
+all i: Int, a, b: Element | (i->a in Array.i2e and i->b in Array.i2e) implies a = b
+all i: Int, a, b: Element | (i->a in Array.i2e and i->b in Array.i2e) => a = b
+all i: Int, disj a, b: Element | not (i->a in Array.i2e and i->b in Array.i2e)
+all i: Int, disj a, b: Element | i->a in Array.i2e implies not (i->b in Array.i2e)
+all i: Int | #Array.i2e[i] <= 1
+all i: Int | #i.(Array.i2e) <= 1
+all i: Int | #Array.i2e[i] < 2

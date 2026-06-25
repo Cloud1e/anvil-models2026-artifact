@@ -1,0 +1,31 @@
+Give me exactly 10 unique solutions to the problem of synthesizing the body of the following Alloy predicate (without markdown or comments or ```) that are equivalent to the given predicate but syntactically different.
+
+abstract sig Person {}
+
+sig Student extends Person {}
+
+sig Professor extends Person {}
+
+sig Class {
+	assistant_for: set Student,
+	instructor_of: one Professor
+}
+
+sig Assignment {
+	associated_with: one Class,
+	assigned_to: some Student
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+  s in a.associated_with.assistant_for || s in a.associated_with.instructor_of
+  s !in a.assigned_to
+}
+
+// Should help create tests.
+assert NoOneCanGradeTheirOwnAssignment {
+	all s : Person | all a: Assignment | PolicyAllowsGrading[s, a] implies not s in a.assigned_to 
+}
+
+check NoOneCanGradeTheirOwnAssignment
+
+Return exactly 10 lines for the predicate PolicyAllowsGrading only, each line containing one predicate body. Do not include RepOk, any fact, or any other predicate. No numbering, bullet points, explanations, or other text before/after these lines. Only return the predicate body (the expression inside the braces).

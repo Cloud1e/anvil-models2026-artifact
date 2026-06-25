@@ -1,0 +1,40 @@
+Sorted: all n: This.header.*link | n.link.elem in (none) + {e: Int | e >= n.elem}
+Sorted: all n: This.header.*link | all next: n.link | n.elem <= next.elem
+Sorted: all n: This.header.*link | (some n.link) implies n.elem <= n.link.elem
+Sorted: no n: This.header.*link | some n.link and n.elem > n.link.elem
+Sorted: all n: This.header.*link | n.link = none or n.elem <= n.link.elem
+Sorted: all n: This.header.*link | (n.link = none) or (n.elem <= n.link.elem)
+Sorted: all n: This.header.*link | n.link != none implies n.elem <= n.link.elem
+Sorted: not some n: This.header.*link | n.elem > n.link.elem
+Sorted: all n: This.header.*link | n.link in {m: Node | n.elem <= m.elem} or no n.link
+Sorted: all n: This.header.*link | n.link in Node implies n.elem <= n.link.elem
+Count: result = #{n: This.header.*link | n.elem = x}
+Count: {n: This.header.*link | n.elem = x} = (result <: Int)
+Count: result = count[n: This.header.*link | n.elem = x]
+Count: result = (#{n: This.header.*link & {m: Node | m.elem = x}})
+Count: result = #{n: This.header.*link | x = n.elem}
+Count: result = #{n: Node | n in This.header.*link and n.elem = x}
+Count: result = #{n: This.header.*link | n.elem in x}
+Count: result = #(This.header.*link & {n: Node | n.elem = x})
+Count: result = #{n: This.header.*link | not (n.elem != x)}
+Count: result = #{n: This.header.*link | x in n.elem}
+Contains: result = (some n: This.header.*link | n.elem = x) => True else False
+Contains: result = (some n: This.header.*link & {m: Node | m.elem = x}) => True else False
+Contains: (some n: This.header.*link | n.elem = x) implies result = True else result = False
+Contains: (some {n: This.header.*link | n.elem = x}) implies result = True else result = False
+Contains: result = (some {n: Node | n in This.header.*link and n.elem = x}) => True else False
+Contains: result = (#(This.header.*link & {n: Node | n.elem = x}) > 0) => True else False
+Contains: result = (x in This.header.*link.elem) => True else False
+Contains: (x in This.header.*link.elem) implies result = True else result = False
+Contains: result = {b: Boolean | (some n: This.header.*link | n.elem = x) => b = True else b = False}
+Contains: result = (some n: This.header.*link | n.elem = x) = (result = True)
+Loop: no This.header or (some n: This.header.*link | n.link = n)
+Loop: no This.header or (one n: Node | n in This.header.*link and n.link = n)
+Loop: (all n: This.header.*link | n.link != n) implies no This.header
+Loop: no This.header or (some n: This.header.*link | n = n.link)
+Loop: no This.header or (some n: Node | n in This.header.*link and n = n.link)
+Loop: (no This.header) or (some n: This.header.*link | n.link in n)
+Loop: (no This.header) or (one n: This.header.*link | n in n.link)
+Loop: no This.header or (some n: This.header.*link | n.link in n)
+Loop: (no This.header) or (some n: Node | n in This.header.*link and n.link = n)
+Loop: no This.header or (some n: This.header.*link | n.link = n) -- aug10

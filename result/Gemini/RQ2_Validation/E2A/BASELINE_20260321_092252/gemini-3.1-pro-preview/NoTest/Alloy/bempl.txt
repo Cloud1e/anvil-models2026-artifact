@@ -1,0 +1,35 @@
+r in p.owns.opened_by
+Wrong
+
+some k: p.owns | k.opened_by = r
+Wrong
+
+some p.owns & opened_by.r
+Wrong
+
+some k: Key | k in p.owns and k.opened_by = r
+Wrong
+
+not no (p.owns & opened_by.r)
+Wrong
+
+#(p.owns & opened_by.r) > 0
+Wrong
+
+p in opened_by.r.~owns
+Wrong
+
+some (opened_by.r & p.owns)
+Wrong
+
+some k: Key | k.opened_by = r and k in p.owns
+Wrong
+
+some p.owns & r.~opened_by
+Wrong
+
+Total: 10
+Unique: 10
+Correct: 0
+Syntax Error: 0
+Wrong: 10

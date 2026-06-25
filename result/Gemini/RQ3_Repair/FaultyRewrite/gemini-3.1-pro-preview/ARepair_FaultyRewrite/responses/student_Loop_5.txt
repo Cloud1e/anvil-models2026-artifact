@@ -1,0 +1,4 @@
+pred Loop(This: List) {
+    all x: Node | not (x = (x - This.header).link)
+    one y: Node | This.header = y.link
+}

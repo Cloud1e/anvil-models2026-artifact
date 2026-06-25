@@ -1,0 +1,269 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+(!(all n: (one Node) {
+(n !in (n.(^link)))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 36089383809
+ [INFO] Fixed by mutation:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+(!(all n: (one Node) {
+(n !in (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] Fault localization time: 19143525175
+ [INFO] Expression generation time: 308782667
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 129927542
+ [INFO] Search space: 18
+ [INFO] Fix failed, number of combinations tried: 8
+ [INFO] Expression generation time: 815788500
+ [INFO] Search space: 3388
+ [INFO] Fix failed, number of combinations tried: 33
+ [INFO] Expression generation time: 1982595876
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 2218916
+ [INFO] Search space: 31500
+ [INFO] Fix failed, number of combinations tried: 46
+ [INFO] Expression generation time: 2352875
+ [INFO] Search space: 63000
+ [INFO] Fix failed, number of combinations tried: 48
+ [INFO] Expression generation time: 281333
+ [INFO] Search space: 63000
+ [INFO] Fix failed, number of combinations tried: 48
+ [INFO] Expression generation time: 3093958
+ [INFO] Search space: 420
+ [INFO] Fix failed, number of combinations tried: 43
+ [INFO] Expression generation time: 1288958
+ [INFO] Search space: 1575
+ [INFO] Fix failed, number of combinations tried: 37
+ [INFO] Expression generation time: 1655833
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 1306584
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 2310166
+ [INFO] Search space: 31500
+ [INFO] Fix failed, number of combinations tried: 46
+ [INFO] Expression generation time: 754083
+ [INFO] Search space: 420
+ [INFO] Fix failed, number of combinations tried: 43
+ [INFO] Expression generation time: 138750
+ [INFO] Search space: 1575
+ [INFO] Fix failed, number of combinations tried: 37
+ [INFO] Expression generation time: 798084
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 681625
+ [INFO] Search space: 6300
+ [INFO] Fix failed, number of combinations tried: 41
+ [INFO] Expression generation time: 806583
+ [INFO] Search space: 31500
+ [INFO] Fix failed, number of combinations tried: 46
+ [INFO] Expression generation time: 1776625
+ [INFO] Search space: 63000
+ [INFO] Fix failed, number of combinations tried: 48
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+(!(all n: (one Node) {
+(n !in (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+(!(all n: (one Node) {
+(n !in (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((RepOk[This]) && ((some n: (one ((This.header).(*link))) {
+((n.elem) = x)
+}) => (result = True) else (result = False)))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+

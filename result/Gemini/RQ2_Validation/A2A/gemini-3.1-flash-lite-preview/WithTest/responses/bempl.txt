@@ -1,0 +1,10 @@
+some k : p.owns | k.opened_by = r
+p.owns.opened_by & r != none
+r in (p.owns).opened_by
+not no p.owns & opened_by.r
+(p.owns).opened_by in r
+#{p.owns & opened_by.r} > 0
+p.owns & opened_by.r != none
+some k : Key | k in p.owns and k.opened_by = r
+r in {room : Room | some k : p.owns | k.opened_by = room}
+some k : p.owns | r = k.opened_by

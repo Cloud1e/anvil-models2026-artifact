@@ -1,0 +1,121 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int),val: (one Element),idx': (one Int),val': (one Element) {
+(((idx != idx') && ((idx.(Array.i2e)) = val) && ((idx'.(Array.i2e)) = val')) => (idx = idx'))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 12345619589
+ [INFO] Expression generation time: 188872958
+ [INFO] Search space: 16
+ [INFO] Fix failed, number of combinations tried: 8
+ [INFO] Expression generation time: 13094000
+ [INFO] Search space: 36
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 3577230960
+ [INFO] Search space: 1690000
+ [INFO] Fix failed, number of combinations tried: 66
+ [INFO] Expression generation time: 141604417
+ [INFO] Search space: 18279040000
+ [INFO] Fix failed, number of combinations tried: 104
+ [INFO] Expression generation time: 95465417
+ [INFO] Search space: 40945049600000
+ [INFO] Fix succeeded, number of combinations tried: 128
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int),val: (one Element),idx': (one Int),val': (one (Element-val)) {
+(((idx != idx') && ((idx.(Array.i2e)) = val) && ((idx'.(Array.i2e)) = val')) => (idx = idx'))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] All tests pass.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int),val: (one Element),idx': (one Int),val': (one (Element-val)) {
+(((idx != idx') && ((idx.(Array.i2e)) = val) && ((idx'.(Array.i2e)) = val')) => (idx = idx'))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int),val: (one Element),idx': (one Int),val': (one (Element - val)) {
+(((idx != idx') && ((idx.(Array.i2e)) = val) && ((idx'.(Array.i2e)) = val')) => (idx = idx'))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+

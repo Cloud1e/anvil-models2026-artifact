@@ -1,0 +1,94 @@
+Loop: all n: This.header.*link | n in n.^link
+Wrong
+
+Loop: no This.header or all n: This.header.*link | some m: Node | m in n.^link and n in m.^link
+Wrong
+
+Loop: all n: This.header.*link | n.^link & n != none
+Wrong
+
+Loop: all n: This.header.*link | n in ^(n.link)
+Syntax Error
+SYN_MSG:
+^ can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Node}
+END_SYN_MSG
+
+Loop: all n: This.header.*link | n in n.*link and (some m: Node | n->m in ^link implies some k: Node | m->k in ^link and k->n in ^link)
+Wrong
+
+Loop: all n: This.header.*link | n in n.link or n in n.^link
+Wrong
+
+Loop: all n: This.header.*link | n in n.*link and (all m: Node | n->m in ^link implies some k: Node | m->k in ^link and k->n in ^link)
+Wrong
+
+Loop: all n: This.header.*link | n in ^link.n
+Wrong
+
+Sorted: all n, m: This.header.*link | n->m in ^link implies n.elem <= m.elem
+Correct
+
+Sorted: all n: This.header.*link | all m: n.^link | n.elem <= m.elem
+Correct
+
+Sorted: all n: This.header.*link | all m: n.*link | n.elem <= m.elem
+Correct
+
+Sorted: all n, m: This.header.*link | n->m in *link implies n.elem <= m.elem
+Correct
+
+Sorted: all n: This.header.*link | all m: n.link | n.elem <= m.elem
+Correct
+
+Count: {n: This.header.*link | n.elem = x} = result
+Wrong
+
+Count: #({n: This.header.*link | n.elem = x}) = result
+Wrong
+
+Contains: (x in This.header.*link.elem) implies result = True else result = False
+Wrong
+
+Contains: (some n: This.header.*link | n.elem = x) implies result = True else result = False
+Wrong
+
+Contains: (result = True) iff (x in This.header.*link.elem)
+Wrong
+
+Contains: (x in This.header.*link.elem) = (result = True)
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {PrimitiveBoolean}
+Right type = {PrimitiveBoolean}
+END_SYN_MSG
+
+Contains: (result = True) iff (some n: This.header.*link | n.elem = x)
+Wrong
+
+Contains: (some n: This.header.*link | n.elem = x) iff (result = True)
+Wrong
+
+Contains: (result = True) = (x in This.header.*link.elem)
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {PrimitiveBoolean}
+Right type = {PrimitiveBoolean}
+END_SYN_MSG
+
+Contains: (result = True) = (some n: This.header.*link | n.elem = x)
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {PrimitiveBoolean}
+Right type = {PrimitiveBoolean}
+END_SYN_MSG
+
+Total: 23
+Unique: 23
+Correct: 5
+Syntax Error: 4
+Wrong: 14

@@ -1,0 +1,52 @@
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  (x !in This.header.*link.elem implies result = False) or result = True
+}
+
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  if x in This.header.*link.elem then result = True else result = False
+}
+
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  not (x !in This.header.*link.elem) => result = True else result = False
+}
+
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  result = (x in This.header.*link.elem => True else False)
+}
+
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  (x in This.header.*link.elem and result = True) or (x !in This.header.*link.elem and result = False)
+}
+
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  all b: Boolean | b = result iff (x in This.header.*link.elem <=> b = True)
+}
+
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  (result = True and x in This.header.*link.elem) or (result = False and x !in This.header.*link.elem)
+}
+
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  not (x !in This.header.*link.elem) or result = False
+  x in This.header.*link.elem or result = False
+  result = True or result = False
+}
+
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  {b: Boolean | (x in This.header.*link.elem => b = True else b = False)} = result
+}
+
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  result = True iff x in This.header.*link.elem
+  result = False iff x !in This.header.*link.elem
+}

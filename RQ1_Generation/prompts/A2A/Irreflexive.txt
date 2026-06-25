@@ -1,0 +1,10 @@
+Give me 20 unique solutions to the problem of creating a new Alloy predicate that is equivalent to the following Alloy predicate (without markdown or comments or ```) with respect to the property described in the comments:
+sig S {
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+
+List each solution on a new line. Do not include the sig and pred declarations, and sequence numbers

@@ -1,0 +1,58 @@
+pred crossRiver [from, from', to, to': set Object] {
+  if (from' = from - Farmer && to' = to - to.eats + Farmer) then (
+    some (from - Farmer) or no (from - Farmer)
+  ) else {
+    some item: from - Farmer {
+      from' = from - Farmer - item
+      to' = to - to.eats + Farmer + item
+    }
+  }
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  (from' = from - Farmer && to' = to - to.eats + Farmer) or {
+    some i: from - Farmer | from' = from - Farmer - i && to' = to - to.eats + Farmer + i
+  }
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  let f_move = from - Farmer, t_move = to - to.eats + Farmer |
+    (from' = f_move && to' = t_move) ||
+    (some item: f_move | from' = f_move - item && to' = t_move + item)
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  all f': set Object, t': set Object |
+    (f' = from - Farmer && t' = to - to.eats + Farmer) => (from' = f' && to' = t') else
+    (some item: from - Farmer && f' = from - Farmer - item && t' = to - to.eats + Farmer + item) => (from' = f' && to' = t')
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  {from', to'} in {f', t': set Object | (f' = from - Farmer && t' = to - to.eats + Farmer) or (some i: from - Farmer | f' = from - Farmer - i && t' = to - to.eats + Farmer + i)}
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  (some item: from - Farmer | from' = from - Farmer - item && to' = to - to.eats + Farmer + item) or 
+  (from' = from - Farmer && to' = to - to.eats + Farmer)
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  !((from' != from - Farmer || to' != to - to.eats + Farmer) && (all item: from - Farmer | from' != from - Farmer - item || to' != to - to.eats + Farmer + item))
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  from' in (from - Farmer) && to' in (to - to.eats + Farmer) && (
+    (from' = from - Farmer && to' = to - to.eats + Farmer) or
+    (some i: from - Farmer | from' = from - Farmer - i && to' = to - to.eats + Farmer + i)
+  )
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  some i: (from - Farmer) + none |
+    from' = from - Farmer - i && to' = to - to.eats + Farmer + i
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  (from' = from - Farmer) => (to' = to - to.eats + Farmer) else
+  (some item: from - Farmer | from' = from - Farmer - item && to' = to - to.eats + Farmer + item)
+}

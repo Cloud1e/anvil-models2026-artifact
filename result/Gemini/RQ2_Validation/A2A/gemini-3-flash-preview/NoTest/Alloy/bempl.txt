@@ -1,0 +1,35 @@
+p->r in owns.opened_by
+Wrong
+
+some k: p.owns | k.opened_by = r
+Wrong
+
+some k: Key | k in p.owns and k.opened_by = r
+Wrong
+
+p in (owns.opened_by).r
+Wrong
+
+some (p.owns & opened_by.r)
+Wrong
+
+p.owns & opened_by.r != none
+Wrong
+
+r in p.(owns.opened_by)
+Wrong
+
+r in {rm: Room | some k: p.owns | k.opened_by = rm}
+Wrong
+
+some k: Key | p->k in owns and k->r in opened_by
+Wrong
+
+p in owns.(opened_by.r)
+Wrong
+
+Total: 10
+Unique: 10
+Correct: 0
+Syntax Error: 0
+Wrong: 10

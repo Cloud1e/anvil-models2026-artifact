@@ -1,0 +1,39 @@
+pred UniqueElem() {
+  all n: Node | no (n.pre.elem & n.nxt.elem)
+}
+
+pred UniqueElem() {
+  no n: Node | some (n.pre.elem & n.nxt.elem)
+}
+
+pred UniqueElem() {
+  all n: Node | (n.pre.elem & n.nxt.elem) in none
+}
+
+pred UniqueElem() {
+  no n: Node, i: Int | i in n.pre.elem and i in n.nxt.elem
+}
+
+pred UniqueElem() {
+  all n: Node | #(n.pre.elem & n.nxt.elem) = 0
+}
+
+pred UniqueElem() {
+  all n: Node | not some (n.pre.elem & n.nxt.elem)
+}
+
+pred UniqueElem() {
+  all n: Node | n.pre.elem - n.nxt.elem = n.pre.elem
+}
+
+pred UniqueElem() {
+  all n: Node | n.nxt.elem - n.pre.elem = n.nxt.elem
+}
+
+pred UniqueElem() {
+  all n: Node, i: n.pre.elem | i not in n.nxt.elem
+}
+
+pred UniqueElem() {
+  all n: Node | n.pre.elem in Int - n.nxt.elem
+}

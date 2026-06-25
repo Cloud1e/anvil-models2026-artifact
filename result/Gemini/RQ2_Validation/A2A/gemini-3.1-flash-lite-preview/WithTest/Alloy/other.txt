@@ -1,0 +1,50 @@
+CanEnter: p.member_of.~(r.located_in) = p.member_of
+Syntax Error
+SYN_MSG:
+~ can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Group}
+END_SYN_MSG
+
+CanEnter: no p.member_of - r.located_in
+Correct
+
+CanEnter: r.located_in & p.member_of = p.member_of
+Correct
+
+CanEnter: p.member_of & (Group - r.located_in) = none
+Correct
+
+CanEnter: not (some p.member_of - r.located_in)
+Correct
+
+CanEnter: r.located_in in (Group - (p.member_of.~(iden))) implies (some p.member_of) else (no p.member_of - r.located_in)
+Correct
+
+CanEnter: p.member_of.located_in.~(r) = p.member_of
+Syntax Error
+SYN_MSG:
+~ can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Room}
+END_SYN_MSG
+
+CanEnter: p.member_of.~(r.located_in) = p.member_of -- aug8
+Syntax Error
+SYN_MSG:
+~ can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Group}
+END_SYN_MSG
+
+CanEnter: no p.member_of - r.located_in -- aug9
+Correct
+
+CanEnter: r.located_in & p.member_of = p.member_of -- aug10
+Correct
+
+Total: 10
+Unique: 10
+Correct: 7
+Syntax Error: 3
+Wrong: 0

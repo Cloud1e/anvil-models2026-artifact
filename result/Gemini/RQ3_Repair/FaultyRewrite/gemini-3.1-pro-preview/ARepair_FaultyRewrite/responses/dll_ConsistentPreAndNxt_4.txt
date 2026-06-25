@@ -1,0 +1,3 @@
+pred ConsistentPreAndNxt() {
+	not some n1, n2: Node | n1 != n2 and not (n1.nxt = n2 <=> n2.pre = n1)
+}

@@ -1,0 +1,15 @@
+```alloy
+pred Sorted() {
+  all n : Node {
+    // All elements in the left subtree are less than n.elem
+    all nl : n.left.^(left + right) {
+      nl.elem < n.elem
+    }
+    // All elements in the right subtree are greater than n.elem
+    and
+    all nr : n.right.^(left + right) {
+      nr.elem > n.elem
+    }
+  }
+}
+```

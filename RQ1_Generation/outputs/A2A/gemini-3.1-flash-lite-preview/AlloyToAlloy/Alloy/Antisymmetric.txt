@@ -1,0 +1,65 @@
+all s, t: S | s in t.r and t in s.r implies s = t
+Correct
+
+all s: S | all t: S - s | not (s->t in r and t->s in r)
+Correct
+
+no (r & ~r) - iden
+Correct
+
+all disj s, t: S | not (s->t in r and t->s in r)
+Correct
+
+all s, t: S | (s->t in r and s != t) implies not (t->s in r)
+Correct
+
+all s, t: S | s->t in r implies t->s not in r or s = t
+Correct
+
+r & ~r in iden
+Correct
+
+all s: S | s.r & ~s.r in none
+Syntax Error
+
+all s: S | no (s.r & {t: S | t->s in r} - s)
+Correct
+
+all s, t: S | (s->t in r and t->s in r) => s = t
+Correct
+
+all s, t: S | s->t in r implies not t->s in r or s = t
+Correct
+
+all s, t: S | s->t in r and s != t implies not t->s in r
+Correct
+
+no s, t: S | s != t and s->t in r and t->s in r
+Correct
+
+all s: S | all t: r[s] | s in r[t] implies s = t
+Correct
+
+all s: S | (r.s & r[s]) in s
+Correct
+
+all s: S | s.r & r.s = (s in s.r implies s else none)
+Correct
+
+(r & ~r) in iden
+Correct
+
+all s, t: S | s->t in r and t->s in r => s = t
+Correct
+
+all s: S | s.r & r.s = (s->s in r => s else none)
+Correct
+
+all s, t: S | (s->t in r and t->s in r) implies s = t
+Correct
+
+Total: 20
+Unique: 20
+Correct: 19
+Syntax Error: 1
+Wrong: 0

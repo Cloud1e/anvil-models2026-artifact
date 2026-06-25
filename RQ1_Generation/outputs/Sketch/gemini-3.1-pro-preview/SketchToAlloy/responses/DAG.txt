@@ -1,0 +1,6 @@
+sig Node {
+  link: set Node
+}
+pred DAG {
+  all n: Node | n !in n.^link
+}

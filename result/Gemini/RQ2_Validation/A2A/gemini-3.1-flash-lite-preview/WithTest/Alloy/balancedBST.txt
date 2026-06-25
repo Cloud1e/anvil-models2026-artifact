@@ -1,0 +1,108 @@
+Sorted: all n: Node | (all nl: n.left.*(left + right) | nl.elem < n.elem) and (all nr: n.right.*(left + right) | nr.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (n.left.*(left + right)).elem.max < n.elem and (n.right.*(left + right)).elem.min > n.elem
+Wrong
+
+Sorted: all n: Node | (all d: n.left.*(left + right) | d.elem < n.elem) and (all e: n.right.*(left + right) | e.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (no n.left or n.left.*(left + right).elem < n.elem) and (no n.right or n.right.*(left + right).elem > n.elem)
+Wrong
+
+Sorted: all n: Node | {nl: n.left.*(left + right) | nl.elem < n.elem} = n.left.*(left + right) and {nr: n.right.*(left + right) | nr.elem > n.elem} = n.right.*(left + right)
+Correct
+
+Sorted: all n: Node, nl: n.left.*(left + right), nr: n.right.*(left + right) | nl.elem < n.elem and nr.elem > n.elem
+Wrong
+
+Sorted: all n: Node | (all d: Node | d in n.left.*(left + right) implies d.elem < n.elem) and (all d: Node | d in n.right.*(left + right) implies d.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all d: n.^left + n.left | d.*(left + right).elem < n.elem) and (all d: n.^right + n.right | d.*(left + right).elem > n.elem)
+Wrong
+
+Sorted: all n: Node | (all d: n.left + n.left.^(left + right) | d.elem < n.elem) and (all d: n.right + n.right.^(left + right) | d.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all nl: n.left.*(left + right) | n.elem > nl.elem) and (all nr: n.right.*(left + right) | n.elem < nr.elem)
+Correct
+
+HasAtMostOneChild: not (some n.left and some n.right)
+Correct
+
+HasAtMostOneChild: lone n.left + n.right
+Correct
+
+HasAtMostOneChild: (no n.left) or (no n.right)
+Correct
+
+HasAtMostOneChild: not (some n.left && some n.right)
+Correct
+
+HasAtMostOneChild: n.left = none or n.right = none
+Correct
+
+HasAtMostOneChild: !(some n.left and some n.right)
+Correct
+
+HasAtMostOneChild: not some n.left & n.right and lone n.left + n.right
+Correct
+
+HasAtMostOneChild: (some n.left implies no n.right)
+Correct
+
+HasAtMostOneChild: (some n.right implies no n.left)
+Correct
+
+HasAtMostOneChild: not (n.left != none and n.right != none)
+Correct
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies abs[Depth[n1] - Depth[n2]] <= 1
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (Depth[n1] - Depth[n2] in -1 + 0 + 1)
+Wrong
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies Depth[n1] <= Depth[n2].add[1] and Depth[n2] <= Depth[n1].add[1]
+Correct
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] && HasAtMostOneChild[n2] implies let d = Depth[n1].minus[Depth[n2]] | d = 0 or d = 1 or d = -1
+Correct
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] >= -1 and Depth[n1] - Depth[n2] <= 1)
+Wrong
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] < Depth[n2] + 2 and Depth[n2] < Depth[n1] + 2)
+Wrong
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies not (Depth[n1] - Depth[n2] > 1 or Depth[n2] - Depth[n1] > 1)
+Wrong
+
+Balanced: all n1, n2: Node | not (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) or abs[Depth[n1] - Depth[n2]] <= 1
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] in (-1..1))
+Syntax Error
+SYN_MSG:
+There are 27 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq some sum this univ { ~ 
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (minus[Depth[n1], Depth[n2]] = 0 or abs[minus[Depth[n1], Depth[n2]]] = 1)
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Total: 30
+Unique: 30
+Correct: 18
+Syntax Error: 4
+Wrong: 8

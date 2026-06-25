@@ -1,0 +1,44 @@
+all i: Array.i2e.Element | no (Array.i2e[i] & (Array.i2e.Element - i).Array.i2e)
+Syntax Error
+SYN_MSG:
+This cannot be a legal relational join where
+left hand side is this/Array . (this/Array <: i2e) . this/Element - i (type = {Int})
+right hand side is this/Array (type = {this/Array})
+
+END_SYN_MSG
+
+all i: Array.i2e.Element | #Array.i2e[i] <= 1
+Correct
+
+all i: Array.i2e.Element | one e: Element | Array.i2e[i] = e implies Array.i2e[i] = e
+Correct
+
+all i: dom[Array.i2e] | lone Array.i2e[i]
+Syntax Error
+SYN_MSG:
+The name "dom" cannot be found.
+END_SYN_MSG
+
+no i: Array.i2e.Element | #(Array.i2e[i]) > 1
+Correct
+
+all disj i, j: Array.i2e.Element | no (Array.i2e[i] & Array.i2e[j])
+Wrong
+
+all i: Array.i2e.Element | not some e1, e2: Element | e1 != e2 and Array.i2e[i] = e1 and Array.i2e[i] = e2
+Wrong
+
+all i: Array.i2e.Element | #(Array.i2e[i] <: Element) <= 1
+Correct
+
+all i: Array.i2e.Element | i in Array.i2e.Element implies lone Array.i2e[i]
+Correct
+
+all i: Int | lone Array.i2e[i]
+Correct
+
+Total: 10
+Unique: 10
+Correct: 6
+Syntax Error: 2
+Wrong: 2

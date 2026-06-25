@@ -1,0 +1,130 @@
+Contains: Loop[This] and Sorted[This] and ((some n: This.header.*link | n.elem = x) => result = True else result = False)
+Correct
+
+Contains: Loop[This] and Sorted[This] and (result = True <=> (some n: This.header.*link | n.elem = x))
+Correct
+
+Contains: Loop[This] and Sorted[This] and (result = False <=> (no n: This.header.*link | n.elem = x))
+Correct
+
+Contains: Sorted[This] and Loop[This] and (x in This.header.*link.elem implies result = True else result = False)
+Correct
+
+Contains: Loop[This] and Sorted[This] and (x in This.header.*link.elem <=> result = True)
+Correct
+
+Contains: Loop[This] and Sorted[This] and (not x in This.header.*link.elem <=> result = False)
+Correct
+
+Contains: Loop[This] and Sorted[This] and result = (some n: This.header.*link | n.elem = x implies True else False)
+Syntax Error
+SYN_MSG:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Boolean}
+END_SYN_MSG
+
+Contains: Loop[This] and Sorted[This] and (some n: Node | n in This.header.*link and n.elem = x) implies result = True else result = False
+Wrong
+
+Contains: Loop[This] and Sorted[This] and (result = True <=> some n: This.header.*link | x = n.elem)
+Correct
+
+Contains: Loop[This] and Sorted[This] and (result = True implies some n: This.header.*link | n.elem = x) and (result = False implies no n: This.header.*link | n.elem = x)
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #{n: This.header.*link | n.elem = x}
+Correct
+
+Count: Sorted[This] and Loop[This] and result = #{n: This.header.*link | n.elem = x}
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #{n: This.header.*link | x = n.elem}
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #{n: Node | n in This.header.*link and n.elem = x}
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #(This.header.*link & elem.x)
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #(elem.x & This.header.*link)
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #{n: This.header.*link | n.elem in x}
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #{n: This.header.*link | x in n.elem}
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #({n: This.header.*link | n.elem = x})
+Correct
+
+Count: Loop[This] and Sorted[This] and result = #(This.header.*link & {n: Node | n.elem = x})
+Correct
+
+Loop: This.header = none or (one n: This.header.*link | n = n.link)
+Correct
+
+Loop: no This.header or (one n: This.header.*link | n.link = n)
+Correct
+
+Loop: #(This.header) = 0 or (one n: This.header.*link | n in n.link)
+Correct
+
+Loop: all h: This.header | one n: h.*link | n = n.link
+Correct
+
+Loop: no This.header or (one n: Node | n in This.header.*link and n = n.link)
+Correct
+
+Loop: no This.header or (one n: This.header.*link | n = n.link and n.link in n)
+Correct
+
+Loop: no This.header or (one n: This.header.*link | some n2: n.link | n2 = n)
+Correct
+
+Loop: all h: This.header | one n: Node | n in h.*link and n.link = n
+Correct
+
+Loop: no This.header or (one n: This.header.*link | n.link in n and n in n.link)
+Correct
+
+Loop: no This.header or (one n: This.header.*link | n = n.link and #n.link = 1)
+Correct
+
+Sorted: all n: This.header.*link, next: n.link | n.elem <= next.elem
+Correct
+
+Sorted: all n: This.header.*link | all next: n.link | n.elem <= next.elem
+Correct
+
+Sorted: all n: This.header.*link | some n.link => n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | n.link != none => n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | n.link = none or n.elem <= n.link.elem
+Correct
+
+Sorted: no n: This.header.*link | some n.link and n.elem > n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | (some n.link) implies (n.elem <= n.link.elem)
+Correct
+
+Sorted: all n: This.header.*link | (n.link != none) implies (n.link.elem >= n.elem)
+Correct
+
+Sorted: all n: This.header.*link | no next: n.link | next.elem < n.elem
+Correct
+
+Sorted: all n: This.header.*link | all next: n.link | next.elem >= n.elem
+Correct
+
+Total: 40
+Unique: 40
+Correct: 38
+Syntax Error: 1
+Wrong: 1

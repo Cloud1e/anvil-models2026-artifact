@@ -1,0 +1,50 @@
+Give me exactly 10 unique solutions per predicate that are equivalent to the given predicate bodies but syntactically different. Only the following predicates should appear in your output: ConsistentPreAndNxt, Sorted, UniqueElem.
+
+one sig DLL {
+  header: lone Node
+}
+
+sig Node {
+  pre, nxt: lone Node,
+  elem: Int
+}
+
+// All nodes are reachable from the header node.
+fact Reachable {
+  Node = DLL.header.*nxt
+}
+
+// Part (a)
+fact Acyclic {
+  // The list has no directed cycle along nxt, i.e., no node is
+  // reachable from itself following one or more traversals along nxt.
+  all n: Node | n !in n.^nxt
+}
+
+// Part (b)
+pred UniqueElem() {
+  // Unique nodes contain unique elements.
+  no disj n1, n2: Node | n1.elem = n2.elem
+}
+
+// Part (c)
+pred Sorted() {
+  // The list is sorted in ascending order (<=) along nxt.
+  all n: Node | some n.nxt => n.elem <= n.nxt.elem
+}
+
+// Part (d)
+pred ConsistentPreAndNxt() {
+  // For any node n1 and n2, if n1.nxt = n2, then n2.pre = n1; and vice versa.
+  nxt = ~pre
+}
+
+pred RepOk() {
+  UniqueElem
+  Sorted
+  ConsistentPreAndNxt
+}
+
+run RepOk for 3
+
+Return exactly 10 lines per predicate (total = 10 × 3 = 30 lines), only for: ConsistentPreAndNxt, Sorted, UniqueElem. Each line formatted as "predicateName: body". Do not include RepOk, any fact (e.g. Acyclic), or any predicate not in the list above. No numbering or commentary before/after the list. Do not include introductions, explanations, or any extra text outside these lines.

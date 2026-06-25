@@ -1,0 +1,20 @@
+all s: S | lone s.r
+all s: S | #s.r <= 1
+~r.r in iden
+no s: S | #s.r > 1
+all s, x, y: S | (s->x in r and s->y in r) implies x = y
+all s: S | some s.r implies one s.r
+no s, x, y: S | s->x in r and s->y in r and x != y
+all s: S | lone x: S | s->x in r
+all s: S | s.r = none or one s.r
+all s: S | #s.r < 2
+all s: S | lone r[s]
+all s: S | #r[s] <= 1
+all s: S | (all x, y: s.r | x = y)
+all s: S | lone {x: S | x in s.r}
+all s: S | lone (s <: r)
+all s: S | #(s <: r) <= 1
+no s: S | (some x, y: s.r | x != y)
+all s: S | not (some x, y: s.r | x != y)
+all s: S | some s.r iff one s.r
+all s: S | lone x: S | x in r[s]

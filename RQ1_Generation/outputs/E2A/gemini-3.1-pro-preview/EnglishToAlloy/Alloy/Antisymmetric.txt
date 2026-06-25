@@ -1,0 +1,65 @@
+all x, y: S | x->y in r and y->x in r implies x = y
+Correct
+
+all x, y: S | y in x.r and x in y.r implies x = y
+Correct
+
+r & ~r in iden
+Correct
+
+no (r & ~r) - iden
+Correct
+
+all x: S | x.r & r.x in x
+Correct
+
+all x: S | x.r & x.~r in x
+Correct
+
+all disj x, y: S | x->y in r implies y->x not in r
+Correct
+
+all disj x, y: S | y in x.r implies x not in y.r
+Correct
+
+all x, y: S | x != y implies not (x->y in r and y->x in r)
+Correct
+
+all x, y: S | x != y implies (y not in x.r or x not in y.r)
+Correct
+
+no {x, y: S | x->y in r and y->x in r and x != y}
+Correct
+
+no {x, y: S | y in x.r and x in y.r and x != y}
+Correct
+
+no (r - iden) & ~(r - iden)
+Correct
+
+all x: S | all y: x.r | x in y.r implies x = y
+Correct
+
+all x: S | all y: S | x->y in r implies (y->x in r implies x = y)
+Correct
+
+all x, y: S | x->y not in r or y->x not in r or x = y
+Correct
+
+all x, y: S | y in x.r and x != y implies x not in y.r
+Correct
+
+all x: S | no (x.r & x.~r) - x
+Correct
+
+all x: S, y: x.r - x | x not in y.r
+Correct
+
+all disj x, y: S | not (x->y in r and y->x in r)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 20
+Syntax Error: 0
+Wrong: 0

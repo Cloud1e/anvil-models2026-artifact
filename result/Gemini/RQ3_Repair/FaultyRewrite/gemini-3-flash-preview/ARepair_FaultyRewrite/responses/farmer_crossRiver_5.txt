@@ -1,0 +1,6 @@
+pred crossRiver [from, from', to, to': set Object] {
+  let f = from - Farmer {
+    (from' = f and to' = to - to.eats + Farmer) or
+    (some item: f | from' = f - item and to' = to - to.eats + Farmer + item)
+  }
+}

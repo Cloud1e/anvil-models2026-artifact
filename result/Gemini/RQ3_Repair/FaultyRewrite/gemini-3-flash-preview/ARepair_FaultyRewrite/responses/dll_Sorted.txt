@@ -1,0 +1,39 @@
+pred Sorted() {
+  all n: Node | n.elem < n.nxt.elem
+}
+
+pred Sorted() {
+  all n: Node { n.nxt.elem > n.elem }
+}
+
+pred Sorted() {
+  no n: Node | not (n.elem < n.nxt.elem)
+}
+
+pred Sorted() {
+  all n: Node | let e = n.elem | n.nxt.elem > e
+}
+
+pred Sorted() {
+  all n: Node | some next_node: n.nxt | next_node.elem > n.elem
+}
+
+pred Sorted() {
+  Node = {n: Node | n.elem < n.nxt.elem}
+}
+
+pred Sorted() {
+  !(some n: Node | n.elem >= n.nxt.elem or no n.nxt)
+}
+
+pred Sorted() {
+  all n: Node | some n.nxt and n.elem < n.nxt.elem
+}
+
+pred Sorted() {
+  all n: Node | (all m: n.nxt | n.elem < m.elem) and (some n.nxt)
+}
+
+pred Sorted() {
+  all n: Node | n.elem < n.nxt.elem and one n.nxt
+}

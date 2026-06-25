@@ -1,0 +1,324 @@
+BEMPL Test Suite Detailed Report
+Timestamp: 2026-06-23_01-33-01
+
+Model run commands: 0
+==============================
+Candidate 1
+r in p.owns.opened_by
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=1 FAIL
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 2
+some k: p.owns | r in k.opened_by
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=1 FAIL
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 3
+p->r in owns.opened_by
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=1 FAIL
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 4
+some p.owns & opened_by.r
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=1 FAIL
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 5
+r in p.(owns.opened_by)
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=1 FAIL
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 6
+p in (owns.opened_by).r
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=1 FAIL
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 7
+some k: Key | k in p.owns and k.opened_by = r
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=1 FAIL
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 8
+r in opened_by[p.owns]
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=1 FAIL
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 9
+some k: Key | p->k in owns and k->r in opened_by
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=1 FAIL
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 10
+some {k: p.owns | k.opened_by = r}
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=1 FAIL
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+

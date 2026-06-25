@@ -1,0 +1,3 @@
+pred Sorted(This: List) {
+  all n: Node | n in This.header.*link => n.elem <= n.link.elem
+}

@@ -1,0 +1,188 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(some g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(some g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+
+EQUIV: check { some Group } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(some g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+
+EQUIV: check { some Room } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(some g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+
+EQUIV: check { one seclab <=> lone seclab } for 3
+ [INFO] Fault localization time: 5273633294
+[DEBUG] Most suspicious node: (some g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+[DEBUG] Score: 1.0, FailToPass: 1, PassToFail: 0
+ [INFO] Fixed by mutation:
+module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(all g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] All tests pass.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(all g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(all g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+

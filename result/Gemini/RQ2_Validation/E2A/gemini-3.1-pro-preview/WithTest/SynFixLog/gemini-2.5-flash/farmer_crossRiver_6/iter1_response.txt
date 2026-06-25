@@ -1,0 +1,5 @@
+```alloy
+pred crossRiver [from, from', to, to': set Object] {
+   to subset to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - from'.eats - eats.from'
+}
+```

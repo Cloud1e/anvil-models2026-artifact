@@ -1,0 +1,39 @@
+pred Sorted(This: List) {
+  no n: This.header.*link | not (n.elem <= n.link.elem)
+}
+
+pred Sorted(This: List) {
+  not some n: This.header.*link | not (n.elem <= n.link.elem)
+}
+
+pred Sorted(This: List) {
+  all n: Node | n in This.header.*link implies n.elem <= n.link.elem
+}
+
+pred Sorted(This: List) {
+  all n: This.header.*link | n.link.elem >= n.elem
+}
+
+pred Sorted(This: List) {
+  {n: This.header.*link | n.elem <= n.link.elem} = This.header.*link
+}
+
+pred Sorted(This: List) {
+  This.header.*link in {n: Node | n.elem <= n.link.elem}
+}
+
+pred Sorted(This: List) {
+  let nodes = This.header.*link | all n: nodes | n.elem <= n.link.elem
+}
+
+pred Sorted(This: List) {
+  all n: This.header.*link | all e: n.elem, e': n.link.elem | e <= e'
+}
+
+pred Sorted(This: List) {
+  #{n: This.header.*link | not (n.elem <= n.link.elem)} = 0
+}
+
+pred Sorted(This: List) {
+  all n: This.header.*link | (n.elem <= n.link.elem <=> 1 = 1)
+}

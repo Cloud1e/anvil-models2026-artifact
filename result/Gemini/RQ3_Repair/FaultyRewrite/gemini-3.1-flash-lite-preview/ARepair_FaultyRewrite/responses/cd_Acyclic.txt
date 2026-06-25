@@ -1,0 +1,39 @@
+pred Acyclic() {
+  not some c: Class | c = c.ext
+}
+
+pred Acyclic() {
+  all c: Class | not (c = c.ext)
+}
+
+pred Acyclic() {
+  all c: Class | c != c.ext
+}
+
+pred Acyclic() {
+  none = { c: Class | c = c.ext }
+}
+
+pred Acyclic() {
+  no c: Class & c.ext
+}
+
+pred Acyclic() {
+  all c: Class | c not in c.ext
+}
+
+pred Acyclic() {
+  all c: Class | c.ext != c
+}
+
+pred Acyclic() {
+  not some c: Class | c in c.ext
+}
+
+pred Acyclic() {
+  # { c: Class | c = c.ext } = 0
+}
+
+pred Acyclic() {
+  all c: Class | not (c in c.ext)
+}

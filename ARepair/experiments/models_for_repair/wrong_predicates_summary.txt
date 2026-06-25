@@ -1,0 +1,85 @@
+Wrong Predicates Summary
+==================================================
+
+arr: 6 Wrong predicates
+  1. all i: Int | lone (Array.i2e).i
+  2. NoConflict: (Array.i2e).Int in Element
+  3. NoConflict: Array.i2e in Int one -> Element
+  4. NoConflict: Array.i2e in Int -> one Element
+  5. all e: Element | lone (Array.i2e).e
+  6. all e: Element | e in Array.i2e.Int implies lone (Array.i2e).e
+
+balancedBST: 11 Wrong predicates
+  1. Sorted: all n : Node {n.left.^(left + right).elem < n.elem and n.right.^(left + right).elem > n.elem}
+  2. Sorted: all n : Node {n.left.^(left+right).elem < n.elem and n.right.^(left+right).elem > n.elem and (no n.left or n.left.elem < n.elem) and (no n.right or n.right.elem > n.elem)}
+  3. Sorted: all n : Node {no (n.left.^(left + right)) & {m : Node | m.elem >= n.elem} and no (n.right.^(left + right)) & {m : Node | m.elem <= n.elem}}
+  4. Sorted: all n : Node {n.left.^(left + right).elem !in {e: Int | e >= n.elem} and n.right.^(left + right).elem !in {e: Int | e <= n.elem}}
+  5. HasAtMostOneChild: one n.left or one n.right
+  6. HasAtMostOneChild: (no n.left or no n.right) and (n.left != n.right)
+  7. HasAtMostOneChild: (n.left in Node implies n.right not in Node) or (n.right in Node implies n.left not in Node) or (no n.left and no n.right)
+  8. Balanced: all n1 : Node, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies Depth[n1] - Depth[n2] <= 1 and Depth[n2] - Depth[n1] <= 1}
+  9. Balanced: all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] = Depth[n2] or Depth[n1] = Depth[n2] + 1 or Depth[n2] = Depth[n1] + 1)}
+  10. Balanced: all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies #{n1.*~(left + right)} - #{n2.*~(left + right)} <= 1 and #{n2.*~(left + right)} - #{n1.*~(left + right)} <= 1}
+  11. Balanced: all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies #{n1.*~(left + right)} in #{n2.*~(left + right)} + (-1 + 1)}
+
+bempl: 8 Wrong predicates
+  1. some k: p.owns | k.opened_by = r
+  2. some k: Key | p in k.~owns and r = k.opened_by
+  3. CanEnter: r in p.owns.opened_by
+  4. some k: Key | p in k.~owns and k.opened_by = r
+  5. CanEnter: p.owns in r.~opened_by
+  6. CanEnter: r in p.owns.~opened_by
+  7. some k: p.owns | k.opened_by in r
+  8. some k: Key | p in k.~owns and k.opened_by in r
+
+dll: 10 Wrong predicates
+  1. UniqueElem: elem in Node one -> Int
+  2. UniqueElem: all i: Int | lone (~elem).i
+  3. Sorted: all n: Node - nxt.Node | n.elem <= n.nxt.elem
+  4. Sorted: all n: Node | lone n.nxt implies n.elem <= n.nxt.elem
+  5. Sorted: all n: Node | n.nxt.elem >= n.elem
+  6. Sorted: all n: Node - Node.nxt | n.elem <= n.nxt.elem
+  7. Sorted: all n: Node | n.nxt in Node implies n.elem <= n.nxt.elem
+  8. Sorted: all n: Node | n.nxt in Node implies n.nxt.elem >= n.elem
+  9. ConsistentPreAndNxt: all n1: Node | n1.nxt = pre[n1]
+  10. ConsistentPreAndNxt: all n2: Node | n2.pre = nxt[n2]
+
+other: 9 Wrong predicates
+  1. CanEnter: r in p.member_of.~located_in
+  2. CanEnter: p.member_of & r.located_in != none
+  3. some g: p.member_of | g in r.located_in
+  4. CanEnter: p.member_of & r.located_in in Group
+  5. some g: Group | g in p.member_of and g in r.located_in
+  6. some g: Group | p->g in member_of and r->g in located_in
+  7. CanEnter: r.located_in & p.member_of != none
+  8. CanEnter: p.member_of & r.located_in in alas + peds + (Group - alas - peds)
+  9. CanEnter: r in (p.member_of & Group).~located_in
+
+student: 24 Wrong predicates
+  1. Loop: all n: Node | n not in n.^link
+  2. Loop: all n: Node | n !in n.^link
+  3. Loop: all n: Node | n.^link & n = none
+  4. Loop: all n: Node | n.^link in Node - n
+  5. Sorted: all n: Node - link.Node | n.elem <= n.link.elem
+  6. Sorted: all n: Node | (n -> n.link in link) implies n.elem <= n.link.elem
+  7. Sorted: all n: Node | n.link.elem - n.elem >= 0 or no n.link
+  8. Count: result = #(x.~elem)
+  9. Count: result = #({n: Node | n.elem = x})
+  10. Count: result = #(Node & x.~elem)
+  11. Count: result = #({n: Node | n.elem in x})
+  12. Count: result = #({n: Node | n -> x in elem})
+  13. Count: result = #{n: Node | n.elem = x}
+  14. Count: result = #({n: Node | x = n.elem})
+  15. Count: result = #(elem & Node -> x)
+  16. Contains: (x in Node.elem and result = True) or (x not in Node.elem and result = False)
+  17. Contains: result = True and x in Node.elem or result = False and x not in Node.elem
+  18. Contains: x in Node.elem <=> result = True
+  19. Contains: (x in Node.elem and result = True) or (x !in Node.elem and result = False)
+  20. Contains: result = True <=> x in Node.elem
+  21. Contains: result = True and x in elem.Node or result = False and x not in elem.Node
+  22. Contains: result = True and some x.~elem or result = False and no x.~elem
+  23. Contains: x in Node.elem implies result = True and result = True implies x in Node.elem
+  24. Contains: result = True and (x in Node.elem) or result = False and not (x in Node.elem)
+
+
+Total: 68 Wrong predicates

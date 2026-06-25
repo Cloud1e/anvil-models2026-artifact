@@ -1,0 +1,65 @@
+iden & S->S in r
+Correct
+
+all s: S | s in s.r
+Correct
+
+all s: S | s in r.s
+Correct
+
+no s: S | s->s !in r
+Correct
+
+(iden & S->S) - r = none
+Syntax Error
+
+(iden & S->S) & r = (iden & S->S)
+Correct
+
+r + (iden & S->S) = r
+Correct
+
+all s, t: S | s = t implies s->t in r
+Correct
+
+all s: S | s in r[s]
+Correct
+
+no ((iden & S->S) - r)
+Correct
+
+S <: iden in r
+Correct
+
+iden :> S in r
+Correct
+
+all s: S | s->s = s->s & r
+Correct
+
+all s: S | some (s & s.r)
+Correct
+
+all s: S | some (s & r.s)
+Correct
+
+no s: S | s !in s.r
+Correct
+
+no s: S | s !in r.s
+Correct
+
+~(iden & S->S) in r
+Correct
+
+all s: S | s <: iden in r
+Correct
+
+all s: S | s = s & s.r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 19
+Syntax Error: 1
+Wrong: 0

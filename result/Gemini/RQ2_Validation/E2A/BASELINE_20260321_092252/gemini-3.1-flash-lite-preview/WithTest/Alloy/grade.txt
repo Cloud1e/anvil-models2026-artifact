@@ -1,0 +1,35 @@
+(s in Professor implies s = a.associated_with.instructor_of) and (s in Student implies s in a.associated_with.assistant_for) and (no s & a.assigned_to)
+Correct
+
+(s in Professor implies s = a.associated_with.instructor_of) and (s in Student implies s in a.associated_with.assistant_for) and (s not in a.assigned_to)
+Correct
+
+(s in Professor implies s = a.associated_with.instructor_of) and (s in Student implies s in a.associated_with.assistant_for) and (all st: a.assigned_to | s != st)
+Correct
+
+(s in Professor and s = a.associated_with.instructor_of) or (s in Student and s in a.associated_with.assistant_for and s not in a.assigned_to)
+Correct
+
+(s in Professor implies s = a.associated_with.instructor_of) and (s in Student implies (s in a.associated_with.assistant_for and s not in a.assigned_to))
+Correct
+
+(all p: Person | p = s implies (p in Professor implies s = a.associated_with.instructor_of) and (p in Student implies s in a.associated_with.assistant_for)) and (s not in a.assigned_to)
+Correct
+
+(s in Professor implies s = a.associated_with.instructor_of) and (s in Student implies s in a.associated_with.assistant_for) and (not some st: a.assigned_to | st = s)
+Correct
+
+(s in Professor implies s = a.associated_with.instructor_of) and (s in Student implies s in a.associated_with.assistant_for) and (all st: a.assigned_to | not st = s)
+Correct
+
+(s in Professor implies s = a.associated_with.instructor_of) and (s in Student implies s in a.associated_with.assistant_for) and (not s in a.assigned_to)
+Correct
+
+(s in Professor and s = a.associated_with.instructor_of) or (s in Student and s in a.associated_with.assistant_for and not (s in a.assigned_to))
+Correct
+
+Total: 10
+Unique: 10
+Correct: 10
+Syntax Error: 0
+Wrong: 0

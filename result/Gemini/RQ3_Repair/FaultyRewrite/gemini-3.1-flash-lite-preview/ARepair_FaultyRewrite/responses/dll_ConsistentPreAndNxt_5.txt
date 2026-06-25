@@ -1,0 +1,3 @@
+pred ConsistentPreAndNxt() {
+  all n: Node, m: Node | (m in n.nxt) <=> (n in m.pre)
+}

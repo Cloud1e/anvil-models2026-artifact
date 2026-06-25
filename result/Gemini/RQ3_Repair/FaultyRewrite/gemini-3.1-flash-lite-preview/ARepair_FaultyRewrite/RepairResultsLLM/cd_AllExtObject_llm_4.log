@@ -1,0 +1,1289 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+EQUIV: check { some Class } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred ObjectNoExtMUTATED[] {
+(no (Object.(^ext)))
+}
+EQUIV: check { ObjectNoExt[] <=> ObjectNoExtMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AcyclicMUTATED[] {
+(all c: (one Class) {
+(c !in (c.(~(^ext))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AcyclicMUTATED[] {
+(all c: (one Class) {
+(c !in (c.(^(~ext))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AcyclicMUTATED[] {
+(all c: (one Class) {
+(c !in (c.(^(^ext))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class & Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class + Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Object - Class)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(lone r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(one r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(~(*ext)))) {
+(r = c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(^(*ext)))) {
+(r = c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*(~ext)))) {
+(r = c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*(*ext)))) {
+(r = c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*(^ext)))) {
+(r = c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r in c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r = c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred ClassHierarchyMUTATED[] {
+((ObjectNoExt[]) && (Acyclic[]))
+}
+EQUIV: check { ClassHierarchy[] <=> ClassHierarchyMUTATED[] } for 3
+ [INFO] Fault localization time: 6516872628
+[DEBUG] Most suspicious node: (r = c)
+[DEBUG] Score: 0.8944271909999159, FailToPass: 4, PassToFail: 0
+ [INFO] Fixed by mutation:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+EQUIV: check { some Class } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(^ext))) {
+(r != c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(^(*ext)))) {
+(r != c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.ext)) {
+(r != c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*(*ext)))) {
+(r != c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*(^ext)))) {
+(r != c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != c)
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred AllExtObjectMUTATED[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r !in c)
+})
+})
+}
+EQUIV: check { AllExtObject[] <=> AllExtObjectMUTATED[] } for 3
+ [INFO] Fault localization time: 1687027417
+[DEBUG] Test num: 31
+[DEBUG] Rank Node 0:
+[DEBUG] (some r: (one (c.(*ext))) {
+(r != c)
+})
+[DEBUG] Affected paragraph names: [AllExtObject]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 11): [test1001, test1002, test18, test21, test16, test17, test19, test20, test24, test22, test23]
+[DEBUG] Hole ext
+[DEBUG] Size: 2
+[DEBUG] Fragments: [ext, (none->none)]
+ [INFO] Expression generation time: 155771000
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [ext]
+[DEBUG] Hole 0, Fragment: ext, FailToPass: 0
+[DEBUG] Hole values: [(none->none)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test21
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Hole c
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Class, Object, c]
+[DEBUG] Hole (*ext)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [ext, (none->none), (~ext), (*ext), (^ext)]
+ [INFO] Expression generation time: 19033833
+ [INFO] Search space: 20
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (*ext)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Class, (*ext)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [Object, (*ext)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [c, (*ext)]
+[DEBUG] Hole 3, Fragment: c, FailToPass: 0
+[DEBUG] Hole values: [c, ext]
+[DEBUG] Hole 0, Fragment: ext, FailToPass: 0
+[DEBUG] Hole values: [c, (none->none)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [c, (~ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [c, (*ext)]
+[DEBUG] Hole 3, Fragment: (*ext), FailToPass: 0
+[DEBUG] Hole values: [c, (^ext)]
+[DEBUG] Hole 4, Fragment: (^ext), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 9
+[DEBUG] Hole (c.(*ext))
+[DEBUG] Size: 15
+[DEBUG] Fragments: [none, Class, Object, c, (Object+c), (Object&c), (Class-Object), (Class-c), (Object-c), (Class.ext), (Object.ext), (c.ext), (ext.Class), (ext.Object), (ext.c)]
+[DEBUG] Hole r
+[DEBUG] Size: 27
+[DEBUG] Fragments: [none, Class, Object, c, r, (Object+c), (Object+r), (c+r), (Object&c), (Object&r), (c&r), (Class-Object), (Class-c), (Class-r), (Object-c), (Object-r), (c-r), (r-Object), (r-c), (Class.ext), (Object.ext), (c.ext), (r.ext), (ext.Class), (ext.Object), (ext.c), (ext.r)]
+[DEBUG] Hole c
+[DEBUG] Size: 27
+[DEBUG] Fragments: [none, Class, Object, c, r, (Object+c), (Object+r), (c+r), (Object&c), (Object&r), (c&r), (Class-Object), (Class-c), (Class-r), (Object-c), (Object-r), (c-r), (r-Object), (r-c), (Class.ext), (Object.ext), (c.ext), (r.ext), (ext.Class), (ext.Object), (ext.c), (ext.r)]
+ [INFO] Expression generation time: 283290083
+ [INFO] Search space: 10935
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, r, c]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Class, r, c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [Object, r, c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [c, r, c]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Object+c), r, c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(Object&c), r, c]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Class-Object), r, c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(Class-c), r, c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(Object-c), r, c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(Class.ext), r, c]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Object.ext), r, c]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(c.ext), r, c]
+[DEBUG] Hole 11, Fragment: (c.ext), FailToPass: 0
+[DEBUG] Hole values: [(ext.Class), r, c]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Object), r, c]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.c), r, c]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(c.(*ext)), none, c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), Class, c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), Object, c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), c, c]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(c.(*ext)), r, c]
+[DEBUG] Hole 4, Fragment: r, FailToPass: 0
+[DEBUG] Hole values: [(c.(*ext)), (Object+c), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (Object+r), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (c+r), c]
+[DEBUG] Hole 7, Fragment: (c+r), FailToPass: 0
+[DEBUG] Hole values: [(c.(*ext)), (Object&c), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (Object&r), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (c&r), c]
+[DEBUG] Hole 10, Fragment: (c&r), FailToPass: 0
+[DEBUG] Hole values: [(c.(*ext)), (Class-Object), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (Class-c), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (Class-r), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (Object-c), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (Object-r), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (c-r), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (r-Object), c]
+[DEBUG] Hole 17, Fragment: (r-Object), FailToPass: 0
+[DEBUG] Hole values: [(c.(*ext)), (r-c), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (Class.ext), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (Object.ext), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (c.ext), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (r.ext), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (ext.Class), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (ext.Object), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (ext.c), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), (ext.r), c]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, none]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, Class]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, Object]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, c]
+[DEBUG] Hole 3, Fragment: c, FailToPass: 0
+[DEBUG] Hole values: [(c.(*ext)), r, r]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(c.(*ext)), r, (Object+c)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (Object+r)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (c+r)]
+[DEBUG] Hole 7, Fragment: (c+r), FailToPass: 0
+[DEBUG] Hole values: [(c.(*ext)), r, (Object&c)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (Object&r)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (c&r)]
+[DEBUG] Hole 10, Fragment: (c&r), FailToPass: 0
+[DEBUG] Hole values: [(c.(*ext)), r, (Class-Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (Class-c)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (Class-r)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (Object-c)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (Object-r)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (c-r)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (r-Object)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Hole 17, Fragment: (r-Object), FailToPass: 1
+[DEBUG] Hole values: [(c.(*ext)), r, (r-c)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (Class.ext)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (Object.ext)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (c.ext)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (r.ext)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (ext.Class)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (ext.Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (ext.c)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(c.(*ext)), r, (ext.r)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Set best fragment for hole: (r-Object)
+ [INFO] Fix succeeded, number of combinations tried: 69
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != (r-Object))
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] ==========
+ [INFO] Iteration 3:
+ [INFO] All tests pass.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != (r-Object))
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(some r: (one (c.(*ext))) {
+(r != (r - Object))
+})
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+

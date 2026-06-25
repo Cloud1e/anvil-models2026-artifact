@@ -1,0 +1,65 @@
+r.r in r
+Correct
+
+^r in r
+Correct
+
+r = ^r
+Correct
+
+all s: S | s.r.r in s.r
+Correct
+
+all s: S | s.^r in s.r
+Correct
+
+all s: S | s.r = s.^r
+Correct
+
+all s, t: S | s->t in r implies t.r in s.r
+Correct
+
+no r.r - r
+Correct
+
+no ^r - r
+Correct
+
+all x, y: S | x->y in r.r implies x->y in r
+Correct
+
+all x, z: S | (some y: S | x->y in r and y->z in r) implies x->z in r
+Correct
+
+all s: S, t: s.r | t.r in s.r
+Correct
+
+all s: S, t: s.r, u: t.r | s->u in r
+Correct
+
+all s, t, u: S | (s->t in r and t->u in r) => s->u in r
+Correct
+
+all s: S | r[s.r] in r[s]
+Correct
+
+all s, t: S | s->t in r implies r[t] in r[s]
+Correct
+
+~r.~r in ~r
+Correct
+
+no s, t, u: S | s->t in r and t->u in r and s->u !in r
+Correct
+
+all s: S | s.r.r - s.r = none
+Correct
+
+all s, t: S | some (s.r & r.t) implies s
+Syntax Error
+
+Total: 20
+Unique: 20
+Correct: 19
+Syntax Error: 1
+Wrong: 0

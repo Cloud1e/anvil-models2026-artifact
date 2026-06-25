@@ -1,0 +1,57 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(all n: (one Node) {
+(((n.pre).elem)disjoint ((n.nxt).elem))
+})
+}
+pred Sorted[] {
+(all n: (one Node) {
+((some (n.nxt)) => ((n.elem) <= ((n.nxt).elem)))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+Syntax error in /workspace/ARepair/.hidden/fix.als at line 12 column 16:
+There are 1 possible tokens that can appear here:
+) 
+	at edu.mit.csail.sdg.parser.CompParser.syntax_error(CompParser.java:2218)
+	at edu.mit.csail.sdg.parser.CompParser.parse(CompParser.java:2079)
+	at edu.mit.csail.sdg.parser.CompParser.alloy_parseStream(CompParser.java:2259)
+	at edu.mit.csail.sdg.parser.CompUtil.parseRecursively(CompUtil.java:217)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:363)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at patcher.Patcher.patch(Patcher.java:116)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] There are 1 possible tokens that can appear here:
+) 
+Exception in thread "main" java.lang.NullPointerException
+	at parser.ast.nodes.ModelUnit.<init>(ModelUnit.java:32)
+	at patcher.Patcher.patch(Patcher.java:117)
+	at patcher.Patcher.main(Patcher.java:389)

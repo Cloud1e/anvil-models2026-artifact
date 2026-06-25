@@ -1,0 +1,234 @@
+[filter] AREPAIR_BENCH_MODELS=arr
+[path] Using out-root: logs/rq2_smoke_20260622_1142/A2A/gemini-3.1-flash-lite-preview
+[path] Legacy ARepair_Alloy2Alloy_WithTest -> logs/rq2_smoke_20260622_1142/A2A/gemini-3.1-flash-lite-preview/WithTest
+[path] Legacy ARepair_Alloy2Alloy_NoTest -> logs/rq2_smoke_20260622_1142/A2A/gemini-3.1-flash-lite-preview/NoTest
+
+=== Alloy-to-Alloy: Evaluate WithTest + NoTest (Java) ===
+[arepair] bench filter (arepair.bench.models): [arr]
+
+
+y.length
+  // Array length should be greater than or equal to 0.
+  Array.length >= 0
+}
+
+// Part (b)
+pred NoConflict() {
+
+  // Each index maps to at most one element.
+  all i: Array.i2e.Element | no Array.i2e[i].(Element - Array.i2e[i])
+
+}
+
+run NoConflict for 3
+
+
+-- Automatically generated tests.
+
+pred test20 {
+some disj Element0: Element {some disj Array0: Array {
+Element = Element0
+Array = Array0
+...
+Type error in /tmp/alloy_heredoc418800331143904925.als at line 28 column 45:
+This cannot be a legal relational join where
+left hand side is i . this/Array . (this/Array <: i2e) (type = {this/Element})
+right hand side is this/Element - i . this/Array . (this/Array <: i2e) (type = {this/Element})
+
+	at edu.mit.csail.sdg.ast.ExprBadJoin.make(ExprBadJoin.java:87)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:432)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:467)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBadJoin.accept(ExprBadJoin.java:110)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessARepairResults(Example.java:1727)
+	at Example.main(Example.java:2317)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.lang.Thread.run(Thread.java:750)
+SYNTAX_ERROR
+
+\begin{table}
+\centering
+\caption{ARepair Results}\label{tab_arepair}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Model & Unique & Cor & Syn & Sem \\
+\hline
+arr & 10 & 7 & 3 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+[arepair] bench filter (arepair.bench.models): [arr]
+
+
+y.length
+  // Array length should be greater than or equal to 0.
+  Array.length >= 0
+}
+
+// Part (b)
+pred NoConflict() {
+
+  // Each index maps to at most one element.
+  all i: Array.i2e.Element | no (Array.i2e[i] & (Array.i2e.Element - i).Array.i2e)
+
+}
+
+run NoConflict for 3
+
+
+-- Automatically generated tests.
+
+pred test20 {
+some disj Element0: Element {some disj Array0: Array {
+Element = Element0
+A
+...
+Type error in /tmp/alloy_heredoc3669586928146741528.als at line 28 column 72:
+This cannot be a legal relational join where
+left hand side is this/Array . (this/Array <: i2e) . this/Element - i (type = {Int})
+right hand side is this/Array (type = {this/Array})
+
+	at edu.mit.csail.sdg.ast.ExprBadJoin.make(ExprBadJoin.java:87)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:432)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:467)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBadJoin.accept(ExprBadJoin.java:110)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:456)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBadJoin.accept(ExprBadJoin.java:110)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:476)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessARepairResults(Example.java:1727)
+	at Example.main(Example.java:2317)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.lang.Thread.run(Thread.java:750)
+SYNTAX_ERROR
+
+\begin{table}
+\centering
+\caption{ARepair Results}\label{tab_arepair}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Model & Unique & Cor & Syn & Sem \\
+\hline
+arr & 10 & 6 & 2 & 2 \\
+\hline
+\end{tabular}
+\end{table}
+
+Bench filter: arr
+Validation MAVEN args: ['-Darepair.validation=testsuite']
+=== Evaluate Alloy-to-Alloy WithTest ===
+  -> /workspace/result/Gemini/ARepair_Alloy2Alloy_WithTest/Alloy
+
+=== Evaluate Alloy-to-Alloy NoTest ===
+  -> /workspace/result/Gemini/ARepair_Alloy2Alloy_NoTest/Alloy
+
+=== Alloy-to-Alloy: Compare WithTest vs NoTest (Cor/Syn/Sem) ===
+Data: WithTest = /workspace/result/Gemini/ARepair_Alloy2Alloy_WithTest/Alloy | NoTest = /workspace/result/Gemini/ARepair_Alloy2Alloy_NoTest/Alloy
+
+Model-Predicate        | WithTest (Cor / Syn / Sem) | NoTest (Cor / Syn / Sem) | Delta (Cor / Syn / Sem)
+--------------------------------------------------------------------------------------------------------
+arr-NoConflict         | 7 / 3 / 0            | 6 / 2 / 2            | -1 / -1 / +2
+balancedBST-Balanced   | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+balancedBST-HasAtMostOneChild | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+balancedBST-Sorted     | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+bempl-CanEnter         | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+cd-Acyclic             | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+cd-AllExtObject        | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+cd-ClassHierarchy      | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+cd-ObjectNoExt         | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+dll-ConsistentPreAndNxt | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+dll-Sorted             | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+dll-UniqueElem         | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+farmer-crossRiver      | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+farmer-solvePuzzle     | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+grade-PolicyAllowsGrading | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+other-CanEnter         | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+student-Contains       | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+student-Count          | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+student-Loop           | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+student-Sorted         | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+--------------------------------------------------------------------------------------------------------
+Total                  | 7 / 3 / 0            | 6 / 2 / 2           
+
+Cor = Correct, Syn = Syntax Error, Sem = Semantic error (Wrong). Delta = NoTest - WithTest.
+
+=== ARepair steps skipped (--no-repair) ===
+
+=== Alloy-to-Alloy: Compare (write LaTeX; Rep only after repair) ===
+[tex] Writing per-run file: result/with_vs_no_test_alloy2alloy_by_predicate_gemini-3.1-flash-lite-preview.tex
+Data: WithTest = /workspace/result/Gemini/ARepair_Alloy2Alloy_WithTest/Alloy | NoTest = /workspace/result/Gemini/ARepair_Alloy2Alloy_NoTest/Alloy
+
+Model-Predicate        | WithTest (Cor / Syn / Sem) | NoTest (Cor / Syn / Sem) | Delta (Cor / Syn / Sem)
+--------------------------------------------------------------------------------------------------------
+arr-NoConflict         | 7 / 3 / 0            | 6 / 2 / 2            | -1 / -1 / +2
+balancedBST-Balanced   | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+balancedBST-HasAtMostOneChild | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+balancedBST-Sorted     | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+bempl-CanEnter         | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+cd-Acyclic             | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+cd-AllExtObject        | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+cd-ClassHierarchy      | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+cd-ObjectNoExt         | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+dll-ConsistentPreAndNxt | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+dll-Sorted             | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+dll-UniqueElem         | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+farmer-crossRiver      | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+farmer-solvePuzzle     | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+grade-PolicyAllowsGrading | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+other-CanEnter         | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+student-Contains       | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+student-Count          | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+student-Loop           | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+student-Sorted         | 0 / 0 / 0            | 0 / 0 / 0            | +0 / +0 / +0
+--------------------------------------------------------------------------------------------------------
+Total                  | 7 / 3 / 0            | 6 / 2 / 2           
+
+Cor = Correct, Syn = Syntax Error, Sem = Semantic error (Wrong). Delta = NoTest - WithTest.
+LaTeX written to: /workspace/result/thesis/RQ1_TestVsNoTest/tables/with_vs_no_test_alloy2alloy_by_predicate_gemini-3.1-flash-lite-preview.tex
+
+Done. LaTeX table: result/with_vs_no_test_alloy2alloy_by_predicate_gemini-3.1-flash-lite-preview.tex
+Full log: logs/with_vs_no_test_alloy2alloy_gemini-3.1-flash-lite-preview_20260622_114456.log

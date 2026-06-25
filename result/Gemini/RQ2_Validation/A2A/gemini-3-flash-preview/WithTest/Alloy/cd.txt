@@ -1,0 +1,135 @@
+Acyclic: all c: Class | c !in c.^ext
+Correct
+
+Acyclic: no c: Class | c in c.^ext
+Correct
+
+Acyclic: iden & ^ext = none
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Class->this/Class}
+Right type = {none}
+END_SYN_MSG
+
+Acyclic: no ^ext & iden
+Correct
+
+Acyclic: all c: Class | no (c & c.^ext)
+Correct
+
+Acyclic: all c: Class | c.^ext & c = none
+Correct
+
+Acyclic: all c: Class | c not in c.ext.*ext
+Correct
+
+Acyclic: no (iden & ^ext)
+Correct
+
+Acyclic: all c, d: Class | c in d.^ext implies d not in c
+Correct
+
+Acyclic: all c: Class | no d: c.^ext | d = c
+Correct
+
+AllExtObject: all c: Class - Object | c in Object.^~ext
+Correct
+
+AllExtObject: all c: Class | c != Object implies Object in c.^ext
+Correct
+
+AllExtObject: Class - Object in Object.^~ext
+Correct
+
+AllExtObject: all c: Class - Object | Object in c.ext.*ext
+Correct
+
+AllExtObject: all c: Class | c !in Object implies Object in c.^ext
+Correct
+
+AllExtObject: all c: Class | c = Object or Object in c.^ext
+Correct
+
+AllExtObject: Class in Object.^~ext + Object
+Correct
+
+AllExtObject: all c: Class | c != Object => some d: Class | d = Object and d in c.^ext
+Correct
+
+AllExtObject: all c: Class - Object | some d: c.^ext | d = Object
+Correct
+
+AllExtObject: all c: Class | c !in Object.^~ext implies c = Object
+Correct
+
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and AllExtObject[]
+Correct
+
+ClassHierarchy: Acyclic[] and AllExtObject[] and ObjectNoExt[]
+Correct
+
+ClassHierarchy: AllExtObject[] and ObjectNoExt[] and Acyclic[]
+Correct
+
+ClassHierarchy: ObjectNoExt[] and (Acyclic[] and AllExtObject[])
+Correct
+
+ClassHierarchy: (ObjectNoExt[] and Acyclic[]) and AllExtObject[]
+Correct
+
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and (all c: Class - Object | Object in c.^ext)
+Correct
+
+ClassHierarchy: ObjectNoExt[] and (all c: Class | c !in c.^ext) and AllExtObject[]
+Correct
+
+ClassHierarchy: (no Object.ext) and Acyclic[] and AllExtObject[]
+Correct
+
+ClassHierarchy: ObjectNoExt[] and (no ^ext & iden) and AllExtObject[]
+Correct
+
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and (no c: Class - Object | c !in Object.^~ext)
+Correct
+
+ObjectNoExt: no Object.ext
+Correct
+
+ObjectNoExt: Object.ext = none
+Correct
+
+ObjectNoExt: all c: Object | no c.ext
+Correct
+
+ObjectNoExt: no ext & (Object -> Class)
+Correct
+
+ObjectNoExt: ext & (Object -> Class) = none
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Object->this/Class}
+Right type = {none}
+END_SYN_MSG
+
+ObjectNoExt: Object not in ext.Class
+Correct
+
+ObjectNoExt: ext.Class & Object = none
+Correct
+
+ObjectNoExt: no c: Class | c in Object.ext
+Correct
+
+ObjectNoExt: Object.ext in none
+Correct
+
+ObjectNoExt: all c: Class | c !in Object.ext
+Correct
+
+Total: 40
+Unique: 40
+Correct: 38
+Syntax Error: 2
+Wrong: 0

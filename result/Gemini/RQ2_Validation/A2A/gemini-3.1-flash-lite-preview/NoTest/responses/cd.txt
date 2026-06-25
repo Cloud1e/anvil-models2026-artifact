@@ -1,0 +1,40 @@
+Acyclic: no c: Class | c in c.^ext
+Acyclic: all c: Class | not (c in c.^ext)
+Acyclic: all c: Class | c.^ext & c = none
+Acyclic: no ^ext & iden
+Acyclic: all c: Class | c not in c.^ext
+Acyclic: all c: Class | c not in c.*ext - c
+Acyclic: no c: Class | c in c.ext + c.ext.ext + c.ext.ext.ext
+Acyclic: all c: Class | lone c.*ext & c
+Acyclic: all c: Class | not (some t: Class | t in c.ext and t in c.^~ext)
+Acyclic: no (ext.~(^ext)) & iden
+AllExtObject: all c: Class - Object | Object in c.^~ext
+AllExtObject: all c: Class | c != Object implies c in Object.^~ext
+AllExtObject: (Class - Object) in Object.^~ext
+AllExtObject: all c: Class | c = Object or c in Object.^~ext
+AllExtObject: all c: Class - Object | c in {x: Class | Object in x.^~ext}
+AllExtObject: no (Class - Object) - Object.^~ext
+AllExtObject: all c: Class | c in Object implies c = Object else c in Object.^~ext
+AllExtObject: Class = Object + Object.^~ext
+AllExtObject: all c: Class - Object | c.^ext.*ext = Object
+AllExtObject: all c: Class | not (c = Object) => c in Object.^~ext
+ClassHierarchy: ObjectNoExt and Acyclic and AllExtObject
+ClassHierarchy: {ObjectNoExt, Acyclic, AllExtObject}
+ClassHierarchy: ObjectNoExt implies (Acyclic implies AllExtObject)
+ClassHierarchy: all x: {ObjectNoExt, Acyclic, AllExtObject} | x
+ClassHierarchy: (no Object.ext) and (all c: Class | c !in c.^ext) and (all c: Class - Object | c in Object.^~ext)
+ClassHierarchy: ObjectNoExt && Acyclic && AllExtObject
+ClassHierarchy: ObjectNoExt | Acyclic | AllExtObject
+ClassHierarchy: all c: Class | (c=Object => no c.ext) and (c !in c.^ext) and (c!=Object => c in Object.^~ext)
+ClassHierarchy: ObjectNoExt and (all c: Class | c !in c.^ext and (c != Object implies c in Object.^~ext))
+ClassHierarchy: {c: Class | no c.ext} = {Object} and Acyclic and AllExtObject
+ObjectNoExt: no ext.Object
+ObjectNoExt: Object.ext = none
+ObjectNoExt: not some Object.ext
+ObjectNoExt: all c: Class | c = Object implies no c.ext
+ObjectNoExt: #Object.ext = 0
+ObjectNoExt: lone c: Class | c in Object.ext is none
+ObjectNoExt: Object not in Class.ext
+ObjectNoExt: none = Object.ext
+ObjectNoExt: all x: Object.ext | false
+ObjectNoExt: not (some c: Class | Object->c in ext)

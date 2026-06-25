@@ -1,0 +1,20 @@
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - from'.eats - eats.from'
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = (from - (to' - to)) - from'.eats - eats.from'
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - (from'.eats + eats.from')
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = (from - (to' - to)) - (from'.eats + eats.from')
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - eats.from' - from'.eats
+crossRiver: to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = (from - (to' - to)) - eats.from' - from'.eats
+crossRiver: to subset to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - from'.eats - eats.from'
+crossRiver: to in to' and Farmer in (to' - to) and #(to' - to) <= 2 and (to' - to) - Farmer subset from and from' = from - (to' - to) - from'.eats - eats.from'
+crossRiver: let c = to' - to | to in to' and Farmer in c and #c <= 2 and c - Farmer in from and from' = from - c - from'.eats - eats.from'
+crossRiver: let c = to' - to | to in to' and Farmer in c and #c <= 2 and c - Farmer in from and from' = from - c - (from'.eats + eats.from')
+solvePuzzle: ord/last.far = Object
+solvePuzzle: Object = ord/last.far
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain
+solvePuzzle: Farmer + Fox + Chicken + Grain = ord/last.far
+solvePuzzle: Object in ord/last.far
+solvePuzzle: ord/last.far = Object + none
+solvePuzzle: ord/last.far in Object and Object in ord/last.far
+solvePuzzle: no Object - ord/last.far
+solvePuzzle: Object - ord/last.far = none
+solvePuzzle: ord/last.far = Object - none

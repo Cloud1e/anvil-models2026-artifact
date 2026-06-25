@@ -1,0 +1,20 @@
+all s: S | #s.r = 1
+all s: S | some s.r and lone s.r
+r in S -> one S
+~r.r in iden and S = r.S
+#r = #S and S = r.S
+#r = #S and ~r.r in iden
+S = {s: S | one s.r}
+no s: S | #s.r != 1
+all s: S | one x: S | s->x in r
+iden & S->S in r.~r and ~r.r in iden
+(all s: S | some s.r) and (all s: S | lone s.r)
+no s: S | (no s.r or not lone s.r)
+r in S -> lone S and S = r.S
+all s: S | some x: S | r & s->S = s->x
+all s: S | #s.r >= 1 and #s.r <= 1
+all s: S | one x: S | s.r = x
+no s: S | #s.r < 1 or #s.r > 1
+S = r.univ and ~r.r in iden
+all s: S | some s.r and (no s2: S | not lone s2.r)
+all s: S | some x: S | s->x in r and (all y: S

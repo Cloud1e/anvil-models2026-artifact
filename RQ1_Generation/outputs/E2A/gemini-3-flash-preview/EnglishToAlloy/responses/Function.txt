@@ -1,0 +1,20 @@
+all s: S | one s.r
+all s: S | #s.r = 1
+r in S -> one S
+all s: S | some s.r and lone s.r
+all s: S | one r[s]
+r.S = S and all s: S | lone s.r
+no s: S | not one s.r
+no s: S | #s.r != 1
+S = {s: S | one s.r}
+#r = #S and all s: S | some s.r
+#r = #S and all s: S | lone s.r
+all s: S | one x: S | x in s.r
+all s: S | some x: S | s.r = x
+S in r.S and all s: S | lone s.r
+r.S = S and r in S -> lone S
+all s: S | one {x: S | s->x in r}
+all s: S | one s <: r
+all s: S | # (s <: r) = 1
+#r = #S and r.S = S
+all s: S | some s.r and r in S -> lone S

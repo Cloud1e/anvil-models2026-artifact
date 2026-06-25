@@ -1,0 +1,35 @@
+p.member_of in r.located_in
+Correct
+
+some p.member_of & r.located_in
+Wrong
+
+p.member_of & r.located_in != none
+Wrong
+
+not (p.member_of & r.located_in = none)
+Wrong
+
+all g: p.member_of | g in r.located_in
+Correct
+
+some g: p.member_of | g in r.located_in
+Wrong
+
+p.member_of in (r.located_in)
+Correct
+
+(p.member_of & r.located_in) in Group
+Wrong
+
+r.located_in & p.member_of != none
+Wrong
+
+p.member_of & r.located_in in Group
+Wrong
+
+Total: 10
+Unique: 10
+Correct: 3
+Syntax Error: 0
+Wrong: 7

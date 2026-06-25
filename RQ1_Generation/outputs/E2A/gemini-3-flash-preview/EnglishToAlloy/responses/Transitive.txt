@@ -1,0 +1,20 @@
+r.r in r
+all x, y, z: S | x->y in r and y->z in r implies x->z in r
+all x, y: S | x->y in r implies y.r in x.r
+all x, y: S | x->y in r implies r.x in r.y
+all x: S | x.r.r in x.r
+r . r in r
+no x, y, z: S | x->y in r and y->z in r and x->z !in r
+all x, y: S | y in x.r implies y.r in x.r
+r . r subset r
+all s: S | s.r.r subset s.r
+r + r . r = r
+r . r - r = none
+all x: S | r[x.r] in r[x]
+all x, z: S | (some y: S | x->y in r and y->z in r) implies x->z in r
+all y: S | r.y -> y.r in r
+all x, y, z: S | (x->y in r && y->z in r) => x->z in r
+no (r . r - r)
+all x, y: S | x->y in r implies (all z: S | y->z in r implies x->z in r)
+all x, y, z: S | x->y in r and y->z in r implies x in r.z
+all x: S, y: x.r | y.r in x.r

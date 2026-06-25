@@ -1,0 +1,65 @@
+no s: S | s -> s in r
+Correct
+
+all s: S | s not in s.r
+Correct
+
+all s: S | s.r not in S - s
+Wrong
+
+r in S -> (S - iden)
+Syntax Error
+
+all s: S | s -> s not in r
+Correct
+
+all s: S | no s.r & s
+Correct
+
+r & iden = none
+Syntax Error
+
+all s: S | s not in r.s
+Correct
+
+no iden & r
+Correct
+
+all s: S | r[s] != s
+Wrong
+
+r in (S -> S) - iden
+Correct
+
+all s: S | no (s & s.r)
+Correct
+
+all s: S | all t: s.r | t != s
+Correct
+
+no s: S | s->s in r
+Correct
+
+all s: S | s->s not in r
+Correct
+
+all s: S | not (s->s in r)
+Correct
+
+r in S -> S - iden
+Correct
+
+no r & iden
+Correct
+
+all s: S | s.r & s = none
+Correct
+
+all s: S | s.r not in S - (S - s)
+Wrong
+
+Total: 20
+Unique: 20
+Correct: 15
+Syntax Error: 2
+Wrong: 3

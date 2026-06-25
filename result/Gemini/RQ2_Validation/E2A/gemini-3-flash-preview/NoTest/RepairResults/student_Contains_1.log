@@ -1,0 +1,3787 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { lone List } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { one List } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { some List } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all l: List | lone l.header } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | lone n.link } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | lone n.elem } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | one n.elem } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | some n.elem } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { some Boolean } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred ContainsMUTATED[This: List,x: Int,result: Boolean] {
+((result in True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+EQUIV: check { all This: List,x: Int,result: Boolean | Contains[This,x,result] <=> ContainsMUTATED[This,x,result] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+pred CardinalityConstraints[] {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred CardinalityConstraintsMUTATED[] {
+((one l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+EQUIV: check { CardinalityConstraints[] <=> CardinalityConstraintsMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one Node) {
+((n.elem) = x)
+}))
+}
+
+pred CardinalityConstraints[] {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred CardinalityConstraintsMUTATED[] {
+((some l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+EQUIV: check { CardinalityConstraints[] <=> CardinalityConstraintsMUTATED[] } for 3
+ [INFO] Fault localization time: 23092773635
+[DEBUG] Test num: 98
+[DEBUG] Rank Node 0:
+[DEBUG] (set Node)
+[DEBUG] Affected paragraph names: [Node_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Node
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+ [INFO] Expression generation time: 211185125
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Node]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Hole Node
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+ [INFO] Expression generation time: 2639292
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Node]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Rank Node 1:
+[DEBUG] (lone (n.link))
+[DEBUG] Affected paragraph names: [CardinalityConstraints]
+[DEBUG] Affected facts: [CardinalityConstraints]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole n
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Node, n]
+[DEBUG] Hole link
+[DEBUG] Size: 2
+[DEBUG] Fragments: [link, (none->none)]
+ [INFO] Expression generation time: 61249167
+ [INFO] Search space: 6
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, link]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, link]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [n, link]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [n, link]
+[DEBUG] Hole 0, Fragment: link, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Test from pass to fail: test79
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Hole (n.link)
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Node, n]
+ [INFO] Expression generation time: 88363333
+ [INFO] Search space: 3
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n]
+[DEBUG] Test from pass to fail: test79
+ [INFO] Fix failed, number of combinations tried: 3
+[DEBUG] Hole (n.link)
+[DEBUG] Size: 10
+[DEBUG] Fragments: [none, Node, n, (Node-n), (List.header), (Node.link), (n.link), (link.Node), (link.n), (elem.Int)]
+[DEBUG] Hole (lone (n.link))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 635836375
+ [INFO] Search space: 40
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (lone (n.link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n, (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [(Node-n), (lone (n.link))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [(List.header), (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [(Node.link), (lone (n.link))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [(n.link), (lone (n.link))]
+[DEBUG] Hole 6, Fragment: (n.link), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.n), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(elem.Int), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(n.link), some ]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(n.link), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [(n.link), one ]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(n.link), lone ]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 14
+[DEBUG] Rank Node 2:
+[DEBUG] (result = True)
+[DEBUG] Affected paragraph names: [Contains]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 19): [test1010, test59, test70, test69, test64, test67, test66, test61, test75, test65, test68, test62, test71, test72, test63, test74, test58, test60, test73]
+[DEBUG] Hole result
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Boolean, True, False, result]
+[DEBUG] Hole True
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Boolean, True, False, result]
+ [INFO] Expression generation time: 214444417
+ [INFO] Search space: 25
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Boolean, True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [True, True]
+[DEBUG] Test from pass to fail: test75
+[DEBUG] Hole values: [False, True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True]
+[DEBUG] Hole 4, Fragment: result, FailToPass: 0
+[DEBUG] Hole values: [result, none]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, Boolean]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True]
+[DEBUG] Hole 2, Fragment: True, FailToPass: 0
+[DEBUG] Hole values: [result, False]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, result]
+[DEBUG] Test from pass to fail: test75
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Hole result
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Boolean, True, False, result]
+[DEBUG] Hole True
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Boolean, True, False, result]
+[DEBUG] Hole (result = True)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 5274208
+ [INFO] Search space: 100
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Boolean, True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [True, True, (result = True)]
+[DEBUG] Test from pass to fail: test75
+[DEBUG] Hole values: [False, True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True, (result = True)]
+[DEBUG] Hole 4, Fragment: result, FailToPass: 0
+[DEBUG] Hole values: [result, none, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, Boolean, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True, (result = True)]
+[DEBUG] Hole 2, Fragment: True, FailToPass: 0
+[DEBUG] Hole values: [result, False, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, result, (result = True)]
+[DEBUG] Test from pass to fail: test75
+[DEBUG] Hole values: [result, True,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [result, True,  != ]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True,  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [result, True,  !in ]
+[DEBUG] Test from pass to fail: test1010
+ [INFO] Fix failed, number of combinations tried: 14
+[DEBUG] Rank Node 3:
+[DEBUG] (some n: (one Node) {
+((n.elem) = x)
+})
+[DEBUG] Affected paragraph names: [Contains]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 19): [test1010, test59, test70, test69, test64, test67, test66, test61, test75, test65, test68, test62, test71, test72, test63, test74, test58, test60, test73]
+[DEBUG] Hole n
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Node, n]
+[DEBUG] Hole elem
+[DEBUG] Size: 2
+[DEBUG] Fragments: [elem, (none->none)]
+ [INFO] Expression generation time: 28715916
+ [INFO] Search space: 6
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [n, elem]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [n, elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Test from pass to fail: test1010
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Hole Node
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, x]
+[DEBUG] Hole x
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, x]
+ [INFO] Expression generation time: 3488833
+ [INFO] Search space: 50
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.elem), x]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [Node, none, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, Int, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, 0, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, 1, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, x, x]
+[DEBUG] Test from pass to fail: test70
+[DEBUG] Hole values: [Node, (n.elem), none]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.elem), Int]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.elem), 0]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.elem), 1]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.elem), x]
+[DEBUG] Hole 4, Fragment: x, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 12
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (This.header), (link.Node), (elem.Int), (elem.x)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole x
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.elem) = x)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 605809458
+ [INFO] Search space: 2048
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(List.header), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from fail to pass: test59
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [(Node.link), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(This.header), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from fail to pass: test59
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from fail to pass: test59
+[DEBUG] Hole 5, Fragment: (link.Node), FailToPass: 1
+[DEBUG] Hole values: [(elem.Int), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 6, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [(elem.x), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 7, Fragment: (elem.x), FailToPass: 0
+[DEBUG] Set best fragment for hole: (link.Node)
+[DEBUG] Hole values: [(link.Node), none, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), Int, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), 0, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), 1, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), x, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (Int-x), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (Node.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 7, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), none, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), Int, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), 0, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), 1, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 4, Fragment: x, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), (Int-x), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), (Node.elem), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), (n.elem), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  != ]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  !in ]
+[DEBUG] Test from pass to fail: test59
+ [INFO] Fix succeeded, number of combinations tried: 28
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { lone List } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { one List } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { some List } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all l: List | lone l.header } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | lone n.link } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | lone n.elem } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | one n.elem } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { all n: Node | some n.elem } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+EQUIV: check { some Boolean } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred ContainsMUTATED[This: List,x: Int,result: Boolean] {
+((result in True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+EQUIV: check { all This: List,x: Int,result: Boolean | Contains[This,x,result] <=> ContainsMUTATED[This,x,result] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred ContainsMUTATED[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one ((^link).Node)) {
+((n.elem) = x)
+}))
+}
+EQUIV: check { all This: List,x: Int,result: Boolean | Contains[This,x,result] <=> ContainsMUTATED[This,x,result] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+pred CardinalityConstraints[] {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred CardinalityConstraintsMUTATED[] {
+((one l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+EQUIV: check { CardinalityConstraints[] <=> CardinalityConstraintsMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+pred CardinalityConstraints[] {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+pred CardinalityConstraintsMUTATED[] {
+((some l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+EQUIV: check { CardinalityConstraints[] <=> CardinalityConstraintsMUTATED[] } for 3
+ [INFO] Fault localization time: 20424611259
+[DEBUG] Test num: 98
+[DEBUG] Rank Node 0:
+[DEBUG] ((n.elem) = x)
+[DEBUG] Affected paragraph names: [Contains]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 19): [test1010, test59, test70, test69, test64, test67, test66, test61, test75, test65, test68, test62, test71, test72, test63, test74, test58, test60, test73]
+[DEBUG] Hole n
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Node, n]
+[DEBUG] Hole elem
+[DEBUG] Size: 2
+[DEBUG] Fragments: [elem, (none->none)]
+ [INFO] Expression generation time: 425077375
+ [INFO] Search space: 6
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [n, elem]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [n, elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Test from pass to fail: test1010
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, x]
+[DEBUG] Hole x
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, x]
+ [INFO] Expression generation time: 76332833
+ [INFO] Search space: 25
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Int, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [0, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [1, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [x, x]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(n.elem), none]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), Int]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), 0]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), 1]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), x]
+[DEBUG] Hole 4, Fragment: x, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole x
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.elem) = x)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 1449858334
+ [INFO] Search space: 256
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Int, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [0, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [1, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [x, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(Int-x), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(Node.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 7, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [(n.elem), none, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), Int, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), 0, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), 1, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 4, Fragment: x, FailToPass: 0
+[DEBUG] Hole values: [(n.elem), (Int-x), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), (Node.elem), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(n.elem), (n.elem), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(n.elem), x,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [(n.elem), x,  != ]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(n.elem), x,  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [(n.elem), x,  !in ]
+[DEBUG] Test from pass to fail: test59
+ [INFO] Fix failed, number of combinations tried: 20
+[DEBUG] Rank Node 1:
+[DEBUG] (set Node)
+[DEBUG] Affected paragraph names: [Node_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Node
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+ [INFO] Expression generation time: 15405250
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Node]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Hole Node
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+ [INFO] Expression generation time: 1196250
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Node]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Rank Node 2:
+[DEBUG] (lone (n.link))
+[DEBUG] Affected paragraph names: [CardinalityConstraints]
+[DEBUG] Affected facts: [CardinalityConstraints]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole n
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Node, n]
+[DEBUG] Hole link
+[DEBUG] Size: 2
+[DEBUG] Fragments: [link, (none->none)]
+ [INFO] Expression generation time: 22256125
+ [INFO] Search space: 6
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, link]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, link]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [n, link]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [n, link]
+[DEBUG] Hole 0, Fragment: link, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Test from pass to fail: test79
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Hole (n.link)
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Node, n]
+ [INFO] Expression generation time: 2690042
+ [INFO] Search space: 3
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n]
+[DEBUG] Test from pass to fail: test79
+ [INFO] Fix failed, number of combinations tried: 3
+[DEBUG] Hole (n.link)
+[DEBUG] Size: 10
+[DEBUG] Fragments: [none, Node, n, (Node-n), (List.header), (Node.link), (n.link), (link.Node), (link.n), (elem.Int)]
+[DEBUG] Hole (lone (n.link))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 154125500
+ [INFO] Search space: 40
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (lone (n.link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n, (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [(Node-n), (lone (n.link))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [(List.header), (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [(Node.link), (lone (n.link))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [(n.link), (lone (n.link))]
+[DEBUG] Hole 6, Fragment: (n.link), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.n), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(elem.Int), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(n.link), some ]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(n.link), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [(n.link), one ]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(n.link), lone ]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 14
+[DEBUG] Rank Node 3:
+[DEBUG] (some n: (one (link.Node)) {
+((n.elem) = x)
+})
+[DEBUG] Affected paragraph names: [Contains]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 19): [test1010, test59, test70, test69, test64, test67, test66, test61, test75, test65, test68, test62, test71, test72, test63, test74, test58, test60, test73]
+[DEBUG] Hole link
+[DEBUG] Size: 2
+[DEBUG] Fragments: [link, (none->none)]
+[DEBUG] Hole Node
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+[DEBUG] Hole n
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Node, n, (Node-n), (List.header), (Node.link), (This.header), (n.link), (link.Node), (link.n), (elem.Int), (elem.x)]
+[DEBUG] Hole elem
+[DEBUG] Size: 3
+[DEBUG] Fragments: [elem, (none->none), (link.elem)]
+ [INFO] Expression generation time: 7065708
+ [INFO] Search space: 144
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [link, Node, n, elem]
+[DEBUG] Hole 0, Fragment: link, FailToPass: 0
+[DEBUG] Hole values: [(none->none), Node, n, elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [link, none, n, elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [link, Node, n, elem]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [link, Node, none, elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [link, Node, Node, elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [link, Node, n, elem]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [link, Node, (Node-n), elem]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [link, Node, (List.header), elem]
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [link, Node, (Node.link), elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [link, Node, (This.header), elem]
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [link, Node, (n.link), elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [link, Node, (link.Node), elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [link, Node, (link.n), elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [link, Node, (elem.Int), elem]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [link, Node, (elem.x), elem]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [link, Node, n, elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [link, Node, n, (none->none)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [link, Node, n, (link.elem)]
+[DEBUG] Test from pass to fail: test1010
+ [INFO] Fix failed, number of combinations tried: 19
+[DEBUG] Hole (link.Node)
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole x
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+ [INFO] Expression generation time: 6156625
+ [INFO] Search space: 128
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.elem), x]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), none, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), Int, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), 0, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), 1, x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), x, x]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (Int-x), x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (Node.elem), x]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x]
+[DEBUG] Hole 7, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), none]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), Int]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), 0]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), 1]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x]
+[DEBUG] Hole 4, Fragment: x, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), (Int-x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), (Node.elem)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), (n.elem)]
+[DEBUG] Test from pass to fail: test59
+ [INFO] Fix failed, number of combinations tried: 18
+[DEBUG] Hole (link.Node)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (This.header), (link.Node), (elem.Int), (elem.x)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole x
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.elem) = x)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 21145834
+ [INFO] Search space: 2048
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(List.header), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [(Node.link), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(This.header), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 5, Fragment: (link.Node), FailToPass: 0
+[DEBUG] Hole values: [(elem.Int), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(elem.x), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), none, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), Int, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), 0, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), 1, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), x, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (Int-x), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (Node.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 7, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), none, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), Int, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), 0, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), 1, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 4, Fragment: x, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), (Int-x), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), (Node.elem), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), (n.elem), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  != ]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  !in ]
+[DEBUG] Test from pass to fail: test59
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Hole (link.Node)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (This.header), (link.Node), (elem.Int), (elem.x)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole x
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.elem) = x)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 1089551292
+ [INFO] Search space: 2048
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(List.header), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [(Node.link), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(This.header), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 5, Fragment: (link.Node), FailToPass: 0
+[DEBUG] Hole values: [(elem.Int), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(elem.x), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), none, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), Int, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), 0, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), 1, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), x, x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (Int-x), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (Node.elem), x, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 7, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), none, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), Int, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), 0, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), 1, ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x)]
+[DEBUG] Hole 4, Fragment: x, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), (Int-x), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), (Node.elem), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), (n.elem), ((n.elem) = x)]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  != ]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  !in ]
+[DEBUG] Test from pass to fail: test59
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Hole (link.Node)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (This.header), (link.Node), (elem.Int), (elem.x)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole x
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Int, 0, 1, x, (Int-x), (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.elem) = x)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+[DEBUG] Hole (some n: (one (link.Node)) {
+((n.elem) = x)
+})
+[DEBUG] Size: 5
+[DEBUG] Fragments: [all, some, no, one, lone]
+ [INFO] Expression generation time: 1309833
+ [INFO] Search space: 10240
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(List.header), (n.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [(Node.link), (n.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(This.header), (n.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Hole 5, Fragment: (link.Node), FailToPass: 0
+[DEBUG] Hole values: [(elem.Int), (n.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(elem.x), (n.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), none, x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), Int, x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), 0, x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), 1, x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), x, x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (Int-x), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (Node.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Hole 7, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), none, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), Int, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), 0, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), 1, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Hole 4, Fragment: x, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), (Int-x), ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), (Node.elem), ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), (n.elem), ((n.elem) = x), (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  = , (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  != , (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  in , (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), x,  !in , (some n: (one (link.Node)) {
+((n.elem) = x)
+})]
+[DEBUG] Test from pass to fail: test59
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x), all ]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x), some ]
+[DEBUG] Hole 1, Fragment: some, FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x), no ]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x), one ]
+[DEBUG] Test from pass to fail: test66
+[DEBUG] Hole values: [(link.Node), (n.elem), x, ((n.elem) = x), lone ]
+[DEBUG] Test from pass to fail: test59
+ [INFO] Fix failed, number of combinations tried: 33
+[DEBUG] Rank Node 4:
+[DEBUG] (result = True)
+[DEBUG] Affected paragraph names: [Contains]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 19): [test1010, test59, test70, test69, test64, test67, test66, test61, test75, test65, test68, test62, test71, test72, test63, test74, test58, test60, test73]
+[DEBUG] Hole result
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Boolean, True, False, result, (True+result), (False+result), (True&result), (False&result), (Boolean-result), (True-result), (False-result)]
+[DEBUG] Hole True
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Boolean, True, False, result, (True+result), (False+result), (True&result), (False&result), (Boolean-result), (True-result), (False-result)]
+ [INFO] Expression generation time: 3187875
+ [INFO] Search space: 144
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Boolean, True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [True, True]
+[DEBUG] Test from pass to fail: test75
+[DEBUG] Hole values: [False, True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True]
+[DEBUG] Hole 4, Fragment: result, FailToPass: 0
+[DEBUG] Hole values: [(True+result), True]
+[DEBUG] Hole 5, Fragment: (True+result), FailToPass: 0
+[DEBUG] Hole values: [(False+result), True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(True&result), True]
+[DEBUG] Hole 7, Fragment: (True&result), FailToPass: 0
+[DEBUG] Hole values: [(False&result), True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(Boolean-result), True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(True-result), True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(False-result), True]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, none]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, Boolean]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True]
+[DEBUG] Hole 2, Fragment: True, FailToPass: 0
+[DEBUG] Hole values: [result, False]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, result]
+[DEBUG] Test from pass to fail: test75
+[DEBUG] Hole values: [result, (True+result)]
+[DEBUG] Hole 5, Fragment: (True+result), FailToPass: 0
+[DEBUG] Hole values: [result, (False+result)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, (True&result)]
+[DEBUG] Hole 7, Fragment: (True&result), FailToPass: 0
+[DEBUG] Hole values: [result, (False&result)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, (Boolean-result)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, (True-result)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, (False-result)]
+[DEBUG] Test from pass to fail: test1010
+ [INFO] Fix failed, number of combinations tried: 24
+[DEBUG] Hole result
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Boolean, True, False, result, (True+result), (False+result), (True&result), (False&result), (Boolean-result), (True-result), (False-result)]
+[DEBUG] Hole True
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Boolean, True, False, result, (True+result), (False+result), (True&result), (False&result), (Boolean-result), (True-result), (False-result)]
+[DEBUG] Hole (result = True)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 438833
+ [INFO] Search space: 576
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Boolean, True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [True, True, (result = True)]
+[DEBUG] Test from pass to fail: test75
+[DEBUG] Hole values: [False, True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True, (result = True)]
+[DEBUG] Hole 4, Fragment: result, FailToPass: 0
+[DEBUG] Hole values: [(True+result), True, (result = True)]
+[DEBUG] Hole 5, Fragment: (True+result), FailToPass: 0
+[DEBUG] Hole values: [(False+result), True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(True&result), True, (result = True)]
+[DEBUG] Hole 7, Fragment: (True&result), FailToPass: 0
+[DEBUG] Hole values: [(False&result), True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(Boolean-result), True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(True-result), True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(False-result), True, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, none, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, Boolean, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True, (result = True)]
+[DEBUG] Hole 2, Fragment: True, FailToPass: 0
+[DEBUG] Hole values: [result, False, (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, result, (result = True)]
+[DEBUG] Test from pass to fail: test75
+[DEBUG] Hole values: [result, (True+result), (result = True)]
+[DEBUG] Hole 5, Fragment: (True+result), FailToPass: 0
+[DEBUG] Hole values: [result, (False+result), (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, (True&result), (result = True)]
+[DEBUG] Hole 7, Fragment: (True&result), FailToPass: 0
+[DEBUG] Hole values: [result, (False&result), (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, (Boolean-result), (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, (True-result), (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, (False-result), (result = True)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [result, True,  != ]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [result, True,  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [result, True,  !in ]
+[DEBUG] Test from pass to fail: test1010
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Rank Node 5:
+[DEBUG] link
+[DEBUG] Affected paragraph names: [CardinalityConstraints]
+[DEBUG] Affected facts: [CardinalityConstraints]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole link
+[DEBUG] Size: 10
+[DEBUG] Fragments: [link, (none->none), (~link), (*link), (^link), (iden&link), (link-iden), (link.link), (*(~link)), (^(~link))]
+ [INFO] Expression generation time: 115542
+ [INFO] Search space: 10
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [link]
+[DEBUG] Hole 0, Fragment: link, FailToPass: 0
+[DEBUG] Hole values: [(none->none)]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [(~link)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(*link)]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(^link)]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [(iden&link)]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [(link-iden)]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [(link.link)]
+[DEBUG] Hole 7, Fragment: (link.link), FailToPass: 0
+[DEBUG] Hole values: [(*(~link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(^(~link))]
+[DEBUG] Test from pass to fail: test1010
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Rank Node 6:
+[DEBUG] sig Node {
+link: (set Node),
+elem: (set Int)
+}
+[DEBUG] Affected paragraph names: [Node_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Node
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+[DEBUG] Hole Int
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Int, 0, 1]
+ [INFO] Expression generation time: 3599000
+ [INFO] Search space: 8
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Int]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Node, Int]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [Node, none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Node, Int]
+[DEBUG] Hole 1, Fragment: Int, FailToPass: 0
+[DEBUG] Hole values: [Node, 0]
+[DEBUG] Hole 2, Fragment: 0, FailToPass: 0
+[DEBUG] Hole values: [Node, 1]
+[DEBUG] Hole 3, Fragment: 1, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole Node
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+[DEBUG] Hole Int
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Int, 0, 1]
+ [INFO] Expression generation time: 2083917
+ [INFO] Search space: 8
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Int]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Node, Int]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [Node, none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Node, Int]
+[DEBUG] Hole 1, Fragment: Int, FailToPass: 0
+[DEBUG] Hole values: [Node, 0]
+[DEBUG] Hole 2, Fragment: 0, FailToPass: 0
+[DEBUG] Hole values: [Node, 1]
+[DEBUG] Hole 3, Fragment: 1, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole Node
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+[DEBUG] Hole (set Node)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+[DEBUG] Hole Int
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Int, 0, 1]
+[DEBUG] Hole (set Int)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 14421542
+ [INFO] Search space: 128
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (set Node), Int, (set Int)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Node, (set Node), Int, (set Int)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [Node, one , Int, (set Int)]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Node, set , Int, (set Int)]
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [Node, lone , Int, (set Int)]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [Node, some , Int, (set Int)]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+[DEBUG] Hole values: [Node, (set Node), none, (set Int)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Node, (set Node), Int, (set Int)]
+[DEBUG] Hole 1, Fragment: Int, FailToPass: 0
+[DEBUG] Hole values: [Node, (set Node), 0, (set Int)]
+[DEBUG] Hole 2, Fragment: 0, FailToPass: 0
+[DEBUG] Hole values: [Node, (set Node), 1, (set Int)]
+[DEBUG] Hole 3, Fragment: 1, FailToPass: 0
+[DEBUG] Hole values: [Node, (set Node), Int, one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Node, (set Node), Int, set ]
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [Node, (set Node), Int, lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [Node, (set Node), Int, some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 14
+[DEBUG] Hole sig Node {
+link: (set Node),
+elem: (set Int)
+}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 71958
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 7:
+[DEBUG] (all n: (one Node) {
+(lone (n.link))
+})
+[DEBUG] Affected paragraph names: [CardinalityConstraints]
+[DEBUG] Affected facts: [CardinalityConstraints]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole n
+[DEBUG] Size: 10
+[DEBUG] Fragments: [none, Node, n, (Node-n), (List.header), (Node.link), (n.link), (link.Node), (link.n), (elem.Int)]
+[DEBUG] Hole link
+[DEBUG] Size: 10
+[DEBUG] Fragments: [link, (none->none), (~link), (*link), (^link), (iden&link), (link-iden), (link.link), (*(~link)), (^(~link))]
+ [INFO] Expression generation time: 193875
+ [INFO] Search space: 100
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, link]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, link]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [n, link]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [(Node-n), link]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [(List.header), link]
+[DEBUG] Hole 4, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [(Node.link), link]
+[DEBUG] Test from pass to fail: test20
+[DEBUG] Hole values: [(n.link), link]
+[DEBUG] Hole 6, Fragment: (n.link), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), link]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [(link.n), link]
+[DEBUG] Hole 8, Fragment: (link.n), FailToPass: 0
+[DEBUG] Hole values: [(elem.Int), link]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [n, link]
+[DEBUG] Hole 0, Fragment: link, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [n, (~link)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [n, (*link)]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n, (^link)]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [n, (iden&link)]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [n, (link-iden)]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [n, (link.link)]
+[DEBUG] Hole 7, Fragment: (link.link), FailToPass: 0
+[DEBUG] Hole values: [n, (*(~link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n, (^(~link))]
+[DEBUG] Test from pass to fail: test1010
+ [INFO] Fix failed, number of combinations tried: 20
+[DEBUG] Hole Node
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+[DEBUG] Hole (n.link)
+[DEBUG] Size: 10
+[DEBUG] Fragments: [none, Node, n, (Node-n), (List.header), (Node.link), (n.link), (link.Node), (link.n), (elem.Int)]
+ [INFO] Expression generation time: 5724583
+ [INFO] Search space: 20
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.link)]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (n.link)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [Node, none]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, Node]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, n]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (Node-n)]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [Node, (List.header)]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (Node.link)]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [Node, (n.link)]
+[DEBUG] Hole 6, Fragment: (n.link), FailToPass: 0
+[DEBUG] Hole values: [Node, (link.Node)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (link.n)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (elem.Int)]
+[DEBUG] Test from pass to fail: test1006
+ [INFO] Fix failed, number of combinations tried: 12
+[DEBUG] Hole Node
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (link.Node), (elem.Int)]
+[DEBUG] Hole (n.link)
+[DEBUG] Size: 10
+[DEBUG] Fragments: [none, Node, n, (Node-n), (List.header), (Node.link), (n.link), (link.Node), (link.n), (elem.Int)]
+[DEBUG] Hole (lone (n.link))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 13667500
+ [INFO] Search space: 240
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.link), (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link))]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(List.header), (n.link), (lone (n.link))]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [(Node.link), (n.link), (lone (n.link))]
+[DEBUG] Hole 3, Fragment: (Node.link), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.link), (lone (n.link))]
+[DEBUG] Hole 4, Fragment: (link.Node), FailToPass: 0
+[DEBUG] Hole values: [(elem.Int), (n.link), (lone (n.link))]
+[DEBUG] Hole 5, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, Node, (lone (n.link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, n, (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (Node-n), (lone (n.link))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [Node, (List.header), (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (Node.link), (lone (n.link))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link))]
+[DEBUG] Hole 6, Fragment: (n.link), FailToPass: 0
+[DEBUG] Hole values: [Node, (link.Node), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (link.n), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (elem.Int), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.link), some ]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.link), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, (n.link), one ]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.link), lone ]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 20
+[DEBUG] Hole Node
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (link.Node), (elem.Int)]
+[DEBUG] Hole (n.link)
+[DEBUG] Size: 14
+[DEBUG] Fragments: [none, Node, n, (Node-n), (List.header), (Node.link), (n.link), (link.Node), (link.n), (elem.Int), (n.(*link)), (n.(^link)), ((*link).n), ((^link).n)]
+[DEBUG] Hole (lone (n.link))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 155200166
+ [INFO] Search space: 336
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.link), (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link))]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(List.header), (n.link), (lone (n.link))]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [(Node.link), (n.link), (lone (n.link))]
+[DEBUG] Hole 3, Fragment: (Node.link), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.link), (lone (n.link))]
+[DEBUG] Hole 4, Fragment: (link.Node), FailToPass: 0
+[DEBUG] Hole values: [(elem.Int), (n.link), (lone (n.link))]
+[DEBUG] Hole 5, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, Node, (lone (n.link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, n, (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (Node-n), (lone (n.link))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [Node, (List.header), (lone (n.link))]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (Node.link), (lone (n.link))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link))]
+[DEBUG] Hole 6, Fragment: (n.link), FailToPass: 0
+[DEBUG] Hole values: [Node, (link.Node), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (link.n), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (elem.Int), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.(*link)), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.(^link)), (lone (n.link))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [Node, ((*link).n), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, ((^link).n), (lone (n.link))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.link), some ]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.link), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, (n.link), one ]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.link), lone ]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 24
+[DEBUG] Hole Node
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (link.Node), (elem.Int)]
+[DEBUG] Hole (n.link)
+[DEBUG] Size: 14
+[DEBUG] Fragments: [none, Node, n, (Node-n), (List.header), (Node.link), (n.link), (link.Node), (link.n), (elem.Int), (n.(*link)), (n.(^link)), ((*link).n), ((^link).n)]
+[DEBUG] Hole (lone (n.link))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+[DEBUG] Hole (all n: (one Node) {
+(lone (n.link))
+})
+[DEBUG] Size: 5
+[DEBUG] Fragments: [all, some, no, one, lone]
+ [INFO] Expression generation time: 440875
+ [INFO] Search space: 1680
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.link), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(List.header), (n.link), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [(Node.link), (n.link), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Hole 3, Fragment: (Node.link), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (n.link), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Hole 4, Fragment: (link.Node), FailToPass: 0
+[DEBUG] Hole values: [(elem.Int), (n.link), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Hole 5, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, Node, (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, n, (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (Node-n), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [Node, (List.header), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (Node.link), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Hole 6, Fragment: (n.link), FailToPass: 0
+[DEBUG] Hole values: [Node, (link.Node), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (link.n), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (elem.Int), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.(*link)), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.(^link)), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [Node, ((*link).n), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, ((^link).n), (lone (n.link)), (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [Node, (n.link), some , (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.link), no , (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, (n.link), one , (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.link), lone , (all n: (one Node) {
+(lone (n.link))
+})]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link)), all ]
+[DEBUG] Hole 0, Fragment: all, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link)), some ]
+[DEBUG] Test from pass to fail: test79
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link)), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link)), one ]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.link), (lone (n.link)), lone ]
+[DEBUG] Test from pass to fail: test1006
+ [INFO] Fix failed, number of combinations tried: 29
+[DEBUG] Rank Node 8:
+[DEBUG] (all n: (one Node) {
+(one (n.elem))
+})
+[DEBUG] Affected paragraph names: [CardinalityConstraints]
+[DEBUG] Affected facts: [CardinalityConstraints]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole n
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Node, n]
+[DEBUG] Hole elem
+[DEBUG] Size: 2
+[DEBUG] Fragments: [elem, (none->none)]
+ [INFO] Expression generation time: 27263750
+ [INFO] Search space: 6
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, elem]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, elem]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n, elem]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [n, elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Test from pass to fail: test1003
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Hole Node
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (link.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Int, 0, 1]
+ [INFO] Expression generation time: 8054417
+ [INFO] Search space: 24
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem)]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, (n.elem)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(List.header), (n.elem)]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [(Node.link), (n.elem)]
+[DEBUG] Test from pass to fail: test87
+[DEBUG] Hole values: [(link.Node), (n.elem)]
+[DEBUG] Test from pass to fail: test87
+[DEBUG] Hole values: [(elem.Int), (n.elem)]
+[DEBUG] Test from pass to fail: test86
+[DEBUG] Hole values: [Node, none]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, Int]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, 0]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, 1]
+[DEBUG] Test from pass to fail: test80
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Hole Node
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (link.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole (one (n.elem))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 139234708
+ [INFO] Search space: 144
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem))]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(List.header), (n.elem), (one (n.elem))]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [(Node.link), (n.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test87
+[DEBUG] Hole values: [(link.Node), (n.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test87
+[DEBUG] Hole values: [(elem.Int), (n.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test86
+[DEBUG] Hole values: [Node, none, (one (n.elem))]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, Int, (one (n.elem))]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, 0, (one (n.elem))]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, 1, (one (n.elem))]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, (Node.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem))]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), some ]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, (n.elem), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, (n.elem), one ]
+[DEBUG] Hole 2, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), lone ]
+[DEBUG] Test from pass to fail: test86
+ [INFO] Fix failed, number of combinations tried: 16
+[DEBUG] Hole Node
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (link.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole (one (n.elem))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 222211334
+ [INFO] Search space: 144
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem))]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(List.header), (n.elem), (one (n.elem))]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [(Node.link), (n.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test87
+[DEBUG] Hole values: [(link.Node), (n.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test87
+[DEBUG] Hole values: [(elem.Int), (n.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test86
+[DEBUG] Hole values: [Node, none, (one (n.elem))]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, Int, (one (n.elem))]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, 0, (one (n.elem))]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, 1, (one (n.elem))]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, (Node.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem))]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), some ]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, (n.elem), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, (n.elem), one ]
+[DEBUG] Hole 2, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), lone ]
+[DEBUG] Test from pass to fail: test86
+ [INFO] Fix failed, number of combinations tried: 16
+[DEBUG] Hole Node
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (link.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole (one (n.elem))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+[DEBUG] Hole (all n: (one Node) {
+(one (n.elem))
+})
+[DEBUG] Size: 5
+[DEBUG] Fragments: [all, some, no, one, lone]
+ [INFO] Expression generation time: 446208
+ [INFO] Search space: 720
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(List.header), (n.elem), (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [(Node.link), (n.elem), (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test87
+[DEBUG] Hole values: [(link.Node), (n.elem), (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test87
+[DEBUG] Hole values: [(elem.Int), (n.elem), (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test86
+[DEBUG] Hole values: [Node, none, (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, Int, (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, 0, (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, 1, (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, (Node.elem), (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem)), (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), some , (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [Node, (n.elem), no , (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, (n.elem), one , (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Hole 2, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), lone , (all n: (one Node) {
+(one (n.elem))
+})]
+[DEBUG] Test from pass to fail: test86
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem)), all ]
+[DEBUG] Hole 0, Fragment: all, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem)), some ]
+[DEBUG] Test from pass to fail: test11
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem)), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem)), one ]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [Node, (n.elem), (one (n.elem)), lone ]
+[DEBUG] Test from pass to fail: test1006
+ [INFO] Fix failed, number of combinations tried: 21
+[DEBUG] Rank Node 9:
+[DEBUG] (lone (l.header))
+[DEBUG] Affected paragraph names: [CardinalityConstraints]
+[DEBUG] Affected facts: [CardinalityConstraints]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole l
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, List, l]
+[DEBUG] Hole header
+[DEBUG] Size: 2
+[DEBUG] Fragments: [header, (none->none)]
+ [INFO] Expression generation time: 18514125
+ [INFO] Search space: 6
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, header]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [List, header]
+[DEBUG] Hole 1, Fragment: List, FailToPass: 0
+[DEBUG] Hole values: [l, header]
+[DEBUG] Hole 2, Fragment: l, FailToPass: 0
+[DEBUG] Hole values: [l, header]
+[DEBUG] Hole 0, Fragment: header, FailToPass: 0
+[DEBUG] Hole values: [l, (none->none)]
+[DEBUG] Test from pass to fail: test78
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Hole (l.header)
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Node]
+ [INFO] Expression generation time: 888834
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [Node]
+[DEBUG] Test from pass to fail: test1006
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Hole (l.header)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (l.header), (link.Node), (elem.Int)]
+[DEBUG] Hole (lone (l.header))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 25330833
+ [INFO] Search space: 28
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (lone (l.header))]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [Node, (lone (l.header))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(List.header), (lone (l.header))]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [(Node.link), (lone (l.header))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [(l.header), (lone (l.header))]
+[DEBUG] Hole 4, Fragment: (l.header), FailToPass: 0
+[DEBUG] Hole values: [(link.Node), (lone (l.header))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [(elem.Int), (lone (l.header))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(l.header), some ]
+[DEBUG] Test from pass to fail: test11
+[DEBUG] Hole values: [(l.header), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [(l.header), one ]
+[DEBUG] Test from pass to fail: test11
+[DEBUG] Hole values: [(l.header), lone ]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 11
+[DEBUG] Rank Node 10:
+[DEBUG] (one (n.elem))
+[DEBUG] Affected paragraph names: [CardinalityConstraints]
+[DEBUG] Affected facts: [CardinalityConstraints]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole n
+[DEBUG] Size: 14
+[DEBUG] Fragments: [none, Node, n, (Node-n), (List.header), (Node.link), (n.link), (link.Node), (link.n), (elem.Int), (n.(*link)), (n.(^link)), ((*link).n), ((^link).n)]
+[DEBUG] Hole elem
+[DEBUG] Size: 6
+[DEBUG] Fragments: [elem, (none->none), (link.elem), ((~link).elem), ((*link).elem), ((^link).elem)]
+ [INFO] Expression generation time: 271250
+ [INFO] Search space: 84
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, elem]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Node, elem]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n, elem]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [(Node-n), elem]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [(List.header), elem]
+[DEBUG] Hole 4, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [(Node.link), elem]
+[DEBUG] Test from pass to fail: test1009
+[DEBUG] Hole values: [(n.link), elem]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(link.Node), elem]
+[DEBUG] Test from pass to fail: test1009
+[DEBUG] Hole values: [(link.n), elem]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(elem.Int), elem]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(n.(*link)), elem]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(n.(^link)), elem]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [((*link).n), elem]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [((^link).n), elem]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n, elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [n, (link.elem)]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n, ((~link).elem)]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n, ((*link).elem)]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [n, ((^link).elem)]
+[DEBUG] Test from pass to fail: test1006
+ [INFO] Fix failed, number of combinations tried: 20
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+ [INFO] Expression generation time: 507833
+ [INFO] Search space: 6
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Int]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [0]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [1]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [(Node.elem)]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(n.elem)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole (one (n.elem))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 483083
+ [INFO] Search space: 24
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (one (n.elem))]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [Int, (one (n.elem))]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [0, (one (n.elem))]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [1, (one (n.elem))]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [(Node.elem), (one (n.elem))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [(n.elem), (one (n.elem))]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [(n.elem), some ]
+[DEBUG] Test from pass to fail: test80
+[DEBUG] Hole values: [(n.elem), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [(n.elem), one ]
+[DEBUG] Hole 2, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [(n.elem), lone ]
+[DEBUG] Test from pass to fail: test86
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Rank Node 11:
+[DEBUG] abstract sig Boolean {}
+[DEBUG] Affected paragraph names: [Boolean_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole abstract sig Boolean {}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 31750
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 12:
+[DEBUG] (all l: (one List) {
+(lone (l.header))
+})
+[DEBUG] Affected paragraph names: [CardinalityConstraints]
+[DEBUG] Affected facts: [CardinalityConstraints]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole l
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, List, l, (List-l), (header.Node)]
+[DEBUG] Hole header
+[DEBUG] Size: 3
+[DEBUG] Fragments: [header, (none->none), (header.link)]
+ [INFO] Expression generation time: 140083
+ [INFO] Search space: 15
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, header]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [List, header]
+[DEBUG] Hole 1, Fragment: List, FailToPass: 0
+[DEBUG] Hole values: [l, header]
+[DEBUG] Hole 2, Fragment: l, FailToPass: 0
+[DEBUG] Hole values: [(List-l), header]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [(header.Node), header]
+[DEBUG] Hole 4, Fragment: (header.Node), FailToPass: 0
+[DEBUG] Hole values: [l, header]
+[DEBUG] Hole 0, Fragment: header, FailToPass: 0
+[DEBUG] Hole values: [l, (none->none)]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [l, (header.link)]
+[DEBUG] Test from pass to fail: test78
+ [INFO] Fix failed, number of combinations tried: 8
+[DEBUG] Hole List
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, List, (header.Node)]
+[DEBUG] Hole (l.header)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (l.header), (link.Node), (elem.Int)]
+ [INFO] Expression generation time: 185416
+ [INFO] Search space: 21
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (l.header)]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [List, (l.header)]
+[DEBUG] Hole 1, Fragment: List, FailToPass: 0
+[DEBUG] Hole values: [(header.Node), (l.header)]
+[DEBUG] Hole 2, Fragment: (header.Node), FailToPass: 0
+[DEBUG] Hole values: [List, none]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [List, Node]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [List, (List.header)]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [List, (Node.link)]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [List, (l.header)]
+[DEBUG] Hole 4, Fragment: (l.header), FailToPass: 0
+[DEBUG] Hole values: [List, (link.Node)]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [List, (elem.Int)]
+[DEBUG] Test from pass to fail: test1006
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Hole List
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, List, (header.Node)]
+[DEBUG] Hole (l.header)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (l.header), (link.Node), (elem.Int)]
+[DEBUG] Hole (lone (l.header))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 773459
+ [INFO] Search space: 84
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (l.header), (lone (l.header))]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [List, (l.header), (lone (l.header))]
+[DEBUG] Hole 1, Fragment: List, FailToPass: 0
+[DEBUG] Hole values: [(header.Node), (l.header), (lone (l.header))]
+[DEBUG] Hole 2, Fragment: (header.Node), FailToPass: 0
+[DEBUG] Hole values: [List, none, (lone (l.header))]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [List, Node, (lone (l.header))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [List, (List.header), (lone (l.header))]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [List, (Node.link), (lone (l.header))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [List, (l.header), (lone (l.header))]
+[DEBUG] Hole 4, Fragment: (l.header), FailToPass: 0
+[DEBUG] Hole values: [List, (link.Node), (lone (l.header))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [List, (elem.Int), (lone (l.header))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [List, (l.header), some ]
+[DEBUG] Test from pass to fail: test11
+[DEBUG] Hole values: [List, (l.header), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [List, (l.header), one ]
+[DEBUG] Test from pass to fail: test11
+[DEBUG] Hole values: [List, (l.header), lone ]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 14
+[DEBUG] Hole List
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, List, (header.Node)]
+[DEBUG] Hole (l.header)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (l.header), (link.Node), (elem.Int)]
+[DEBUG] Hole (lone (l.header))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 52579375
+ [INFO] Search space: 84
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (l.header), (lone (l.header))]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [List, (l.header), (lone (l.header))]
+[DEBUG] Hole 1, Fragment: List, FailToPass: 0
+[DEBUG] Hole values: [(header.Node), (l.header), (lone (l.header))]
+[DEBUG] Hole 2, Fragment: (header.Node), FailToPass: 0
+[DEBUG] Hole values: [List, none, (lone (l.header))]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [List, Node, (lone (l.header))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [List, (List.header), (lone (l.header))]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [List, (Node.link), (lone (l.header))]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [List, (l.header), (lone (l.header))]
+[DEBUG] Hole 4, Fragment: (l.header), FailToPass: 0
+[DEBUG] Hole values: [List, (link.Node), (lone (l.header))]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [List, (elem.Int), (lone (l.header))]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [List, (l.header), some ]
+[DEBUG] Test from pass to fail: test11
+[DEBUG] Hole values: [List, (l.header), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [List, (l.header), one ]
+[DEBUG] Test from pass to fail: test11
+[DEBUG] Hole values: [List, (l.header), lone ]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 14
+[DEBUG] Hole List
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, List, (header.Node)]
+[DEBUG] Hole (l.header)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Node, (List.header), (Node.link), (l.header), (link.Node), (elem.Int)]
+[DEBUG] Hole (lone (l.header))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+[DEBUG] Hole (all l: (one List) {
+(lone (l.header))
+})
+[DEBUG] Size: 5
+[DEBUG] Fragments: [all, some, no, one, lone]
+ [INFO] Expression generation time: 2381875
+ [INFO] Search space: 420
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (l.header), (lone (l.header)), (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [List, (l.header), (lone (l.header)), (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Hole 1, Fragment: List, FailToPass: 0
+[DEBUG] Hole values: [(header.Node), (l.header), (lone (l.header)), (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Hole 2, Fragment: (header.Node), FailToPass: 0
+[DEBUG] Hole values: [List, none, (lone (l.header)), (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Test from pass to fail: test78
+[DEBUG] Hole values: [List, Node, (lone (l.header)), (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [List, (List.header), (lone (l.header)), (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Hole 2, Fragment: (List.header), FailToPass: 0
+[DEBUG] Hole values: [List, (Node.link), (lone (l.header)), (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Test from pass to fail: test83
+[DEBUG] Hole values: [List, (l.header), (lone (l.header)), (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Hole 4, Fragment: (l.header), FailToPass: 0
+[DEBUG] Hole values: [List, (link.Node), (lone (l.header)), (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Test from pass to fail: test1010
+[DEBUG] Hole values: [List, (elem.Int), (lone (l.header)), (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Test from pass to fail: test1006
+[DEBUG] Hole values: [List, (l.header), some , (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Test from pass to fail: test11
+[DEBUG] Hole values: [List, (l.header), no , (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [List, (l.header), one , (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Test from pass to fail: test11
+[DEBUG] Hole values: [List, (l.header), lone , (all l: (one List) {
+(lone (l.header))
+})]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [List, (l.header), (lone (l.header)), all ]
+[DEBUG] Hole 0, Fragment: all, FailToPass: 0
+[DEBUG] Hole values: [List, (l.header), (lone (l.header)), some ]
+[DEBUG] Hole 1, Fragment: some, FailToPass: 0
+[DEBUG] Hole values: [List, (l.header), (lone (l.header)), no ]
+[DEBUG] Test from pass to fail: test1003
+[DEBUG] Hole values: [List, (l.header), (lone (l.header)), one ]
+[DEBUG] Hole 3, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [List, (l.header), (lone (l.header)), lone ]
+[DEBUG] Test from pass to fail: test78
+ [INFO] Fix failed, number of combinations tried: 19
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig List {
+header: (set Node)
+}
+sig Node {
+link: (set Node),
+elem: (set Int)
+}
+abstract sig Boolean {}
+one sig True extends Boolean {}
+one sig False extends Boolean {}
+pred Loop[This: List] {
+((no (This.header)) || (one n: (one ((This.header).(*link))) {
+(n = (n.link))
+}))
+}
+pred Sorted[This: List] {
+(all n: (one ((This.header).(*link))) {
+((no (n.link)) || ((n.elem) <= ((n.link).elem)))
+})
+}
+pred RepOk[This: List] {
+((Loop[This]) && (Sorted[This]))
+}
+pred Count[This: List,x: Int,result: Int] {
+((RepOk[This]) && (result = (#({ n: (one ((This.header).(*link))) {
+((n.elem) = x)
+} }))))
+}
+pred Contains[This: List,x: Int,result: Boolean] {
+((result = True) <=> (some n: (one (link.Node)) {
+((n.elem) = x)
+}))
+}
+
+fact CardinalityConstraints {
+((all l: (one List) {
+(lone (l.header))
+}) && (all n: (one Node) {
+(lone (n.link))
+}) && (all n: (one Node) {
+(one (n.elem))
+}))
+}
+fact IGNORE {
+((one List) && (((List.header).(*link)) = Node))
+}
+
+
+

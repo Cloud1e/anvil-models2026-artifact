@@ -1,0 +1,3 @@
+pred UniqueElem() {
+  all n: Node | (some n.pre and some n.nxt) => n.pre.elem != n.nxt.elem
+}

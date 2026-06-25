@@ -1,0 +1,20 @@
+all n: Node | one n.link and n.^link = Node
+all n: Node | one n.link and Node in n.^link
+all n: Node | one n.link and n.*link = Node
+all n: Node | one n.link and Node in n.*link
+all n: Node | one n.link and ^link = Node -> Node
+all n: Node | one n.link and Node -> Node in ^link
+all n: Node | one n.link and all m: Node | n in m.^link
+all n: Node | one n.link and all m: Node | m in n.^link
+all n: Node | one n.link and all s: set Node | (some s and s.link in s) implies s = Node
+all n: Node | one n.link and all s: set Node | (some s and s.link = s) implies s = Node
+all n: Node | one n.link and no s: set Node | some s and s != Node and s.link in s
+all n: Node | one n.link and no s: set Node | some s and s != Node and s.link = s
+all n: Node | one n.link and #n.^link = #Node
+link in Node one -> one Node and all n: Node | n.^link = Node
+link in Node -> one Node and all n: Node | n.^link = Node
+all n: Node | one n.link and all m: Node | #m.^link = #Node
+all n: Node | one n.link and one n.~link and n.^link = Node
+all n: Node | one n.link and all m: Node | Node in m.*link
+all n: Node | one n.link and all s: set Node | (some s and s.link in s) implies #s = #Node
+all n, m: Node | one n.link and n in m.*link

@@ -1,0 +1,44 @@
+some k: Key | k.opened_by = r and k in p.owns
+Wrong
+
+p in Researcher and (some k: Key | k.opened_by = r and k in p.owns)
+Wrong
+
+p in Researcher and (some k: p.owns | k.opened_by = r)
+Wrong
+
+some k: Key | k in p.owns and k.opened_by = r and p in Researcher
+Wrong
+
+p in Researcher and some k: Key | k.opened_by = r and k in p.owns and p in Researcher
+Wrong
+
+p in Researcher and {k: Key | k.opened_by = r} in p.owns
+Wrong
+
+some k: Key | k in p.owns and k.opened_by = r and not p in Employee
+Wrong
+
+p in Researcher and some k: {k: Key | k.opened_by = r and k in p.owns}
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+p in Researcher and some k: p.owns | k.opened_by = r
+Wrong
+
+p in Researcher and some k: Key | k.opened_by = r and p.owns = p.owns ++ k->r
+Syntax Error
+SYN_MSG:
+++ can be used only between two expressions of the same arity.
+Left type = {this/Key}
+Right type = {this/Key->this/Room}
+END_SYN_MSG
+
+Total: 10
+Unique: 10
+Correct: 0
+Syntax Error: 2
+Wrong: 8

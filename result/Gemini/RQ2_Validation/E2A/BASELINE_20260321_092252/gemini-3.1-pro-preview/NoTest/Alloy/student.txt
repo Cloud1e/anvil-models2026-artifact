@@ -1,0 +1,125 @@
+Loop: no n: This.header.*link | n in n.^link
+Wrong
+
+Loop: all n: This.header.*link | n not in n.^link
+Wrong
+
+Loop: no iden & ^link
+Wrong
+
+Loop: all n: This.header.*link | n !in n.^link
+Wrong
+
+Loop: no n: This.header.*link | n in n.link.*link
+Wrong
+
+Loop: all x: This.header.*link | x not in x.^link
+Wrong
+
+Loop: no n: This.header.*link | n in n.^link & Node
+Wrong
+
+Loop: all n: This.header.*link | no n.^link & n
+Wrong
+
+Loop: no ^link & iden
+Wrong
+
+Loop: all n: This.header.*link | n not in n.link.^link
+Wrong
+
+Sorted: all n: This.header.*link | some n.link implies n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | all m: n.link | n.elem <= m.elem
+Correct
+
+Sorted: all n: This.header.*link, m: n.link | n.elem <= m.elem
+Correct
+
+Sorted: all n1: This.header.*link, n2: n1.link | n1.elem <= n2.elem
+Correct
+
+Sorted: all x: This.header.*link | all y: x.link | x.elem <= y.elem
+Correct
+
+Sorted: all a: This.header.*link, b: a.link | a.elem <= b.elem
+Correct
+
+Sorted: all x1: This.header.*link, x2: x1.link | x1.elem <= x2.elem
+Correct
+
+Sorted: all n: This.header.*link | no n.link or n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | n.elem <= n.link.elem or no n.link
+Correct
+
+Sorted: all x, y: This.header.*link | y in x.link implies x.elem <= y.elem
+Correct
+
+Count: result = #{n: This.header.*link | n.elem = x}
+Wrong
+
+Count: result = #(This.header.*link & {n: Node | n.elem = x})
+Wrong
+
+Count: result = #{m: This.header.*link | m.elem = x}
+Wrong
+
+Count: result = #{n: This.header.*link | x = n.elem}
+Wrong
+
+Count: #{n: This.header.*link | n.elem = x} = result
+Wrong
+
+Count: result = #{a: This.header.*link | a.elem = x}
+Wrong
+
+Count: result = #{b: This.header.*link | b.elem = x}
+Wrong
+
+Count: result = #{y: This.header.*link | y.elem = x}
+Wrong
+
+Count: result = #{n: Node | n in This.header.*link and n.elem = x}
+Wrong
+
+Count: #{m: Node | m in This.header.*link and m.elem = x} = result
+Wrong
+
+Contains: x in This.header.*link.elem <=> result = True
+Wrong
+
+Contains: result = True <=> x in This.header.*link.elem
+Wrong
+
+Contains: (some n: This.header.*link | n.elem = x) <=> result = True
+Wrong
+
+Contains: result = True <=> (some n: This.header.*link | n.elem = x)
+Wrong
+
+Contains: (x in This.header.*link.elem implies result = True) and (x not in This.header.*link.elem implies result = False)
+Wrong
+
+Contains: result = True implies x in This.header.*link.elem else x not in This.header.*link.elem
+Wrong
+
+Contains: (x in This.header.*link.elem) <=> (result = True)
+Wrong
+
+Contains: (result = True) <=> (x in This.header.*link.elem)
+Wrong
+
+Contains: result = False <=> x not in This.header.*link.elem
+Wrong
+
+Contains: x not in This.header.*link.elem <=> result = False
+Wrong
+
+Total: 40
+Unique: 40
+Correct: 10
+Syntax Error: 0
+Wrong: 30

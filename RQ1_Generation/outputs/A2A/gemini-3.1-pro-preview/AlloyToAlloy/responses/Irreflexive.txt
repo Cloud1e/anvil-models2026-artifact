@@ -1,0 +1,20 @@
+no r & iden
+r & iden = none
+iden & r = none
+no iden & r
+r - iden = r
+iden - r = iden
+r in S->S - iden
+iden in S->S - r
+all s: S | s->s not in r
+all s: S | s not in s.r
+all s: S | s not in r.s
+no s: S | s->s in r
+no s: S | s in s.r
+no s: S | s in r.s
+no s, t: S | s->t in r and s = t
+all s, t: S | s = t implies s->t not in r
+all s: S | no s.r & s
+all s: S | no r.s & s
+all s: S | s.r - s = s.r
+all s: S | r.s - s = r.s

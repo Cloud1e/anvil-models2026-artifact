@@ -1,0 +1,10 @@
+some k: Key | k.opened_by = r and k in p.owns
+p in Researcher and (some k: Key | k.opened_by = r and k in p.owns)
+p in Researcher and (some k: p.owns | k.opened_by = r)
+some k: Key | k in p.owns and k.opened_by = r and p in Researcher
+p in Researcher and some k: Key | k.opened_by = r and k in p.owns and p in Researcher
+p in Researcher and {k: Key | k.opened_by = r} in p.owns
+some k: Key | k in p.owns and k.opened_by = r and not p in Employee
+p in Researcher and some k: {k: Key | k.opened_by = r and k in p.owns}
+p in Researcher and some k: p.owns | k.opened_by = r
+p in Researcher and some k: Key | k.opened_by = r and p.owns = p.owns ++ k->r

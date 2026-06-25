@@ -1,0 +1,59 @@
+pred Balanced() {
+  all n1, n2: Node {
+    lone (#(n1.left + n1.right) - #(n2.left + n2.right))
+  }
+}
+
+pred Balanced() {
+  all n1: Node, n2: Node {
+    lone (#n1.(left+right) - #n2.(left+right))
+  }
+}
+
+pred Balanced() {
+  all n2, n1: Node {
+    lone (#n1.(left+right) - #n2.(left+right))
+  }
+}
+
+pred Balanced() {
+  all n1, n2: Node {
+    let d = #n1.(left+right) - #n2.(left+right) | lone d
+  }
+}
+
+pred Balanced() {
+  no n1, n2: Node {
+    not lone (#n1.(left+right) - #n2.(left+right))
+  }
+}
+
+pred Balanced() {
+  all n1: Node {
+    all n2: Node {
+      lone (#n1.(left+right) - #n2.(left+right))
+    }
+  }
+}
+
+pred Balanced() {
+  all a, b: Node {
+    lone (#a.(left+right) - #b.(left+right))
+  }
+}
+
+pred Balanced() {
+  all n1, n2: Node {
+    lone {i: Int | i = #n1.(left+right) - #n2.(left+right)}
+  }
+}
+
+pred Balanced() {
+  all n1, n2: Node | lone (#n1.left + #n1.right - #n2.(left+right))
+}
+
+pred Balanced() {
+  all n1, n2: Node {
+    lone (#n1.(left+right) - (#n2.left + #n2.right))
+  }
+}

@@ -1,0 +1,6 @@
+pred Contains(This: List, x: Int, result: Boolean) {
+  RepOk[This]
+  not (x !in This.header.*link.elem) or result = False
+  x in This.header.*link.elem or result = False
+  result = True or result = False
+}

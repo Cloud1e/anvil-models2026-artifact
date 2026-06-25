@@ -1,0 +1,152 @@
+Contains: (some n: This.header.*link | n.elem = x) => result = True else result = False
+Wrong
+
+Contains: result = True <=> (some n: This.header.*link | n.elem = x) and result = False <=> (no n: This.header.*link | n.elem = x)
+Wrong
+
+Contains: (result = True and some n: This.header.*link | n.elem = x) or (result = False and no n: This.header.*link | n.elem = x)
+Wrong
+
+Contains: result = (some n: This.header.*link | n.elem = x) => True else False
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Boolean}
+Right type = {PrimitiveBoolean}
+END_SYN_MSG
+
+Contains: (all n: This.header.*link | n.elem != x) => result = False else result = True
+Wrong
+
+Contains: (some n: This.header.*link | n.elem = x) and result = True or (all n: This.header.*link | n.elem != x) and result = False
+Wrong
+
+Contains: {result = True} <=> {some n: This.header.*link | n.elem = x}
+Wrong
+
+Contains: {result = False} <=> {no n: This.header.*link | n.elem = x}
+Wrong
+
+Contains: result = (some n: This.header.*link | n.elem = x) ? True : False
+Syntax Error
+SYN_MSG:
+Syntax error at the ? character.
+END_SYN_MSG
+
+Contains: result = True implies some n: This.header.*link | n.elem = x else no n: This.header.*link | n.elem = x
+Syntax Error
+SYN_MSG:
+There are 31 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { } ~ 
+END_SYN_MSG
+
+Count: result = #{n: This.header.*link | n.elem = x}
+Wrong
+
+Count: #( {n: This.header.*link | n.elem = x} ) = result
+Wrong
+
+Count: result = count[ {n: This.header.*link | n.elem = x} ]
+Syntax Error
+SYN_MSG:
+The name "count" cannot be found.
+END_SYN_MSG
+
+Count: result = # ( (This.header.*link) :> x & elem.x )
+Wrong
+
+Count: result = sum n: This.header.*link | (n.elem = x => 1 else 0)
+Syntax Error
+SYN_MSG:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+END_SYN_MSG
+
+Count: result = #(This.header.*link) - #( {n: This.header.*link | n.elem != x} )
+Wrong
+
+Count: {n: This.header.*link | n.elem = x}.elem = x and result = #( {n: This.header.*link | n.elem = x} )
+Wrong
+
+Count: result = # ( (This.header.*link) & elem.x )
+Wrong
+
+Count: result = (some n: This.header.*link | n.elem = x) => #{n: This.header.*link | n.elem = x} else result = 0
+Syntax Error
+SYN_MSG:
+The then-clause and the else-clause must match.
+The then-clause has type: {Int}
+and the else-clause has type: {PrimitiveBoolean}
+END_SYN_MSG
+
+Count: result = #(This.header.*link & elem.x)
+Wrong
+
+Sorted: all n: This.header.*link | (some n.link) => n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | no n.link or n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | (n.link != none) => n.elem <= n.link.elem
+Correct
+
+Sorted: no n: This.header.*link | some n.link and n.elem > n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | (all next: n.link | n.elem <= next.elem)
+Correct
+
+Sorted: all n, m: This.header.*link | m in n.link => n.elem <= m.elem
+Correct
+
+Sorted: all n: This.header.*link | n.elem <= (n.link).elem or no n.link
+Correct
+
+Sorted: all n: (This.header.*link - (This.header.*link).link) | n.elem <= n.link.elem implies true else true
+Syntax Error
+SYN_MSG:
+The name "true" cannot be found.
+END_SYN_MSG
+
+Sorted: all n: This.header.*link | (n.link != none) implies n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | (n.link in Node) => n.elem <= n.link.elem
+Wrong
+
+Loop: no This.header or (all n: This.header.*link | lone n.link) and (all n: This.header.*link | n.link != n)
+Wrong
+
+Loop: no This.header or (all n: This.header.*link | one n.link => n != n.link)
+Wrong
+
+Loop: no This.header or (all n: This.header.*link | n.link != n)
+Wrong
+
+Loop: no This.header or (all n: This.header.*link | n not in n.link)
+Wrong
+
+Loop: no This.header or no {n: This.header.*link | n = n.link}
+Wrong
+
+Loop: no This.header or (all n: This.header.*link | n.link in (This.header.*link - n))
+Wrong
+
+Loop: no This.header or (all n: This.header.*link | n !in n.^link)
+Wrong
+
+Loop: no This.header or (all n: This.header.*link | no n.^link & n)
+Wrong
+
+Loop: no This.header or (all n: This.header.*link | (n.link = n) => none = n)
+Wrong
+
+Loop: no This.header or (all n: This.header.*link | lone n.link) and (all n: This.header.*link | n.link != n) -- aug10
+Wrong
+
+Total: 40
+Unique: 40
+Correct: 8
+Syntax Error: 7
+Wrong: 25

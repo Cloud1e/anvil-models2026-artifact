@@ -1,0 +1,65 @@
+all s: S | #s.r = 1
+Correct
+
+all s: S | lone s.r and some s.r
+Correct
+
+all s: S | r[s] in S and no (r[s] & (S - r[s])) and some r[s]
+Wrong
+
+all s: S | one x: S | x in s.r
+Correct
+
+all s: S | (some s.r) and (all x, y: s.r | x = y)
+Correct
+
+all s: S | r[s] != none and (all x, y: r[s] | x = y)
+Correct
+
+all s: S | r.s is not the right way, s.r is one
+Syntax Error
+
+all s: S | lone s.r and (all s': S | some s.r)
+Correct
+
+all s: S | r[s] in S and #r[s] = 1
+Correct
+
+all s: S | some x: S | s->x in r and all y: S | s->y in r implies y = x
+Correct
+
+all s: S | {x: S | s->x in r} = {x: S | x = (s.r)} and #s.r = 1
+Correct
+
+all s: S | (r.univ & s) in S and one (s.r)
+Correct
+
+all s: S | one x: S | s.r = x
+Correct
+
+all s: S | r[s] in S and (all x: s.r | all y: s.r | x = y) and some s.r
+Correct
+
+all s: S | (s.r in S) and (all x: S | x in s.r iff x = (s.r)) and some s.r
+Correct
+
+all s: S | one (s.r :> S)
+Correct
+
+all s: S | (r.s' where s'=s) has cardinality 1
+Syntax Error
+
+all s: S | #(s.r) = 1
+Correct
+
+all s: S | some x: S | s.r = x and no (s.r - x)
+Correct
+
+all s: S | lone x: S | x in s.r and some x: S | x in s.r
+Wrong
+
+Total: 20
+Unique: 20
+Correct: 16
+Syntax Error: 2
+Wrong: 2

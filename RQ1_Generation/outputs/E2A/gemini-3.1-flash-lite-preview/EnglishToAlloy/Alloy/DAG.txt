@@ -1,0 +1,65 @@
+no n: Node | n in n.^link
+Correct
+
+all n: Node | n not in n.^link
+Correct
+
+all n: Node | no n.^link & n
+Correct
+
+all n: Node | n not in link.n.^~link
+Correct
+
+all n: Node | n.^link & n = none
+Correct
+
+all n: Node | n not in n.^link and all n1: Node | n1 in n.^link implies n not in n1.^link
+Correct
+
+all n: Node | n not in n.^(link)
+Correct
+
+all n: Node | lone n.^link & n
+Wrong
+
+all n: Node | n not in n.^link and all m: n.^link | m not in m.^link
+Correct
+
+all n: Node | not (n in n.^link)
+Correct
+
+all n: Node | all disj m, k: n.^link | m != k
+Wrong
+
+no iden & ^link
+Correct
+
+all n: Node | n not in ^link.n
+Correct
+
+all n: Node | no n.^link & n.~^link
+Correct
+
+all n: Node | n.^link & n.~^link = none
+Correct
+
+all n: Node | n not in link.n.^link
+Wrong
+
+closure[link] & iden = iden
+Syntax Error
+
+all n: Node | n not in link[n] and (all m: n.^link | m not in link[m] and n not in m.^link)
+Correct
+
+all n: Node | all m: n.^link | n not in m.^link
+Correct
+
+all n: Node | no (n.^link & n)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 16
+Syntax Error: 1
+Wrong: 3

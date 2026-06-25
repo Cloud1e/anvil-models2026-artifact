@@ -1,0 +1,51 @@
+[Tue Jun 23 12:10:45 CDT 2026] STEP0 ground-truth gate
+root_candidate gemini-3.1-pro-preview: <REPOSITORY_ROOT>/result/Gemini/archive_thesis_migration/_LEGACY_MIXED/Gemini/RQ3_Repair/FaultyRewrite/gemini-3.1-pro-preview/ARepair_FaultyRewrite/classification.json
+artifact_candidate gemini-3.1-pro-preview: result/Gemini/RQ3_Repair/FaultyRewrite/gemini-3.1-pro-preview/ARepair_FaultyRewrite/classification.json
+mtime gemini-3.1-pro-preview: root=2026-03-26T14:44:41 artifact=2026-06-23T02:22:16
+STEP0_RESTORED artifact classification from clean root for gemini-3.1-pro-preview
+STEP0_SNAPSHOT gemini-3.1-pro-preview: logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/rq3_ground_truth/gemini-3.1-pro-preview__classification_ground_truth.json
+root_candidate gemini-3-flash-preview: <REPOSITORY_ROOT>/result/Gemini/RQ3_Repair/FaultyRewrite/gemini-3-flash-preview/ARepair_FaultyRewrite/classification.json
+artifact_candidate gemini-3-flash-preview: result/Gemini/RQ3_Repair/FaultyRewrite/gemini-3-flash-preview/ARepair_FaultyRewrite/classification.json
+mtime gemini-3-flash-preview: root=2026-03-26T05:41:45 artifact=2026-06-23T05:53:35
+STEP0_RESTORED artifact classification from clean root for gemini-3-flash-preview
+STEP0_SNAPSHOT gemini-3-flash-preview: logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/rq3_ground_truth/gemini-3-flash-preview__classification_ground_truth.json
+root_candidate gemini-3.1-flash-lite-preview: <REPOSITORY_ROOT>/result/Gemini/RQ3_Repair/FaultyRewrite/gemini-3.1-flash-lite-preview/ARepair_FaultyRewrite/classification.json
+artifact_candidate gemini-3.1-flash-lite-preview: result/Gemini/RQ3_Repair/FaultyRewrite/gemini-3.1-flash-lite-preview/ARepair_FaultyRewrite/classification.json
+mtime gemini-3.1-flash-lite-preview: root=2026-03-26T02:48:35 artifact=2026-06-23T09:38:36
+STEP0_RESTORED artifact classification from clean root for gemini-3.1-flash-lite-preview
+STEP0_SNAPSHOT gemini-3.1-flash-lite-preview: logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/rq3_ground_truth/gemini-3.1-flash-lite-preview__classification_ground_truth.json
+STEP0_PASS ground truth clean and artifact snapshots ready
+[Tue Jun 23 12:10:45 CDT 2026] STEP1 verify RQ3 classifier primary source
+STEP1_PASS classify_faulty_models.py uses check-one primary with diagnostics
+[Tue Jun 23 12:10:45 CDT 2026] STEP2 run classification for gate
+[Tue Jun 23 12:10:45 CDT 2026] START STEP2_CLASSIFY_gemini-3.1-pro-preview
+[Tue Jun 23 12:13:17 CDT 2026] END STEP2_CLASSIFY_gemini-3.1-pro-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step2_classify_gemini-3.1-pro-preview.log
+[Tue Jun 23 12:13:17 CDT 2026] START STEP2_CLASSIFY_gemini-3-flash-preview
+[Tue Jun 23 12:16:03 CDT 2026] END STEP2_CLASSIFY_gemini-3-flash-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step2_classify_gemini-3-flash-preview.log
+[Tue Jun 23 12:16:03 CDT 2026] START STEP2_CLASSIFY_gemini-3.1-flash-lite-preview
+[Tue Jun 23 12:18:30 CDT 2026] END STEP2_CLASSIFY_gemini-3.1-flash-lite-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step2_classify_gemini-3.1-flash-lite-preview.log
+STEP2_PASS 21-case gate matched=21/21
+[Tue Jun 23 12:18:30 CDT 2026] STEP3 full classification comparison against internal snapshots
+STEP3_RESULT full_classification matched=429/429 mismatches=0 csv=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step3_full_classification_comparison.csv
+[Tue Jun 23 12:18:30 CDT 2026] STEP4 rerun RQ3 repair with fixed classification
+[Tue Jun 23 12:18:30 CDT 2026] START STEP4_RQ3_REPAIR_gemini-3.1-pro-preview
+[Tue Jun 23 15:39:40 CDT 2026] END STEP4_RQ3_REPAIR_gemini-3.1-pro-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step4_rq3_repair_gemini-3.1-pro-preview.log
+[Tue Jun 23 15:39:40 CDT 2026] START STEP4_RQ3_REPAIR_gemini-3-flash-preview
+[Tue Jun 23 19:30:47 CDT 2026] END STEP4_RQ3_REPAIR_gemini-3-flash-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step4_rq3_repair_gemini-3-flash-preview.log
+[Tue Jun 23 19:30:47 CDT 2026] START STEP4_RQ3_REPAIR_gemini-3.1-flash-lite-preview
+[Tue Jun 23 22:09:50 CDT 2026] END STEP4_RQ3_REPAIR_gemini-3.1-flash-lite-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step4_rq3_repair_gemini-3.1-flash-lite-preview.log
+STEP4_COUNTS gemini-3.1-pro-preview: original_sem=13 llm_sem=129 orig_success=6 llm_success=63
+STEP4_COUNTS gemini-3-flash-preview: original_sem=13 llm_sem=125 orig_success=6 llm_success=59
+STEP4_COUNTS gemini-3.1-flash-lite-preview: original_sem=13 llm_sem=115 orig_success=6 llm_success=62
+[Tue Jun 23 22:09:51 CDT 2026] STEP5 RQ2 Docker A/B for dll_ConsistentPreAndNxt_5
+[Tue Jun 23 22:09:51 CDT 2026] START STEP5_RQ2_AB_CURRENT
+[Tue Jun 23 22:11:12 CDT 2026] END STEP5_RQ2_AB_CURRENT exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/rq2_ab_dll_ConsistentPreAndNxt_5/current.log
+[Tue Jun 23 22:11:12 CDT 2026] START STEP5_RQ2_AB_TOP3
+[Tue Jun 23 22:12:22 CDT 2026] END STEP5_RQ2_AB_TOP3 exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/rq2_ab_dll_ConsistentPreAndNxt_5/top3.log
+STEP5_RESULT current=SUCCESS top3=SUCCESS
+STEP5_DECISION keep_top3_logging=false reason=both_success_run_to_run_or_arepair_behavior
+[Tue Jun 23 22:12:22 CDT 2026] STEP5_APPLIED restored current no-top3 Patcher.java
+[Tue Jun 23 22:12:22 CDT 2026] STEP6 regenerate paper/artifact diff
+[Tue Jun 23 22:12:22 CDT 2026] START STEP6_DIFF_COMPARE
+[Tue Jun 23 22:12:22 CDT 2026] END STEP6_DIFF_COMPARE exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step6_compare_paper_artifact.log
+[Tue Jun 23 22:12:22 CDT 2026] ALL_DONE marker=logs/orchestration/RQ3_ORACLE_FIX_RQ2_AB_DONE_20260623_121045.marker

@@ -1,0 +1,142 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+((s in ((a.associated_with).assistant_for)) && ((s in Student) => (s !in (a.assigned_to))))
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 8878848671
+ [INFO] Expression generation time: 185680167
+ [INFO] Search space: 36
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 98788875
+ [INFO] Search space: 3750
+ [INFO] Fix failed, number of combinations tried: 25
+ [INFO] Expression generation time: 572641417
+ [INFO] Search space: 268435456
+ [INFO] Fix failed, number of combinations tried: 104
+ [INFO] Expression generation time: 360572251
+ [INFO] Search space: 2147483648
+ [INFO] Fix failed, number of combinations tried: 110
+ [INFO] Expression generation time: 6035834
+ [INFO] Search space: 4294967296
+ [INFO] Fix failed, number of combinations tried: 112
+ [INFO] Expression generation time: 1923417
+ [INFO] Search space: 21
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 1031917
+ [INFO] Search space: 40
+ [INFO] Fix succeeded, number of combinations tried: 13
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+((s in ((a.associated_with).(assistant_for+instructor_of))) && ((s in Student) => (s !in (a.assigned_to))))
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] All tests pass.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+((s in ((a.associated_with).(assistant_for+instructor_of))) && ((s in Student) => (s !in (a.assigned_to))))
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+((s in ((a.associated_with).(assistant_for + instructor_of))) && ((s in Student) => (s !in (a.assigned_to))))
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment

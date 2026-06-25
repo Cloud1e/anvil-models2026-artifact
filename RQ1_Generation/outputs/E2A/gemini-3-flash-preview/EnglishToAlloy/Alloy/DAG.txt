@@ -1,0 +1,65 @@
+no n: Node | n in n.^link
+Correct
+
+all n: Node | n !in n.^link
+Correct
+
+no iden & ^link
+Correct
+
+^link & iden = none
+Syntax Error
+
+all n: Node | no (n & n.^link)
+Correct
+
+all n: Node | n.^link & n = none
+Correct
+
+all n: Node | n !in n.link.*link
+Correct
+
+no n: Node | n in n.link.*link
+Correct
+
+all n: Node | n -> n not in ^link
+Correct
+
+no n: Node | n -> n in ^link
+Correct
+
+all n: Node | disj[n, n.^link]
+Correct
+
+all n: Node | n.^link in Node - n
+Correct
+
+all n: Node | n in Node - n.^link
+Correct
+
+all n: Node | no m: n.^link | m = n
+Correct
+
+no n: Node | some (n & n.^link)
+Correct
+
+all n: Node | no m: Node | m = n and n in m.^link
+Correct
+
+all n: Node | #(n.^link & n) = 0
+Correct
+
+no n: Node | some m: n.^link | m = n
+Correct
+
+all n: Node | not n in n.^link
+Correct
+
+all n: Node | n.^link & n in none
+Correct
+
+Total: 20
+Unique: 20
+Correct: 19
+Syntax Error: 1
+Wrong: 0

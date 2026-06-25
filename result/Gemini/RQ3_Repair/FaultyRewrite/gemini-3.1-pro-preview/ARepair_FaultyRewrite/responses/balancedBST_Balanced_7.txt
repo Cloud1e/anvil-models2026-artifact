@@ -1,0 +1,7 @@
+pred Balanced() {
+  all n1, n2: Node {
+    let c1 = #n1.(left+right), c2 = #n2.(left+right) {
+      lone (c1 - c2)
+    }
+  }
+}

@@ -1,0 +1,40 @@
+Contains: (some n: This.header.*link | n.elem = x) => result = True else result = False
+Contains: result = True <=> (some n: This.header.*link | n.elem = x) and result = False <=> (no n: This.header.*link | n.elem = x)
+Contains: (result = True and some n: This.header.*link | n.elem = x) or (result = False and no n: This.header.*link | n.elem = x)
+Contains: result = (some n: This.header.*link | n.elem = x) => True else False
+Contains: (all n: This.header.*link | n.elem != x) => result = False else result = True
+Contains: (some n: This.header.*link | n.elem = x) and result = True or (all n: This.header.*link | n.elem != x) and result = False
+Contains: {result = True} <=> {some n: This.header.*link | n.elem = x}
+Contains: {result = False} <=> {no n: This.header.*link | n.elem = x}
+Contains: result = (some n: This.header.*link | n.elem = x) ? True : False
+Contains: result = True implies some n: This.header.*link | n.elem = x else no n: This.header.*link | n.elem = x
+Count: result = #{n: This.header.*link | n.elem = x}
+Count: #( {n: This.header.*link | n.elem = x} ) = result
+Count: result = count[ {n: This.header.*link | n.elem = x} ]
+Count: result = # ( (This.header.*link) :> x & elem.x )
+Count: result = sum n: This.header.*link | (n.elem = x => 1 else 0)
+Count: result = #(This.header.*link) - #( {n: This.header.*link | n.elem != x} )
+Count: {n: This.header.*link | n.elem = x}.elem = x and result = #( {n: This.header.*link | n.elem = x} )
+Count: result = # ( (This.header.*link) & elem.x )
+Count: result = (some n: This.header.*link | n.elem = x) => #{n: This.header.*link | n.elem = x} else result = 0
+Count: result = #(This.header.*link & elem.x)
+Sorted: all n: This.header.*link | (some n.link) => n.elem <= n.link.elem
+Sorted: all n: This.header.*link | no n.link or n.elem <= n.link.elem
+Sorted: all n: This.header.*link | (n.link != none) => n.elem <= n.link.elem
+Sorted: no n: This.header.*link | some n.link and n.elem > n.link.elem
+Sorted: all n: This.header.*link | (all next: n.link | n.elem <= next.elem)
+Sorted: all n, m: This.header.*link | m in n.link => n.elem <= m.elem
+Sorted: all n: This.header.*link | n.elem <= (n.link).elem or no n.link
+Sorted: all n: (This.header.*link - (This.header.*link).link) | n.elem <= n.link.elem implies true else true
+Sorted: all n: This.header.*link | (n.link != none) implies n.elem <= n.link.elem
+Sorted: all n: This.header.*link | (n.link in Node) => n.elem <= n.link.elem
+Loop: no This.header or (all n: This.header.*link | lone n.link) and (all n: This.header.*link | n.link != n)
+Loop: no This.header or (all n: This.header.*link | one n.link => n != n.link)
+Loop: no This.header or (all n: This.header.*link | n.link != n)
+Loop: no This.header or (all n: This.header.*link | n not in n.link)
+Loop: no This.header or no {n: This.header.*link | n = n.link}
+Loop: no This.header or (all n: This.header.*link | n.link in (This.header.*link - n))
+Loop: no This.header or (all n: This.header.*link | n !in n.^link)
+Loop: no This.header or (all n: This.header.*link | no n.^link & n)
+Loop: no This.header or (all n: This.header.*link | (n.link = n) => none = n)
+Loop: no This.header or (all n: This.header.*link | lone n.link) and (all n: This.header.*link | n.link != n) -- aug10

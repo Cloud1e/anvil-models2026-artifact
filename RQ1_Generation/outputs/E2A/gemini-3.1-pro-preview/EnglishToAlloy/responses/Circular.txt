@@ -1,0 +1,20 @@
+all n: Node | one n.link and Node in n.^link
+all n: Node | one n.link and n.^link = Node
+all n: Node | one n.link and Node = n.^link
+all n: Node | one n.link and #n.^link = #Node
+all x: Node | one x.link and Node in x.^link
+all x: Node | one x.link and x.^link = Node
+all x: Node | one x.link and Node = x.^link
+all x: Node | one x.link and #x.^link = #Node
+all a: Node | one a.link and Node in a.^link
+all a: Node | one a.link and a.^link = Node
+#link = #Node and all n: Node | Node in n.^link
+#link = #Node and all n: Node | n.^link = Node
+#link = #Node and all n: Node | Node = n.^link
+#link = #Node and all x: Node | Node in x.^link
+#link = #Node and all x: Node | x.^link = Node
+#link = #Node and all x: Node | Node = x.^link
+#link = #Node and all a: Node | Node in a.^link
+#link = #Node and all a: Node | a.^link = Node
+#link = #Node and all n1, n2: Node | n1 in n2.^link
+#link = #Node and all x, y: Node | x in y.^link

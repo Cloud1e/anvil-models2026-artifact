@@ -1,0 +1,41 @@
+pred UniqueElem() {
+  all n: Node | no n.pre.elem & n.nxt.elem
+}
+
+pred UniqueElem() {
+  all n: Node | (n.pre.elem & n.nxt.elem) = none
+}
+
+pred UniqueElem() {
+  no n: Node | some n.pre.elem & n.nxt.elem
+}
+
+pred UniqueElem() {
+  all n: Node | not (some n.pre.elem & n.nxt.elem)
+}
+
+pred UniqueElem() {
+  all n: Node | (n.pre.elem & n.nxt.elem) in none
+}
+
+pred UniqueElem() {
+  all n: Node | (n.pre.elem & n.nxt.elem) = (none & none)
+}
+
+pred UniqueElem() {
+  all n: Node | n.pre.elem & n.nxt.elem = none
+}
+
+pred UniqueElem() {
+  all n: Node | disj[n.pre.elem, n.nxt.elem] implies (some n.pre.elem implies some n.nxt.elem implies n.pre.elem != n.nxt.elem) else (some n.pre.elem implies n.pre.elem != n.pre.elem) else true
+  // Note: Standard set semantics used below for brevity
+  all n: Node | lone x: n.pre.elem | x not in n.nxt.elem
+}
+
+pred UniqueElem() {
+  all n: Node | all x: n.pre.elem | x !in n.nxt.elem
+}
+
+pred UniqueElem() {
+  all n: Node | all x: n.pre.elem, y: n.nxt.elem | x != y
+}

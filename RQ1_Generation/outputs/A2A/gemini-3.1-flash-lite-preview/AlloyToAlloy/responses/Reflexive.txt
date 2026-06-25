@@ -1,0 +1,20 @@
+all s: S | s in s.r
+all s: S | r[s] = s + r[s]
+all s: S | s.r = s + s.r
+S <: iden in r
+iden & (S -> S) in r
+all s: S | some s.r & s
+all s: S | s in {x: S | x in s.r}
+all s: S | not (s not in s.r)
+all s: S | no s - s.r
+all s: S | s.r = s.r + s
+all s: S | r.s = s + r.s
+all s: S | s in r.s
+all s: S | (s->s) in r
+all s: S | (s->s) & r = s->s
+all s: S | r[s] + s = r[s]
+all s: S | s in s.^r
+all s: S | (s->s) in ^r
+all s: S | r.s = r.s + s
+all s: S | s.r - s = s.r \ s
+all s: S | (s->s) in *r

@@ -1,0 +1,37 @@
+\begin{table}[ht]
+\centering
+\caption{WithTest vs NoTest (prompt with/without test suite) by Model-Predicate}
+\label{tab_with_vs_no_test_gemini31propreview}
+
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{Model-Predicate} & \multicolumn{3}{c}{\textbf{WithTest}} & \multicolumn{3}{c}{\textbf{NoTest}} \\
+ & Cor & Syn & Sem & Cor & Syn & Sem \\
+\midrule
+arr-NoConflict & 10 & 0 & 0 & 9 & 0 & 1 \\
+balancedBST-Balanced & 5 & 0 & 5 & 8 & 0 & 2 \\
+balancedBST-HasAtMostOneChild & 10 & 0 & 0 & 9 & 0 & 1 \\
+balancedBST-Sorted & 10 & 0 & 0 & 10 & 0 & 0 \\
+bempl-CanEnter & 0 & 0 & 10 & 0 & 0 & 10 \\
+cd-Acyclic & 8 & 2 & 0 & 10 & 0 & 0 \\
+cd-AllExtObject & 10 & 0 & 0 & 10 & 0 & 0 \\
+cd-ClassHierarchy & 8 & 2 & 0 & 5 & 5 & 0 \\
+cd-ObjectNoExt & 10 & 0 & 0 & 10 & 0 & 0 \\
+dll-ConsistentPreAndNxt & 10 & 0 & 0 & 10 & 0 & 0 \\
+dll-Sorted & 10 & 0 & 0 & 10 & 0 & 0 \\
+dll-UniqueElem & 10 & 0 & 0 & 10 & 0 & 0 \\
+farmer-crossRiver & 0 & 2 & 8 & 0 & 6 & 4 \\
+farmer-solvePuzzle & 10 & 0 & 0 & 10 & 0 & 0 \\
+grade-PolicyAllowsGrading & 10 & 0 & 0 & 2 & 0 & 8 \\
+other-CanEnter & 10 & 0 & 0 & 0 & 0 & 10 \\
+student-Contains & 0 & 0 & 10 & 0 & 0 & 10 \\
+student-Count & 0 & 0 & 10 & 0 & 0 & 10 \\
+student-Loop & 10 & 0 & 0 & 0 & 0 & 10 \\
+student-Sorted & 10 & 0 & 0 & 10 & 0 & 0 \\
+\midrule
+\textbf{Total} & \textbf{151} & \textbf{6} & \textbf{43} & \textbf{123} & \textbf{11} & \textbf{66} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

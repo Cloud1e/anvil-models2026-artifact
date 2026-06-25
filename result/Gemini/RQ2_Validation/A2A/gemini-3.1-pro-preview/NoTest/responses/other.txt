@@ -1,0 +1,10 @@
+p.member_of in r.located_in
+no (p.member_of - r.located_in)
+p.member_of - r.located_in = none
+p.member_of & r.located_in = p.member_of
+p.member_of + r.located_in = r.located_in
+all x: p.member_of | x in r.located_in
+all x: Group | x in p.member_of implies x in r.located_in
+not some (p.member_of - r.located_in)
+none = p.member_of - r.located_in
+p.member_of in r.located_in & Group

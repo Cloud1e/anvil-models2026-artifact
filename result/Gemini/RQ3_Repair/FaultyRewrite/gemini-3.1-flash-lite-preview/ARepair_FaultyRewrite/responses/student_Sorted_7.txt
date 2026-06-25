@@ -1,0 +1,3 @@
+pred Sorted(This: List) {
+  let nodes = This.header.*link | all n: nodes | n.elem <= n.link.elem
+}

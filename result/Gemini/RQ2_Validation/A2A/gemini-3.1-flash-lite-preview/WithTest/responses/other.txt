@@ -1,0 +1,10 @@
+CanEnter: p.member_of.~(r.located_in) = p.member_of
+CanEnter: no p.member_of - r.located_in
+CanEnter: r.located_in & p.member_of = p.member_of
+CanEnter: p.member_of & (Group - r.located_in) = none
+CanEnter: not (some p.member_of - r.located_in)
+CanEnter: r.located_in in (Group - (p.member_of.~(iden))) implies (some p.member_of) else (no p.member_of - r.located_in)
+CanEnter: p.member_of.located_in.~(r) = p.member_of
+CanEnter: p.member_of.~(r.located_in) = p.member_of -- aug8
+CanEnter: no p.member_of - r.located_in -- aug9
+CanEnter: r.located_in & p.member_of = p.member_of -- aug10

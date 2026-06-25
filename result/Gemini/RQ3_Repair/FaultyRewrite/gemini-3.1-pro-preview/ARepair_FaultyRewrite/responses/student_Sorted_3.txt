@@ -1,0 +1,3 @@
+pred Sorted(This: List) {
+    not (some n: This.header.*link | not (n.elem <= n.link.elem))
+}

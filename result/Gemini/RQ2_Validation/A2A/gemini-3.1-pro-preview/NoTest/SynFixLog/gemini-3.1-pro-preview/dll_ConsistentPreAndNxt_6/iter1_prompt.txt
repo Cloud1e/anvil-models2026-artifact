@@ -1,0 +1,66 @@
+You are fixing Alloy specification syntax errors. The user will provide the full Alloy module containing exactly one predicate that is currently broken, and the parser error message.
+
+Your task is to fix ONLY that predicate's definition so that the whole module parses without syntax errors. All other sigs, facts, predicates, and tests must remain unchanged.
+
+Reply with ONLY the complete fixed predicate definition (including the 'pred name(...) { ... }' header and body), no explanation and no other code. Do NOT return the rest of the module.
+
+The following Alloy module has a syntax error in the predicate `ConsistentPreAndNxt`.
+
+Full module:
+
+one sig DLL {
+  header: lone Node
+}
+
+sig Node {
+  pre, nxt: lone Node,
+  elem: Int
+}
+
+// All nodes are reachable from the header node.
+fact Reachable {
+  Node = DLL.header.*nxt
+}
+
+// Part (a)
+fact Acyclic {
+  // The list has no directed cycle along nxt, i.e., no node is
+  // reachable from itself following one or more traversals along nxt.
+  all n: Node | n !in n.^nxt
+}
+
+// Part (b)
+pred UniqueElem() {
+  // Unique nodes contain unique elements.
+  no disj n1, n2: Node | n1.elem = n2.elem
+}
+
+// Part (c)
+pred Sorted() {
+  // The list is sorted in ascending order (<=) along nxt.
+  all n: Node | some n.nxt => n.elem <= n.nxt.elem
+}
+
+// Part (d)
+pred ConsistentPreAndNxt() {
+
+  // For any node n1 and n2, if n1.nxt = n2, then n2.pre = n1; and vice versa.
+  nxt - ~pre = none and ~pre - nxt = none
+
+}
+
+pred RepOk() {
+  UniqueElem
+  Sorted
+  ConsistentPreAndNxt
+}
+
+run RepOk for 3
+
+
+Parser error:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Node->this/Node}
+Right type = {none}
+
+Output ONLY the complete fixed definition of that predicate, in Alloy syntax.

@@ -1,0 +1,444 @@
+ARR Test Suite Detailed Report
+Timestamp: 2026-06-22_11-48-24
+
+Model run commands: 1
+==============================
+Candidate 1
+all i: Int | lone Array.i2e[i]
+
+Test test20     expect=0 actual=0 OK
+Test test36     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test6      expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test10     expect=0 actual=0 OK
+Test test11     expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test25     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test17     expect=0 actual=0 OK
+Test test30     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test9      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test21     expect=0 actual=0 OK
+Test test31     expect=0 actual=0 OK
+Test test34     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test1001   expect=1 actual=1 OK
+
+Result: Correct (Tests run: 37/37)
+
+==============================
+Candidate 2
+Array.i2e in Int -> lone Element
+
+Test test20     expect=0 actual=0 OK
+Test test36     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test6      expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test10     expect=0 actual=0 OK
+Test test11     expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test25     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test17     expect=0 actual=0 OK
+Test test30     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test9      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test21     expect=0 actual=0 OK
+Test test31     expect=0 actual=0 OK
+Test test34     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test1001   expect=1 actual=1 OK
+
+Result: Correct (Tests run: 37/37)
+
+==============================
+Candidate 3
+~(Array.i2e) . Array.i2e in iden
+
+Test test20     expect=0 actual=0 OK
+Test test36     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test6      expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test10     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test25     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test17     expect=0 actual=0 OK
+Test test30     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test14     expect=0 actual=1 FAIL
+Test test18     expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test9      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test21     expect=0 actual=0 OK
+Test test31     expect=0 actual=0 OK
+Test test34     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test1001   expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 37/37)
+
+==============================
+Candidate 4
+all i: Int | #Array.i2e[i] <= 1
+
+Test test20     expect=0 actual=0 OK
+Test test36     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test6      expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test10     expect=0 actual=0 OK
+Test test11     expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test25     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test17     expect=0 actual=0 OK
+Test test30     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test9      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test21     expect=0 actual=0 OK
+Test test31     expect=0 actual=0 OK
+Test test34     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test1001   expect=1 actual=1 OK
+
+Result: Correct (Tests run: 37/37)
+
+==============================
+Candidate 5
+no i: Int | #Array.i2e[i] > 1
+
+Test test20     expect=0 actual=0 OK
+Test test36     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test6      expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test10     expect=0 actual=0 OK
+Test test11     expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test25     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test17     expect=0 actual=0 OK
+Test test30     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test9      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test21     expect=0 actual=0 OK
+Test test31     expect=0 actual=0 OK
+Test test34     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test1001   expect=1 actual=1 OK
+
+Result: Correct (Tests run: 37/37)
+
+==============================
+Candidate 6
+all i: Int | #Array.i2e[i] < 2
+
+Test test20     expect=0 actual=0 OK
+Test test36     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test6      expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test10     expect=0 actual=0 OK
+Test test11     expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test25     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test17     expect=0 actual=0 OK
+Test test30     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test9      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test21     expect=0 actual=0 OK
+Test test31     expect=0 actual=0 OK
+Test test34     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test1001   expect=1 actual=1 OK
+
+Result: Correct (Tests run: 37/37)
+
+==============================
+Candidate 7
+all i: Int, e1, e2: Element | i->e1 in Array.i2e and i->e2 in Array.i2e implies e1 = e2
+
+Test test20     expect=0 actual=0 OK
+Test test36     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test6      expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test10     expect=0 actual=0 OK
+Test test11     expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test25     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test17     expect=0 actual=0 OK
+Test test30     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test9      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test21     expect=0 actual=0 OK
+Test test31     expect=0 actual=0 OK
+Test test34     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test1001   expect=1 actual=1 OK
+
+Result: Correct (Tests run: 37/37)
+
+==============================
+Candidate 8
+no i: Int, e1, e2: Element | i->e1 in Array.i2e and i->e2 in Array.i2e and e1 != e2
+
+Test test20     expect=0 actual=0 OK
+Test test36     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test6      expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test10     expect=0 actual=0 OK
+Test test11     expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test25     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test17     expect=0 actual=0 OK
+Test test30     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test9      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test21     expect=0 actual=0 OK
+Test test31     expect=0 actual=0 OK
+Test test34     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test1001   expect=1 actual=1 OK
+
+Result: Correct (Tests run: 37/37)
+
+==============================
+Candidate 9
+all a: Array, i: Int | lone a.i2e[i]
+
+Test test20     expect=0 actual=0 OK
+Test test36     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test6      expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test10     expect=0 actual=0 OK
+Test test11     expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test25     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test17     expect=0 actual=0 OK
+Test test30     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test9      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test21     expect=0 actual=0 OK
+Test test31     expect=0 actual=0 OK
+Test test34     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test1001   expect=1 actual=1 OK
+
+Result: Correct (Tests run: 37/37)
+
+==============================
+Candidate 10
+all i: Int | lone i.(Array.i2e)
+
+Test test20     expect=0 actual=0 OK
+Test test36     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test7      expect=0 actual=0 OK
+Test test6      expect=0 actual=0 OK
+Test test29     expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test27     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test10     expect=0 actual=0 OK
+Test test11     expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test25     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test17     expect=0 actual=0 OK
+Test test30     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test9      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test21     expect=0 actual=0 OK
+Test test31     expect=0 actual=0 OK
+Test test34     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test1001   expect=1 actual=1 OK
+
+Result: Correct (Tests run: 37/37)
+

@@ -1,0 +1,20 @@
+all x: S | x in x.r
+all x: S | x->x in r
+all x: S | x in r[x]
+no x: S | x not in x.r
+no x: S | x->x not in r
+no x: S | x not in r[x]
+all x, y: S | x = y implies x->y in r
+all x, y: S | x = y implies y in x.r
+no x, y: S | x = y and x->y not in r
+S <: iden in r
+iden :> S in r
+S->S & iden in r
+S in {x: S | x in x.r}
+S = {x: S | x->x in r}
+no S - {x: S | x in x.r}
+all x: S | x in x.~r
+all x: S | x->x in ~r
+all x: S | some (x->x & r)
+all x: S | x in x.(r & iden)
+all x: S | x = x & x.r

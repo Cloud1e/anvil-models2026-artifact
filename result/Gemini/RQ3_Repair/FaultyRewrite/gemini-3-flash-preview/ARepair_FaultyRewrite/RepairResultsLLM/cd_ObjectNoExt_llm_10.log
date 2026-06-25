@@ -1,0 +1,1408 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) :> Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) :> Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+EQUIV: check { some Class } for 3
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext)->some Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext)->one Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext)->lone Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) some->Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) some->some Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) some->one Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) some->lone Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) one->Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) one->some Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) one->one Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) one->lone Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) lone->Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) lone->some Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) lone->one Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:244)
+	at edu.mit.csail.sdg.ast.ExprUnary$Op.make(ExprUnary.java:211)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) lone->lone Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 8 column 13:
+There are 1 possible tokens that can appear here:
+) 
+	at edu.mit.csail.sdg.parser.CompParser.syntax_error(CompParser.java:2218)
+	at edu.mit.csail.sdg.parser.CompParser.parse(CompParser.java:2079)
+	at edu.mit.csail.sdg.parser.CompParser.alloy_parseStream(CompParser.java:2259)
+	at edu.mit.csail.sdg.parser.CompUtil.parseRecursively(CompUtil.java:217)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:363)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] There are 1 possible tokens that can appear here:
+) 
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) isSeq->lone Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Type error in /workspace/ARepair/.hidden/attempt.als at line 8 column 7:
+This must be a unary set, but instead it has the following possible type(s):
+{this/Class->this/Class}
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:437)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] This must be a unary set, but instead it has the following possible type(s):
+{this/Class->this/Class}
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) <: Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+Type error in /workspace/ARepair/.hidden/attempt.als at line 8 column 13:
+++ can be used only between two expressions of the same arity.
+Left type = {this/Class->this/Class}
+Right type = {this/Object}
+	at edu.mit.csail.sdg.ast.ExprBinary.error(ExprBinary.java:105)
+	at edu.mit.csail.sdg.ast.ExprBinary.access$000(ExprBinary.java:54)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:396)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:109)
+	at fl.FaultLocator.visit(FaultLocator.java:184)
+	at parser.ast.nodes.UnaryFormula.accept(UnaryFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] ++ can be used only between two expressions of the same arity.
+Left type = {this/Class->this/Class}
+Right type = {this/Object}
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) ++ Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) :> Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred ObjectNoExtMUTATED[] {
+(no (ext :> Object))
+}
+EQUIV: check { ObjectNoExt[] <=> ObjectNoExtMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^ext) :> Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+pred ObjectNoExtMUTATED[] {
+(no ((^(^ext)) :> Object))
+}
+EQUIV: check { ObjectNoExt[] <=> ObjectNoExtMUTATED[] } for 3
+ [INFO] Fault localization time: 3867698502
+[DEBUG] Most suspicious node: ext
+[DEBUG] Score: 1.0, FailToPass: 1, PassToFail: 0
+ [INFO] Fixed by mutation:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^(~ext)) :> Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] All tests pass.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^(~ext)) :> Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no ((^(~ext)) :> Object))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+

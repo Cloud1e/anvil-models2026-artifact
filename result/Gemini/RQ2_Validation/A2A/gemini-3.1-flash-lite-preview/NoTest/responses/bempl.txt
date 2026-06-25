@@ -1,0 +1,10 @@
+some k: Key | k in p.owns and k.opened_by = r
+p.owns.opened_by = r
+r in {k: Key | k in p.owns}.opened_by
+some k: p.owns | r = k.opened_by
+(p.owns & opened_by.r) != none
+r = (p.owns).opened_by
+p.owns.opened_by & r = r
+no (p.owns.opened_by - r) and some p.owns.opened_by & r
+(p.owns <: opened_by)[r]
+some k: Key | r = k.opened_by and k in p.owns

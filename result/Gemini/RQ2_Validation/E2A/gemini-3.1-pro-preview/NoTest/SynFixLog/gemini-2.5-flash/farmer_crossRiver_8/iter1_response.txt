@@ -1,0 +1,12 @@
+```alloy
+pred crossRiver [from, from', to, to': set Object] {
+   some moved: set Object {
+     moved = from - from' and
+     Farmer in moved and
+     #moved <= 2 and
+     from' = from - moved and
+     to' = to + moved and
+     no (from' . eats) & from'
+   }
+}
+```

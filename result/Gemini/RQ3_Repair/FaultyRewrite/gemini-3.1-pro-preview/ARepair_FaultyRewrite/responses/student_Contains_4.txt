@@ -1,0 +1,4 @@
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    x in This.header.*link.elem or ( result = False or result = True )
+}

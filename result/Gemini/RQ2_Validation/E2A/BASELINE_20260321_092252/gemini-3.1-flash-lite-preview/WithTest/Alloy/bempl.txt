@@ -1,0 +1,43 @@
+(p in Researcher and r != secure_lab) or (some k: Key | k.opened_by = r and p in k.authorized)
+Wrong
+
+(some k: Key | k.opened_by = r and p in k.authorized) or (p in Researcher and r != secure_lab)
+Wrong
+
+(p in Researcher and r != secure_lab) or (some k: Key | k.authorized = p and k.opened_by = r)
+Wrong
+
+(some k: Key | k.authorized = p and k.opened_by = r) or (p in Researcher and r != secure_lab)
+Wrong
+
+(r != secure_lab and p in Researcher) or (some k: Key | p in k.authorized and k.opened_by = r)
+Wrong
+
+(some k: Key | k.opened_by = r and p in k.authorized) or (r != secure_lab and p in Researcher)
+Wrong
+
+(p in Researcher and r not in secure_lab) or (some k: Key | k.opened_by = r and p in k.authorized)
+Wrong
+
+(some k: Key | p in k.authorized and k.opened_by = r) or (p in Researcher and r not in secure_lab)
+Wrong
+
+(r != secure_lab and p in Researcher) or (some k: {x: Key | x.opened_by = r and p in x.authorized})
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+(some k: {x: Key | x.opened_by = r and p in x.authorized}) or (p in Researcher and r != secure_lab)
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+Total: 10
+Unique: 10
+Correct: 0
+Syntax Error: 2
+Wrong: 8

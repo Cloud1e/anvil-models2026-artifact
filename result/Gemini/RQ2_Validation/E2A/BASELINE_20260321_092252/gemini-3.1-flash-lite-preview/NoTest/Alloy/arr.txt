@@ -1,0 +1,39 @@
+all i: Int | lone Array.i2e[i]
+Correct
+
+all i: Int | lone e: Element | i -> e in Array.i2e
+Correct
+
+no i: Int | #(Array.i2e[i]) > 1
+Correct
+
+all i: Int | #Array.i2e[i] <= 1
+Correct
+
+all i: Int | (Array.i2e[i] in Element) implies one Array.i2e[i]
+Wrong
+
+all i: Int, e1, e2: Element | i -> e1 in Array.i2e and i -> e2 in Array.i2e implies e1 = e2
+Correct
+
+all i: Int | lone e: Element | Array.i2e[i] = e
+Wrong
+
+all i: Int | (i -> Element) & Array.i2e in i -> lone Element
+Correct
+
+all i: Int | no disj e1, e2: Element | i -> e1 in Array.i2e and i -> e2 in Array.i2e
+Correct
+
+all i: Int | Array.i2e[i] in lone Element
+Syntax Error
+SYN_MSG:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+END_SYN_MSG
+
+Total: 10
+Unique: 10
+Correct: 7
+Syntax Error: 1
+Wrong: 2

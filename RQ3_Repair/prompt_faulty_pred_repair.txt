@@ -1,0 +1,25 @@
+Task:
+Rewrite the body of a faulty Alloy predicate into 10 different syntactic forms.
+Keep the predicate name and parameters exactly the same.
+Do not fix any potential bug in the predicate. Each rewritten predicate should preserve the current (buggy) behavior.
+
+Faulty model:
+<FAULTY_MODEL_ALLOY_CODE>
+
+Target predicate name:
+<PREDICATE_NAME>
+
+Requirements:
+- Do not change the predicate name.
+- Do not change the parameter list.
+- Keep the current (possibly faulty) behavior; do NOT correct the bug.
+- Produce 10 DISTINCT rewritings of the body of the target predicate.
+- Each rewriting must be a complete predicate definition of the form:
+  pred <PREDICATE_NAME>(...) { ... }
+- Do not introduce new predicates, functions, signatures, or comments.
+
+Output:
+Return EXACTLY 10 rewritten predicate definitions as Alloy code.
+Separate them clearly (for example, with a blank line between definitions).
+Do not add any explanation or extra text.
+

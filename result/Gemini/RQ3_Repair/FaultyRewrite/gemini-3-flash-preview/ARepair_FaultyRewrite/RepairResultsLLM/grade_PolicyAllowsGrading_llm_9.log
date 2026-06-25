@@ -1,0 +1,2176 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+(all p: (one s) {
+((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+})
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+(all p: (one s) {
+((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+})
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+pred PolicyAllowsGradingMUTATED[s: Person,a: Assignment] {
+(one p: (one s) {
+((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+})
+}
+EQUIV: check { all s: Person,a: Assignment | PolicyAllowsGrading[s,a] <=> PolicyAllowsGradingMUTATED[s,a] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+(all p: (one s) {
+((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+})
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+pred PolicyAllowsGradingMUTATED[s: Person,a: Assignment] {
+(some p: (one s) {
+((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+})
+}
+EQUIV: check { all s: Person,a: Assignment | PolicyAllowsGrading[s,a] <=> PolicyAllowsGradingMUTATED[s,a] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+(all p: (one s) {
+((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+})
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+pred PolicyAllowsGradingMUTATED[s: Person,a: Assignment] {
+(all p: (one s) {
+((p in ((a.associated_with).assistant_for)) || (p = ((a.associated_with).instructor_of)))
+})
+}
+EQUIV: check { all s: Person,a: Assignment | PolicyAllowsGrading[s,a] <=> PolicyAllowsGradingMUTATED[s,a] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+(all p: (one s) {
+((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+})
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+pred PolicyAllowsGradingMUTATED[s: Person,a: Assignment] {
+(all p: (one s) {
+((p in ((a.associated_with).assistant_for)) || (((a.associated_with).instructor_of) in p))
+})
+}
+EQUIV: check { all s: Person,a: Assignment | PolicyAllowsGrading[s,a] <=> PolicyAllowsGradingMUTATED[s,a] } for 3
+ [INFO] Fault localization time: 8887866629
+[DEBUG] Test num: 42
+[DEBUG] Rank Node 0:
+[DEBUG] ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+[DEBUG] Affected paragraph names: [PolicyAllowsGrading]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 18): [test1001, test36, test26, test39, test41, test25, test38, test31, test35, test40, test37, test33, test27, test29, test28, test32, test30, test34]
+[DEBUG] Hole a
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Assignment, a]
+[DEBUG] Hole associated_with
+[DEBUG] Size: 2
+[DEBUG] Fragments: [associated_with, (none->none)]
+[DEBUG] Hole a
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Assignment, a]
+[DEBUG] Hole associated_with
+[DEBUG] Size: 2
+[DEBUG] Fragments: [associated_with, (none->none)]
+ [INFO] Expression generation time: 242097375
+ [INFO] Search space: 36
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, associated_with, a, associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Assignment, associated_with, a, associated_with]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [a, associated_with, a, associated_with]
+[DEBUG] Hole 2, Fragment: a, FailToPass: 0
+[DEBUG] Hole values: [a, associated_with, a, associated_with]
+[DEBUG] Hole 0, Fragment: associated_with, FailToPass: 0
+[DEBUG] Hole values: [a, (none->none), a, associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [a, associated_with, none, associated_with]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [a, associated_with, Assignment, associated_with]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [a, associated_with, a, associated_with]
+[DEBUG] Hole 2, Fragment: a, FailToPass: 0
+[DEBUG] Hole values: [a, associated_with, a, associated_with]
+[DEBUG] Hole 0, Fragment: associated_with, FailToPass: 0
+[DEBUG] Hole values: [a, associated_with, a, (none->none)]
+[DEBUG] Test from pass to fail: test38
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Hole (a.associated_with)
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Class]
+[DEBUG] Hole assistant_for
+[DEBUG] Size: 3
+[DEBUG] Fragments: [assistant_for, instructor_of, (none->none)]
+[DEBUG] Hole (a.associated_with)
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Class]
+[DEBUG] Hole instructor_of
+[DEBUG] Size: 3
+[DEBUG] Fragments: [assistant_for, instructor_of, (none->none)]
+ [INFO] Expression generation time: 44189834
+ [INFO] Search space: 36
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Class, assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Hole 0, Fragment: assistant_for, FailToPass: 0
+[DEBUG] Hole values: [(a.associated_with), instructor_of, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.associated_with), (none->none), (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.associated_with), assistant_for, none, instructor_of]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [(a.associated_with), assistant_for, Class, instructor_of]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), assistant_for]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Hole 1, Fragment: instructor_of, FailToPass: 0
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), (none->none)]
+[DEBUG] Test from pass to fail: test38
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).assistant_for)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).instructor_of)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+ [INFO] Expression generation time: 921780542
+ [INFO] Search space: 614656
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [Person, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Student, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Professor, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [(Student+s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student+p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(s+p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [(Student&s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Student&p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Professor&s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(Professor&p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(s&p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [(Person-s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Person-p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(s-p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(p-s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Class.assistant_for), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class.instructor_of), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Assignment.assigned_to), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.assigned_to), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, none, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, Person, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, Student, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, Professor, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, s, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, p, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student+s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student+p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Professor+s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Professor+p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (s+p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student&s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Student&p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Professor&s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor&p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (s&p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Person-s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Person-p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Student-s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Student-p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor-s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor-p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (s-p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (p-s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Class.assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Class.instructor_of), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Assignment.assigned_to), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (a.assigned_to), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), none, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), Person, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), Student, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), Professor, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), s, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student+s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student+p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor+s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor+p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (s+p), ((a.associated_with).instructor_of)]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student&s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student&p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor&s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor&p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (s&p), ((a.associated_with).instructor_of)]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Person-s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Person-p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student-s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student-p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor-s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor-p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (s-p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p-s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Class.assistant_for), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Class.instructor_of), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Assignment.assigned_to), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (a.assigned_to), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, none]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, Person]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, Student]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, Professor]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, s]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, p]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student+s)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student+p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor+s)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor+p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (s+p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student&s)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student&p)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor&s)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor&p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (s&p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Person-s)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Person-p)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student-s)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student-p)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor-s)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor-p)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (s-p)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (p-s)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Class.assistant_for)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Class.instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Assignment.assigned_to)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (a.assigned_to)]
+[DEBUG] Test from pass to fail: test38
+ [INFO] Fix failed, number of combinations tried: 112
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).assistant_for)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole (p in ((a.associated_with).assistant_for))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).instructor_of)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole (p in ((a.associated_with).instructor_of))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 301162917
+ [INFO] Search space: 9834496
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [Person, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Student, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Professor, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [(Student+s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(s+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [(Student&s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Student&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Professor&s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(Professor&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(s&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [(Person-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Person-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(s-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(p-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Class.assistant_for), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class.instructor_of), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Assignment.assigned_to), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.assigned_to), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, none, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, Person, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, Student, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, Professor, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, s, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, p, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student+s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student+p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Professor+s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Professor+p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (s+p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student&s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Student&p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Professor&s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor&p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (s&p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Person-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Person-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Student-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Student-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (s-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (p-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Class.assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Class.instructor_of), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Assignment.assigned_to), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (a.assigned_to), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for),  = , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from fail to pass: test26
+[DEBUG] Test from fail to pass: test39
+[DEBUG] Test from fail to pass: test28
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for),  != , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for),  in , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for),  !in , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), none, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), Person, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), Student, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), Professor, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), s, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student+s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student+p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor+s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor+p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (s+p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student&s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student&p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor&s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor&p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (s&p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Person-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Person-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (s-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (p-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Class.assistant_for), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Class.instructor_of), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Assignment.assigned_to), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (a.assigned_to), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, none, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, Person, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, Student, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, Professor, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, s, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, p, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student+s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student+p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor+s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor+p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (s+p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student&s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student&p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor&s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor&p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (s&p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Person-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Person-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (s-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (p-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Class.assistant_for), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Class.instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Assignment.assigned_to), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (a.assigned_to), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  != ]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  !in ]
+[DEBUG] Test from pass to fail: test36
+ [INFO] Fix failed, number of combinations tried: 120
+[DEBUG] Hole ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [&&, ||]
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).assistant_for)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole (p in ((a.associated_with).assistant_for))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).instructor_of)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole (p in ((a.associated_with).instructor_of))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 8113250
+ [INFO] Search space: 19668992
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [ && , p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [ || , p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 1, Fragment: ||, FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), none, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), Person, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), Student, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), Professor, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), s, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Student+s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Student+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Professor+s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Professor+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (s+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Student&s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Student&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Professor&s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Professor&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (s&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Person-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Person-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Student-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Student-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Professor-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Professor-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (s-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (p-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Class.assistant_for), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Class.instructor_of), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (Assignment.assigned_to), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), (a.assigned_to), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, none, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, Person, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, Student, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, Professor, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, s, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, p, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Student+s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Student+p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Professor+s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Professor+p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (s+p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Student&s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Student&p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Professor&s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Professor&p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (s&p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Person-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Person-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Student-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Student-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Professor-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Professor-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (s-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (p-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Class.assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Class.instructor_of), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (Assignment.assigned_to), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, (a.assigned_to), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for),  = , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from fail to pass: test26
+[DEBUG] Test from fail to pass: test39
+[DEBUG] Test from fail to pass: test28
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for),  != , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for),  in , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for),  !in , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), none, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), Person, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), Student, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), Professor, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), s, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student+s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student+p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor+s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor+p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (s+p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student&s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student&p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor&s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor&p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (s&p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Person-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Person-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (s-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (p-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Class.assistant_for), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Class.instructor_of), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Assignment.assigned_to), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (a.assigned_to), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, none, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, Person, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, Student, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, Professor, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, s, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, p, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student+s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student+p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor+s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor+p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (s+p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student&s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student&p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor&s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor&p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (s&p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Person-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Person-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (s-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (p-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Class.assistant_for), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Class.instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Assignment.assigned_to), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (a.assigned_to), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  != ]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  !in ]
+[DEBUG] Test from pass to fail: test36
+ [INFO] Fix failed, number of combinations tried: 122
+[DEBUG] Rank Node 1:
+[DEBUG] (some Student)
+[DEBUG] Affected paragraph names: [Assignment_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+ [INFO] Expression generation time: 10095916
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+ [INFO] Expression generation time: 1715958
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 2:
+[DEBUG] (p in ((a.associated_with).assistant_for))
+[DEBUG] Affected paragraph names: [PolicyAllowsGrading]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 18): [test1001, test36, test26, test39, test41, test25, test38, test31, test35, test40, test37, test33, test27, test29, test28, test32, test30, test34]
+[DEBUG] Hole a
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Assignment, a, (Assignment-a), (associated_with.Class), (assigned_to.Person), (assigned_to.s), (assigned_to.p)]
+[DEBUG] Hole associated_with
+[DEBUG] Size: 3
+[DEBUG] Fragments: [associated_with, (none->none), (assigned_to.(~assistant_for))]
+ [INFO] Expression generation time: 436333
+ [INFO] Search space: 24
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Assignment, associated_with]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [a, associated_with]
+[DEBUG] Hole 2, Fragment: a, FailToPass: 0
+[DEBUG] Hole values: [(Assignment-a), associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(associated_with.Class), associated_with]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(assigned_to.Person), associated_with]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(assigned_to.s), associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(assigned_to.p), associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [a, associated_with]
+[DEBUG] Hole 0, Fragment: associated_with, FailToPass: 0
+[DEBUG] Hole values: [a, (none->none)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [a, (assigned_to.(~assistant_for))]
+[DEBUG] Test from pass to fail: test30
+ [INFO] Fix failed, number of combinations tried: 11
+[DEBUG] Hole (a.associated_with)
+[DEBUG] Size: 10
+[DEBUG] Fragments: [none, Class, (Assignment.associated_with), (a.associated_with), (assistant_for.Person), (assistant_for.s), (assistant_for.p), (instructor_of.Person), (instructor_of.s), (instructor_of.p)]
+[DEBUG] Hole assistant_for
+[DEBUG] Size: 5
+[DEBUG] Fragments: [assistant_for, instructor_of, (none->none), (assistant_for+instructor_of), ((~associated_with).assigned_to)]
+ [INFO] Expression generation time: 981083
+ [INFO] Search space: 50
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, assistant_for]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Class, assistant_for]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(Assignment.associated_with), assistant_for]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(a.associated_with), assistant_for]
+[DEBUG] Hole 3, Fragment: (a.associated_with), FailToPass: 0
+[DEBUG] Hole values: [(assistant_for.Person), assistant_for]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(assistant_for.s), assistant_for]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(assistant_for.p), assistant_for]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(instructor_of.Person), assistant_for]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(instructor_of.s), assistant_for]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(instructor_of.p), assistant_for]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.associated_with), assistant_for]
+[DEBUG] Hole 0, Fragment: assistant_for, FailToPass: 0
+[DEBUG] Hole values: [(a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.associated_with), (none->none)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.associated_with), (assistant_for+instructor_of)]
+[DEBUG] Hole 3, Fragment: (assistant_for+instructor_of), FailToPass: 0
+[DEBUG] Hole values: [(a.associated_with), ((~associated_with).assigned_to)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 15
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).assistant_for)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+ [INFO] Expression generation time: 921375
+ [INFO] Search space: 784
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [Person, ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Student, ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Professor, ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, ((a.associated_with).assistant_for)]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for)]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [(Student+s), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student+p), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+s), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+p), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(s+p), ((a.associated_with).assistant_for)]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [(Student&s), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Student&p), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Professor&s), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(Professor&p), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(s&p), ((a.associated_with).assistant_for)]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [(Person-s), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Person-p), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-s), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-p), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-s), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-p), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(s-p), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(p-s), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Class.assistant_for), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class.instructor_of), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Assignment.assigned_to), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.assigned_to), ((a.associated_with).assistant_for)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, none]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, Person]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, Student]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, Professor]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, s]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, p]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student+s)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student+p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Professor+s)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Professor+p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (s+p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student&s)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Student&p)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Professor&s)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor&p)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (s&p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Person-s)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Person-p)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Student-s)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Student-p)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor-s)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor-p)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (s-p)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (p-s)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Class.assistant_for)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Class.instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Assignment.assigned_to)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (a.assigned_to)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 56
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).assistant_for)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole (p in ((a.associated_with).assistant_for))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 2557542
+ [INFO] Search space: 3136
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [Person, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Student, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Professor, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [(Student+s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(s+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [(Student&s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Student&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Professor&s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(Professor&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(s&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [(Person-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Person-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(s-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(p-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Class.assistant_for), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class.instructor_of), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Assignment.assigned_to), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.assigned_to), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, none, (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, Person, (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, Student, (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, Professor, (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, s, (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, p, (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student+s), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student+p), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Professor+s), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Professor+p), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (s+p), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student&s), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Student&p), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Professor&s), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor&p), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (s&p), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Person-s), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Person-p), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Student-s), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Student-p), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor-s), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor-p), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (s-p), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (p-s), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Class.assistant_for), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Class.instructor_of), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Assignment.assigned_to), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (a.assigned_to), (p in ((a.associated_with).assistant_for))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for),  = ]
+[DEBUG] Test from fail to pass: test26
+[DEBUG] Test from fail to pass: test39
+[DEBUG] Test from fail to pass: test28
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for),  != ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for),  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for),  !in ]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 60
+[DEBUG] Rank Node 3:
+[DEBUG] (set Student)
+[DEBUG] Affected paragraph names: [Class_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+ [INFO] Expression generation time: 1445875
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+ [INFO] Expression generation time: 2880167
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 4:
+[DEBUG] (all p: (one s) {
+((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+})
+[DEBUG] Affected paragraph names: [PolicyAllowsGrading]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 18): [test1001, test36, test26, test39, test41, test25, test38, test31, test35, test40, test37, test33, test27, test29, test28, test32, test30, test34]
+[DEBUG] Hole a
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Assignment, a, (Assignment-a), (associated_with.Class), (assigned_to.Person), (assigned_to.s), (assigned_to.p)]
+[DEBUG] Hole associated_with
+[DEBUG] Size: 3
+[DEBUG] Fragments: [associated_with, (none->none), (assigned_to.(~assistant_for))]
+[DEBUG] Hole a
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Assignment, a, (Assignment-a), (associated_with.Class), (assigned_to.Person), (assigned_to.s), (assigned_to.p)]
+[DEBUG] Hole associated_with
+[DEBUG] Size: 3
+[DEBUG] Fragments: [associated_with, (none->none), (assigned_to.(~assistant_for))]
+ [INFO] Expression generation time: 965334
+ [INFO] Search space: 576
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, associated_with, a, associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Assignment, associated_with, a, associated_with]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [a, associated_with, a, associated_with]
+[DEBUG] Hole 2, Fragment: a, FailToPass: 0
+[DEBUG] Hole values: [(Assignment-a), associated_with, a, associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(associated_with.Class), associated_with, a, associated_with]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(assigned_to.Person), associated_with, a, associated_with]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(assigned_to.s), associated_with, a, associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(assigned_to.p), associated_with, a, associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [a, associated_with, a, associated_with]
+[DEBUG] Hole 0, Fragment: associated_with, FailToPass: 0
+[DEBUG] Hole values: [a, (none->none), a, associated_with]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [a, (assigned_to.(~assistant_for)), a, associated_with]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [a, associated_with, none, associated_with]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [a, associated_with, Assignment, associated_with]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [a, associated_with, a, associated_with]
+[DEBUG] Hole 2, Fragment: a, FailToPass: 0
+[DEBUG] Hole values: [a, associated_with, (Assignment-a), associated_with]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [a, associated_with, (associated_with.Class), associated_with]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [a, associated_with, (assigned_to.Person), associated_with]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [a, associated_with, (assigned_to.s), associated_with]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [a, associated_with, (assigned_to.p), associated_with]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [a, associated_with, a, associated_with]
+[DEBUG] Hole 0, Fragment: associated_with, FailToPass: 0
+[DEBUG] Hole values: [a, associated_with, a, (none->none)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [a, associated_with, a, (assigned_to.(~assistant_for))]
+[DEBUG] Test from pass to fail: test36
+ [INFO] Fix failed, number of combinations tried: 22
+[DEBUG] Hole (a.associated_with)
+[DEBUG] Size: 10
+[DEBUG] Fragments: [none, Class, (Assignment.associated_with), (a.associated_with), (assistant_for.Person), (assistant_for.s), (assistant_for.p), (instructor_of.Person), (instructor_of.s), (instructor_of.p)]
+[DEBUG] Hole assistant_for
+[DEBUG] Size: 5
+[DEBUG] Fragments: [assistant_for, instructor_of, (none->none), (assistant_for+instructor_of), ((~associated_with).assigned_to)]
+[DEBUG] Hole (a.associated_with)
+[DEBUG] Size: 10
+[DEBUG] Fragments: [none, Class, (Assignment.associated_with), (a.associated_with), (assistant_for.Person), (assistant_for.s), (assistant_for.p), (instructor_of.Person), (instructor_of.s), (instructor_of.p)]
+[DEBUG] Hole instructor_of
+[DEBUG] Size: 5
+[DEBUG] Fragments: [assistant_for, instructor_of, (none->none), (assistant_for+instructor_of), ((~associated_with).assigned_to)]
+ [INFO] Expression generation time: 1456875
+ [INFO] Search space: 2500
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Class, assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(Assignment.associated_with), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Hole 3, Fragment: (a.associated_with), FailToPass: 0
+[DEBUG] Hole values: [(assistant_for.Person), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(assistant_for.s), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(assistant_for.p), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(instructor_of.Person), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(instructor_of.s), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(instructor_of.p), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Hole 0, Fragment: assistant_for, FailToPass: 0
+[DEBUG] Hole values: [(a.associated_with), instructor_of, (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.associated_with), (none->none), (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.associated_with), (assistant_for+instructor_of), (a.associated_with), instructor_of]
+[DEBUG] Hole 3, Fragment: (assistant_for+instructor_of), FailToPass: 0
+[DEBUG] Hole values: [(a.associated_with), ((~associated_with).assigned_to), (a.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.associated_with), assistant_for, none, instructor_of]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [(a.associated_with), assistant_for, Class, instructor_of]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (Assignment.associated_with), instructor_of]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Hole 3, Fragment: (a.associated_with), FailToPass: 0
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (assistant_for.Person), instructor_of]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (assistant_for.s), instructor_of]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (assistant_for.p), instructor_of]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (instructor_of.Person), instructor_of]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (instructor_of.s), instructor_of]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (instructor_of.p), instructor_of]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), assistant_for]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), instructor_of]
+[DEBUG] Hole 1, Fragment: instructor_of, FailToPass: 0
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), (none->none)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), (assistant_for+instructor_of)]
+[DEBUG] Hole 3, Fragment: (assistant_for+instructor_of), FailToPass: 0
+[DEBUG] Hole values: [(a.associated_with), assistant_for, (a.associated_with), ((~associated_with).assigned_to)]
+[DEBUG] Test from pass to fail: test38
+ [INFO] Fix failed, number of combinations tried: 30
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).assistant_for)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).instructor_of)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+ [INFO] Expression generation time: 2938125
+ [INFO] Search space: 614656
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [Person, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Student, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Professor, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [(Student+s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student+p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(s+p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [(Student&s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Student&p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Professor&s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(Professor&p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(s&p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [(Person-s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Person-p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(s-p), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(p-s), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Class.assistant_for), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class.instructor_of), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Assignment.assigned_to), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.assigned_to), ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, none, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, Person, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, Student, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, Professor, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, s, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, p, p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student+s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student+p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Professor+s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Professor+p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (s+p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Student&s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Student&p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Professor&s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor&p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (s&p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, (Person-s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Person-p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Student-s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Student-p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor-s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Professor-p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (s-p), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (p-s), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Class.assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (Class.instructor_of), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, (Assignment.assigned_to), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, (a.assigned_to), p, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), none, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), Person, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), Student, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), Professor, ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), s, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, ((a.associated_with).instructor_of)]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student+s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student+p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor+s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor+p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (s+p), ((a.associated_with).instructor_of)]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student&s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student&p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor&s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor&p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (s&p), ((a.associated_with).instructor_of)]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Person-s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Person-p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student-s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Student-p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor-s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Professor-p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (s-p), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (p-s), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Class.assistant_for), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Class.instructor_of), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (Assignment.assigned_to), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), (a.assigned_to), ((a.associated_with).instructor_of)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, none]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, Person]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, Student]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, Professor]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, s]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, p]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student+s)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student+p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor+s)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor+p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (s+p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student&s)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student&p)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor&s)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor&p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (s&p)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Person-s)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Person-p)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student-s)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Student-p)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor-s)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Professor-p)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (s-p)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (p-s)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Class.assistant_for)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Class.instructor_of)]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (Assignment.assigned_to)]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [p, ((a.associated_with).assistant_for), p, (a.assigned_to)]
+[DEBUG] Test from pass to fail: test38
+ [INFO] Fix failed, number of combinations tried: 112
+[DEBUG] Hole s
+[DEBUG] Size: 16
+[DEBUG] Fragments: [none, Person, Student, Professor, s, (Student+s), (Professor+s), (Student&s), (Professor&s), (Person-s), (Student-s), (Professor-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).assistant_for)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole (p in ((a.associated_with).assistant_for))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).instructor_of)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole (p in ((a.associated_with).instructor_of))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 19678000
+ [INFO] Search space: 157351936
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [Person, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Student, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Professor, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [(Student+s), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+s), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [(Student&s), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Professor&s), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(Person-s), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-s), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-s), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Class.assistant_for), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class.instructor_of), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [(Assignment.assigned_to), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(a.assigned_to), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, none, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, Person, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, Student, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, Professor, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, s, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [s, (Student+s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (Student+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (Professor+s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (Professor+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (s+p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [s, (Student&s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, (Student&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, (Professor&s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [s, (Professor&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [s, (s&p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [s, (Person-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (Person-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (Student-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (Student-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (Professor-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (Professor-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (s-p), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, (p-s), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, (Class.assistant_for), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (Class.instructor_of), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (Assignment.assigned_to), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, (a.assigned_to), ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, none, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, Person, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, Student, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [s, p, Professor, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, s, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, p, (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, (Student+s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, (Student+p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, (Professor+s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, (Professor+p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, (s+p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, (Student&s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [s, p, (Student&p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [s, p, (Professor&s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (Professor&p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (s&p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, (Person-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (Person-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (Student-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (Student-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (Professor-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (Professor-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (s-p), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (p-s), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (Class.assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [s, p, (Class.instructor_of), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, (Assignment.assigned_to), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [s, p, (a.assigned_to), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for),  = , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from fail to pass: test26
+[DEBUG] Test from fail to pass: test39
+[DEBUG] Test from fail to pass: test28
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for),  != , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for),  in , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for),  !in , p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), none, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), Person, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), Student, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), Professor, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), s, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 5, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student+s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student+p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor+s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor+p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (s+p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 10, Fragment: (s+p), FailToPass: 0
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student&s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student&p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor&s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor&p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (s&p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 15, Fragment: (s&p), FailToPass: 0
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Person-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Person-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Student-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Professor-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (s-p), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (p-s), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Class.assistant_for), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Class.instructor_of), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (Assignment.assigned_to), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), (a.assigned_to), ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, none, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, Person, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, Student, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, Professor, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, s, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, p, (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student+s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student+p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor+s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor+p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (s+p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student&s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student&p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor&s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor&p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (s&p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Person-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Person-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Student-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Professor-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (s-p), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (p-s), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Class.assistant_for), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Class.instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (Assignment.assigned_to), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, (a.assigned_to), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  != ]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [s, p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of),  !in ]
+[DEBUG] Test from pass to fail: test36
+ [INFO] Fix failed, number of combinations tried: 136
+[DEBUG] Hole s
+[DEBUG] Size: 16
+[DEBUG] Fragments: [none, Person, Student, Professor, s, (Student+s), (Professor+s), (Student&s), (Professor&s), (Person-s), (Student-s), (Professor-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of)))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [&&, ||]
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).assistant_for)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole (p in ((a.associated_with).assistant_for))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+[DEBUG] Hole p
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole ((a.associated_with).instructor_of)
+[DEBUG] Size: 28
+[DEBUG] Fragments: [none, Person, Student, Professor, s, p, (Student+s), (Student+p), (Professor+s), (Professor+p), (s+p), (Student&s), (Student&p), (Professor&s), (Professor&p), (s&p), (Person-s), (Person-p), (Student-s), (Student-p), (Professor-s), (Professor-p), (s-p), (p-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole (p in ((a.associated_with).instructor_of))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 3724375
+ [INFO] Search space: 314703872
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [Person, ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Student, ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Professor, ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [s, ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [(Student+s), ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor+s), ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [(Student&s), ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Professor&s), ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test35
+[DEBUG] Hole values: [(Person-s), ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Student-s), ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Professor-s), ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Class.assistant_for), ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class.instructor_of), ((p in ((a.associated_with).assistant_for)) || (p in ((a.associated_with).instructor_of))), p, ((a.associated_with).assistant_for), (p in ((a.associated_with).assistant_for)), p, ((a.associated_with).instructor_of), (p in ((a.associated_with).instructor_of))]
+[DEBUG] Test from pass to fail: test31

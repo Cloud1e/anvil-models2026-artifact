@@ -1,0 +1,5 @@
+```alloy
+pred crossRiver [from, from', to, to': set Object] {
+   (one x: from - Farmer | from' = from - Farmer - x - from'.eats and to' = to + Farmer + x) or (from' = from - Farmer - from'.eats and to' = to + Farmer)
+}
+```

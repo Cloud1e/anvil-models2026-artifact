@@ -1,0 +1,65 @@
+crossRiver: some p: from | from' = from - Farmer - p and to' = to + Farmer + p and all x, y: from' | x -> y not in eats
+Wrong
+
+crossRiver: some p: from | from' = from - Farmer - p and to' = to + Farmer + p and no x, y: from' | x -> y in eats
+Wrong
+
+crossRiver: some p: from | from' = from - Farmer - p and to' = to + Farmer + p and all x, y: from' | y not in x.eats
+Wrong
+
+crossRiver: some p: from | from' = from - Farmer - p and to' = to + Farmer + p and no x, y: from' | y in x.eats
+Wrong
+
+crossRiver: some p: from | {from' = from - Farmer - p and to' = to + Farmer + p and all x, y: from' | x -> y not in eats}
+Wrong
+
+crossRiver: some p: from | {from' = from - Farmer - p and to' = to + Farmer + p and no x, y: from' | x -> y in eats}
+Wrong
+
+crossRiver: some p: from | (from' = from - Farmer - p and to' = to + Farmer + p) and all x, y: from' | x -> y not in eats
+Wrong
+
+crossRiver: some p: from | (from' = from - Farmer - p and to' = to + Farmer + p) and no x, y: from' | x -> y in eats
+Wrong
+
+crossRiver: some p: from | no from'->from' & eats and from' = from - Farmer - p and to' = to + Farmer + p
+Wrong
+
+crossRiver: some p: from | (all x, y: from' | x -> y not in eats) and from' = from - Farmer - p and to' = to + Farmer + p
+Wrong
+
+solvePuzzle: ord/last.far = Object
+Correct
+
+solvePuzzle: Object = ord/last.far
+Correct
+
+solvePuzzle: Object in ord/last.far
+Correct
+
+solvePuzzle: all x: Object | x in ord/last.far
+Correct
+
+solvePuzzle: no x: Object | x not in ord/last.far
+Correct
+
+solvePuzzle: ord/last.near = none
+Correct
+
+solvePuzzle: none = ord/last.near
+Correct
+
+solvePuzzle: no ord/last.near
+Correct
+
+solvePuzzle: all x: Object | x not in ord/last.near
+Correct
+
+solvePuzzle: ord/last.far = ord/first.near
+Correct
+
+Total: 20
+Unique: 20
+Correct: 10
+Syntax Error: 0
+Wrong: 10

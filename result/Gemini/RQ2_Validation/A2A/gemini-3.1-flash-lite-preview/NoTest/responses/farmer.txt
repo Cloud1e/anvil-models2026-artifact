@@ -1,0 +1,20 @@
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some i : from - Farmer | to' = to + Farmer + i and from' = from - Farmer - i - from'.eats)
+crossRiver: if Farmer in from then (from' = from - Farmer - from'.eats and to' = to + Farmer) else (some i : from - Farmer | from' = from - Farmer - i - from'.eats and to' = to + Farmer + i)
+crossRiver: {f, t, f', t' : set Object | (f' = f - Farmer - f'.eats and t' = t + Farmer) or (some i : f - Farmer | f' = f - Farmer - i - f'.eats and t' = t + Farmer + i)}[from, to, from', to']
+crossRiver: (from' = (from - Farmer) - from'.eats and to' = to + Farmer) or (some i : (from - Farmer) | from' = (from - Farmer - i) - from'.eats and to' = (to + i) + Farmer)
+crossRiver: (to' = to + Farmer and from' = (from - Farmer) - from'.eats) or (some i : from - Farmer | to' = to + i + Farmer and from' = from - i - Farmer - from'.eats)
+crossRiver: (from' = from.minus[Farmer].minus[from'.eats] and to' = to.plus[Farmer]) or (some i : from.minus[Farmer] | from' = from.minus[Farmer].minus[i].minus[from'.eats] and to' = to.plus[i].plus[Farmer])
+crossRiver: (to' = to + Farmer and no from' & (Farmer + from'.eats) and from' = from - Farmer - from'.eats) or (some i : from - Farmer | to' = to + i + Farmer and from' = from - i - Farmer - from'.eats)
+crossRiver: (to' - to = Farmer and from - from' = Farmer + from'.eats) or (some i : from - Farmer | to' - to = Farmer + i and from - from' = Farmer + i + from'.eats)
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some i : from - Farmer | to' = to + i + Farmer and from' = from - Farmer - i - from'.eats)
+solvePuzzle: Object in ord/last.far
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain
+solvePuzzle: all o : Object | o in ord/last.far
+solvePuzzle: no Object - ord/last.far
+solvePuzzle: ord/last.far = (Farmer + Fox) + (Chicken + Grain)
+solvePuzzle: (ord/last.far & Object) = Object
+solvePuzzle: not (some o : Object | o not in ord/last.far)
+solvePuzzle: #ord/last.far = #Object
+solvePuzzle: ord/last.far = {o : Object | o in o}
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain and no (Object - ord/last.far)

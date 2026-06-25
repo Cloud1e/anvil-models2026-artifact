@@ -1,0 +1,3 @@
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	some c: Class | c = a.associated_with and (s in c.assistant_for or s in c.instructor_of)
+}

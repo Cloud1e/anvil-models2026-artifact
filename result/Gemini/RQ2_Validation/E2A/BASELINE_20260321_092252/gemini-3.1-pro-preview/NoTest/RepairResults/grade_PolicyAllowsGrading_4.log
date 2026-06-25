@@ -1,0 +1,174 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+((s in Student) && (s !in (a.assigned_to)))
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 8199590170
+ [INFO] Expression generation time: 228905209
+ [INFO] Search space: 25
+ [INFO] Fix failed, number of combinations tried: 10
+ [INFO] Expression generation time: 52639417
+ [INFO] Search space: 100
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 7002584
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 4322792
+ [INFO] Search space: 625
+ [INFO] Fix failed, number of combinations tried: 20
+ [INFO] Expression generation time: 758979750
+ [INFO] Search space: 1048576
+ [INFO] Fix failed, number of combinations tried: 72
+ [INFO] Expression generation time: 335962667
+ [INFO] Search space: 2097152
+ [INFO] Fix failed, number of combinations tried: 74
+ [INFO] Expression generation time: 4322250
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 11
+ [INFO] Expression generation time: 839333
+ [INFO] Search space: 65536
+ [INFO] Fix failed, number of combinations tried: 64
+ [INFO] Expression generation time: 2983708
+ [INFO] Search space: 1048576
+ [INFO] Fix failed, number of combinations tried: 72
+ [INFO] Expression generation time: 1736292
+ [INFO] Search space: 2097152
+ [INFO] Fix failed, number of combinations tried: 74
+ [INFO] Expression generation time: 1765375
+ [INFO] Search space: 2097152
+ [INFO] Fix failed, number of combinations tried: 74
+ [INFO] Expression generation time: 7147167
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 8154250
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 712291
+ [INFO] Search space: 28
+ [INFO] Fix failed, number of combinations tried: 11
+ [INFO] Expression generation time: 1217042
+ [INFO] Search space: 256
+ [INFO] Fix failed, number of combinations tried: 32
+ [INFO] Expression generation time: 670584
+ [INFO] Search space: 1024
+ [INFO] Fix failed, number of combinations tried: 36
+ [INFO] Expression generation time: 62041
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 4081792
+ [INFO] Search space: 8
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 915250
+ [INFO] Search space: 8
+ [INFO] Fix failed, number of combinations tried: 6
+ [INFO] Expression generation time: 10071416
+ [INFO] Search space: 128
+ [INFO] Fix failed, number of combinations tried: 14
+ [INFO] Expression generation time: 501208
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 1063625
+ [INFO] Search space: 16
+ [INFO] Fix failed, number of combinations tried: 8
+ [INFO] Expression generation time: 139458
+ [INFO] Search space: 16
+ [INFO] Fix failed, number of combinations tried: 8
+ [INFO] Expression generation time: 63313834
+ [INFO] Search space: 320
+ [INFO] Fix failed, number of combinations tried: 17
+ [INFO] Expression generation time: 343125
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 19291
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 138417
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Expression generation time: 16458
+ [INFO] Search space: 4
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+((s in Student) && (s !in (a.assigned_to)))
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+((s in Student) && (s !in (a.assigned_to)))
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment

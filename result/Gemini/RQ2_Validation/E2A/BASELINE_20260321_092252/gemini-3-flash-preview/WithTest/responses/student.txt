@@ -1,0 +1,40 @@
+Loop: all n: Node | some m: n.*link | m.link = m
+Loop: all n: Node | some m: n.*link | m = m.link
+Loop: all n: Node | some {m: n.*link | m.link = m}
+Loop: all n: Node | n.*link & {m: Node | m.link = m} != none
+Loop: all n: Node | some (n.*link & {m: Node | m.link = m})
+Loop: no n: Node | no {m: n.*link | m.link = m}
+Loop: no n: Node | all m: n.*link | m.link != m
+Loop: all n: This.header.*link | some m: n.*link | m.link = m
+Loop: all n: Node | some m: Node | m.link = m and m in n.*link
+Loop: all n: Node | some m: n.*link | m.link in m
+Sorted: all n: Node | all m: n.link | n.elem <= m.elem
+Sorted: all n: Node, m: n.link | n.elem <= m.elem
+Sorted: all n: Node | all m: n.link | m.elem >= n.elem
+Sorted: all n: Node | no m: n.link | m.elem < n.elem
+Sorted: all n: Node | no m: n.link | n.elem > m.elem
+Sorted: all n: Node | all m: n.link | not n.elem > m.elem
+Sorted: all n: Node | all m: n.link | not m.elem < n.elem
+Sorted: all n: Node | some m: n.link implies n.elem <= m.elem
+Sorted: all n: Node | some m: n.link implies m.elem >= n.elem
+Sorted: all n: Node, m: n.link | m.elem >= n.elem
+Count: result = #{n: Node | n.elem = x}
+Count: result = #{n: Node | x = n.elem}
+Count: result = #{n: Node | x in n.elem}
+Count: #{n: Node | n.elem = x} = result
+Count: #{n: Node | x = n.elem} = result
+Count: #{n: Node | x in n.elem} = result
+Count: result = #(elem.x)
+Count: #(elem.x) = result
+Count: result = #(Node & elem.x)
+Count: #(Node & elem.x) = result
+Contains: x in Node.elem => result = True else result = False
+Contains: result = (x in Node.elem => True else False)
+Contains: x in Node.elem <=> result = True
+Contains: x !in Node.elem <=> result = False
+Contains: (some n: Node | n.elem = x) <=> result = True
+Contains: (no n: Node | n.elem = x) <=> result = False
+Contains: (some n: Node | x = n.elem) <=> result = True
+Contains: (no n: Node | x = n.elem) <=> result = False
+Contains: result = True <=> some (Node & elem.x)
+Contains: result = False <=> no (Node & elem.x)

@@ -1,0 +1,42 @@
+Task:
+Rewrite the body of a faulty Alloy predicate into 10 alternative syntactic forms.
+Keep the predicate name and parameters exactly the same.
+Do not intentionally fix any potential bug in the predicate. Each rewritten predicate should preserve the current (buggy) behavior.
+
+Faulty model:
+sig Person {
+   member_of : some Group
+}
+
+pred CanEnter(p: Person, r:Room) {
+	p.member_of in r.located_in
+}
+
+sig Group {}
+one sig alas extends Group {}  
+one sig peds extends Group {}
+
+sig Room {
+  located_in: set Group
+}
+one sig seclab extends Room {}
+
+fact {
+  // Should synthesize alas + peds = seclab.located_in
+  alas + peds = seclab.located_in
+}
+
+Target predicate name:
+CanEnter
+
+Guidelines:
+- Keep the same predicate header (name and parameter list).
+- Keep the overall meaning and buggy behavior as close as possible to the original predicate.
+- You may freely restructure the body (e.g., change quantifier nesting, reorder conjuncts, use helper lets), as long as it is valid Alloy.
+- Ensure that each rewriting is a complete predicate definition for CanEnter.
+- Do not add or remove other predicates, functions, signatures, facts, or comments in the module.
+
+Output:
+- Return 10 rewritten versions of the target predicate as Alloy code.
+- Separate each version clearly (for example, by a blank line).
+- Do not include any explanations or commentary, only Alloy code.

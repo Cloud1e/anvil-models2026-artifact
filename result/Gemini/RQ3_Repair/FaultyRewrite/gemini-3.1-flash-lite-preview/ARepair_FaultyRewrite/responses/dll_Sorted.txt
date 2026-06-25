@@ -1,0 +1,39 @@
+pred Sorted() {
+  all n: Node | n.elem < n.nxt.elem
+}
+
+pred Sorted() {
+  all n: Node | (n.nxt != none) implies n.elem < n.nxt.elem
+}
+
+pred Sorted() {
+  all n1, n2: Node | n1.nxt = n2 implies n1.elem < n2.elem
+}
+
+pred Sorted() {
+  all n: Node - DLL.header.*nxt.nxt.prev | n.elem < n.nxt.elem
+}
+
+pred Sorted() {
+  all n: Node | one n.nxt implies n.elem < n.nxt.elem
+}
+
+pred Sorted() {
+  {n: Node | n.elem < n.nxt.elem} = Node
+}
+
+pred Sorted() {
+  all n: Node | some n.nxt => n.elem < n.nxt.elem
+}
+
+pred Sorted() {
+  no n: Node | n.nxt != none and n.elem >= n.nxt.elem
+}
+
+pred Sorted() {
+  all n: Node | n.nxt in {m: Node | n.elem < m.elem}
+}
+
+pred Sorted() {
+  all n: Node | n.nxt = none or n.elem < n.nxt.elem
+}

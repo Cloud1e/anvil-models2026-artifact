@@ -1,0 +1,47 @@
+You are fixing Alloy specification syntax errors. The user will provide the full Alloy module containing exactly one predicate that is currently broken, and the parser error message.
+
+Your task is to fix ONLY that predicate's definition so that the whole module parses without syntax errors. All other sigs, facts, predicates, and tests must remain unchanged.
+
+Reply with ONLY the complete fixed predicate definition (including the 'pred name(...) { ... }' header and body), no explanation and no other code. Do NOT return the rest of the module.
+
+The following Alloy module has a syntax error in the predicate `AllExtObject`.
+
+Full module:
+
+sig Class {
+  ext: lone Class
+}
+
+one sig Object extends Class {}
+
+pred ObjectNoExt() {
+  // Object does not extend any class.
+  no Object.ext
+}
+
+pred Acyclic() {
+  // No class is a sub-class of itself (transitively).
+  all c: Class | c !in c.^ext
+}
+
+pred AllExtObject() {
+
+  // Each class other than Object is a sub-class of Object.
+  all c: Class | c in Class - Object implies c in Object.~ext*
+
+}
+
+pred ClassHierarchy() {
+  ObjectNoExt
+  Acyclic
+  AllExtObject
+}
+
+run ClassHierarchy for 3
+
+
+Parser error:
+There are 25 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ all fun iden let lone no none one seq some steps sum this univ { ~
+
+Output ONLY the complete fixed definition of that predicate, in Alloy syntax.

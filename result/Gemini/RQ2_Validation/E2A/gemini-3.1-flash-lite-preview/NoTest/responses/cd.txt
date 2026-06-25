@@ -1,0 +1,40 @@
+ObjectNoExt: no Object.ext
+ObjectNoExt: all c: Class | c = Object implies no c.ext
+ObjectNoExt: Object.ext = none
+ObjectNoExt: #Object.ext = 0
+ObjectNoExt: Object not in Class.ext
+ObjectNoExt: not some c: Class | c.ext = Object
+ObjectNoExt: all o: Object | no o.ext
+ObjectNoExt: no c: Class | c in Object.ext
+ObjectNoExt: Object.ext in none
+ObjectNoExt: one c: Class | c = Object and no c.ext
+AllExtObject: all c: Class - Object | c.ext = Object
+AllExtObject: all c: Class | c != Object implies c.ext = Object
+AllExtObject: Class - Object = Object.~ext
+AllExtObject: (Class - Object).ext = Object
+AllExtObject: all c: Class | (c != Object) => (c.ext = Object)
+AllExtObject: all c: Class - Object | some c.ext and c.ext = Object
+AllExtObject: all c: Class | c in Object => no c.ext else c.ext = Object
+AllExtObject: {c: Class | c != Object}.ext = Object
+AllExtObject: all c: Class | c != Object implies one c.ext and c.ext = Object
+AllExtObject: all c: Class - Object | c in Object.~ext
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and AllExtObject[]
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and (all c: Class - Object | c.ext = Object)
+ClassHierarchy: (no Object.ext) and (no ^ext & iden) and (all c: Class - Object | c.ext = Object)
+ClassHierarchy: no Object.ext and all c: Class | c not in c.^ext and all c: Class - Object | c.ext = Object
+ClassHierarchy: Object.ext = none and no (iden & ^ext) and (Class - Object).ext = Object
+ClassHierarchy: ObjectNoExt[] and AllExtObject[] and all c: Class | c not in c.^ext
+ClassHierarchy: all c: Class | (c = Object implies no c.ext) and (c != Object implies c.ext = Object) and (c not in c.^ext)
+ClassHierarchy: (all c: Class - Object | c.ext = Object) and (no ^ext & iden) and (no Object.ext)
+ClassHierarchy: (no Object.ext) and (all c: Class - Object | c.ext = Object) and (all c: Class | c not in c.^ext)
+ClassHierarchy: (all c: Class | c in Object <=> no c.ext) and (all c: Class - Object | c.ext = Object) and Acyclic[]
+Acyclic: no ^ext & iden
+Acyclic: all c: Class | c not in c.^ext
+Acyclic: all c: Class | not (c in c.ext.^+ext)
+Acyclic: no c: Class | c in c.^ext
+Acyclic: iden not in ^ext
+Acyclic: all c: Class | c.^ext & c = none
+Acyclic: all c: Class | not (c in c.^ext)
+Acyclic: all c: Class | c.^ext not in c.*ext
+Acyclic: no ^ext & iden -- aug9
+Acyclic: all c: Class | c not in c.^ext -- aug10

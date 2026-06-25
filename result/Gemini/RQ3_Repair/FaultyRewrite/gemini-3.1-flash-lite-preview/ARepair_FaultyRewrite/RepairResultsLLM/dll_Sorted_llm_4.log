@@ -1,0 +1,1824 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+Type error in /workspace/ARepair/.hidden/attempt.als at line 17 column 3:
+This must be an integer expression.
+Instead, it has the following possible type(s):
+{none}
+	at edu.mit.csail.sdg.ast.Expr.typecheck_as_int(Expr.java:203)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:323)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at fl.FaultLocator.visit(FaultLocator.java:133)
+	at parser.ast.nodes.VarDecl.accept(VarDecl.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$17(VoidVisitorAdapter.java:152)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:152)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] This must be an integer expression.
+Instead, it has the following possible type(s):
+{none}
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node & ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node + ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+Type error in /workspace/ARepair/.hidden/attempt.als at line 17 column 3:
+This must be an integer expression.
+Instead, it has the following possible type(s):
+{none}
+	at edu.mit.csail.sdg.ast.Expr.typecheck_as_int(Expr.java:203)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:323)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOE.mutate(BOE.java:38)
+	at fl.FaultLocator.visit(FaultLocator.java:194)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at fl.FaultLocator.visit(FaultLocator.java:133)
+	at parser.ast.nodes.VarDecl.accept(VarDecl.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$17(VoidVisitorAdapter.java:152)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:152)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] This must be an integer expression.
+Instead, it has the following possible type(s):
+{none}
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (((((DLL.header).(*nxt)).nxt).(integer/prev[])) - Node)) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(^nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(~(*nxt))).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(^(*nxt))).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).nxt).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*(~nxt))).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*(*nxt))).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*(^nxt))).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).(~nxt)).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).(*nxt)).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).(^nxt)).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) !>= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(~(^nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(^(~nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) < ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(^(^nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+ [INFO] Fault localization time: 11110538089
+[DEBUG] Most suspicious node: ((n.elem) < ((n.nxt).elem))
+[DEBUG] Score: 0.7071067811865475, FailToPass: 2, PassToFail: 0
+ [INFO] Fixed by mutation:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+Type error in /workspace/ARepair/.hidden/attempt.als at line 17 column 3:
+This must be an integer expression.
+Instead, it has the following possible type(s):
+{none}
+	at edu.mit.csail.sdg.ast.Expr.typecheck_as_int(Expr.java:203)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:323)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at fl.FaultLocator.visit(FaultLocator.java:133)
+	at parser.ast.nodes.VarDecl.accept(VarDecl.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$17(VoidVisitorAdapter.java:152)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:152)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] This must be an integer expression.
+Instead, it has the following possible type(s):
+{none}
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node & ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node + ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+Type error in /workspace/ARepair/.hidden/attempt.als at line 17 column 3:
+This must be an integer expression.
+Instead, it has the following possible type(s):
+{none}
+	at edu.mit.csail.sdg.ast.Expr.typecheck_as_int(Expr.java:203)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:323)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOE.mutate(BOE.java:38)
+	at fl.FaultLocator.visit(FaultLocator.java:194)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at fl.FaultLocator.visit(FaultLocator.java:133)
+	at parser.ast.nodes.VarDecl.accept(VarDecl.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$17(VoidVisitorAdapter.java:152)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:152)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] This must be an integer expression.
+Instead, it has the following possible type(s):
+{none}
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (((((DLL.header).(*nxt)).nxt).(integer/prev[])) - Node)) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(^nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(~(*nxt))).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(^(*nxt))).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).nxt).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*(~nxt))).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*(*nxt))).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*(^nxt))).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).(~nxt)).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).(*nxt)).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).(^nxt)).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) !> ((n.nxt).elem))
+})
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(~(^nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(^(~nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one (Node - ((((DLL.header).(*nxt)).nxt).(integer/prev[])))) {
+((n.elem) <= ((n.nxt).elem))
+})
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(^(^nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+ [INFO] Fault localization time: 6238754252
+Exception in thread "main" java.lang.NullPointerException
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:547)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:103)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:468)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:103)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:397)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:73)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:348)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.VarDecl.accept(VarDecl.java:21)
+	at generator.util.TypeAnalyzer.lambda$visit$17(TypeAnalyzer.java:647)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:647)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:49)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:720)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.Body.accept(Body.java:35)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:736)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:21)
+	at generator.util.TypeAnalyzer.lambda$visit$5(TypeAnalyzer.java:253)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1384)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:253)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:169)
+	at generator.util.TypeAnalyzer.<init>(TypeAnalyzer.java:131)
+	at patcher.Patcher.patch(Patcher.java:163)
+	at patcher.Patcher.main(Patcher.java:389)

@@ -1,0 +1,5 @@
+Model: balancedBST
+Predicate: Balanced
+Index: 11
+Original Body: Balanced: all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies #{n1.*~(left + right)} in #{n2.*~(left + right)} + (-1 + 1)}
+Test File: ARepair/experiments/test-suite/balancedBST.als

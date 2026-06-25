@@ -1,0 +1,354 @@
+{
+  "bempl": [
+    {
+      "predicate_name": "some k",
+      "body": "p.owns | k.opened_by = r",
+      "model": "bempl"
+    },
+    {
+      "predicate_name": "some k",
+      "body": "Key | p in k.~owns and r = k.opened_by",
+      "model": "bempl"
+    },
+    {
+      "predicate_name": "CanEnter",
+      "body": "r in p.owns.opened_by",
+      "model": "bempl"
+    },
+    {
+      "predicate_name": "some k",
+      "body": "Key | p in k.~owns and k.opened_by = r",
+      "model": "bempl"
+    },
+    {
+      "predicate_name": "CanEnter",
+      "body": "p.owns in r.~opened_by",
+      "model": "bempl"
+    },
+    {
+      "predicate_name": "CanEnter",
+      "body": "r in p.owns.~opened_by",
+      "model": "bempl"
+    },
+    {
+      "predicate_name": "some k",
+      "body": "p.owns | k.opened_by in r",
+      "model": "bempl"
+    },
+    {
+      "predicate_name": "some k",
+      "body": "Key | p in k.~owns and k.opened_by in r",
+      "model": "bempl"
+    }
+  ],
+  "dll": [
+    {
+      "predicate_name": "UniqueElem",
+      "body": "elem in Node one -> Int",
+      "model": "dll"
+    },
+    {
+      "predicate_name": "UniqueElem",
+      "body": "all i: Int | lone (~elem).i",
+      "model": "dll"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n: Node - nxt.Node | n.elem <= n.nxt.elem",
+      "model": "dll"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n: Node | lone n.nxt implies n.elem <= n.nxt.elem",
+      "model": "dll"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n: Node | n.nxt.elem >= n.elem",
+      "model": "dll"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n: Node - Node.nxt | n.elem <= n.nxt.elem",
+      "model": "dll"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n: Node | n.nxt in Node implies n.elem <= n.nxt.elem",
+      "model": "dll"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n: Node | n.nxt in Node implies n.nxt.elem >= n.elem",
+      "model": "dll"
+    },
+    {
+      "predicate_name": "ConsistentPreAndNxt",
+      "body": "all n1: Node | n1.nxt = pre[n1]",
+      "model": "dll"
+    },
+    {
+      "predicate_name": "ConsistentPreAndNxt",
+      "body": "all n2: Node | n2.pre = nxt[n2]",
+      "model": "dll"
+    }
+  ],
+  "arr": [
+    {
+      "predicate_name": "all i",
+      "body": "Int | lone (Array.i2e).i",
+      "model": "arr"
+    },
+    {
+      "predicate_name": "NoConflict",
+      "body": "(Array.i2e).Int in Element",
+      "model": "arr"
+    },
+    {
+      "predicate_name": "NoConflict",
+      "body": "Array.i2e in Int one -> Element",
+      "model": "arr"
+    },
+    {
+      "predicate_name": "NoConflict",
+      "body": "Array.i2e in Int -> one Element",
+      "model": "arr"
+    },
+    {
+      "predicate_name": "all e",
+      "body": "Element | lone (Array.i2e).e",
+      "model": "arr"
+    },
+    {
+      "predicate_name": "all e",
+      "body": "Element | e in Array.i2e.Int implies lone (Array.i2e).e",
+      "model": "arr"
+    }
+  ],
+  "balancedBST": [
+    {
+      "predicate_name": "Sorted",
+      "body": "all n : Node {n.left.^(left + right).elem < n.elem and n.right.^(left + right).elem > n.elem}",
+      "model": "balancedBST"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n : Node {n.left.^(left+right).elem < n.elem and n.right.^(left+right).elem > n.elem and (no n.left or n.left.elem < n.elem) and (no n.right or n.right.elem > n.elem)}",
+      "model": "balancedBST"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n : Node {no (n.left.^(left + right)) & {m : Node | m.elem >= n.elem} and no (n.right.^(left + right)) & {m : Node | m.elem <= n.elem}}",
+      "model": "balancedBST"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n : Node {n.left.^(left + right).elem !in {e: Int | e >= n.elem} and n.right.^(left + right).elem !in {e: Int | e <= n.elem}}",
+      "model": "balancedBST"
+    },
+    {
+      "predicate_name": "HasAtMostOneChild",
+      "body": "one n.left or one n.right",
+      "model": "balancedBST"
+    },
+    {
+      "predicate_name": "HasAtMostOneChild",
+      "body": "(no n.left or no n.right) and (n.left != n.right)",
+      "model": "balancedBST"
+    },
+    {
+      "predicate_name": "HasAtMostOneChild",
+      "body": "(n.left in Node implies n.right not in Node) or (n.right in Node implies n.left not in Node) or (no n.left and no n.right)",
+      "model": "balancedBST"
+    },
+    {
+      "predicate_name": "Balanced",
+      "body": "all n1 : Node, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies Depth[n1] - Depth[n2] <= 1 and Depth[n2] - Depth[n1] <= 1}",
+      "model": "balancedBST"
+    },
+    {
+      "predicate_name": "Balanced",
+      "body": "all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] = Depth[n2] or Depth[n1] = Depth[n2] + 1 or Depth[n2] = Depth[n1] + 1)}",
+      "model": "balancedBST"
+    },
+    {
+      "predicate_name": "Balanced",
+      "body": "all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies #{n1.*~(left + right)} - #{n2.*~(left + right)} <= 1 and #{n2.*~(left + right)} - #{n1.*~(left + right)} <= 1}",
+      "model": "balancedBST"
+    },
+    {
+      "predicate_name": "Balanced",
+      "body": "all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies #{n1.*~(left + right)} in #{n2.*~(left + right)} + (-1 + 1)}",
+      "model": "balancedBST"
+    }
+  ],
+  "student": [
+    {
+      "predicate_name": "Loop",
+      "body": "all n: Node | n not in n.^link",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Loop",
+      "body": "all n: Node | n !in n.^link",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Loop",
+      "body": "all n: Node | n.^link & n = none",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Loop",
+      "body": "all n: Node | n.^link in Node - n",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n: Node - link.Node | n.elem <= n.link.elem",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n: Node | (n -> n.link in link) implies n.elem <= n.link.elem",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Sorted",
+      "body": "all n: Node | n.link.elem - n.elem >= 0 or no n.link",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Count",
+      "body": "result = #(x.~elem)",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Count",
+      "body": "result = #({n: Node | n.elem = x})",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Count",
+      "body": "result = #(Node & x.~elem)",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Count",
+      "body": "result = #({n: Node | n.elem in x})",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Count",
+      "body": "result = #({n: Node | n -> x in elem})",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Count",
+      "body": "result = #{n: Node | n.elem = x}",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Count",
+      "body": "result = #({n: Node | x = n.elem})",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Count",
+      "body": "result = #(elem & Node -> x)",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Contains",
+      "body": "(x in Node.elem and result = True) or (x not in Node.elem and result = False)",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Contains",
+      "body": "result = True and x in Node.elem or result = False and x not in Node.elem",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Contains",
+      "body": "x in Node.elem <=> result = True",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Contains",
+      "body": "(x in Node.elem and result = True) or (x !in Node.elem and result = False)",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Contains",
+      "body": "result = True <=> x in Node.elem",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Contains",
+      "body": "result = True and x in elem.Node or result = False and x not in elem.Node",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Contains",
+      "body": "result = True and some x.~elem or result = False and no x.~elem",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Contains",
+      "body": "x in Node.elem implies result = True and result = True implies x in Node.elem",
+      "model": "student"
+    },
+    {
+      "predicate_name": "Contains",
+      "body": "result = True and (x in Node.elem) or result = False and not (x in Node.elem)",
+      "model": "student"
+    }
+  ],
+  "other": [
+    {
+      "predicate_name": "CanEnter",
+      "body": "r in p.member_of.~located_in",
+      "model": "other"
+    },
+    {
+      "predicate_name": "CanEnter",
+      "body": "p.member_of & r.located_in != none",
+      "model": "other"
+    },
+    {
+      "predicate_name": "some g",
+      "body": "p.member_of | g in r.located_in",
+      "model": "other"
+    },
+    {
+      "predicate_name": "CanEnter",
+      "body": "p.member_of & r.located_in in Group",
+      "model": "other"
+    },
+    {
+      "predicate_name": "some g",
+      "body": "Group | g in p.member_of and g in r.located_in",
+      "model": "other"
+    },
+    {
+      "predicate_name": "some g",
+      "body": "Group | p->g in member_of and r->g in located_in",
+      "model": "other"
+    },
+    {
+      "predicate_name": "CanEnter",
+      "body": "r.located_in & p.member_of != none",
+      "model": "other"
+    },
+    {
+      "predicate_name": "CanEnter",
+      "body": "p.member_of & r.located_in in alas + peds + (Group - alas - peds)",
+      "model": "other"
+    },
+    {
+      "predicate_name": "CanEnter",
+      "body": "r in (p.member_of & Group).~located_in",
+      "model": "other"
+    }
+  ]
+}

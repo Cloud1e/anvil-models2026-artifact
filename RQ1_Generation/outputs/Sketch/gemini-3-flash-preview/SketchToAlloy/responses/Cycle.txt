@@ -1,0 +1,6 @@
+sig Node {
+   link: set Node
+}
+pred Cycle {
+   some n: Node | n in n.^link
+}

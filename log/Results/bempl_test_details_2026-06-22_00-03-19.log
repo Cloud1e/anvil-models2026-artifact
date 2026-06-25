@@ -1,0 +1,324 @@
+BEMPL Test Suite Detailed Report
+Timestamp: 2026-06-22_00-03-19
+
+Model run commands: 0
+==============================
+Candidate 1
+some e: Employee | some disj k1, k2: p.owns & e.~authorized | k1.opened_by = r
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 2
+some k1: p.owns, k2: p.owns | k1.opened_by = r and k1.authorized = k2.authorized and k1 != k2
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 3
+some k: p.owns | k.opened_by = r and some k2: p.owns - k | k.authorized = k2.authorized
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 4
+some k: p.owns | k.opened_by = r and k.authorized in (p.owns - k).authorized
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 5
+some e: Employee | some k: p.owns & authorized.e | k.opened_by = r and #(p.owns & authorized.e) > 1
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 6
+some e: Employee | some k1: p.owns, k2: p.owns | k1.opened_by = r and k1 != k2 and k1.authorized = e and k2.authorized = e
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 7
+some k: p.owns | k.opened_by = r and some k2: p.owns | k != k2 and k.authorized = k2.authorized
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 8
+some k: p.owns | k.opened_by = r and #(p.owns & authorized.(k.authorized)) > 1
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 9
+some k: p.owns | k.opened_by = r and p.owns - k & authorized.(k.authorized) != none
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+
+==============================
+Candidate 10
+some e: Employee | some k: p.owns & authorized.e | k.opened_by = r and some (p.owns & authorized.e - k)
+
+Test test9      expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test17     expect=0 actual=1 FAIL
+Test test14     expect=0 actual=0 OK
+Test test18     expect=0 actual=1 FAIL
+Test test11     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test3      expect=0 actual=0 OK
+Test test20     expect=1 actual=1 OK
+Test test12     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test7      expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 25/25)
+

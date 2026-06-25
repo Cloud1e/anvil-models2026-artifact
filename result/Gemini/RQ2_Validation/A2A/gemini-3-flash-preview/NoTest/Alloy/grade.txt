@@ -1,0 +1,35 @@
+s in a.associated_with.(assistant_for + instructor_of) and s not in a.assigned_to
+Correct
+
+(s in a.associated_with.assistant_for or s in a.associated_with.instructor_of) && s not in a.assigned_to
+Correct
+
+s in a.associated_with.assistant_for + a.associated_with.instructor_of - a.assigned_to
+Correct
+
+s not in a.assigned_to and s in (a.associated_with.assistant_for + a.associated_with.instructor_of)
+Correct
+
+(s in a.associated_with.assistant_for or s = a.associated_with.instructor_of) and s not in a.assigned_to
+Correct
+
+s in a.associated_with.assistant_for + a.associated_with.instructor_of and s not in a.assigned_to
+Correct
+
+s not in a.assigned_to and (s in a.associated_with.assistant_for or s in a.associated_with.instructor_of)
+Correct
+
+no (s & a.assigned_to) and s in a.associated_with.(assistant_for + instructor_of)
+Correct
+
+s !in a.assigned_to && (s in a.associated_with.assistant_for || s in a.associated_with.instructor_of)
+Correct
+
+s in (a.associated_with.instructor_of + a.associated_with.assistant_for) and not (s in a.assigned_to)
+Correct
+
+Total: 10
+Unique: 10
+Correct: 10
+Syntax Error: 0
+Wrong: 0

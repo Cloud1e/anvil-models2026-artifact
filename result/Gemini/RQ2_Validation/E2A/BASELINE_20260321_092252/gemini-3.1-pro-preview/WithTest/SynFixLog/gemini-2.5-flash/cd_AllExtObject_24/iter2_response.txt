@@ -1,0 +1,4 @@
+pred AllExtObject() {
+  // Each class other than Object is a sub-class of Object.
+  all c: Class | c != Object implies Object in c.^ext
+}

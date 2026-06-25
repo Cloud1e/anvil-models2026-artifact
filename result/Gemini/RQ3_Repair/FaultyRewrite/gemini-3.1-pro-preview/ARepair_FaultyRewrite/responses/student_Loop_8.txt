@@ -1,0 +1,4 @@
+pred Loop(This: List) {
+    #{x: Node | x = (x - This.header).link} = 0
+    #{y: Node | y.link = This.header} = 1
+}

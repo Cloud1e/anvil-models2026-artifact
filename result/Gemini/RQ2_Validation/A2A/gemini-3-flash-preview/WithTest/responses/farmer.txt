@@ -1,0 +1,20 @@
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some item : from - Farmer | { to' = to + Farmer + item and from' = from - Farmer - item - from'.eats })
+crossRiver: some item : set (from - Farmer) | lone item and { from' = from - Farmer - item - from'.eats and to' = to + Farmer + item }
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (one item : from - Farmer | { from' = from - Farmer - item - from'.eats and to' = to + Farmer + item })
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some boat : from - Farmer | { to' = to + Farmer + boat and from' = from - Farmer - boat - from'.eats })
+crossRiver: (some item : from - Farmer | { from' = (from - Farmer - item) - from'.eats and to' = to + Farmer + item }) or { from' = (from - Farmer) - from'.eats and to' = to + Farmer }
+crossRiver: some item : set (from - Farmer) | { lone item and from' = from - Farmer - item - from'.eats and to' = to + Farmer + item }
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : Object | item in from - Farmer and from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+crossRiver: (some boat : from - Farmer | { to' = to + Farmer + boat and from' = from - Farmer - boat - from'.eats }) or { from' = from - Farmer - from'.eats and to' = to + Farmer }
+crossRiver: some item : set (from - Farmer) | lone item and to' = to + Farmer + item and from' = from - Farmer - item - from'.eats
+solvePuzzle: ord/last.far = Object
+solvePuzzle: Object = ord/last.far
+solvePuzzle: Object in ord/last.far
+solvePuzzle: all o: Object | o in ord/last.far
+solvePuzzle: no o: Object | o not in ord/last.far
+solvePuzzle: ord/last.near = none
+solvePuzzle: no ord/last.near
+solvePuzzle: ord/last.near in none
+solvePuzzle: Object - ord/last.far = none
+solvePuzzle: all o: Object | some (o & ord/last.far)

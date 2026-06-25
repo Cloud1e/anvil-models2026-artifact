@@ -1,0 +1,20 @@
+r + ~r = S->S
+S->S = r + ~r
+S->S in r + ~r
+~r + r = S->S
+no (S->S) - (r + ~r)
+no (S->S) - r - ~r
+(S->S) - r in ~r
+(S->S) - ~r in r
+all x, y: S | x->y in r or y->x in r
+all x, y: S | x->y in r + ~r
+no x, y: S | x->y not in r and y->x not in r
+all s: S | S in s.r + s.~r
+all s: S | S = s.r + s.~r
+all s: S | no S - (s.r + s.~r)
+all s: S | S - s.r in s.~r
+all s: S | S - s.~r in s.r
+all s, t: S | t in s.r or s in t.r
+all s, t: S | s in t.~r or t in s.~r
+all s, t: S | t in s.(r + ~r)
+all s: S | all t: S | s->t in r or t->s in r

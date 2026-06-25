@@ -1,0 +1,104 @@
+Sorted: all n: Node { (all nl: n.left.*(left + right) | nl.elem < n.elem) && (all nr: n.right.*(left + right) | nr.elem > n.elem) }
+Correct
+
+Sorted: all n: Node { all nl: n.left.*(left + right) | nl.elem < n.elem all nr: n.right.*(left + right) | nr.elem > n.elem }
+Correct
+
+Sorted: all n: Node { (all nl: n.left.*(left + right) | nl.elem < n.elem) and (all nr: n.right.*(left + right) | nr.elem > n.elem) }
+Correct
+
+Sorted: all n: Node { no nl: n.left.*(left + right) | nl.elem >= n.elem; no nr: n.right.*(left + right) | nr.elem <= n.elem }
+Syntax Error
+SYN_MSG:
+Syntax error at the ; character.
+END_SYN_MSG
+
+Sorted: all n: Node { all nl: n.left.*(left + right) | n.elem > nl.elem; all nr: n.right.*(left + right) | n.elem < nr.elem }
+Syntax Error
+SYN_MSG:
+Syntax error at the ; character.
+END_SYN_MSG
+
+Sorted: all n: Node | (all nl: n.left.*(left + right) | nl.elem < n.elem) && (all nr: n.right.*(left + right) | nr.elem > n.elem)
+Correct
+
+Sorted: all n: Node { (all c1: n.left.*(left + right) | c1.elem < n.elem) && (all c2: n.right.*(left + right) | c2.elem > n.elem) }
+Correct
+
+Sorted: all n: Node | (all nl: n.left.*(left + right) | nl.elem < n.elem) and (all nr: n.right.*(left + right) | nr.elem > n.elem)
+Correct
+
+Sorted: all n: Node { all l: n.left.*(left + right) | l.elem < n.elem; all r: n.right.*(left + right) | r.elem > n.elem }
+Syntax Error
+SYN_MSG:
+Syntax error at the ; character.
+END_SYN_MSG
+
+Sorted: all n: Node | (no nl: n.left.*(left + right) | nl.elem >= n.elem) and (no nr: n.right.*(left + right) | nr.elem <= n.elem)
+Correct
+
+HasAtMostOneChild: no n.left || no n.right
+Correct
+
+HasAtMostOneChild: lone n.left + n.right
+Correct
+
+HasAtMostOneChild: #(n.left + n.right) <= 1
+Correct
+
+HasAtMostOneChild: not (some n.left and some n.right)
+Correct
+
+HasAtMostOneChild: some n.left implies no n.right
+Correct
+
+HasAtMostOneChild: some n.right implies no n.left
+Correct
+
+HasAtMostOneChild: all c1, c2: n.left + n.right | c1 = c2
+Correct
+
+HasAtMostOneChild: (no n.left) or (no n.right)
+Correct
+
+HasAtMostOneChild: !(some n.left && some n.right)
+Correct
+
+HasAtMostOneChild: some n.left => no n.right
+Correct
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth[n1], d2 = Depth[n2] | d1 - d2 <= 1 and d2 - d1 <= 1)
+Wrong
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (Depth[n1] - Depth[n2] >= -1 and Depth[n1] - Depth[n2] <= 1)
+Wrong
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] && HasAtMostOneChild[n2]) => (let diff = Depth[n1].minus[Depth[n2]] | diff >= -1 && diff <= 1)
+Correct
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (minus[Depth[n1], Depth[n2]] <= 1 and minus[Depth[n1], Depth[n2]] >= -1)
+Correct
+
+Balanced: all n1, n2: Node { (HasAtMostOneChild[n1] && HasAtMostOneChild[n2]) => minus[Depth[n1], Depth[n2]] <= 1 && minus[Depth[n2], Depth[n1]] <= 1 }
+Correct
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (Depth[n1] - Depth[n2] <= 1 and Depth[n2] - Depth[n1] <= 1)
+Wrong
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d = minus[Depth[n1], Depth[n2]] | d <= 1 and d >= -1)
+Correct
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (Depth[n1].minus[Depth[n2]] <= 1 and Depth[n1].minus[Depth[n2]] >= -1)
+Correct
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (let diff = minus[Depth[n1], Depth[n2]] | diff <= 1 and diff >= -1)
+Correct
+
+Balanced: all n1, n2: Node { (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth[n1], d2 = Depth[n2] | minus[d1, d2] <= 1 and minus[d2, d1] <= 1) }
+Correct
+
+Total: 30
+Unique: 30
+Correct: 24
+Syntax Error: 3
+Wrong: 3

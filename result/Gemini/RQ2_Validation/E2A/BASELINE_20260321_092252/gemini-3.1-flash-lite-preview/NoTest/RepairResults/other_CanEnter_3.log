@@ -1,0 +1,106 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(some g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 5953514336
+ [INFO] Fixed by mutation:
+module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(all g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] All tests pass.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(all g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(all g: (one (p.member_of)) {
+(g in (r.located_in))
+})
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+

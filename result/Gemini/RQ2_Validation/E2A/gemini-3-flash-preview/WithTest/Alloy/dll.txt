@@ -1,0 +1,95 @@
+UniqueElem: all n1, n2: Node | n1.elem = n2.elem implies n1 = n2
+Correct
+
+UniqueElem: all n1, n2: Node | n1 != n2 implies n1.elem != n2.elem
+Correct
+
+UniqueElem: no disj n1, n2: Node | n1.elem = n2.elem
+Correct
+
+UniqueElem: all disj n1, n2: Node | n1.elem != n2.elem
+Correct
+
+UniqueElem: all n: Node | no n2: Node - n | n.elem = n2.elem
+Correct
+
+UniqueElem: all e: Int | lone n: Node | n.elem = e
+Correct
+
+UniqueElem: all e: Node.elem | one n: Node | n.elem = e
+Correct
+
+UniqueElem: all n: Node | lone n2: Node | n.elem = n2.elem
+Correct
+
+UniqueElem: all n: Node | n.elem !in (Node - n).elem
+Correct
+
+UniqueElem: all n: Node | elem. (n.elem) = n
+Correct
+
+Sorted: all n: Node | some n.nxt => n.elem <= n.nxt.elem
+Correct
+
+Sorted: all n: Node | n.nxt != none => n.elem <= n.nxt.elem
+Correct
+
+Sorted: all n1, n2: Node | n1.nxt = n2 => n1.elem <= n2.elem
+Correct
+
+Sorted: all n: Node, nextNode: n.nxt | n.elem <= nextNode.elem
+Correct
+
+Sorted: all n: Node | all nextNode: n.nxt | n.elem <= nextNode.elem
+Correct
+
+Sorted: all n: Node - {n: Node | no n.nxt} | n.elem <= n.nxt.elem
+Correct
+
+Sorted: all n: Node | no n.nxt or n.elem <= n.nxt.elem
+Correct
+
+Sorted: all n: Node | n.elem <= (n.nxt).elem or n.nxt = none
+Correct
+
+Sorted: all n1: Node | all n2: n1.nxt | n1.elem <= n2.elem
+Correct
+
+Sorted: all n: Node | some n.nxt implies n.elem <= n.nxt.elem
+Correct
+
+ConsistentPreAndNxt: all n1, n2: Node | n1.nxt = n2 <=> n2.pre = n1
+Correct
+
+ConsistentPreAndNxt: nxt = ~pre
+Correct
+
+ConsistentPreAndNxt: pre = ~nxt
+Correct
+
+ConsistentPreAndNxt: all n: Node | n.nxt = n.~pre
+Correct
+
+ConsistentPreAndNxt: all n: Node | n.pre = n.~nxt
+Correct
+
+ConsistentPreAndNxt: all n: Node | (some n.nxt => n.nxt.pre = n) and (some n.pre => n.pre.nxt = n)
+Correct
+
+ConsistentPreAndNxt: all n: Node | (all n2: n.nxt | n2.pre = n) and (all n2: n.pre | n2.nxt = n)
+Correct
+
+ConsistentPreAndNxt: all n1, n2: Node | n2 = n1.nxt <=> n1 = n2.pre
+Correct
+
+ConsistentPreAndNxt: all n: Node | n.nxt = {n2: Node | n2.pre = n}
+Correct
+
+ConsistentPreAndNxt: all n: Node | n.pre = {n2: Node | n2.nxt = n}
+Correct
+
+Total: 30
+Unique: 30
+Correct: 30
+Syntax Error: 0
+Wrong: 0

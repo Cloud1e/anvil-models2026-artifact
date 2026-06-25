@@ -1,0 +1,20 @@
+r.r in r
+all x, y, z: S | x->y in r and y->z in r implies x->z in r
+all x: S | x.r.r in x.r
+all x: S | r[r[x]] in r[x]
+all x: S, y: x.r | y.r in x.r
+no x, y, z: S | x->y in r and y->z in r and x->z not in r
+r.r - r = none
+no r.r - r
+r.r & r = r.r
+r.r + r = r
+all x, y, z: S | x->y not in r or y->z not in r or x->z in r
+all x, y: S | x->y in r implies y.r in x.r
+all x, z: S | (some y: S | x->y in r and y->z in r) implies x->z in r
+~r.~r in ~r
+^r in r
+^r = r
+r = r + r.r
+all x, y: S | y in x.r implies y.r in x.r
+all x, z: S | x->z not in r implies (no y: S | x->y in r and y->z in r)
+all x, y, z: S | (x in r.y and y in r.z) implies x in r.z

@@ -1,0 +1,145 @@
+ObjectNoExt: no Object.ext
+Correct
+
+ObjectNoExt: Object.ext = none
+Correct
+
+ObjectNoExt: none = Object.ext
+Correct
+
+ObjectNoExt: #(Object.ext) = 0
+Correct
+
+ObjectNoExt: not some Object.ext
+Correct
+
+ObjectNoExt: all c: Class | c not in Object.ext
+Correct
+
+ObjectNoExt: no c: Class | Object->c in ext
+Correct
+
+ObjectNoExt: no c: Class | c in Object.ext
+Correct
+
+ObjectNoExt: not (some c: Class | c in Object.ext)
+Correct
+
+ObjectNoExt: not (some c: Class | Object->c in ext)
+Correct
+
+Acyclic: no c: Class | c in c.^ext
+Correct
+
+Acyclic: all c: Class | c not in c.^ext
+Correct
+
+Acyclic: no iden & ^ext
+Correct
+
+Acyclic: no ^ext & iden
+Correct
+
+Acyclic: all c: Class | not (c in c.^ext)
+Correct
+
+Acyclic: not some c: Class | c in c.^ext
+Correct
+
+Acyclic: no c: Class | c->c in ^ext
+Correct
+
+Acyclic: all c: Class | c->c not in ^ext
+Correct
+
+Acyclic: not some c: Class | c->c in ^ext
+Correct
+
+Acyclic: all x: Class | x not in x.^ext
+Correct
+
+AllExtObject: all c: Class - Object | Object in c.^ext
+Correct
+
+AllExtObject: no c: Class - Object | Object not in c.^ext
+Correct
+
+AllExtObject: not some c: Class - Object | Object not in c.^ext
+Correct
+
+AllExtObject: all c: Class | c != Object implies Object in c.^ext
+Correct
+
+AllExtObject: no c: Class | c != Object and Object not in c.^ext
+Correct
+
+AllExtObject: not some c: Class | c != Object and Object not in c.^ext
+Correct
+
+AllExtObject: all c: Class | not (c = Object) implies Object in c.^ext
+Correct
+
+AllExtObject: all x: Class - Object | Object in x.^ext
+Correct
+
+AllExtObject: all x: Class | x != Object implies Object in x.^ext
+Correct
+
+AllExtObject: no x: Class - Object | Object not in x.^ext
+Correct
+
+ClassHierarchy: ObjectNoExt() and Acyclic() and AllExtObject()
+Syntax Error
+SYN_MSG:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+END_SYN_MSG
+
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and AllExtObject[]
+Correct
+
+ClassHierarchy: Acyclic() and ObjectNoExt() and AllExtObject()
+Syntax Error
+SYN_MSG:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+END_SYN_MSG
+
+ClassHierarchy: Acyclic[] and ObjectNoExt[] and AllExtObject[]
+Correct
+
+ClassHierarchy: AllExtObject() and Acyclic() and ObjectNoExt()
+Syntax Error
+SYN_MSG:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+END_SYN_MSG
+
+ClassHierarchy: AllExtObject[] and Acyclic[] and ObjectNoExt[]
+Correct
+
+ClassHierarchy: ObjectNoExt() and AllExtObject() and Acyclic()
+Syntax Error
+SYN_MSG:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+END_SYN_MSG
+
+ClassHierarchy: ObjectNoExt[] and AllExtObject[] and Acyclic[]
+Correct
+
+ClassHierarchy: Acyclic() and AllExtObject() and ObjectNoExt()
+Syntax Error
+SYN_MSG:
+There are 30 possible tokens that can appear here:
+! # ( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq set some sum this univ { ~ 
+END_SYN_MSG
+
+ClassHierarchy: Acyclic[] and AllExtObject[] and ObjectNoExt[]
+Correct
+
+Total: 40
+Unique: 40
+Correct: 35
+Syntax Error: 5
+Wrong: 0

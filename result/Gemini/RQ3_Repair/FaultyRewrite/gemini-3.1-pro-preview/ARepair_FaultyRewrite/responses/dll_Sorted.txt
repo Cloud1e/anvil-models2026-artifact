@@ -1,0 +1,39 @@
+pred Sorted() {
+  all n1: Node | n1.elem < n1.nxt.elem
+}
+
+pred Sorted() {
+  all x: Node { x.elem < x.nxt.elem }
+}
+
+pred Sorted() {
+  no n: Node | not (n.elem < n.nxt.elem)
+}
+
+pred Sorted() {
+  not some n: Node | not (n.elem < n.nxt.elem)
+}
+
+pred Sorted() {
+  all n: Node | let nxtElem = n.nxt.elem | n.elem < nxtElem
+}
+
+pred Sorted() {
+  all n: Node | let curElem = n.elem | curElem < n.nxt.elem
+}
+
+pred Sorted() {
+  all n: Node | let curElem = n.elem, nxtElem = n.nxt.elem | curElem < nxtElem
+}
+
+pred Sorted() {
+  all n: Node | (n.elem) < (n.nxt.elem)
+}
+
+pred Sorted() {
+  all n: Node | n.elem < (n.nxt).elem
+}
+
+pred Sorted() {
+  all node: Node | node.elem < node.nxt.elem
+}

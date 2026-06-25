@@ -1,0 +1,281 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+(lone e: (one Element) {
+((i.(Array.i2e)) = e)
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+(lone e: (one Element) {
+((i.(Array.i2e)) = e)
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+(lone e: (one Element) {
+((i.(Array.i2e)) = e)
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+(some i: (one Int) {
+(lone e: (one Element) {
+((i.(Array.i2e)) = e)
+})
+})
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+(lone e: (one Element) {
+((i.(Array.i2e)) = e)
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx !< 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+(lone e: (one Element) {
+((i.(Array.i2e)) = e)
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx !>= (Array.length)))
+}) && ((Array.length) >= 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+(lone e: (one Element) {
+((i.(Array.i2e)) = e)
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) !< 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+ [INFO] Fault localization time: 10061067380
+[DEBUG] Most suspicious node: ((i.(Array.i2e)) = e)
+[DEBUG] Score: 1.0, FailToPass: 2, PassToFail: 0
+ [INFO] Fixed by mutation:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+(lone e: (one Element) {
+((i.(Array.i2e)) != e)
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] All tests pass.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+(lone e: (one Element) {
+((i.(Array.i2e)) != e)
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+(lone e: (one Element) {
+((i.(Array.i2e)) != e)
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+

@@ -1,0 +1,12 @@
+Complete the following sketch of the Alloy predicate (without markdown or comments or ```) by selecting values for the holes with respect to the given constraints such that the predicate is correct with respect to the property described in the comments:
+
+sig Node {
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | \E,e\ \CO,co\ \E,e\
+}
+
+co := {| =|in|!=|!in |}
+e := {| Node|n|((Node|n).(*|^)link) |}

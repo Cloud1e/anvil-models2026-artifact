@@ -1,0 +1,3958 @@
+[2026-06-21 23:57:44] Starting RQ1
+ARTIFACT_ROOT=.
+RUN_ID=20260621_235744
+
+Command block:
+
+cd "$ARTIFACT_ROOT" || exit 1
+echo "RQ1 validation standard:"
+echo "- Entry points: Example rq1-process-english / rq1-process-alloy."
+echo "- Standard: bounded equivalence check, generated as check { P <=> P2 } for 5."
+echo "- Cor = SAME_CODE or CORRECT_CODE; Syn = SYNTAX_ERROR; Sem = DIFF_OUTPUT."
+echo "- No RQ2-style AREPAIR_VALIDATION testsuite/equivalence branch is used by these RQ1 entry points."
+echo
+for model in gemini-3.1-pro-preview gemini-3-flash-preview gemini-3.1-flash-lite-preview; do
+  echo "[$(date)] RQ1 model=${model} E2A+A2A"
+  bash RQ1_Generation/eval/run_rq1_eval.sh "$model" both
+  ec=$?
+  echo "[$(date)] RQ1 model=${model} exit=${ec}"
+done
+
+
+RQ1 validation standard:
+- Entry points: Example rq1-process-english / rq1-process-alloy.
+- Standard: bounded equivalence check, generated as check { P <=> P2 } for 5.
+- Cor = SAME_CODE or CORRECT_CODE; Syn = SYNTAX_ERROR; Sem = DIFF_OUTPUT.
+- No RQ2-style AREPAIR_VALIDATION testsuite/equivalence branch is used by these RQ1 entry points.
+
+[Sun Jun 21 23:57:44 CDT 2026] RQ1 model=gemini-3.1-pro-preview E2A+A2A
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one x.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one r[x]
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+r in S -> one S
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | #x.r = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | #r[x] = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+~r.r in iden and S in r.S
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+~r.r in iden and r.S = S
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one (x <: r)
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | #(x <: r) = 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | some x.r and lone x.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | some r[x] and lone r[x]
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one y: S | x->y in r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one y: S | x.r = y
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | one y: S | r[x] = y
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | some y: S | x.r = y
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | some y: S | r[x] = y
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+no x: S | #x.r != 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+no x: S | #r[x] != 1
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | x.r != none and lone x.r
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Function:
+sig S { 
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+pred Function2 {
+all x: S | some y: S | x->y in r and (all z: S | x->z in r implies y = z)
+}
+check { Function <=> Function2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+no iden & r
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+no r & iden
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+r & iden = none
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+Type error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc17260627014899740846.als at line 9 column 10:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/S->this/S}
+Right type = {none}
+	at edu.mit.csail.sdg.ast.ExprBinary.error(ExprBinary.java:105)
+	at edu.mit.csail.sdg.ast.ExprBinary.access$000(ExprBinary.java:54)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:414)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2274)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+iden & r = none
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+Type error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc5967203699334282253.als at line 9 column 10:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/S->this/S}
+Right type = {none}
+	at edu.mit.csail.sdg.ast.ExprBinary.error(ExprBinary.java:105)
+	at edu.mit.csail.sdg.ast.ExprBinary.access$000(ExprBinary.java:54)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:414)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2274)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+r - iden = r
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+r in (S -> S) - iden
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+all x: S | x not in x.r
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+all x: S | x not in r.x
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+all x: S | x->x not in r
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+no x: S | x in x.r
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+no x: S | x in r.x
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+no x: S | x->x in r
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+all x: S | no x.r & x
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+all x: S | no r.x & x
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+all x, y: S | x->y in r implies x != y
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+all x, y: S | x = y implies x->y not in r
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+all x: S | x.r & x = none
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+no x, y: S | x = y and x->y in r
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+not some iden & r
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Irreflexive:
+sig S { 
+  r: set S
+}
+pred Irreflexive {
+  // No element in S is related to itself
+  all s, t: S | s->t in r implies s != t
+}
+pred Irreflexive2 {
+all x, y: S | y in x.r implies x != y
+}
+check { Irreflexive <=> Irreflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+r in S -> lone S
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S | lone x.r
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+~r.r in iden
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S | #x.r <= 1
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={S$0, S$1, S$2, S$3}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/S={S$0, S$1, S$2, S$3}
+this/S<:r={S$0->S$3, S$1->S$2, S$2->S$0, S$2->S$1, S$2->S$2, S$2->S$3}
+
+DIFF_OUTPUT
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S | #x.r < 2
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={S$0, S$1, S$2, S$3}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/S={S$0, S$1, S$2, S$3}
+this/S<:r={S$0->S$3, S$1->S$1, S$2->S$0, S$2->S$1, S$2->S$2, S$2->S$3}
+
+DIFF_OUTPUT
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+no x: S | #x.r > 1
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={S$0, S$1, S$2, S$3}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/S={S$0, S$1, S$2, S$3}
+this/S<:r={S$1->S$3, S$2->S$0, S$2->S$1, S$2->S$2, S$2->S$3}
+
+DIFF_OUTPUT
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+no x: S | #x.r >= 2
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={S$0, S$1, S$2, S$3}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/S={S$0, S$1, S$2, S$3}
+this/S<:r={S$3->S$0, S$3->S$1, S$3->S$2, S$3->S$3}
+
+DIFF_OUTPUT
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S | #x.r = 0 or #x.r = 1
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S | x.r = none or one x.r
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x, y, z: S | x->y in r and x->z in r implies y = z
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+no x, y, z: S | x->y in r and x->z in r and y != z
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S | no y, z: S | y in x.r and z in x.r and y != z
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+no x: S | some y, z: S | y in x.r and z in x.r and y != z
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S, y: x.r, z: x.r | y = z
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+no (~r.r) - iden
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S | lone r[x]
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S | some y: S | x.r in y
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S | lone y: S | x->y in r
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+all x: S | no disj y, z: S | x->y in r and x->z in r
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Functional:
+sig S { 
+  r: set S
+}
+pred Functional {
+  // Every element in S is related to at most one element (making r a partial function)
+  all s: S | lone s.r
+}
+pred Functional2 {
+no x: S | some disj y, z: S | x->y in r and x->z in r
+}
+check { Functional <=> Functional2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x, y: S | x->y in r or y->x in r
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x, y: S | y in x.r or x in y.r
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x, y: S | x in r.y or y in r.x
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x, y: S | x->y in r + ~r
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+S->S in r + ~r
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+r + ~r = S->S
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+S->S = r + ~r
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+no S->S - r - ~r
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+no S->S - (r + ~r)
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+no x, y: S | x->y not in r and y->x not in r
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+no x, y: S | x->y not in r + ~r
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x: S | x.r + x.~r = S
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x: S | S in x.r + x.~r
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x: S | x.(r + ~r) = S
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x: S | S in x.(r + ~r)
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x: S | S = x.r + r.x
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x: S | S in x.r + r.x
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x: S | no S - (x.r + x.~r)
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x: S | no S - x.r - r.x
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Connex:
+sig S { 
+  r: set S
+}
+pred Connex {
+  // For every pair of elements in S, either the first is related to the second or vice versa
+  all s, t: S | s->t in r or t->s in r
+}
+pred Connex2 {
+all x: S | no y: S | y not in x.r and x not in y.r
+}
+check { Connex <=> Connex2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+r.r in r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+all x, y, z: S | x->y in r and y->z in r implies x->z in r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+all x: S | x.r.r in x.r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+all x: S | r[r[x]] in r[x]
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+all x: S, y: x.r | y.r in x.r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+no x, y, z: S | x->y in r and y->z in r and x->z not in r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+r.r - r = none
+}
+check { Transitive <=> Transitive2 } for 5
+Type error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc9436511836903908814.als at line 9 column 9:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/S->this/S}
+Right type = {none}
+	at edu.mit.csail.sdg.ast.ExprBinary.error(ExprBinary.java:105)
+	at edu.mit.csail.sdg.ast.ExprBinary.access$000(ExprBinary.java:54)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:414)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2274)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+no r.r - r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+r.r & r = r.r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+r.r + r = r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+all x, y, z: S | x->y not in r or y->z not in r or x->z in r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+all x, y: S | x->y in r implies y.r in x.r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+all x, z: S | (some y: S | x->y in r and y->z in r) implies x->z in r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+~r.~r in ~r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+^r in r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+^r = r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+r = r + r.r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+all x, y: S | y in x.r implies y.r in x.r
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+all x, z: S | x->z not in r implies (no y: S | x->y in r and y->z in r)
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Transitive:
+sig S { 
+  r: set S
+}
+pred Transitive {
+  // If element x in S is related to y and y is related to z, then x is also related to z
+  all s, t, u: S | s->t in r and t->u in r implies s->u in r
+}
+pred Transitive2 {
+all x, y, z: S | (x in r.y and y in r.z) implies x in r.z
+}
+check { Transitive <=> Transitive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+all x: S | x in x.r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+all x: S | x->x in r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+all x: S | x in r[x]
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+no x: S | x not in x.r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+no x: S | x->x not in r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+no x: S | x not in r[x]
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+all x, y: S | x = y implies x->y in r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+all x, y: S | x = y implies y in x.r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+no x, y: S | x = y and x->y not in r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+S <: iden in r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+iden :> S in r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+S->S & iden in r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+S in {x: S | x in x.r}
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+S = {x: S | x->x in r}
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+no S - {x: S | x in x.r}
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+all x: S | x in x.~r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+all x: S | x->x in ~r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+all x: S | some (x->x & r)
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+all x: S | x in x.(r & iden)
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Reflexive:
+sig S { 
+  r: set S
+}
+pred Reflexive {
+  // Every element in S is related to itself
+  all s: S | s->s in r
+}
+pred Reflexive2 {
+all x: S | x = x & x.r
+}
+check { Reflexive <=> Reflexive2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some n: Node | n in n.^link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some n: Node | n in ^link.n
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some iden & ^link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some ^link & iden
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+not no iden & ^link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+not no ^link & iden
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+iden & ^link != none
+}
+check { Cycle <=> Cycle2 } for 5
+Type error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc5633655589875082252.als at line 9 column 14:
+!= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Node->this/Node}
+Right type = {none}
+	at edu.mit.csail.sdg.ast.ExprBinary.error(ExprBinary.java:105)
+	at edu.mit.csail.sdg.ast.ExprBinary.access$000(ExprBinary.java:54)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:414)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2274)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+^link & iden != none
+}
+check { Cycle <=> Cycle2 } for 5
+Type error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc1186841156692627179.als at line 9 column 14:
+!= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Node->this/Node}
+Right type = {none}
+	at edu.mit.csail.sdg.ast.ExprBinary.error(ExprBinary.java:105)
+	at edu.mit.csail.sdg.ast.ExprBinary.access$000(ExprBinary.java:54)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:414)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2274)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some n: Node | n->n in ^link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+not all n: Node | n not in n.^link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+not all n: Node | n->n not in ^link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some x, y: Node | x->y in ^link and y->x in ^link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some x, y: Node | x in y.^link and y in x.^link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some n: Node | n in n.link + n.link.^link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some n: Node | n->n in link + link.^link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some n: Node | n in n.link.*link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some n: Node | n in n.*link.link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some n: Node | n->n in link.*link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some n: Node | n->n in *link.link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Cycle:
+sig Node { 
+  link: set Node
+}
+pred Cycle {
+  // graph with directed cycle
+  some n: Node | n in n.^link
+}
+pred Cycle2 {
+some n: Node | n->n in link + ^link.link
+}
+check { Cycle <=> Cycle2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+no iden & ^link
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+no ^link & iden
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+iden & ^link = none
+}
+check { DAG <=> DAG2 } for 5
+Type error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc452524349006804010.als at line 9 column 14:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Node->this/Node}
+Right type = {none}
+	at edu.mit.csail.sdg.ast.ExprBinary.error(ExprBinary.java:105)
+	at edu.mit.csail.sdg.ast.ExprBinary.access$000(ExprBinary.java:54)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:414)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2274)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+^link & iden = none
+}
+check { DAG <=> DAG2 } for 5
+Type error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc9980663261112839169.als at line 9 column 14:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Node->this/Node}
+Right type = {none}
+	at edu.mit.csail.sdg.ast.ExprBinary.error(ExprBinary.java:105)
+	at edu.mit.csail.sdg.ast.ExprBinary.access$000(ExprBinary.java:54)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:414)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2274)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | n not in n.^link
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+no n: Node | n in n.^link
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | not (n in n.^link)
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | n not in ^link.n
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+no n: Node | n in ^link.n
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | not (n in ^link.n)
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | no n.^link & n
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | no n & n.^link
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | n.^link & n = none
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | n & n.^link = none
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | none = n.^link & n
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | none = n & n.^link
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+no n: Node | n -> n in ^link
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all n: Node | not (n -> n in ^link)
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all a, b: Node | a in b.^link implies b not in a.^link
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for DAG:
+sig Node { 
+  link: set Node
+}
+pred DAG {
+  // directed acyclic graph
+  all n: Node | n !in n.^link
+}
+pred DAG2 {
+all a, b: Node | a -> b in ^link implies b -> a not in ^link
+}
+check { DAG <=> DAG2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x, y: S | x->y in r and y->x in r implies x = y
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x, y: S | y in x.r and x in y.r implies x = y
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+r & ~r in iden
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+no (r & ~r) - iden
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x: S | x.r & r.x in x
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x: S | x.r & x.~r in x
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all disj x, y: S | x->y in r implies y->x not in r
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all disj x, y: S | y in x.r implies x not in y.r
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x, y: S | x != y implies not (x->y in r and y->x in r)
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x, y: S | x != y implies (y not in x.r or x not in y.r)
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+no {x, y: S | x->y in r and y->x in r and x != y}
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+no {x, y: S | y in x.r and x in y.r and x != y}
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+no (r - iden) & ~(r - iden)
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x: S | all y: x.r | x in y.r implies x = y
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x: S | all y: S | x->y in r implies (y->x in r implies x = y)
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x, y: S | x->y not in r or y->x not in r or x = y
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x, y: S | y in x.r and x != y implies x not in y.r
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x: S | no (x.r & x.~r) - x
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all x: S, y: x.r - x | x not in y.r
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Antisymmetric:
+sig S { 
+  r: set S
+}
+pred Antisymmetric {
+  // If element x in S is related to y and y is related to x, then x and y are the same element
+  all s, t: S | s->t in r and t->s in r implies s = t
+}
+pred Antisymmetric2 {
+all disj x, y: S | not (x->y in r and y->x in r)
+}
+check { Antisymmetric <=> Antisymmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+r in ~r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+~r in r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+r = ~r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+r & ~r = r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+r + ~r = r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+no r - ~r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+no ~r - r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+r - ~r = none
+}
+check { Symmetric <=> Symmetric2 } for 5
+Type error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc12917539679064225099.als at line 9 column 8:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/S->this/S}
+Right type = {none}
+	at edu.mit.csail.sdg.ast.ExprBinary.error(ExprBinary.java:105)
+	at edu.mit.csail.sdg.ast.ExprBinary.access$000(ExprBinary.java:54)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:414)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2274)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+~r - r = none
+}
+check { Symmetric <=> Symmetric2 } for 5
+Type error in /private/var/folders/7y/h3_lwct90k90dv1lg2wv8ltr0000gn/T/alloy_heredoc7619495537626378441.als at line 9 column 8:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/S->this/S}
+Right type = {none}
+	at edu.mit.csail.sdg.ast.ExprBinary.error(ExprBinary.java:105)
+	at edu.mit.csail.sdg.ast.ExprBinary.access$000(ExprBinary.java:54)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:414)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessNewResults(Example.java:1039)
+	at Example.main(Example.java:2274)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+SYNTAX_ERROR
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+all x, y: S | x->y in r implies y->x in r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+all x, y: S | y in x.r implies x in y.r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+all x: S, y: x.r | x in y.r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+no x, y: S | x->y in r and y->x not in r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+no x, y: S | y in x.r and x not in y.r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+all x: S | x.r in x.~r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+all x: S | x.~r in x.r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+all x: S | x.r = x.~r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+all x, y: S | x in r.y implies y in r.x
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+all x, y: S | x->y in r <=> y->x in r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Symmetric:
+sig S { 
+  r: set S
+}
+pred Symmetric {
+  // If element x in S is related to y, then y is also related to x
+  all s, t: S | s->t in r implies t->s in r
+}
+pred Symmetric2 {
+all x, y: S | y in x.r <=> x in y.r
+}
+check { Symmetric <=> Symmetric2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+all n: Node | one n.link and Node in n.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+all n: Node | one n.link and n.^link = Node
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+all n: Node | one n.link and Node = n.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+all n: Node | one n.link and #n.^link = #Node
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+all x: Node | one x.link and Node in x.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+all x: Node | one x.link and x.^link = Node
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+all x: Node | one x.link and Node = x.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+all x: Node | one x.link and #x.^link = #Node
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+all a: Node | one a.link and Node in a.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+all a: Node | one a.link and a.^link = Node
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+false
+SAME_CODE
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+#link = #Node and all n: Node | Node in n.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={Node$0, Node$1, Node$2, Node$3, Node$4}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Node={Node$0, Node$1, Node$2, Node$3, Node$4}
+this/Node<:link={Node$0->Node$3, Node$0->Node$4, Node$1->Node$0, Node$1->Node$3, Node$1->Node$4, Node$2->Node$0, Node$2->Node$1, Node$2->Node$2, Node$2->Node$3, Node$2->Node$4, Node$3->Node$2, Node$3->Node$3, Node$4->Node$0}
+
+DIFF_OUTPUT
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+#link = #Node and all n: Node | n.^link = Node
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={Node$0, Node$1, Node$2, Node$3}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Node={Node$0, Node$1, Node$2, Node$3}
+this/Node<:link={Node$0->Node$0, Node$0->Node$2, Node$0->Node$3, Node$1->Node$0, Node$1->Node$1, Node$1->Node$3, Node$2->Node$0, Node$2->Node$1, Node$2->Node$2, Node$2->Node$3, Node$3->Node$0, Node$3->Node$3}
+
+DIFF_OUTPUT
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+#link = #Node and all n: Node | Node = n.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={Node$0, Node$1, Node$2, Node$3}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Node={Node$0, Node$1, Node$2, Node$3}
+this/Node<:link={Node$0->Node$0, Node$0->Node$2, Node$0->Node$3, Node$1->Node$0, Node$1->Node$1, Node$1->Node$3, Node$2->Node$0, Node$2->Node$1, Node$2->Node$2, Node$2->Node$3, Node$3->Node$0, Node$3->Node$3}
+
+DIFF_OUTPUT
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+#link = #Node and all x: Node | Node in x.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={Node$0, Node$1, Node$2, Node$3, Node$4}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Node={Node$0, Node$1, Node$2, Node$3, Node$4}
+this/Node<:link={Node$0->Node$3, Node$0->Node$4, Node$1->Node$0, Node$1->Node$3, Node$1->Node$4, Node$2->Node$0, Node$2->Node$1, Node$2->Node$2, Node$2->Node$3, Node$2->Node$4, Node$3->Node$2, Node$3->Node$3, Node$4->Node$0}
+
+DIFF_OUTPUT
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+#link = #Node and all x: Node | x.^link = Node
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={Node$0, Node$1, Node$2, Node$3}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Node={Node$0, Node$1, Node$2, Node$3}
+this/Node<:link={Node$0->Node$0, Node$0->Node$2, Node$0->Node$3, Node$1->Node$0, Node$1->Node$1, Node$1->Node$3, Node$2->Node$0, Node$2->Node$1, Node$2->Node$2, Node$2->Node$3, Node$3->Node$0, Node$3->Node$3}
+
+DIFF_OUTPUT
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+#link = #Node and all x: Node | Node = x.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={Node$0, Node$1, Node$2, Node$3}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Node={Node$0, Node$1, Node$2, Node$3}
+this/Node<:link={Node$0->Node$0, Node$0->Node$2, Node$0->Node$3, Node$1->Node$0, Node$1->Node$1, Node$1->Node$3, Node$2->Node$0, Node$2->Node$1, Node$2->Node$2, Node$2->Node$3, Node$3->Node$0, Node$3->Node$3}
+
+DIFF_OUTPUT
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+#link = #Node and all a: Node | Node in a.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={Node$0, Node$1, Node$2, Node$3, Node$4}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Node={Node$0, Node$1, Node$2, Node$3, Node$4}
+this/Node<:link={Node$0->Node$3, Node$0->Node$4, Node$1->Node$0, Node$1->Node$3, Node$1->Node$4, Node$2->Node$0, Node$2->Node$1, Node$2->Node$2, Node$2->Node$3, Node$2->Node$4, Node$3->Node$2, Node$3->Node$3, Node$4->Node$0}
+
+DIFF_OUTPUT
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+#link = #Node and all a: Node | a.^link = Node
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={Node$0, Node$1, Node$2, Node$3}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Node={Node$0, Node$1, Node$2, Node$3}
+this/Node<:link={Node$0->Node$0, Node$0->Node$2, Node$0->Node$3, Node$1->Node$0, Node$1->Node$1, Node$1->Node$3, Node$2->Node$0, Node$2->Node$1, Node$2->Node$2, Node$2->Node$3, Node$3->Node$0, Node$3->Node$3}
+
+DIFF_OUTPUT
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+#link = #Node and all n1, n2: Node | n1 in n2.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={Node$0, Node$1, Node$2, Node$3, Node$4}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Node={Node$0, Node$1, Node$2, Node$3, Node$4}
+this/Node<:link={Node$0->Node$0, Node$0->Node$2, Node$0->Node$3, Node$0->Node$4, Node$1->Node$0, Node$1->Node$1, Node$1->Node$3, Node$1->Node$4, Node$2->Node$0, Node$3->Node$1, Node$3->Node$4, Node$4->Node$0, Node$4->Node$4}
+
+DIFF_OUTPUT
+Alloy test code for Circular:
+sig Node { 
+  link: set Node
+}
+pred Circular {
+  // the number of nodes is equal to the number of edges and the graph has a directed cycle that visits all nodes
+  #Node = #link
+ all n: Node | one n.link
+ all m, n: Node | m in n.^link
+}
+pred Circular2 {
+#link = #Node and all x, y: Node | x in y.^link
+}
+check { Circular <=> Circular2 } for 5
+
+Solutions
+true
+---INSTANCE---
+integers={}
+univ={Node$0, Node$1, Node$2, Node$3, Node$4}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Node={Node$0, Node$1, Node$2, Node$3, Node$4}
+this/Node<:link={Node$0->Node$0, Node$0->Node$2, Node$0->Node$3, Node$0->Node$4, Node$1->Node$0, Node$1->Node$1, Node$1->Node$3, Node$1->Node$4, Node$2->Node$0, Node$3->Node$1, Node$3->Node$4, Node$4->Node$0, Node$4->Node$4}
+
+DIFF_OUTPUT
+\begin{table}
+\centering
+\caption{Result GEMINI - EnglishToAlloy}\label{tab_GEMINI_EnglishToAlloy}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Predicate & Unique & Cor & Syn & Sem \\
+\hline
+Antisymmetric & 20 & 20 & 0 & 0 \\
+\hline
+Circular & 20 & 10 & 0 & 10 \\
+\hline
+Connex & 20 & 20 & 0 & 0 \\
+\hline
+Cycle & 20 & 18 & 2 & 0 \\
+\hline
+DAG & 20 & 18 & 2 & 0 \\
+\hline
+Function & 20 & 20 & 0 & 0 \\
+\hline
+Functional & 20 & 16 & 0 & 4 \\
+\hline
+Irreflexive & 20 & 18 & 2 & 0 \\
+\hline
+Reflexive & 20 & 20 & 0 & 0 \\
+\hline
+Symmetric & 20 & 18 & 2 & 0 \\
+\hline
+Transitive & 20 & 19 & 1 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+

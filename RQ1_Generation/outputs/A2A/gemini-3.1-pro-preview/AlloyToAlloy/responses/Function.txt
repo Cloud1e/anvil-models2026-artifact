@@ -1,0 +1,20 @@
+r in S -> one S
+all s: S | #s.r = 1
+all s: S | one y: S | s->y in r
+all s: S | some s.r and lone s.r
+no s: S | #s.r != 1
+{s: S | one s.r} = S
+S in {s: S | one s.r}
+no S - {s: S | one s.r}
+all s: S | one r[s]
+iden & S->S in r.~r and ~r.r in iden
+r.S = S and ~r.r in iden
+all s: S | (some y: S | s->y in r) and (all y, z: S | s->y in r and s->z in r => y = z)
+no s: S | s.r = none or (some x, y: s.r | x != y)
+no s: S | no s.r or not lone s.r
+all s: S | some y: S | s.r = y
+all s: S | #s.r > 0 and #s.r < 2
+r.S = S and all s: S | lone s.r
+all s: S | some r[s] and lone r[s]
+all s: S | one (s <: r)
+all s: S | one y: S | y in

@@ -1,0 +1,47 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(Objectdisjoint (Class.(^ext)))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(all c: (one (Class - Object)) {
+(c in (Object.(^(~ext))))
+})
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+Syntax error in /workspace/ARepair/.hidden/fix.als at line 8 column 17:
+There are 1 possible tokens that can appear here:
+) 
+	at edu.mit.csail.sdg.parser.CompParser.syntax_error(CompParser.java:2218)
+	at edu.mit.csail.sdg.parser.CompParser.parse(CompParser.java:2079)
+	at edu.mit.csail.sdg.parser.CompParser.alloy_parseStream(CompParser.java:2259)
+	at edu.mit.csail.sdg.parser.CompUtil.parseRecursively(CompUtil.java:217)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:363)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at patcher.Patcher.patch(Patcher.java:116)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] There are 1 possible tokens that can appear here:
+) 
+Exception in thread "main" java.lang.NullPointerException
+	at parser.ast.nodes.ModelUnit.<init>(ModelUnit.java:32)
+	at patcher.Patcher.patch(Patcher.java:117)
+	at patcher.Patcher.main(Patcher.java:389)

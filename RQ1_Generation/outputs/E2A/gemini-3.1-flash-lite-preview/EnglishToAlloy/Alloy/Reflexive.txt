@@ -1,0 +1,65 @@
+all x: S | x in x.r
+Correct
+
+all x: S | x -> x in r
+Correct
+
+S <: iden in r
+Correct
+
+iden & (S -> S) in r
+Correct
+
+no x: S | x not in x.r
+Correct
+
+all x: S | x.r = x.r + x
+Correct
+
+all x: S | some x.r & x
+Correct
+
+all x: S | x in {y: S | y in x.r}
+Correct
+
+r.univ = S and all x: S | x in x.r
+Correct
+
+all x: S | x in r[x]
+Correct
+
+all s: S | s in s.r
+Correct
+
+all s: S | s -> s in r
+Correct
+
+no s: S | s not in s.r
+Correct
+
+all s: S | r[s] = s + r[s]
+Correct
+
+all s: S | some r.s & s
+Correct
+
+all s: S | s in {x: S | x in s.r}
+Correct
+
+r.iden = iden
+Wrong
+
+all s: S | s in r.s
+Correct
+
+all s: S | s in s.^r
+Wrong
+
+all s: S | some s.r & s
+Correct
+
+Total: 20
+Unique: 20
+Correct: 18
+Syntax Error: 0
+Wrong: 2

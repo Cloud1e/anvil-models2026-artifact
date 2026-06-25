@@ -1,0 +1,5 @@
+pred Balanced() {
+  all a, b: Node {
+    lone (#a.(left+right) - #b.(left+right))
+  }
+}

@@ -1,0 +1,20 @@
+some n: Node | n in n.^link
+some n: Node | n in n.link or n in n.^link
+some n: Node | n in n.^(link)
+some disj a, b: Node | b in a.^link and a in b.^link
+some n: Node | n.^link & n != none
+some n: Node | n in (n.link + n.link.link + n.link.link.link)
+some n: Node | n in n.^link and n.link != none
+some n: Node | #n.^link > 0 and some m: n.^link | n in m.^link
+some n: Node | let reachable = n.^link | n in reachable
+some n: Node | n in n.link or some m: Node | m in n.^link and n in m.^link
+some n: Node | n in n.link.^link
+some n: Node | n in n.^(link) and n not in n.link
+some n: Node | n in n.^link and n !in n.link
+some n: Node | n in n.^link and (some m: Node | m in n.link)
+some n: Node | n in n.link or n in n.link.link or n in n.link.link.link
+some n: Node | n in n.^link and n in n.link.^link
+some n: Node | n in n.^link and (all m: n.^link | m in m.^link)
+some n: Node | n in n.^link and (some m: n.^link | n in m.^link)
+some n: Node | n in n.^link and (some m: n.link | n in m.link.^link)
+some n: Node | n in n.^link and n in n.link.^link and n !in n.link

@@ -1,0 +1,20 @@
+all s, t: S | t->s in r iff s->t in r
+r = ~r
+r = r.~iden
+all s: S | r[s] = {t: S | s in r[t]}
+no (r - ~r)
+all s: S | all t: s.r | s in t.r
+r in ~r and ~r in r
+all disj s, t: S | s->t in r implies t->s in r
+r.univ = (~r).univ and all s: S | all t: S | s->t in r implies t->s in r
+r = r & ~r + ~(r & ~r)
+all s, t: S | t->s in r or s->t not in r
+no s, t: S | s->t in r and t->s not in r
+r.S = S.r and all s: S | s in r.s implies s in s.r
+r = {s, t: S | t->s in r}
+all s, t: S | s->t in r iff t->s in r
+all s: S | all t: S | (s->t in r) => (t->s in r)
+not some s, t: S | s->t in r and not (t->s in r)
+all x, y: S | x->y in r iff y->x in r
+no r - ~r
+all x: S | r[x] = {y: S | x in r[y]}

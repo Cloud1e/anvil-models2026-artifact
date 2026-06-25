@@ -1,0 +1,65 @@
+r + ~r = S->S
+Correct
+
+S->S = r + ~r
+Correct
+
+S->S in r + ~r
+Correct
+
+~r + r = S->S
+Correct
+
+no (S->S) - (r + ~r)
+Correct
+
+no (S->S) - r - ~r
+Correct
+
+(S->S) - r in ~r
+Correct
+
+(S->S) - ~r in r
+Correct
+
+all x, y: S | x->y in r or y->x in r
+Correct
+
+all x, y: S | x->y in r + ~r
+Correct
+
+no x, y: S | x->y not in r and y->x not in r
+Correct
+
+all s: S | S in s.r + s.~r
+Correct
+
+all s: S | S = s.r + s.~r
+Correct
+
+all s: S | no S - (s.r + s.~r)
+Correct
+
+all s: S | S - s.r in s.~r
+Correct
+
+all s: S | S - s.~r in s.r
+Correct
+
+all s, t: S | t in s.r or s in t.r
+Correct
+
+all s, t: S | s in t.~r or t in s.~r
+Correct
+
+all s, t: S | t in s.(r + ~r)
+Correct
+
+all s: S | all t: S | s->t in r or t->s in r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 20
+Syntax Error: 0
+Wrong: 0

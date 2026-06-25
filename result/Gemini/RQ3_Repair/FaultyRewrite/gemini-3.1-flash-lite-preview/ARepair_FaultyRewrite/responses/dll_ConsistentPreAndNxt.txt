@@ -1,0 +1,39 @@
+pred ConsistentPreAndNxt() {
+  all n1, n2: Node | n1.nxt = n2 implies n2.pre = n1 and n2.pre = n1 implies n1.nxt = n2
+}
+
+pred ConsistentPreAndNxt() {
+  all n1: Node, n2: Node | n1.nxt = n2 => n2.pre = n1 and n2.pre = n1 => n1.nxt = n2
+}
+
+pred ConsistentPreAndNxt() {
+  all n1, n2: Node | (n1.nxt = n2 => n2.pre = n1) and (n2.pre = n1 => n1.nxt = n2)
+}
+
+pred ConsistentPreAndNxt() {
+  all n1, n2: Node | n1.nxt = n2 <=> n2.pre = n1
+}
+
+pred ConsistentPreAndNxt() {
+  all n: Node, m: Node | (m in n.nxt) <=> (n in m.pre)
+}
+
+pred ConsistentPreAndNxt() {
+  all n1: Node | all n2: Node | n1.nxt = n2 iff n2.pre = n1
+}
+
+pred ConsistentPreAndNxt() {
+  all n1, n2: Node | n1.nxt = n2 implies n2.pre = n1 else n2.pre != n1
+}
+
+pred ConsistentPreAndNxt() {
+  all n, m: Node | n.nxt = m implies m.pre = n else not (m.pre = n)
+}
+
+pred ConsistentPreAndNxt() {
+  all n1, n2: Node | (n1.nxt = n2 and n2.pre = n1) or (n1.nxt != n2 and n2.pre != n1)
+}
+
+pred ConsistentPreAndNxt() {
+  all n, m: Node | n.nxt = m <=> m.pre = n
+}

@@ -1,0 +1,65 @@
+(all n: Node | one n.link) and ^link = Node -> Node
+Correct
+
+link in Node -> one Node and ^link = Node -> Node
+Correct
+
+(all n: Node | one n.link) and (all m, n: Node | m in n.^link)
+Correct
+
+link in Node -> one Node and (all m, n: Node | m in n.^link)
+Correct
+
+(all n: Node | one n.link) and Node -> Node in ^link
+Correct
+
+link in Node -> one Node and Node -> Node in ^link
+Correct
+
+(all n: Node | #n.link = 1) and ^link = Node -> Node
+Correct
+
+(all n: Node | #n.link = 1) and (all m, n: Node | m in n.^link)
+Correct
+
+link in Node one -> one Node and ^link = Node -> Node
+Correct
+
+link in Node one -> one Node and (all m, n: Node | m in n.^link)
+Correct
+
+(all n: Node | one n.link) and (all x: Node | Node in x.^link)
+Correct
+
+link in Node -> one Node and (all x: Node | Node in x.^link)
+Correct
+
+(all n: Node | one n.link) and no (Node -> Node) - ^link
+Correct
+
+link in Node -> one Node and no (Node -> Node) - ^link
+Correct
+
+#Node = #link and (all n: Node | one n.link) and ^link = Node -> Node
+Correct
+
+#Node = #link and link in Node -> one Node and ^link = Node -> Node
+Correct
+
+#Node = #link and (all n: Node | one n.link) and (all m, n: Node | m in n.^link)
+Correct
+
+#link = #Node and link in Node -> one Node and (all m, n: Node | m in n.^link)
+Correct
+
+(all n: Node | #n.link = 1) and Node -> Node in ^link
+Correct
+
+link in Node one -> one Node and Node -> Node in ^link
+Correct
+
+Total: 20
+Unique: 20
+Correct: 20
+Syntax Error: 0
+Wrong: 0

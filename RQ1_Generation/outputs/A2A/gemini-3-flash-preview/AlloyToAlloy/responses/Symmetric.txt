@@ -1,0 +1,20 @@
+r = ~r
+r in ~r
+~r in r
+no r - ~r
+no ~r - r
+r & ~r = r
+r + ~r = r
+all s, t: S | s->t in r iff t->s in r
+all s, t: S | t->s in r implies s->t in r
+all s: S | s.r = r.s
+all s: S | s.r in r.s
+all s: S | r.s in s.r
+all s: S | s.r = {t: S | t->s in r}
+all s: S | r.s = {t: S | s->t in r}
+all s: S, t: s.r | s in t.r
+no s, t: S | s->t in r and t->s !in r
+all s, t: S | s->t in r implies s in t.r
+all s, t: S | s->t in r implies t in r.s
+all disj s, t: S | s->t in r implies t->s in r
+all s, t: S | s in t.r iff t in s.r

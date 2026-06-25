@@ -1,0 +1,9 @@
+{
+  "model_path": "/workspace/result/Gemini/RQ2_Validation/A2A/gemini-3.1-flash-lite-preview/NoTest/WrongForRepair/dll_ConsistentPreAndNxt_5.als",
+  "iteration": 1,
+  "top3": [
+    {"rank": 1, "expr": "(all n: (one Node) {\n((((n.nxt).pre) = n) <=> (((n.pre).nxt) = n))\n})", "score": 0.8040302522073697, "failToPass": 2, "passToFail": 1},
+    {"rank": 2, "expr": "(((n.nxt).pre) = n)", "score": 0.6804138174397717, "failToPass": 4, "passToFail": 1},
+    {"rank": 3, "expr": "(((n.pre).nxt) = n)", "score": 0.6804138174397717, "failToPass": 4, "passToFail": 1}
+  ]
+}

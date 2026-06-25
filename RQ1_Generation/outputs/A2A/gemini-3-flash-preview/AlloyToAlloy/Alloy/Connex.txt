@@ -1,0 +1,65 @@
+r + ~r = S -> S
+Correct
+
+S -> S in r + ~r
+Correct
+
+all s, t: S | s->t in r + ~r
+Correct
+
+all s: S | s.(r + ~r) = S
+Correct
+
+all s: S | r.s + s.r = S
+Correct
+
+all s, t: S | s in r.t or t in r.s
+Correct
+
+no (S -> S) - (r + ~r)
+Correct
+
+not (some s, t: S | s->t !in r and t->s !in r)
+Correct
+
+all s, t: S | s->t !in r implies t->s in r
+Correct
+
+all s, t: S | s->t !in ~r implies s->t in r
+Correct
+
+(S -> S) - r in ~r
+Correct
+
+(S -> S) - ~r in r
+Correct
+
+all s: S | S - s.r in r.s
+Correct
+
+all s: S | S - r.s in s.r
+Correct
+
+all s: S | S in s.r + r.s
+Correct
+
+univ -> univ = r + ~r
+Correct
+
+all s, t: S | s->t in r or s->t in ~r
+Correct
+
+all s: S | (r + ~r).s = S
+Correct
+
+all s, t: S | some (s->t & (r + ~r))
+Correct
+
+no s, t: S | s->t !in r and t->s !in r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 20
+Syntax Error: 0
+Wrong: 0

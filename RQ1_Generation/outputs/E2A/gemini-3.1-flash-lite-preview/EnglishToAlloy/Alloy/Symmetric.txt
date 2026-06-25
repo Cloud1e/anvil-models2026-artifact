@@ -1,0 +1,65 @@
+all x, y: S | x->y in r implies y->x in r
+Correct
+
+all x: S | r[x] in {y: S | x in r[y]}
+Correct
+
+r = ~r
+Correct
+
+all x, y: S | y in r[x] iff x in r[y]
+Correct
+
+r = r.~(iden) + ~r
+Correct
+
+all x: S | all y: S | x->y in r => y->x in r
+Correct
+
+all x: S | r[x].~r = r.x
+Wrong
+
+no x, y: S | x->y in r and y->x not in r
+Correct
+
+r.~r = r.~r
+Wrong
+
+all x, y: S | (x->y in r) => (y->x in r)
+Correct
+
+r in ~r
+Correct
+
+~r = r
+Correct
+
+all x: S | r[x] = {y: S | x in r[y]}
+Correct
+
+r = r & ~r + ~(r - ~r)
+Correct
+
+all x: S | (r.x) = (~r).x
+Correct
+
+r = r & ~r
+Correct
+
+all x: S | all y: S | (x in r[y]) <=> (y in r[x])
+Correct
+
+r = {x, y: S | x->y in r and y->x in r}
+Correct
+
+r = ~r and r = r
+Correct
+
+all x, y: S | (x->y in r) <=> (y->x in r)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 18
+Syntax Error: 0
+Wrong: 2

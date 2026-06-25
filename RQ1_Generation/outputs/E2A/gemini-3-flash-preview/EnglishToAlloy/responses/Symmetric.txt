@@ -1,0 +1,20 @@
+r = ~r
+r in ~r
+~r in r
+all x, y: S | x->y in r implies y->x in r
+all x, y: S | x->y in r <=> y->x in r
+all s: S | s.r = r.s
+no r - ~r
+r - ~r = none
+all x: S, y: x.r | y->x in r
+all x: S, y: r.x | x->y in r
+all x, y: S | y in x.r implies x in y.r
+all x, y: S | x in r.y implies y in r.x
+no {x, y: S | x->y in r and y->x !in r}
+all x, y: S | x->y in r => x in y.r
+r = {x, y: S | y->x in r}
+all x: S | x.r = {y: S | y->x in r}
+all x: S | r.x = {y: S | x->y in r}
+r & ~r = r
+all x: S | x.r in r.x
+all x: S | r.x in x.r

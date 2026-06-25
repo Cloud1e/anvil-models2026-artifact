@@ -1,0 +1,40 @@
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	s in (a.associated_with.assistant_for + a.associated_with.instructor_of)
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	some c: a.associated_with | s in c.assistant_for or s in c.instructor_of
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	s in a.associated_with.assistant_for || s in a.associated_with.instructor_of
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	not (s not in a.associated_with.assistant_for and s not in a.associated_with.instructor_of)
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	let c = a.associated_with | s in c.assistant_for or s in c.instructor_of
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	some c: Class | c = a.associated_with and (s in c.assistant_for or s in c.instructor_of)
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	s.^(~assistant_for) in a.associated_with or s in a.associated_with.instructor_of
+	s in a.associated_with.assistant_for or s = a.associated_with.instructor_of
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	{s} in a.associated_with.(assistant_for + instructor_of)
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	(s in a.associated_with.assistant_for) or (s = a.associated_with.instructor_of)
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	not s !in a.associated_with.assistant_for or s in a.associated_with.instructor_of
+}

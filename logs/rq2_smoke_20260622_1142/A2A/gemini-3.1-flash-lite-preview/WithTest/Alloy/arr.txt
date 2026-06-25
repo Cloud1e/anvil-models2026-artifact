@@ -1,0 +1,49 @@
+all i: Array.i2e.Element | no Array.i2e[i].(Element - Array.i2e[i])
+Syntax Error
+SYN_MSG:
+This cannot be a legal relational join where
+left hand side is i . this/Array . (this/Array <: i2e) (type = {this/Element})
+right hand side is this/Element - i . this/Array . (this/Array <: i2e) (type = {this/Element})
+
+END_SYN_MSG
+
+no i: Array.i2e.Element | some disj e1, e2: Array.i2e[i] | e1 != e2
+Correct
+
+all i: Array.i2e.Element | #Array.i2e[i] <= 1
+Correct
+
+all i: Array.i2e.Element | Array.i2e[i] in lone Element
+Syntax Error
+SYN_MSG:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+END_SYN_MSG
+
+all i: Int | lone Array.i2e[i]
+Correct
+
+no i: Int | #Array.i2e[i] > 1
+Correct
+
+all i: Int | not some disj e1, e2: Array.i2e[i] | e1 != e2
+Correct
+
+all i: Int | Array.i2e[i] in lone Element
+Syntax Error
+SYN_MSG:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+END_SYN_MSG
+
+all i: Array.i2e.Element | Array.i2e[i] = Array.i2e[i] & Element and lone Array.i2e[i]
+Correct
+
+all i: Int | #Array.i2e[i] <= 1
+Correct
+
+Total: 10
+Unique: 10
+Correct: 7
+Syntax Error: 3
+Wrong: 0

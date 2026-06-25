@@ -1,0 +1,39 @@
+pred ConsistentPreAndNxt() {
+	all disj n1, n2 : Node | n1.nxt = n2 <=> n2.pre = n1
+}
+
+pred ConsistentPreAndNxt() {
+	all n1, n2 : Node | n1 != n2 implies (n1.nxt = n2 iff n2.pre = n1)
+}
+
+pred ConsistentPreAndNxt() {
+	all n1, n2: Node | n1 != n2 => ((n1.nxt = n2 => n2.pre = n1) and (n2.pre = n1 => n1.nxt = n2))
+}
+
+pred ConsistentPreAndNxt() {
+	not some n1, n2: Node | n1 != n2 and not (n1.nxt = n2 <=> n2.pre = n1)
+}
+
+pred ConsistentPreAndNxt() {
+	all n1: Node, n2: Node - n1 | n1.nxt = n2 <=> n2.pre = n1
+}
+
+pred ConsistentPreAndNxt() {
+	all n1, n2 : Node | n1 = n2 or (n1.nxt = n2 <=> n2.pre = n1)
+}
+
+pred ConsistentPreAndNxt() {
+	all n1, n2 : Node | n1 != n2 => ((n1.nxt = n2 and n2.pre = n1) or (n1.nxt != n2 and n2.pre != n1))
+}
+
+pred ConsistentPreAndNxt() {
+	all n1, n2: Node | not (n1 = n2) => (n2 in n1.nxt <=> n1 in n2.pre)
+}
+
+pred ConsistentPreAndNxt() {
+	(all n1, n2: Node | (n1 != n2 and n1.nxt = n2) => n2.pre = n1) and (all n1, n2: Node | (n1 != n2 and n2.pre = n1) => n1.nxt = n2)
+}
+
+pred ConsistentPreAndNxt() {
+	no n1, n2: Node | n1 != n2 and ((n1.nxt = n2 and n2.pre != n1) or (n1.nxt != n2 and n2.pre = n1))
+}

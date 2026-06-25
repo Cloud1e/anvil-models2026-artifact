@@ -1,0 +1,65 @@
+all x, y: S | x in y.r and y in x.r implies x = y
+Correct
+
+all x, y: S | (x -> y in r and y -> x in r) implies x = y
+Correct
+
+all x: S, y: S | x in r.y and y in r.x implies x = y
+Correct
+
+no (r & ~r) - iden
+Correct
+
+r & ~r in iden
+Correct
+
+all x: S | no (x.r & r.x) - x
+Correct
+
+all x: S | x.r & r.x in x
+Correct
+
+(r & ~r) in iden
+Correct
+
+all x, y: S | x -> y in r implies not (y -> x in r) or x = y
+Correct
+
+all x, y: S | x in y.r implies (y in x.r implies x = y)
+Correct
+
+all x, y: S | x -> y in r and x != y implies y -> x not in r
+Correct
+
+all x, y: S | x != y implies not (x -> y in r and y -> x in r)
+Correct
+
+r & ~r = r & iden
+Correct
+
+all x: S | (x.r & r.x) = (x & x)
+Wrong
+
+all x: S | (x.r & r.x) in x
+Correct
+
+all x: S | (r.x & x.r) = (x & x)
+Wrong
+
+all x: S | (r.x & x.r) in x
+Correct
+
+all x, y: S | x in y.r and x != y implies y not in x.r
+Correct
+
+all x, y: S | y in x.r and x != y implies x not in y.r
+Correct
+
+not some x, y: S | x != y and x -> y in r and y -> x in r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 18
+Syntax Error: 0
+Wrong: 2

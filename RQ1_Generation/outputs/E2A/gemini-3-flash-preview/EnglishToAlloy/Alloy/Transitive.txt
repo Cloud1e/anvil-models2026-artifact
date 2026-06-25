@@ -1,0 +1,65 @@
+r.r in r
+Correct
+
+all x, y, z: S | x->y in r and y->z in r implies x->z in r
+Correct
+
+all x, y: S | x->y in r implies y.r in x.r
+Correct
+
+all x, y: S | x->y in r implies r.x in r.y
+Correct
+
+all x: S | x.r.r in x.r
+Correct
+
+r . r in r
+Correct
+
+no x, y, z: S | x->y in r and y->z in r and x->z !in r
+Correct
+
+all x, y: S | y in x.r implies y.r in x.r
+Correct
+
+r . r subset r
+Syntax Error
+
+all s: S | s.r.r subset s.r
+Syntax Error
+
+r + r . r = r
+Correct
+
+r . r - r = none
+Syntax Error
+
+all x: S | r[x.r] in r[x]
+Correct
+
+all x, z: S | (some y: S | x->y in r and y->z in r) implies x->z in r
+Correct
+
+all y: S | r.y -> y.r in r
+Correct
+
+all x, y, z: S | (x->y in r && y->z in r) => x->z in r
+Correct
+
+no (r . r - r)
+Correct
+
+all x, y: S | x->y in r implies (all z: S | y->z in r implies x->z in r)
+Correct
+
+all x, y, z: S | x->y in r and y->z in r implies x in r.z
+Correct
+
+all x: S, y: x.r | y.r in x.r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 17
+Syntax Error: 3
+Wrong: 0

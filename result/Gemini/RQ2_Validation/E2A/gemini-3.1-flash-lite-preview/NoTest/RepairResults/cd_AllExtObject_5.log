@@ -1,0 +1,1082 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(((Class - Object).ext) = Object)
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+(((Class - Object).ext) = Object)
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+EQUIV: check { some Class } for 3
+ [INFO] Fault localization time: 3472870960
+[DEBUG] Test num: 31
+[DEBUG] Rank Node 0:
+[DEBUG] {
+(((Class - Object).ext) = Object)
+}
+[DEBUG] Affected paragraph names: [AllExtObject]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 11): [test1001, test1002, test18, test21, test16, test17, test19, test20, test24, test22, test23]
+[DEBUG] Hole Class
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Class, Object]
+[DEBUG] Hole Object
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Class, Object]
+ [INFO] Expression generation time: 98132000
+ [INFO] Search space: 9
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Class, Object]
+[DEBUG] Hole 1, Fragment: Class, FailToPass: 0
+[DEBUG] Hole values: [Object, Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Class, none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Class, Class]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Class, Object]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole (Class - Object)
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Class, Object]
+[DEBUG] Hole ext
+[DEBUG] Size: 5
+[DEBUG] Fragments: [ext, (none->none), (~ext), (*ext), (^ext)]
+ [INFO] Expression generation time: 28816500
+ [INFO] Search space: 15
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ext]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Class, ext]
+[DEBUG] Hole 1, Fragment: Class, FailToPass: 0
+[DEBUG] Hole values: [Object, ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Class - Object), ext]
+[DEBUG] Hole 0, Fragment: ext, FailToPass: 0
+[DEBUG] Hole values: [(Class - Object), (none->none)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Class - Object), (~ext)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Class - Object), (*ext)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Class - Object), (^ext)]
+[DEBUG] Hole 4, Fragment: (^ext), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 8
+[DEBUG] Hole ((Class - Object).ext)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object)]
+[DEBUG] Hole Object
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object)]
+ [INFO] Expression generation time: 210285291
+ [INFO] Search space: 64
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Class, Object]
+[DEBUG] Test from fail to pass: test17
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Object, Object]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class-Object), Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Class.ext), Object]
+[DEBUG] Hole 4, Fragment: (Class.ext), FailToPass: 0
+[DEBUG] Hole values: [(Object.ext), Object]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Class), Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(ext.Object), Object]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((Class - Object).ext), none]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), Class]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [((Class - Object).ext), Object]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [((Class - Object).ext), (Class-Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), (Class.ext)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), (Object.ext)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), (ext.Class)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), (ext.Object)]
+[DEBUG] Test from pass to fail: test1002
+ [INFO] Fix failed, number of combinations tried: 16
+[DEBUG] Hole ((Class - Object).ext)
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole Object
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole (((Class - Object).ext) = Object)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 200409625
+ [INFO] Search space: 576
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Class, Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from fail to pass: test17
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Object, Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class-Object), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Class.ext), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Hole 4, Fragment: (Class.ext), FailToPass: 0
+[DEBUG] Hole values: [(Object.ext), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Class), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(ext.Object), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Object.(*ext)), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Object.(^ext)), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((*ext).Object), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^ext).Object), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((Class - Object).ext), none, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), Class, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [((Class - Object).ext), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [((Class - Object).ext), (Class-Object), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), (Class.ext), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), (Object.ext), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), (ext.Class), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), (ext.Object), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), (Object.(*ext)), (((Class - Object).ext) = Object)]
+[DEBUG] Hole 8, Fragment: (Object.(*ext)), FailToPass: 0
+[DEBUG] Hole values: [((Class - Object).ext), (Object.(^ext)), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), ((*ext).Object), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [((Class - Object).ext), ((^ext).Object), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), Object,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [((Class - Object).ext), Object,  != ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), Object,  in ]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), Object,  !in ]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Hole ((Class - Object).ext)
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole Object
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole (((Class - Object).ext) = Object)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 454667
+ [INFO] Search space: 576
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Class, Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from fail to pass: test17
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Object, Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class-Object), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Class.ext), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Hole 4, Fragment: (Class.ext), FailToPass: 0
+[DEBUG] Hole values: [(Object.ext), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Class), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(ext.Object), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Object.(*ext)), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Object.(^ext)), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((*ext).Object), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^ext).Object), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((Class - Object).ext), none, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), Class, (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [((Class - Object).ext), Object, (((Class - Object).ext) = Object)]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [((Class - Object).ext), (Class-Object), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), (Class.ext), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), (Object.ext), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), (ext.Class), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), (ext.Object), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), (Object.(*ext)), (((Class - Object).ext) = Object)]
+[DEBUG] Hole 8, Fragment: (Object.(*ext)), FailToPass: 0
+[DEBUG] Hole values: [((Class - Object).ext), (Object.(^ext)), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), ((*ext).Object), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [((Class - Object).ext), ((^ext).Object), (((Class - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), Object,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [((Class - Object).ext), Object,  != ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((Class - Object).ext), Object,  in ]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [((Class - Object).ext), Object,  !in ]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Rank Node 1:
+[DEBUG] (((Class - Object).ext) = Object)
+[DEBUG] Affected paragraph names: [AllExtObject]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 11): [test1001, test1002, test18, test21, test16, test17, test19, test20, test24, test22, test23]
+[DEBUG] Hole Class
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole Object
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+ [INFO] Expression generation time: 680750
+ [INFO] Search space: 144
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [Class, Object]
+[DEBUG] Hole 1, Fragment: Class, FailToPass: 0
+[DEBUG] Hole values: [Object, Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Class-Object), Object]
+[DEBUG] Hole 3, Fragment: (Class-Object), FailToPass: 0
+[DEBUG] Hole values: [(Class.ext), Object]
+[DEBUG] Test from fail to pass: test21
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Object.ext), Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(ext.Class), Object]
+[DEBUG] Hole 6, Fragment: (ext.Class), FailToPass: 0
+[DEBUG] Hole values: [(ext.Object), Object]
+[DEBUG] Test from fail to pass: test21
+[DEBUG] Hole 7, Fragment: (ext.Object), FailToPass: 1
+[DEBUG] Hole values: [(Object.(*ext)), Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Object.(^ext)), Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [((*ext).Object), Object]
+[DEBUG] Hole 10, Fragment: ((*ext).Object), FailToPass: 0
+[DEBUG] Hole values: [((^ext).Object), Object]
+[DEBUG] Hole 11, Fragment: ((^ext).Object), FailToPass: 0
+[DEBUG] Set best fragment for hole: (ext.Object)
+[DEBUG] Hole values: [(ext.Object), none]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Object), Class]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), Object]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [(ext.Object), (Class-Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Object), (Class.ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), (Object.ext)]
+[DEBUG] Hole 5, Fragment: (Object.ext), FailToPass: 0
+[DEBUG] Hole values: [(ext.Object), (ext.Class)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), (ext.Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), (Object.(*ext))]
+[DEBUG] Hole 8, Fragment: (Object.(*ext)), FailToPass: 0
+[DEBUG] Hole values: [(ext.Object), (Object.(^ext))]
+[DEBUG] Hole 9, Fragment: (Object.(^ext)), FailToPass: 0
+[DEBUG] Hole values: [(ext.Object), ((*ext).Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), ((^ext).Object)]
+[DEBUG] Test from pass to fail: test21
+ [INFO] Fix succeeded, number of combinations tried: 24
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+((((ext.Object) - Object).ext) = Object)
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+((((ext.Object) - Object).ext) = Object)
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+EQUIV: check { some Class } for 3
+ [INFO] Fault localization time: 1294841917
+[DEBUG] Test num: 31
+[DEBUG] Rank Node 0:
+[DEBUG] ((((ext.Object) - Object).ext) = Object)
+[DEBUG] Affected paragraph names: [AllExtObject]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 11): [test1001, test1002, test18, test21, test16, test17, test19, test20, test24, test22, test23]
+[DEBUG] Hole ((ext.Object) - Object)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object)]
+[DEBUG] Hole ext
+[DEBUG] Size: 10
+[DEBUG] Fragments: [ext, (none->none), (~ext), (*ext), (^ext), (iden&ext), (ext-iden), (ext.ext), (*(~ext)), (^(~ext))]
+ [INFO] Expression generation time: 77151708
+ [INFO] Search space: 80
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ext]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Class, ext]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Object, ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Class-Object), ext]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Class.ext), ext]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Object.ext), ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Class), ext]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((ext.Object) - Object), ext]
+[DEBUG] Hole 0, Fragment: ext, FailToPass: 0
+[DEBUG] Hole values: [((ext.Object) - Object), (none->none)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (~ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (*ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (^ext)]
+[DEBUG] Hole 4, Fragment: (^ext), FailToPass: 0
+[DEBUG] Hole values: [((ext.Object) - Object), (iden&ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (ext-iden)]
+[DEBUG] Hole 6, Fragment: (ext-iden), FailToPass: 0
+[DEBUG] Hole values: [((ext.Object) - Object), (ext.ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (*(~ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (^(~ext))]
+[DEBUG] Test from pass to fail: test21
+ [INFO] Fix failed, number of combinations tried: 18
+[DEBUG] Hole (((ext.Object) - Object).ext)
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole Object
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+ [INFO] Expression generation time: 142932750
+ [INFO] Search space: 144
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Class, Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Object, Object]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class-Object), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Class.ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Object.ext), Object]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Class), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), Object]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Object.(*ext)), Object]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Object.(^ext)), Object]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((*ext).Object), Object]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^ext).Object), Object]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), none]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Class]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Class-Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Class.ext)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.ext)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (ext.Class)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (ext.Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.(*ext))]
+[DEBUG] Hole 8, Fragment: (Object.(*ext)), FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.(^ext))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), ((*ext).Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), ((^ext).Object)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 24
+[DEBUG] Hole (((ext.Object) - Object).ext)
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole Object
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole ((((ext.Object) - Object).ext) = Object)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 748083
+ [INFO] Search space: 576
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Class, Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Object, Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class-Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Class.ext), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Object.ext), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Class), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Object.(*ext)), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Object.(^ext)), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((*ext).Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^ext).Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), none, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Class, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Class-Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Class.ext), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.ext), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (ext.Class), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (ext.Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.(*ext)), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Hole 8, Fragment: (Object.(*ext)), FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.(^ext)), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), ((*ext).Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), ((^ext).Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  != ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  in ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  !in ]
+[DEBUG] Test from pass to fail: test21
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Rank Node 1:
+[DEBUG] {
+((((ext.Object) - Object).ext) = Object)
+}
+[DEBUG] Affected paragraph names: [AllExtObject]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 11): [test1001, test1002, test18, test21, test16, test17, test19, test20, test24, test22, test23]
+[DEBUG] Hole ext
+[DEBUG] Size: 26
+[DEBUG] Fragments: [ext, (none->none), (~ext), (*ext), (^ext), (iden&ext), (ext-iden), (ext.ext), (*(~ext)), (^(~ext)), (ext+(~ext)), (iden&(^ext)), (ext&(~ext)), (ext-(~ext)), (ext.(~ext)), (ext.(^ext)), ((~ext)-iden), ((~ext)-ext), ((*ext)-iden), ((*ext)-ext), ((^ext)-ext), ((~ext).ext), (~(ext.ext)), (*(ext.ext)), (^(ext-iden)), (^(ext.ext))]
+[DEBUG] Hole Object
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+ [INFO] Expression generation time: 171792
+ [INFO] Search space: 312
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [ext, Object]
+[DEBUG] Hole 0, Fragment: ext, FailToPass: 0
+[DEBUG] Hole values: [(none->none), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(~ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(*ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(^ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(iden&ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext-iden), Object]
+[DEBUG] Hole 6, Fragment: (ext-iden), FailToPass: 0
+[DEBUG] Hole values: [(ext.ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(*(~ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(^(~ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext+(~ext)), Object]
+[DEBUG] Hole 10, Fragment: (ext+(~ext)), FailToPass: 0
+[DEBUG] Hole values: [(iden&(^ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext&(~ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext-(~ext)), Object]
+[DEBUG] Hole 13, Fragment: (ext-(~ext)), FailToPass: 0
+[DEBUG] Hole values: [(ext.(~ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.(^ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((~ext)-iden), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((~ext)-ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((*ext)-iden), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((*ext)-ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((^ext)-ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((~ext).ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(~(ext.ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(*(ext.ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(^(ext-iden)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(^(ext.ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [ext, none]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [ext, Class]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [ext, Object]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [ext, (Class-Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [ext, (Class.ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [ext, (Object.ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [ext, (ext.Class)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [ext, (ext.Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [ext, (Object.(*ext))]
+[DEBUG] Hole 8, Fragment: (Object.(*ext)), FailToPass: 0
+[DEBUG] Hole values: [ext, (Object.(^ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [ext, ((*ext).Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [ext, ((^ext).Object)]
+[DEBUG] Test from pass to fail: test21
+ [INFO] Fix failed, number of combinations tried: 38
+[DEBUG] Hole (ext.Object)
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole Object
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+ [INFO] Expression generation time: 1272500
+ [INFO] Search space: 144
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Class, Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Object, Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Class-Object), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Class.ext), Object]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Object.ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Class), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), Object]
+[DEBUG] Hole 7, Fragment: (ext.Object), FailToPass: 0
+[DEBUG] Hole values: [(Object.(*ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Object.(^ext)), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((*ext).Object), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((^ext).Object), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), none]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Object), Class]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), Object]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [(ext.Object), (Class-Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Object), (Class.ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), (Object.ext)]
+[DEBUG] Hole 5, Fragment: (Object.ext), FailToPass: 0
+[DEBUG] Hole values: [(ext.Object), (ext.Class)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), (ext.Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), (Object.(*ext))]
+[DEBUG] Hole 8, Fragment: (Object.(*ext)), FailToPass: 0
+[DEBUG] Hole values: [(ext.Object), (Object.(^ext))]
+[DEBUG] Hole 9, Fragment: (Object.(^ext)), FailToPass: 0
+[DEBUG] Hole values: [(ext.Object), ((*ext).Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), ((^ext).Object)]
+[DEBUG] Test from pass to fail: test21
+ [INFO] Fix failed, number of combinations tried: 24
+[DEBUG] Hole ((ext.Object) - Object)
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole ext
+[DEBUG] Size: 26
+[DEBUG] Fragments: [ext, (none->none), (~ext), (*ext), (^ext), (iden&ext), (ext-iden), (ext.ext), (*(~ext)), (^(~ext)), (ext+(~ext)), (iden&(^ext)), (ext&(~ext)), (ext-(~ext)), (ext.(~ext)), (ext.(^ext)), ((~ext)-iden), ((~ext)-ext), ((*ext)-iden), ((*ext)-ext), ((^ext)-ext), ((~ext).ext), (~(ext.ext)), (*(ext.ext)), (^(ext-iden)), (^(ext.ext))]
+ [INFO] Expression generation time: 539791
+ [INFO] Search space: 312
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ext]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Class, ext]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Object, ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Class-Object), ext]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Class.ext), ext]
+[DEBUG] Test from pass to fail: test19
+[DEBUG] Hole values: [(Object.ext), ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Class), ext]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Object.(*ext)), ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Object.(^ext)), ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((*ext).Object), ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((^ext).Object), ext]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((ext.Object) - Object), ext]
+[DEBUG] Hole 0, Fragment: ext, FailToPass: 0
+[DEBUG] Hole values: [((ext.Object) - Object), (none->none)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (~ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (*ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (^ext)]
+[DEBUG] Hole 4, Fragment: (^ext), FailToPass: 0
+[DEBUG] Hole values: [((ext.Object) - Object), (iden&ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (ext-iden)]
+[DEBUG] Hole 6, Fragment: (ext-iden), FailToPass: 0
+[DEBUG] Hole values: [((ext.Object) - Object), (ext.ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (*(~ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (^(~ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (ext+(~ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (iden&(^ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (ext&(~ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (ext-(~ext))]
+[DEBUG] Hole 13, Fragment: (ext-(~ext)), FailToPass: 0
+[DEBUG] Hole values: [((ext.Object) - Object), (ext.(~ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (ext.(^ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), ((~ext)-iden)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), ((~ext)-ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), ((*ext)-iden)]
+[DEBUG] Hole 18, Fragment: ((*ext)-iden), FailToPass: 0
+[DEBUG] Hole values: [((ext.Object) - Object), ((*ext)-ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), ((^ext)-ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), ((~ext).ext)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (~(ext.ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (*(ext.ext))]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [((ext.Object) - Object), (^(ext-iden))]
+[DEBUG] Hole 24, Fragment: (^(ext-iden)), FailToPass: 0
+[DEBUG] Hole values: [((ext.Object) - Object), (^(ext.ext))]
+[DEBUG] Test from pass to fail: test21
+ [INFO] Fix failed, number of combinations tried: 38
+[DEBUG] Hole (((ext.Object) - Object).ext)
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole Object
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+ [INFO] Expression generation time: 120000
+ [INFO] Search space: 144
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Class, Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Object, Object]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class-Object), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Class.ext), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Object.ext), Object]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Class), Object]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), Object]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Object.(*ext)), Object]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Object.(^ext)), Object]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((*ext).Object), Object]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^ext).Object), Object]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), none]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Class]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Class-Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Class.ext)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.ext)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (ext.Class)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (ext.Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.(*ext))]
+[DEBUG] Hole 8, Fragment: (Object.(*ext)), FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.(^ext))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), ((*ext).Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), ((^ext).Object)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 24
+[DEBUG] Hole (((ext.Object) - Object).ext)
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole Object
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole ((((ext.Object) - Object).ext) = Object)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 363667
+ [INFO] Search space: 576
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Class, Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Object, Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class-Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Class.ext), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Object.ext), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Class), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Object.(*ext)), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Object.(^ext)), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((*ext).Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^ext).Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), none, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Class, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Class-Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Class.ext), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.ext), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (ext.Class), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (ext.Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.(*ext)), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Hole 8, Fragment: (Object.(*ext)), FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.(^ext)), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), ((*ext).Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), ((^ext).Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  != ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  in ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  !in ]
+[DEBUG] Test from pass to fail: test21
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Hole (((ext.Object) - Object).ext)
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole Object
+[DEBUG] Size: 12
+[DEBUG] Fragments: [none, Class, Object, (Class-Object), (Class.ext), (Object.ext), (ext.Class), (ext.Object), (Object.(*ext)), (Object.(^ext)), ((*ext).Object), ((^ext).Object)]
+[DEBUG] Hole ((((ext.Object) - Object).ext) = Object)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 3150959
+ [INFO] Search space: 576
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Class, Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [Object, Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Class-Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Class.ext), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(Object.ext), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(ext.Class), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(ext.Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(Object.(*ext)), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Object.(^ext)), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [((*ext).Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^ext).Object), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test18
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), none, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Class, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object, ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Hole 2, Fragment: Object, FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Class-Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Class.ext), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.ext), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (ext.Class), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1002
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (ext.Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.(*ext)), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Hole 8, Fragment: (Object.(*ext)), FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), (Object.(^ext)), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), ((*ext).Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test21
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), ((^ext).Object), ((((ext.Object) - Object).ext) = Object)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  != ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  in ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(((ext.Object) - Object).ext), Object,  !in ]
+[DEBUG] Test from pass to fail: test21
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+((((ext.Object) - Object).ext) = Object)
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+((((ext.Object) - Object).ext) = Object)
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+

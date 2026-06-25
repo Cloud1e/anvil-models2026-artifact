@@ -1,0 +1,100 @@
+ConsistentPreAndNxt: pre = ~nxt
+Correct
+
+ConsistentPreAndNxt: ~nxt = pre
+Correct
+
+ConsistentPreAndNxt: ~pre = nxt
+Correct
+
+ConsistentPreAndNxt: all n1, n2: Node | n1.nxt = n2 <=> n2.pre = n1
+Correct
+
+ConsistentPreAndNxt: all x, y: Node | x->y in nxt iff y->x in pre
+Correct
+
+ConsistentPreAndNxt: nxt in ~pre and ~pre in nxt
+Correct
+
+ConsistentPreAndNxt: nxt - ~pre = none and ~pre - nxt = none
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Node->this/Node}
+Right type = {none}
+END_SYN_MSG
+
+ConsistentPreAndNxt: no (nxt - ~pre) + (~pre - nxt)
+Correct
+
+ConsistentPreAndNxt: all a, b: Node | (a in b.pre => b in a.nxt) and (b in a.nxt => a in b.pre)
+Correct
+
+ConsistentPreAndNxt: no n1, n2: Node | (n1.nxt = n2 and n2.pre != n1) or (n2.pre = n1 and n1.nxt != n2)
+Correct
+
+Sorted: all n1, n2: Node | n2 in n1.nxt => n1.elem <= n2.elem
+Correct
+
+Sorted: all n: Node, m: n.nxt | n.elem <= m.elem
+Correct
+
+Sorted: no n: Node | some n.nxt and n.elem > n.nxt.elem
+Correct
+
+Sorted: no n1, n2: Node | n1.nxt = n2 and n1.elem > n2.elem
+Correct
+
+Sorted: all n: Node - {x: Node | no x.nxt} | n.elem <= n.nxt.elem
+Correct
+
+Sorted: all n1: Node | all n2: n1.nxt | n1.elem <= n2.elem
+Correct
+
+Sorted: no n: Node, m: n.nxt | n.elem > m.elem
+Correct
+
+Sorted: all n: Node | let m = n.nxt | some m => n.elem <= m.elem
+Correct
+
+Sorted: no n: Node | let m = n.nxt | some m and n.elem > m.elem
+Correct
+
+Sorted: all x, y: Node | x->y in nxt => x.elem <= y.elem
+Correct
+
+UniqueElem: all n1, n2: Node | n1 != n2 => n1.elem != n2.elem
+Correct
+
+UniqueElem: all disj n1, n2: Node | n1.elem != n2.elem
+Correct
+
+UniqueElem: no n1: Node, n2: Node - n1 | n1.elem = n2.elem
+Correct
+
+UniqueElem: all n1: Node | all n2: Node - n1 | n1.elem != n2.elem
+Correct
+
+UniqueElem: all n1, n2: Node | n1.elem = n2.elem => n1 = n2
+Correct
+
+UniqueElem: #Node.elem = #Node
+Correct
+
+UniqueElem: elem.~elem in iden
+Correct
+
+UniqueElem: no n1, n2: Node | n1 != n2 and n1.elem = n2.elem
+Correct
+
+UniqueElem: all n: Node | #(n.elem.~elem) = 1
+Correct
+
+UniqueElem: no n: Node | #(n.elem.~elem) > 1
+Correct
+
+Total: 30
+Unique: 30
+Correct: 29
+Syntax Error: 1
+Wrong: 0

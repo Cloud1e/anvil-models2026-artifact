@@ -1,0 +1,46 @@
+all idx: Int | lone Array.i2e[idx]
+Correct
+
+all idx: Int | #Array.i2e[idx] <= 1
+Correct
+
+all idx: Int | lone idx.Array.i2e
+Syntax Error
+SYN_MSG:
+This cannot be a legal relational join where
+left hand side is idx (type = {Int})
+right hand side is this/Array (type = {this/Array})
+
+END_SYN_MSG
+
+no idx: Int | #Array.i2e[idx] > 1
+Correct
+
+all idx: Int, e1, e2: Element | idx->e1 in Array.i2e and idx->e2 in Array.i2e implies e1 = e2
+Correct
+
+Array.i2e in Int -> lone Element
+Correct
+
+~Array.i2e.Array.i2e in iden
+Syntax Error
+SYN_MSG:
+~ can be used only with a binary relation.
+Instead, its possible type(s) are:
+{this/Array}
+END_SYN_MSG
+
+all idx: Int | #Array.i2e[idx] < 2
+Correct
+
+no idx: Int | some disj e1, e2: Element | idx->e1 in Array.i2e and idx->e2 in Array.i2e
+Correct
+
+all idx: Array.i2e.Element | #Array.i2e[idx] = 1
+Correct
+
+Total: 10
+Unique: 10
+Correct: 8
+Syntax Error: 2
+Wrong: 0

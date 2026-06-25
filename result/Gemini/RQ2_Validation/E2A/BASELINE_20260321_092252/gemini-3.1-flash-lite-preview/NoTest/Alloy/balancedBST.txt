@@ -1,0 +1,90 @@
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all y: n.right.*(left + right) | y.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all x: n.^left.*(left + right) | x.elem < n.elem) and (all y: n.^right.*(left + right) | y.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all y: n.right.*(left + right) | n.elem < y.elem)
+Correct
+
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all y: (n.right.*(left + right)) | y.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all n.left.*(left + right).elem < n.elem) and (all n.right.*(left + right).elem > n.elem)
+Syntax Error
+SYN_MSG:
+The "all x" construct is no longer supported. If you know the range of possible values of x, consider rewriting it as "x == set_of_all_possible_values".
+END_SYN_MSG
+
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all x: n.right.*(left + right) | x.elem > n.elem)
+Correct
+
+HasAtMostOneChild: lone n.left + n.right
+Correct
+
+HasAtMostOneChild: no n.left or no n.right
+Correct
+
+HasAtMostOneChild: not (some n.left and some n.right)
+Correct
+
+HasAtMostOneChild: (no n.left) or (no n.right)
+Correct
+
+HasAtMostOneChild: #(n.left + n.right) <= 1
+Correct
+
+HasAtMostOneChild: (some n.left implies no n.right) and (some n.right implies no n.left)
+Correct
+
+HasAtMostOneChild: #n.left + #n.right <= 1
+Wrong
+
+HasAtMostOneChild: #(n.left) + #(n.right) <= 1
+Wrong
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth[n1], d2 = Depth[n2] | d1 - d2 <= 1 and d2 - d1 <= 1)
+Wrong
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies abs[Depth[n1] - Depth[n2]] <= 1
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: {n: Node | HasAtMostOneChild[n]} | abs[Depth[n1] - Depth[n2]] <= 1
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] <= 1) and (Depth[n2] - Depth[n1] <= 1)
+Wrong
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (Depth[n1] in (Depth[n2] - 1)..(Depth[n2] + 1))
+Syntax Error
+SYN_MSG:
+There are 27 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ all disj fun iden int let lone no none one pred seq some sum this univ { ~ 
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] = Depth[n2] or Depth[n1] = Depth[n2].plus[1] or Depth[n1] = Depth[n2].minus[1])
+Correct
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1].minus[Depth[n2]] <= 1) and (Depth[n2].minus[Depth[n1]] <= 1)
+Correct
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] < 2) and (Depth[n2] - Depth[n1] < 2)
+Wrong
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] <= 1) and (not (Depth[n1] - Depth[n2] < -1))
+Wrong
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] <= 1 and Depth[n1] - Depth[n2] >= -1)
+Wrong
+
+Total: 24
+Unique: 24
+Correct: 13
+Syntax Error: 4
+Wrong: 7

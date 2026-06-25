@@ -1,0 +1,114 @@
+[
+  {
+    "unique_id": "balancedBST_Balanced_0",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Balanced_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth[n1], d2 = Depth[n2] | d1 - d2 <= 1 and d2 - d1 <= 1)"
+  },
+  {
+    "unique_id": "balancedBST_Balanced_1",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Balanced_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (Depth[n1] - Depth[n2] >= -1 and Depth[n1] - Depth[n2] <= 1)"
+  },
+  {
+    "unique_id": "balancedBST_Balanced_2",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Balanced_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (Depth[n1] - Depth[n2] <= 1 and Depth[n2] - Depth[n1] <= 1)"
+  },
+  {
+    "unique_id": "bempl_CanEnter_0",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "r in p.owns.opened_by"
+  },
+  {
+    "unique_id": "bempl_CanEnter_1",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k: p.owns | r in k.opened_by"
+  },
+  {
+    "unique_id": "bempl_CanEnter_2",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "p->r in owns.opened_by"
+  },
+  {
+    "unique_id": "bempl_CanEnter_3",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_3.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some p.owns & opened_by.r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_4",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_4.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "r in p.(owns.opened_by)"
+  },
+  {
+    "unique_id": "bempl_CanEnter_5",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_5.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "p in (owns.opened_by).r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_6",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_6.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k: Key | k in p.owns and k.opened_by = r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_7",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_7.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "r in opened_by[p.owns]"
+  },
+  {
+    "unique_id": "bempl_CanEnter_8",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_8.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k: Key | p->k in owns and k->r in opened_by"
+  },
+  {
+    "unique_id": "bempl_CanEnter_9",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_9.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some {k: p.owns | k.opened_by = r}"
+  },
+  {
+    "unique_id": "student_Contains_0",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Contains_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "Loop[This] and Sorted[This] and (some n: Node | n in This.header.*link and n.elem = x) implies result = True else result = False"
+  }
+]

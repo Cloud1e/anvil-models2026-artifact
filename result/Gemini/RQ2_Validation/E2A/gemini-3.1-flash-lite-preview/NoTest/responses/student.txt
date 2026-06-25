@@ -1,0 +1,40 @@
+Loop: some n: This.header.*link | n in n.^link
+Loop: (some n: Node | n in This.header.*link and n in n.^link)
+Loop: (some n: This.header.*link | n in n.^link)
+Loop: (all n: This.header.*link | (some m: n.^link | m = n))
+Loop: (not (all n: This.header.*link | (all m: n.^link | m != n)))
+Loop: (some n: Node | n in This.header.*link and some n.^link & n)
+Loop: (not (all n: This.header.*link | no n.^link & n))
+Loop: (some n: This.header.*link | n.^link & n != none)
+Loop: (some n: Node | n in This.header.*link and n.^link & n = n)
+Loop: (some n: This.header.*link | n in n.link or n in n.link.link)
+Sorted: all n, m: This.header.*link | n in m.*link => n.elem <= m.elem
+Sorted: all n: This.header.*link | all m: n.^link | n.elem <= m.elem
+Sorted: all n: This.header.*link | all m: n.link.*link | n.elem <= m.elem
+Sorted: all n: Node | n in This.header.*link => (all m: n.link.*link | n.elem <= m.elem)
+Sorted: all n: Node | (n in This.header.*link and some n.link) => (all m: n.link.*link | n.elem <= m.elem)
+Sorted: all n, m: Node | (n in This.header.*link and m in n.*link) => n.elem <= m.elem
+Sorted: all disj n, m: This.header.*link | n in m.*link implies m.elem <= n.elem
+Sorted: all n: This.header.*link, m: n.^link | n.elem <= m.elem
+Sorted: (all n: This.header.*link | all m: n.^link | n.elem <= m.elem)
+Sorted: (all n: Node | n in This.header.*link => (all m: n.^link | n.elem <= m.elem))
+Count: result = #{n: This.header.*link | n.elem = x}
+Count: result = count[n: This.header.*link | n.elem = x]
+Count: result = #(This.header.*link & {n: Node | n.elem = x})
+Count: result = #{n: Node | n in This.header.*link and n.elem = x}
+Count: result = sum[n: This.header.*link | n.elem = x => 1 else 0]
+Count: result = #(This.header.*link) - #{n: This.header.*link | n.elem != x}
+Count: result = {i: Int | i = #{n: This.header.*link | n.elem = x}}
+Count: result = sum n: This.header.*link | if n.elem = x then 1 else 0
+Count: result = #({n: This.header.*link} & {n: Node | n.elem = x})
+Count: result = {i: Int | i = count[n: This.header.*link | n.elem = x]}
+Contains: result = True <=> (some n: This.header.*link | n.elem = x)
+Contains: result = (some n: This.header.*link | n.elem = x) => True else False
+Contains: (some n: This.header.*link | n.elem = x) => result = True else result = False
+Contains: result = (some {n: This.header.*link | n.elem = x} => True else False)
+Contains: result = (x in This.header.*link.elem => True else False)
+Contains: x in This.header.*link.elem <=> result = True
+Contains: (x in This.header.*link.elem and result = True) or (x not in This.header.*link.elem and result = False)
+Contains: result = True iff some n: This.header.*link | n.elem = x
+Contains: result = False iff all n: This.header.*link | n.elem != x
+Contains: (some n: This.header.*link | n.elem = x) = (result = True)

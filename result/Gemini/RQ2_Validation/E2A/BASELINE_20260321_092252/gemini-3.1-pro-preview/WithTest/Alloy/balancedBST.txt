@@ -1,0 +1,95 @@
+Sorted: all n: Node | (all l: n.left.*(left+right) | l.elem < n.elem) and (all r: n.right.*(left+right) | r.elem > n.elem)
+Correct
+
+Sorted: all x: Node | (all l: x.left.*(left+right) | l.elem < x.elem) and (all r: x.right.*(left+right) | r.elem > x.elem)
+Correct
+
+Sorted: all n: Node | (all l: n.left.*(left+right) | l.elem < n.elem) && (all r: n.right.*(left+right) | r.elem > n.elem)
+Correct
+
+Sorted: all m: Node | (all l: m.left.*(left+right) | l.elem < m.elem) and (all r: m.right.*(left+right) | r.elem > m.elem)
+Correct
+
+Sorted: all y: Node | (all l: y.left.*(left+right) | l.elem < y.elem) and (all r: y.right.*(left+right) | r.elem > y.elem)
+Correct
+
+Sorted: all a: Node | (all l: a.left.*(left+right) | l.elem < a.elem) and (all r: a.right.*(left+right) | r.elem > a.elem)
+Correct
+
+Sorted: all b: Node | (all l: b.left.*(left+right) | l.elem < b.elem) and (all r: b.right.*(left+right) | r.elem > b.elem)
+Correct
+
+Sorted: all n: Node | (no l: n.left.*(left+right) | l.elem >= n.elem) and (no r: n.right.*(left+right) | r.elem <= n.elem)
+Correct
+
+Sorted: all x: Node | (no l: x.left.*(left+right) | l.elem >= x.elem) and (no r: x.right.*(left+right) | r.elem <= x.elem)
+Correct
+
+Sorted: all n1: Node | (all l: n1.left.*(left+right) | l.elem < n1.elem) and (all r: n1.right.*(left+right) | r.elem > n1.elem)
+Correct
+
+HasAtMostOneChild: no n.left or no n.right
+Correct
+
+HasAtMostOneChild: no n.left || no n.right
+Correct
+
+HasAtMostOneChild: no n.right or no n.left
+Correct
+
+HasAtMostOneChild: lone n.left + n.right
+Correct
+
+HasAtMostOneChild: lone (n.left + n.right)
+Correct
+
+HasAtMostOneChild: not (some n.left and some n.right)
+Correct
+
+HasAtMostOneChild: !(some n.left and some n.right)
+Correct
+
+HasAtMostOneChild: (no n.left) or (no n.right)
+Correct
+
+HasAtMostOneChild: (no n.right) or (no n.left)
+Correct
+
+HasAtMostOneChild: lone n.(left + right)
+Correct
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] => (Depth[n1] - Depth[n2]) <= 1 and (Depth[n2] - Depth[n1]) <= 1
+Wrong
+
+Balanced: all x, y: Node | HasAtMostOneChild[x] and HasAtMostOneChild[y] => (Depth[x] - Depth[y]) <= 1 and (Depth[y] - Depth[x]) <= 1
+Wrong
+
+Balanced: all a, b: Node | HasAtMostOneChild[a] and HasAtMostOneChild[b] => (Depth[a] - Depth[b]) <= 1 and (Depth[b] - Depth[a]) <= 1
+Wrong
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (Depth[n1] - Depth[n2]) <= 1 and (Depth[n2] - Depth[n1]) <= 1
+Wrong
+
+Balanced: all x, y: Node | (HasAtMostOneChild[x] and HasAtMostOneChild[y]) => (Depth[x] - Depth[y]) <= 1 and (Depth[y] - Depth[x]) <= 1
+Wrong
+
+Balanced: all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] => (Depth[n1] <= (Depth[n2] + 1)) and (Depth[n2] <= (Depth[n1] + 1))
+Correct
+
+Balanced: all x, y: Node | HasAtMostOneChild[x] and HasAtMostOneChild[y] => (Depth[x] <= (Depth[y] + 1)) and (Depth[y] <= (Depth[x] + 1))
+Correct
+
+Balanced: all a, b: Node | HasAtMostOneChild[a] and HasAtMostOneChild[b] => (Depth[a] <= (Depth[b] + 1)) and (Depth[b] <= (Depth[a] + 1))
+Correct
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (Depth[n1] <= (Depth[n2] + 1)) and (Depth[n2] <= (Depth[n1] + 1))
+Correct
+
+Balanced: all x, y: Node | (HasAtMostOneChild[x] and HasAtMostOneChild[y]) => (Depth[x] <= (Depth[y] + 1)) and (Depth[y] <= (Depth[x] + 1))
+Correct
+
+Total: 30
+Unique: 30
+Correct: 25
+Syntax Error: 0
+Wrong: 5

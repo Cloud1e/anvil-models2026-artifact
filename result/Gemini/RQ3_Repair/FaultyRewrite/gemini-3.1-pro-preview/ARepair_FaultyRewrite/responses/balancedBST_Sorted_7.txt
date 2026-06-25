@@ -1,0 +1,4 @@
+pred Sorted() {
+  all n1, n2: Node | n2 in n1.^left implies n2.elem < n1.elem
+  all n1, n2: Node | n2 in n1.^right implies n2.elem > n1.elem
+}

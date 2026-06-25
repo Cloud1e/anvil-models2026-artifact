@@ -1,0 +1,64 @@
+\documentclass{article}
+
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\begin{table}[ht]
+\centering
+\caption{With-Test vs No-Test (Alloy-to-Alloy, Gemini) by Predicate with Repairability}
+\label{tab:with_vs_without_test_alloy2alloy_gemini3flashpreview}
+
+\small
+\textcolor{blue}{\textbf{WithTest}} \quad \textcolor{red}{\textbf{NoTest}} \quad (NoTest columns: value and, in parentheses, NoTest minus WithTest.)
+
+\vspace{0.5em}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+\textbf{Model-Predicate} & \textbf{Unique} &
+\textcolor{blue}{\textbf{Cor}} & \textcolor{red}{\textbf{Cor}} &
+\textcolor{blue}{\textbf{Syn}} & \textcolor{red}{\textbf{Syn}} &
+\textcolor{blue}{\textbf{Sem}} & \textcolor{red}{\textbf{Sem}} &
+\textcolor{blue}{\textbf{Rep}} & \textcolor{red}{\textbf{Rep}} \\
+\midrule
+arr-NoConflict                 & 10 & \textcolor{blue}{8}  & \textcolor{red}{10 (+2)}   & \textcolor{blue}{2}  & \textcolor{red}{0 (-2)}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+balancedBST-Balanced           & 10 & \textcolor{blue}{7}  & \textcolor{red}{4 (-3)}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{3}  & \textcolor{red}{6 (+3)}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+balancedBST-HasAtMostOneChild  & 10 & \textcolor{blue}{10}  & \textcolor{red}{9 (-1)}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{1 (+1)}   & \textcolor{blue}{0}  & \textcolor{red}{1 (+1)}   \\
+balancedBST-Sorted             & 10 & \textcolor{blue}{7}  & \textcolor{red}{4 (-3)}   & \textcolor{blue}{3}  & \textcolor{red}{3}   & \textcolor{blue}{0}  & \textcolor{red}{3 (+3)}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+bempl-CanEnter                 & 10 & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{10}  & \textcolor{red}{10}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+cd-Acyclic                     & 10 & \textcolor{blue}{9}  & \textcolor{red}{9}   & \textcolor{blue}{1}  & \textcolor{red}{1}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+cd-AllExtObject                & 10 & \textcolor{blue}{10}  & \textcolor{red}{10}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+cd-ClassHierarchy              & 10 & \textcolor{blue}{10}  & \textcolor{red}{9 (-1)}   & \textcolor{blue}{0}  & \textcolor{red}{1 (+1)}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+cd-ObjectNoExt                 & 10 & \textcolor{blue}{9}  & \textcolor{red}{9}   & \textcolor{blue}{1}  & \textcolor{red}{1}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+dll-ConsistentPreAndNxt        & 10 & \textcolor{blue}{10}  & \textcolor{red}{10}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+dll-Sorted                     & 10 & \textcolor{blue}{10}  & \textcolor{red}{9 (-1)}   & \textcolor{blue}{0}  & \textcolor{red}{1 (+1)}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+dll-UniqueElem                 & 10 & \textcolor{blue}{10}  & \textcolor{red}{10}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+farmer-crossRiver              & 10 & \textcolor{blue}{7}  & \textcolor{red}{7}   & \textcolor{blue}{3}  & \textcolor{red}{2 (-1)}   & \textcolor{blue}{0}  & \textcolor{red}{1 (+1)}   & \textcolor{blue}{0}  & \textcolor{red}{1 (+1)}   \\
+farmer-solvePuzzle             & 10 & \textcolor{blue}{10}  & \textcolor{red}{10}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+grade-PolicyAllowsGrading      & 10 & \textcolor{blue}{10}  & \textcolor{red}{10}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+other-CanEnter                 & 10 & \textcolor{blue}{10}  & \textcolor{red}{10}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+student-Contains               & 10 & \textcolor{blue}{8}  & \textcolor{red}{8}   & \textcolor{blue}{1}  & \textcolor{red}{0 (-1)}   & \textcolor{blue}{1}  & \textcolor{red}{2 (+1)}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+student-Count                  & 10 & \textcolor{blue}{10}  & \textcolor{red}{10}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+student-Loop                   & 10 & \textcolor{blue}{10}  & \textcolor{red}{10}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+student-Sorted                 & 10 & \textcolor{blue}{10}  & \textcolor{red}{9 (-1)}   & \textcolor{blue}{0}  & \textcolor{red}{1 (+1)}   & \textcolor{blue}{0}  & \textcolor{red}{0}   & \textcolor{blue}{0}  & \textcolor{red}{0}   \\
+\midrule
+\textbf{Totals}             & \textbf{200} &
+\textcolor{blue}{\textbf{175}} & \textcolor{red}{\textbf{167 (-8)}} &
+\textcolor{blue}{\textbf{11}} & \textcolor{red}{\textbf{10 (-1)}}  &
+\textcolor{blue}{\textbf{14}} & \textcolor{red}{\textbf{23 (+9)}}   &
+\textcolor{blue}{\textbf{0}} & \textcolor{red}{\textbf{2 (+2)}}   \\
+\bottomrule
+\end{tabular}%
+}
+
+\vspace{0.5em}
+\raggedright
+\textbf{Legend:} Cor = Correct, Syn = Syntax Error, Sem = Semantic error (Wrong), Rep = Repairable. Blue = WithTest, Red = NoTest. In red columns, parentheses give (NoTest $-$ WithTest).
+\end{table}
+
+\end{document}

@@ -1,0 +1,20 @@
+all s1, s2: S | s1->s2 in r or s2->s1 in r
+all x, y: S | x in y.r or y in x.r
+all a, b: S | a->b in r or b in r.a
+all s: S | S in s.r + r.s
+all s: S | s.r + r.s = S
+all s: S | s.r + s.~r = S
+all s: S | S = s.~r + s.r
+S->S in r + ~r
+S->S = r + ~r
+r + ~r = S->S
+no (S->S) - (r + ~r)
+no (S->S) - r - ~r
+all x, y: S | x->y !in r implies y->x in r
+not some s1, s2: S | s1->s2 !in r and s2->s1 !in r
+all x: S | S - x.r in r.x
+all x: S | S - r.x in x.r
+all x: S | S - x.r - r.x = none
+univ->univ in r + ~r
+(S->S) - r in ~r
+(S->S) - ~r in r

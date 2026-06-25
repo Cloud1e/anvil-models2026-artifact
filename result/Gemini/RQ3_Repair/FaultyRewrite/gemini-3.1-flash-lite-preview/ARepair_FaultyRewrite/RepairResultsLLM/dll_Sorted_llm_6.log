@@ -1,0 +1,2144 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) < ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) < ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(({ n: (one Node) {
+((n.elem) !>= ((n.nxt).elem))
+} }) = Node)
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) < ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(~(^nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) < ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(^(~nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) < ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(^(^nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+ [INFO] Fault localization time: 10751826463
+[DEBUG] Most suspicious node: ((n.elem) < ((n.nxt).elem))
+[DEBUG] Score: 0.7071067811865475, FailToPass: 2, PassToFail: 0
+ [INFO] Fixed by mutation:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+pred SortedMUTATED[] {
+(({ n: (one Node) {
+((n.elem) !> ((n.nxt).elem))
+} }) = Node)
+}
+EQUIV: check { Sorted[] <=> SortedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(~(^nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(^(~nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+(n !in (n.(^(^nxt))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+ [INFO] Fault localization time: 5810179253
+[DEBUG] Test num: 50
+[DEBUG] Rank Node 0:
+[DEBUG] (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+[DEBUG] Affected paragraph names: [Sorted]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 17): [test1001, test30, test28, test23, test26, test27, test25, test29, test31, test32, test24, test22, test45, test44, test42, test41, test43]
+[DEBUG] Hole n
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Node, n]
+[DEBUG] Hole nxt
+[DEBUG] Size: 3
+[DEBUG] Fragments: [pre, nxt, (none->none)]
+ [INFO] Expression generation time: 182916208
+ [INFO] Search space: 9
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, nxt]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, nxt]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [n, pre]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, nxt]
+[DEBUG] Hole 1, Fragment: nxt, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole n
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Node, n]
+[DEBUG] Hole elem
+[DEBUG] Size: 2
+[DEBUG] Fragments: [elem, (none->none)]
+[DEBUG] Hole (n.nxt)
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Node, n]
+[DEBUG] Hole elem
+[DEBUG] Size: 2
+[DEBUG] Fragments: [elem, (none->none)]
+ [INFO] Expression generation time: 104501125
+ [INFO] Search space: 36
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, elem, (n.nxt), elem]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none), (n.nxt), elem]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [n, elem, none, elem]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [n, elem, Node, elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, n, elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, elem, (n.nxt), (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+ [INFO] Expression generation time: 412755542
+ [INFO] Search space: 288
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 20
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+ [INFO] Expression generation time: 1243429459
+ [INFO] Search space: 288
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 20
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+ [INFO] Expression generation time: 1352417
+ [INFO] Search space: 288
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 20
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+ [INFO] Expression generation time: 2318208
+ [INFO] Search space: 2304
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem), Node]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none, Node]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int, Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0, Node]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1, Node]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem), Node]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem), Node]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), none]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (DLL.header)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (Node.pre)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (Node.nxt)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (pre.Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (nxt.Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (elem.Int)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 8495250
+ [INFO] Search space: 9216
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), none, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (DLL.header), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (Node.pre), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (Node.nxt), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (pre.Node), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (nxt.Node), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (elem.Int), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  != ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  in ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  !in ]
+[DEBUG] Test from pass to fail: test30
+ [INFO] Fix failed, number of combinations tried: 32
+[DEBUG] Rank Node 1:
+[DEBUG] {
+(({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+}
+[DEBUG] Affected paragraph names: [Sorted]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 17): [test1001, test30, test28, test23, test26, test27, test25, test29, test31, test32, test24, test22, test45, test44, test42, test41, test43]
+[DEBUG] Hole n
+[DEBUG] Size: 22
+[DEBUG] Fragments: [none, Node, n, (Node-n), (DLL.header), (Node.pre), (Node.nxt), (n.pre), (n.nxt), (pre.Node), (pre.n), (nxt.Node), (nxt.n), (elem.Int), (n.(*pre)), (n.(*nxt)), (n.(^pre)), (n.(^nxt)), ((*pre).n), ((*nxt).n), ((^pre).n), ((^nxt).n)]
+[DEBUG] Hole nxt
+[DEBUG] Size: 99
+[DEBUG] Fragments: [pre, nxt, (none->none), (~pre), (~nxt), (*pre), (*nxt), (^pre), (^nxt), (pre+nxt), (iden&pre), (iden&nxt), (pre&nxt), (pre-iden), (pre-nxt), (nxt-iden), (nxt-pre), (pre.pre), (pre.nxt), (nxt.pre), (nxt.nxt), (*(~pre)), (*(~nxt)), (^(~pre)), (^(~nxt)), (pre+(~pre)), (pre+(~nxt)), (pre+(*nxt)), (pre+(^nxt)), (nxt+(~pre)), (nxt+(~nxt)), (nxt+(*pre)), (nxt+(^pre)), (iden&(^pre)), (iden&(^nxt)), (pre&(~pre)), (pre&(~nxt)), (pre&(*nxt)), (nxt&(~pre)), (nxt&(~nxt)), (nxt&(*pre)), (pre-(~pre)), (nxt-(~pre)), (nxt-(~nxt)), (nxt-(*pre)), (pre.(~pre)), (pre.(~nxt)), (pre.(*nxt)), (pre.(^pre)), (pre.(^nxt)), (nxt.(~pre)), (nxt.(~nxt)), (nxt.(*pre)), (nxt.(^pre)), (nxt.(^nxt)), (elem.(~elem)), ((~pre)-iden), ((~pre)-pre), ((~pre)-nxt), ((~nxt)-iden), ((~nxt)-pre), ((~nxt)-nxt), ((*pre)-iden), ((*pre)-pre), ((*pre)-nxt), ((*nxt)-iden), ((*nxt)-pre), ((*nxt)-nxt), ((^pre)-pre), ((^pre)-nxt), ((^nxt)-pre), ((^nxt)-nxt), ((~header).header), ((~pre).pre), ((~pre).nxt), ((~nxt).pre), ((~nxt).nxt), ((*pre).nxt), ((*nxt).pre), ((^pre).nxt), ((^nxt).pre), (~(pre+nxt)), (~(pre&nxt)), (~(pre-nxt)), (~(nxt-pre)), (~(pre.pre)), (~(nxt.pre)), (~(nxt.nxt)), (*(pre+nxt)), (*(pre&nxt)), (*(pre-nxt)), (*(nxt-pre)), (*(pre.pre)), (*(nxt.pre)), (*(nxt.nxt)), (^(pre+nxt)), (^(pre-iden)), (^(pre-nxt)), (^(nxt-iden))]
+ [INFO] Expression generation time: 2660500
+ [INFO] Search space: 2178
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, nxt]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, nxt]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [(Node-n), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(DLL.header), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Node.pre), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Node.nxt), nxt]
+[DEBUG] Test from fail to pass: test27
+[DEBUG] Test from pass to fail: test25
+[DEBUG] Hole values: [(n.pre), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(n.nxt), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(pre.Node), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(pre.n), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(nxt.Node), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(nxt.n), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(elem.Int), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(n.(*pre)), nxt]
+[DEBUG] Hole 14, Fragment: (n.(*pre)), FailToPass: 0
+[DEBUG] Hole values: [(n.(*nxt)), nxt]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.(^pre)), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(n.(^nxt)), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((*pre).n), nxt]
+[DEBUG] Hole 18, Fragment: ((*pre).n), FailToPass: 0
+[DEBUG] Hole values: [((*nxt).n), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^pre).n), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((^nxt).n), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, pre]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, nxt]
+[DEBUG] Hole 1, Fragment: nxt, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [n, (~pre)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (~nxt)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (*pre)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (*nxt)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (^pre)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (^nxt)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (pre+nxt)]
+[DEBUG] Hole 9, Fragment: (pre+nxt), FailToPass: 0
+[DEBUG] Hole values: [n, (iden&pre)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (iden&nxt)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre&nxt)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre-iden)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre-nxt)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt-iden)]
+[DEBUG] Hole 15, Fragment: (nxt-iden), FailToPass: 0
+[DEBUG] Hole values: [n, (nxt-pre)]
+[DEBUG] Hole 16, Fragment: (nxt-pre), FailToPass: 0
+[DEBUG] Hole values: [n, (pre.pre)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre.nxt)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt.pre)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt.nxt)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (*(~pre))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (*(~nxt))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (^(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (^(~nxt))]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (pre+(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre+(~nxt))]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (pre+(*nxt))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (pre+(^nxt))]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (nxt+(~pre))]
+[DEBUG] Hole 29, Fragment: (nxt+(~pre)), FailToPass: 0
+[DEBUG] Hole values: [n, (nxt+(~nxt))]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (nxt+(*pre))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (nxt+(^pre))]
+[DEBUG] Hole 32, Fragment: (nxt+(^pre)), FailToPass: 0
+[DEBUG] Hole values: [n, (iden&(^pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (iden&(^nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre&(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre&(~nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre&(*nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt&(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt&(~nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt&(*pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre-(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt-(~pre))]
+[DEBUG] Test from pass to fail: test44
+[DEBUG] Hole values: [n, (nxt-(~nxt))]
+[DEBUG] Hole 43, Fragment: (nxt-(~nxt)), FailToPass: 0
+[DEBUG] Hole values: [n, (nxt-(*pre))]
+[DEBUG] Hole 44, Fragment: (nxt-(*pre)), FailToPass: 0
+[DEBUG] Hole values: [n, (pre.(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre.(~nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre.(*nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre.(^pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre.(^nxt))]
+[DEBUG] Test from pass to fail: test32
+ [INFO] Fix failed, number of combinations tried: 72
+[DEBUG] Hole n
+[DEBUG] Size: 22
+[DEBUG] Fragments: [none, Node, n, (Node-n), (DLL.header), (Node.pre), (Node.nxt), (n.pre), (n.nxt), (pre.Node), (pre.n), (nxt.Node), (nxt.n), (elem.Int), (n.(*pre)), (n.(*nxt)), (n.(^pre)), (n.(^nxt)), ((*pre).n), ((*nxt).n), ((^pre).n), ((^nxt).n)]
+[DEBUG] Hole elem
+[DEBUG] Size: 10
+[DEBUG] Fragments: [elem, (none->none), (pre.elem), (nxt.elem), ((~pre).elem), ((~nxt).elem), ((*pre).elem), ((*nxt).elem), ((^pre).elem), ((^nxt).elem)]
+[DEBUG] Hole (n.nxt)
+[DEBUG] Size: 22
+[DEBUG] Fragments: [none, Node, n, (Node-n), (DLL.header), (Node.pre), (Node.nxt), (n.pre), (n.nxt), (pre.Node), (pre.n), (nxt.Node), (nxt.n), (elem.Int), (n.(*pre)), (n.(*nxt)), (n.(^pre)), (n.(^nxt)), ((*pre).n), ((*nxt).n), ((^pre).n), ((^nxt).n)]
+[DEBUG] Hole elem
+[DEBUG] Size: 10
+[DEBUG] Fragments: [elem, (none->none), (pre.elem), (nxt.elem), ((~pre).elem), ((~nxt).elem), ((*pre).elem), ((*nxt).elem), ((^pre).elem), ((^nxt).elem)]
+ [INFO] Expression generation time: 1744834
+ [INFO] Search space: 48400
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, elem, (n.nxt), elem]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [(Node-n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(DLL.header), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Node.pre), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Node.nxt), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.pre), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(n.nxt), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(pre.Node), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(pre.n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(nxt.Node), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.(*pre)), elem, (n.nxt), elem]
+[DEBUG] Hole 14, Fragment: (n.(*pre)), FailToPass: 0
+[DEBUG] Hole values: [(n.(*nxt)), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.(^pre)), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(n.(^nxt)), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((*pre).n), elem, (n.nxt), elem]
+[DEBUG] Hole 18, Fragment: ((*pre).n), FailToPass: 0
+[DEBUG] Hole values: [((*nxt).n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [((^pre).n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^nxt).n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none), (n.nxt), elem]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [n, (pre.elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (nxt.elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, ((~pre).elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, ((~nxt).elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, ((*pre).elem), (n.nxt), elem]
+[DEBUG] Hole 6, Fragment: ((*pre).elem), FailToPass: 0
+[DEBUG] Hole values: [n, ((*nxt).elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, ((^pre).elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, ((^nxt).elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, none, elem]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [n, elem, Node, elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, n, elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (Node-n), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (DLL.header), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (Node.pre), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (Node.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.pre), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 8, Fragment: (n.nxt), FailToPass: 0
+[DEBUG] Hole values: [n, elem, (pre.Node), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (pre.n), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (nxt.Node), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (nxt.n), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (elem.Int), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.(*pre)), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.(*nxt)), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.(^pre)), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.(^nxt)), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, ((*pre).n), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, ((*nxt).n), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, ((^pre).n), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, ((^nxt).n), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, elem, (n.nxt), (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [n, elem, (n.nxt), (pre.elem)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.nxt), (nxt.elem)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.nxt), ((~pre).elem)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.nxt), ((~nxt).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.nxt), ((*pre).elem)]
+[DEBUG] Hole 6, Fragment: ((*pre).elem), FailToPass: 0
+[DEBUG] Hole values: [n, elem, (n.nxt), ((*nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (n.nxt), ((^pre).elem)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.nxt), ((^nxt).elem)]
+[DEBUG] Test from pass to fail: test32
+ [INFO] Fix failed, number of combinations tried: 64
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+ [INFO] Expression generation time: 1728000
+ [INFO] Search space: 288
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 20
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+ [INFO] Expression generation time: 2139792
+ [INFO] Search space: 288
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 20
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+ [INFO] Expression generation time: 150084
+ [INFO] Search space: 288
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 20
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+ [INFO] Expression generation time: 692500
+ [INFO] Search space: 2304
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem), Node]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem), Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none, Node]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int, Node]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0, Node]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1, Node]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem), Node]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem), Node]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), none]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (DLL.header)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (Node.pre)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (Node.nxt)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (pre.Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (nxt.Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (elem.Int)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 1710084
+ [INFO] Search space: 9216
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), none, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (DLL.header), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (Node.pre), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (Node.nxt), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (pre.Node), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (nxt.Node), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (elem.Int), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  != ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  in ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  !in ]
+[DEBUG] Test from pass to fail: test30
+ [INFO] Fix failed, number of combinations tried: 32
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole Node
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Node, (DLL.header), (Node.pre), (Node.nxt), (pre.Node), (nxt.Node), (elem.Int)]
+[DEBUG] Hole (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 648708
+ [INFO] Search space: 9216
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [(DLL.header), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.pre), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.nxt), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(pre.Node), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.Node), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, none, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, Int, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, 0, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, 1, ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (Node.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), none, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, (n.elem), Int, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), 0, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), 1, Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Node, (n.elem), (Node.elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), (n.elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), none, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node, (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 1, Fragment: Node, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (DLL.header), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (Node.pre), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (Node.nxt), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (pre.Node), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (nxt.Node), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), (elem.Int), (({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)]
+[DEBUG] Hole 7, Fragment: (elem.Int), FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  != ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  in ]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [Node, (n.elem), ((n.nxt).elem), Node,  !in ]
+[DEBUG] Test from pass to fail: test30
+ [INFO] Fix failed, number of combinations tried: 32
+[DEBUG] Rank Node 2:
+[DEBUG] ((n.elem) <= ((n.nxt).elem))
+[DEBUG] Affected paragraph names: [Sorted]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 17): [test1001, test30, test28, test23, test26, test27, test25, test29, test31, test32, test24, test22, test45, test44, test42, test41, test43]
+[DEBUG] Hole n
+[DEBUG] Size: 22
+[DEBUG] Fragments: [none, Node, n, (Node-n), (DLL.header), (Node.pre), (Node.nxt), (n.pre), (n.nxt), (pre.Node), (pre.n), (nxt.Node), (nxt.n), (elem.Int), (n.(*pre)), (n.(*nxt)), (n.(^pre)), (n.(^nxt)), ((*pre).n), ((*nxt).n), ((^pre).n), ((^nxt).n)]
+[DEBUG] Hole nxt
+[DEBUG] Size: 99
+[DEBUG] Fragments: [pre, nxt, (none->none), (~pre), (~nxt), (*pre), (*nxt), (^pre), (^nxt), (pre+nxt), (iden&pre), (iden&nxt), (pre&nxt), (pre-iden), (pre-nxt), (nxt-iden), (nxt-pre), (pre.pre), (pre.nxt), (nxt.pre), (nxt.nxt), (*(~pre)), (*(~nxt)), (^(~pre)), (^(~nxt)), (pre+(~pre)), (pre+(~nxt)), (pre+(*nxt)), (pre+(^nxt)), (nxt+(~pre)), (nxt+(~nxt)), (nxt+(*pre)), (nxt+(^pre)), (iden&(^pre)), (iden&(^nxt)), (pre&(~pre)), (pre&(~nxt)), (pre&(*nxt)), (nxt&(~pre)), (nxt&(~nxt)), (nxt&(*pre)), (pre-(~pre)), (nxt-(~pre)), (nxt-(~nxt)), (nxt-(*pre)), (pre.(~pre)), (pre.(~nxt)), (pre.(*nxt)), (pre.(^pre)), (pre.(^nxt)), (nxt.(~pre)), (nxt.(~nxt)), (nxt.(*pre)), (nxt.(^pre)), (nxt.(^nxt)), (elem.(~elem)), ((~pre)-iden), ((~pre)-pre), ((~pre)-nxt), ((~nxt)-iden), ((~nxt)-pre), ((~nxt)-nxt), ((*pre)-iden), ((*pre)-pre), ((*pre)-nxt), ((*nxt)-iden), ((*nxt)-pre), ((*nxt)-nxt), ((^pre)-pre), ((^pre)-nxt), ((^nxt)-pre), ((^nxt)-nxt), ((~header).header), ((~pre).pre), ((~pre).nxt), ((~nxt).pre), ((~nxt).nxt), ((*pre).nxt), ((*nxt).pre), ((^pre).nxt), ((^nxt).pre), (~(pre+nxt)), (~(pre&nxt)), (~(pre-nxt)), (~(nxt-pre)), (~(pre.pre)), (~(nxt.pre)), (~(nxt.nxt)), (*(pre+nxt)), (*(pre&nxt)), (*(pre-nxt)), (*(nxt-pre)), (*(pre.pre)), (*(nxt.pre)), (*(nxt.nxt)), (^(pre+nxt)), (^(pre-iden)), (^(pre-nxt)), (^(nxt-iden))]
+ [INFO] Expression generation time: 330166
+ [INFO] Search space: 2178
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, nxt]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, nxt]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [(Node-n), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(DLL.header), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Node.pre), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Node.nxt), nxt]
+[DEBUG] Test from fail to pass: test27
+[DEBUG] Test from pass to fail: test25
+[DEBUG] Hole values: [(n.pre), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(n.nxt), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(pre.Node), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(pre.n), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(nxt.Node), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(nxt.n), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(elem.Int), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(n.(*pre)), nxt]
+[DEBUG] Hole 14, Fragment: (n.(*pre)), FailToPass: 0
+[DEBUG] Hole values: [(n.(*nxt)), nxt]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.(^pre)), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(n.(^nxt)), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((*pre).n), nxt]
+[DEBUG] Hole 18, Fragment: ((*pre).n), FailToPass: 0
+[DEBUG] Hole values: [((*nxt).n), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^pre).n), nxt]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((^nxt).n), nxt]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, pre]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, nxt]
+[DEBUG] Hole 1, Fragment: nxt, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [n, (~pre)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (~nxt)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (*pre)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (*nxt)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (^pre)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (^nxt)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (pre+nxt)]
+[DEBUG] Hole 9, Fragment: (pre+nxt), FailToPass: 0
+[DEBUG] Hole values: [n, (iden&pre)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (iden&nxt)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre&nxt)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre-iden)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre-nxt)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt-iden)]
+[DEBUG] Hole 15, Fragment: (nxt-iden), FailToPass: 0
+[DEBUG] Hole values: [n, (nxt-pre)]
+[DEBUG] Hole 16, Fragment: (nxt-pre), FailToPass: 0
+[DEBUG] Hole values: [n, (pre.pre)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre.nxt)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt.pre)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt.nxt)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (*(~pre))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (*(~nxt))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (^(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (^(~nxt))]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (pre+(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre+(~nxt))]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (pre+(*nxt))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (pre+(^nxt))]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (nxt+(~pre))]
+[DEBUG] Hole 29, Fragment: (nxt+(~pre)), FailToPass: 0
+[DEBUG] Hole values: [n, (nxt+(~nxt))]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, (nxt+(*pre))]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (nxt+(^pre))]
+[DEBUG] Hole 32, Fragment: (nxt+(^pre)), FailToPass: 0
+[DEBUG] Hole values: [n, (iden&(^pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (iden&(^nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre&(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre&(~nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre&(*nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt&(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt&(~nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt&(*pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre-(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (nxt-(~pre))]
+[DEBUG] Test from pass to fail: test44
+[DEBUG] Hole values: [n, (nxt-(~nxt))]
+[DEBUG] Hole 43, Fragment: (nxt-(~nxt)), FailToPass: 0
+[DEBUG] Hole values: [n, (nxt-(*pre))]
+[DEBUG] Hole 44, Fragment: (nxt-(*pre)), FailToPass: 0
+[DEBUG] Hole values: [n, (pre.(~pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre.(~nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre.(*nxt))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre.(^pre))]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, (pre.(^nxt))]
+[DEBUG] Test from pass to fail: test32
+ [INFO] Fix failed, number of combinations tried: 72
+[DEBUG] Hole n
+[DEBUG] Size: 22
+[DEBUG] Fragments: [none, Node, n, (Node-n), (DLL.header), (Node.pre), (Node.nxt), (n.pre), (n.nxt), (pre.Node), (pre.n), (nxt.Node), (nxt.n), (elem.Int), (n.(*pre)), (n.(*nxt)), (n.(^pre)), (n.(^nxt)), ((*pre).n), ((*nxt).n), ((^pre).n), ((^nxt).n)]
+[DEBUG] Hole elem
+[DEBUG] Size: 10
+[DEBUG] Fragments: [elem, (none->none), (pre.elem), (nxt.elem), ((~pre).elem), ((~nxt).elem), ((*pre).elem), ((*nxt).elem), ((^pre).elem), ((^nxt).elem)]
+[DEBUG] Hole (n.nxt)
+[DEBUG] Size: 22
+[DEBUG] Fragments: [none, Node, n, (Node-n), (DLL.header), (Node.pre), (Node.nxt), (n.pre), (n.nxt), (pre.Node), (pre.n), (nxt.Node), (nxt.n), (elem.Int), (n.(*pre)), (n.(*nxt)), (n.(^pre)), (n.(^nxt)), ((*pre).n), ((*nxt).n), ((^pre).n), ((^nxt).n)]
+[DEBUG] Hole elem
+[DEBUG] Size: 10
+[DEBUG] Fragments: [elem, (none->none), (pre.elem), (nxt.elem), ((~pre).elem), ((~nxt).elem), ((*pre).elem), ((*nxt).elem), ((^pre).elem), ((^nxt).elem)]
+ [INFO] Expression generation time: 390875
+ [INFO] Search space: 48400
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, elem, (n.nxt), elem]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Node, elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 2, Fragment: n, FailToPass: 0
+[DEBUG] Hole values: [(Node-n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(DLL.header), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Node.pre), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(Node.nxt), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.pre), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(n.nxt), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(pre.Node), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(pre.n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(nxt.Node), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(nxt.n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(elem.Int), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.(*pre)), elem, (n.nxt), elem]
+[DEBUG] Hole 14, Fragment: (n.(*pre)), FailToPass: 0
+[DEBUG] Hole values: [(n.(*nxt)), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.(^pre)), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(n.(^nxt)), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((*pre).n), elem, (n.nxt), elem]
+[DEBUG] Hole 18, Fragment: ((*pre).n), FailToPass: 0
+[DEBUG] Hole values: [((*nxt).n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [((^pre).n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [((^nxt).n), elem, (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, (none->none), (n.nxt), elem]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [n, (pre.elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, (nxt.elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, ((~pre).elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, ((~nxt).elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, ((*pre).elem), (n.nxt), elem]
+[DEBUG] Hole 6, Fragment: ((*pre).elem), FailToPass: 0
+[DEBUG] Hole values: [n, ((*nxt).elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, ((^pre).elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, ((^nxt).elem), (n.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, none, elem]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [n, elem, Node, elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, n, elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (Node-n), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (DLL.header), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (Node.pre), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (Node.nxt), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.pre), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 8, Fragment: (n.nxt), FailToPass: 0
+[DEBUG] Hole values: [n, elem, (pre.Node), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (pre.n), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (nxt.Node), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (nxt.n), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (elem.Int), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.(*pre)), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.(*nxt)), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.(^pre)), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.(^nxt)), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, ((*pre).n), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, ((*nxt).n), elem]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, ((^pre).n), elem]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, ((^nxt).n), elem]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (n.nxt), elem]
+[DEBUG] Hole 0, Fragment: elem, FailToPass: 0
+[DEBUG] Hole values: [n, elem, (n.nxt), (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [n, elem, (n.nxt), (pre.elem)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.nxt), (nxt.elem)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.nxt), ((~pre).elem)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.nxt), ((~nxt).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [n, elem, (n.nxt), ((*pre).elem)]
+[DEBUG] Hole 6, Fragment: ((*pre).elem), FailToPass: 0
+[DEBUG] Hole values: [n, elem, (n.nxt), ((*nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [n, elem, (n.nxt), ((^pre).elem)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [n, elem, (n.nxt), ((^nxt).elem)]
+[DEBUG] Test from pass to fail: test32
+ [INFO] Fix failed, number of combinations tried: 64
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+ [INFO] Expression generation time: 371042
+ [INFO] Search space: 36
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [0, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [1, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [(n.elem), none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [(n.elem), Int]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.elem), 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(n.elem), 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(n.elem), (Node.elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(n.elem), (n.elem)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 12
+[DEBUG] Hole (n.elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+[DEBUG] Hole ((n.nxt).elem)
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, (Node.elem), (n.elem)]
+ [INFO] Expression generation time: 311209
+ [INFO] Search space: 36
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((n.nxt).elem)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [0, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [1, ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Node.elem), ((n.nxt).elem)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.elem), ((n.nxt).elem)]
+[DEBUG] Hole 5, Fragment: (n.elem), FailToPass: 0
+[DEBUG] Hole values: [(n.elem), none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [(n.elem), Int]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(n.elem), 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(n.elem), 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(n.elem), (Node.elem)]
+[DEBUG] Test from pass to fail: test1001
+[DEBUG] Hole values: [(n.elem), (n.elem)]
+[DEBUG] Test from pass to fail: test1001
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(({ n: (one Node) {
+((n.elem) <= ((n.nxt).elem))
+} }) = Node)
+}
+pred ConsistentPreAndNxt[] {
+(nxt = (~pre))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+

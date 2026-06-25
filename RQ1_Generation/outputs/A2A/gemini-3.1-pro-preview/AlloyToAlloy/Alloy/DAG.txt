@@ -1,0 +1,65 @@
+all n: Node | n not in n.^link
+Correct
+
+no n: Node | n in n.^link
+Correct
+
+all n: Node | n !in ^link.n
+Correct
+
+all n: Node | n not in ^link.n
+Correct
+
+no n: Node | n in ^link.n
+Correct
+
+no ^link & iden
+Correct
+
+no iden & ^link
+Correct
+
+^link & iden = none
+Syntax Error
+
+iden & ^link = none
+Syntax Error
+
+^link in Node -> Node - iden
+Correct
+
+no ^link & ~^link
+Correct
+
+^link & ~^link = none
+Syntax Error
+
+all x, y: Node | x in y.^link implies x != y
+Correct
+
+no x, y: Node | x in y.^link and y in x.^link
+Correct
+
+all n: Node | no n & n.^link
+Correct
+
+all n: Node | n & n.^link = none
+Correct
+
+no n: Node | some n & n.^link
+Correct
+
+all n: Node | n - n.^link = n
+Correct
+
+all n: Node | n.^link - n = n.^link
+Correct
+
+all n: Node | #(n & n.^link) = 0
+Correct
+
+Total: 20
+Unique: 20
+Correct: 17
+Syntax Error: 3
+Wrong: 0

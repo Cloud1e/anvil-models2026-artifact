@@ -1,0 +1,39 @@
+pred AllExtObject() {
+  all c: Class | c in Class - Object implies c in c.*ext
+}
+
+pred AllExtObject() {
+  no c: Class - Object | c !in c.*ext
+}
+
+pred AllExtObject() {
+  all c: Class - Object | c in c + c.^ext
+}
+
+pred AllExtObject() {
+  Class - Object in {c: Class | c in c.*ext}
+}
+
+pred AllExtObject() {
+  not some c: Class - Object | c !in c.*ext
+}
+
+pred AllExtObject() {
+  all c: Class | c != Object implies c in c.*ext
+}
+
+pred AllExtObject() {
+  all c: Class - Object | some (c & c.*ext)
+}
+
+pred AllExtObject() {
+  no {c: Class - Object | c !in c.*ext}
+}
+
+pred AllExtObject() {
+  all c: Class - Object | c in c.*ext and c in Class
+}
+
+pred AllExtObject() {
+  all c: Class - Object | c in c.^ext or c = c
+}

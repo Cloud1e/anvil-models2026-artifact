@@ -1,0 +1,34 @@
+RUN_ID=20260623_121045
+ARTIFACT_ROOT=.
+REPO_ROOT=<REPOSITORY_ROOT>
+RUN_DIR=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045
+PID=8085
+PPID=1
+START=Tue Jun 23 12:10:45 CDT 2026
+[Tue Jun 23 12:10:45 CDT 2026] STEP0 ground-truth gate
+[Tue Jun 23 12:10:45 CDT 2026] STEP1 verify RQ3 classifier primary source
+[Tue Jun 23 12:10:45 CDT 2026] STEP2 run classification for gate
+[Tue Jun 23 12:10:45 CDT 2026] START STEP2_CLASSIFY_gemini-3.1-pro-preview
+[Tue Jun 23 12:13:17 CDT 2026] END STEP2_CLASSIFY_gemini-3.1-pro-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step2_classify_gemini-3.1-pro-preview.log
+[Tue Jun 23 12:13:17 CDT 2026] START STEP2_CLASSIFY_gemini-3-flash-preview
+[Tue Jun 23 12:16:03 CDT 2026] END STEP2_CLASSIFY_gemini-3-flash-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step2_classify_gemini-3-flash-preview.log
+[Tue Jun 23 12:16:03 CDT 2026] START STEP2_CLASSIFY_gemini-3.1-flash-lite-preview
+[Tue Jun 23 12:18:30 CDT 2026] END STEP2_CLASSIFY_gemini-3.1-flash-lite-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step2_classify_gemini-3.1-flash-lite-preview.log
+[Tue Jun 23 12:18:30 CDT 2026] STEP3 full classification comparison against internal snapshots
+[Tue Jun 23 12:18:30 CDT 2026] STEP4 rerun RQ3 repair with fixed classification
+[Tue Jun 23 12:18:30 CDT 2026] START STEP4_RQ3_REPAIR_gemini-3.1-pro-preview
+[Tue Jun 23 15:39:40 CDT 2026] END STEP4_RQ3_REPAIR_gemini-3.1-pro-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step4_rq3_repair_gemini-3.1-pro-preview.log
+[Tue Jun 23 15:39:40 CDT 2026] START STEP4_RQ3_REPAIR_gemini-3-flash-preview
+[Tue Jun 23 19:30:47 CDT 2026] END STEP4_RQ3_REPAIR_gemini-3-flash-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step4_rq3_repair_gemini-3-flash-preview.log
+[Tue Jun 23 19:30:47 CDT 2026] START STEP4_RQ3_REPAIR_gemini-3.1-flash-lite-preview
+[Tue Jun 23 22:09:50 CDT 2026] END STEP4_RQ3_REPAIR_gemini-3.1-flash-lite-preview exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step4_rq3_repair_gemini-3.1-flash-lite-preview.log
+[Tue Jun 23 22:09:51 CDT 2026] STEP5 RQ2 Docker A/B for dll_ConsistentPreAndNxt_5
+[Tue Jun 23 22:09:51 CDT 2026] START STEP5_RQ2_AB_CURRENT
+[Tue Jun 23 22:11:12 CDT 2026] END STEP5_RQ2_AB_CURRENT exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/rq2_ab_dll_ConsistentPreAndNxt_5/current.log
+[Tue Jun 23 22:11:12 CDT 2026] START STEP5_RQ2_AB_TOP3
+[Tue Jun 23 22:12:22 CDT 2026] END STEP5_RQ2_AB_TOP3 exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/rq2_ab_dll_ConsistentPreAndNxt_5/top3.log
+[Tue Jun 23 22:12:22 CDT 2026] STEP5_APPLIED restored current no-top3 Patcher.java
+[Tue Jun 23 22:12:22 CDT 2026] STEP6 regenerate paper/artifact diff
+[Tue Jun 23 22:12:22 CDT 2026] START STEP6_DIFF_COMPARE
+[Tue Jun 23 22:12:22 CDT 2026] END STEP6_DIFF_COMPARE exit=0 log=logs/orchestration/rq3_oracle_fix_rq2_ab_20260623_121045/step6_compare_paper_artifact.log
+[Tue Jun 23 22:12:22 CDT 2026] ALL_DONE marker=logs/orchestration/RQ3_ORACLE_FIX_RQ2_AB_DONE_20260623_121045.marker

@@ -1,0 +1,6 @@
+pred Sorted() {
+  all n: Node {
+    no n2: n.^left | not (n2.elem < n.elem)
+    no n2: n.^right | not (n2.elem > n.elem)
+  }
+}

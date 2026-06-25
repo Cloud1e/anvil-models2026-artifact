@@ -1,0 +1,72 @@
+pred crossRiver [from, from', to, to': set Object] {
+  (some item: from - Farmer | from' = from - Farmer - item and to' = to - to.eats + Farmer + item)
+  or
+  (from' = from - Farmer and to' = to - to.eats + Farmer)
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  some item: set (from - Farmer) {
+    lone item
+    from' = from - Farmer - item
+    to' = to - to.eats + Farmer + item
+  }
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  let f = from - Farmer, t = to - to.eats + Farmer {
+    (from' = f and to' = t) or (some item: f | from' = f - item and to' = t + item)
+  }
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  (from' = from - Farmer and to' = to - to.eats + Farmer) or
+  (some item: Object | item in from - Farmer and from' = from - Farmer - item and to' = to - to.eats + Farmer + item)
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  let f = from - Farmer {
+    (from' = f and to' = to - to.eats + Farmer) or
+    (some item: f | from' = f - item and to' = to - to.eats + Farmer + item)
+  }
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  let t_base = to - to.eats + Farmer {
+    (to' = t_base and from' = from - Farmer) or
+    (some item: from - Farmer | to' = t_base + item and from' = from - Farmer - item)
+  }
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  (some item: from - Farmer {
+    to' = to - to.eats + Farmer + item
+    from' = from - Farmer - item
+  }) || (
+    to' = to - to.eats + Farmer
+    from' = from - Farmer
+  )
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  (from' = from - Farmer and to' = to - to.eats + Farmer) or
+  (one item: from - Farmer | (from' = from - Farmer - item) and (to' = to - to.eats + Farmer + item))
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  some item: set Object {
+    lone item
+    item in from - Farmer
+    from' = (from - Farmer) - item
+    to' = (to - to.eats + Farmer) + item
+  }
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  (from' = from - Farmer and to' = to - to.eats + Farmer) or
+  (some item: Object {
+    item in from
+    item != Farmer
+    from' = from - Farmer - item
+    to' = to - to.eats + Farmer + item
+  })
+}

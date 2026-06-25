@@ -1,0 +1,48 @@
+pred Loop(This: List) {
+    no n: Node | n = (n - This.header).link
+    one n: Node | This.header = n.link
+}
+
+pred Loop(This: List) {
+    all n: Node | n != (n - This.header).link
+    one n: Node | n.link = This.header
+}
+
+pred Loop(This: List) {
+    not (some n: Node | n = (n - This.header).link)
+    one n: Node | n.link = This.header
+}
+
+pred Loop(This: List) {
+    no x: Node | x = (x - This.header).link
+    one y: Node | y.link = This.header
+}
+
+pred Loop(This: List) {
+    all x: Node | not (x = (x - This.header).link)
+    one y: Node | This.header = y.link
+}
+
+pred Loop(This: List) {
+    #{n: Node | n = (n - This.header).link} = 0
+    one n: Node | n.link = This.header
+}
+
+pred Loop(This: List) {
+    no n: Node | n = (n - This.header).link
+    #{n: Node | n.link = This.header} = 1
+}
+
+pred Loop(This: List) {
+    #{x: Node | x = (x - This.header).link} = 0
+    #{y: Node | y.link = This.header} = 1
+}
+
+pred Loop(This: List) {
+    no m: Node | m = (m - This.header).link
+    one m: Node | m.link = This.header
+}
+
+pred Loop(This: List) {
+    (no n: Node | n = (n - This.header).link) and (one n: Node | n.link = This.header)
+}

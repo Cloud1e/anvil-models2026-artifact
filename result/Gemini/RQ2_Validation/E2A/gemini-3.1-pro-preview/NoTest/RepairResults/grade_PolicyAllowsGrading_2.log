@@ -1,0 +1,725 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+(s in Professor)
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 7571277628
+[DEBUG] Test num: 42
+[DEBUG] Rank Node 0:
+[DEBUG] (s in Professor)
+[DEBUG] Affected paragraph names: [PolicyAllowsGrading]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 18): [test1001, test36, test26, test39, test41, test25, test38, test31, test35, test40, test37, test33, test27, test29, test28, test32, test30, test34]
+[DEBUG] Hole s
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Person, Student, Professor, s]
+[DEBUG] Hole Professor
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Person, Student, Professor, s]
+ [INFO] Expression generation time: 238967667
+ [INFO] Search space: 25
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Professor]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [Person, Professor]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [Student, Professor]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [Professor, Professor]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [s, none]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, Person]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Student]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+[DEBUG] Hole values: [s, s]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Hole s
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Person, Student, Professor, s]
+[DEBUG] Hole Professor
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Person, Student, Professor, s]
+[DEBUG] Hole (s in Professor)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 78512875
+ [INFO] Search space: 100
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [Person, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [Student, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [Professor, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor, (s in Professor)]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [s, none, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, Person, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Student, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor, (s in Professor)]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+[DEBUG] Hole values: [s, s, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor,  = ]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [s, Professor,  != ]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor,  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [s, Professor,  !in ]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+ [INFO] Fix failed, number of combinations tried: 14
+[DEBUG] Rank Node 1:
+[DEBUG] {
+(s in Professor)
+}
+[DEBUG] Affected paragraph names: [PolicyAllowsGrading]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 18): [test1001, test36, test26, test39, test41, test25, test38, test31, test35, test40, test37, test33, test27, test29, test28, test32, test30, test34]
+[DEBUG] Hole s
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Person, Student, Professor, s]
+[DEBUG] Hole Professor
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Person, Student, Professor, s]
+ [INFO] Expression generation time: 3849375
+ [INFO] Search space: 25
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Professor]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [Person, Professor]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [Student, Professor]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [Professor, Professor]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [s, none]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, Person]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Student]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+[DEBUG] Hole values: [s, s]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Hole s
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Person, Student, Professor, s]
+[DEBUG] Hole Professor
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Person, Student, Professor, s]
+[DEBUG] Hole (s in Professor)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 10032041
+ [INFO] Search space: 100
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [Person, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [Student, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [Professor, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor, (s in Professor)]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [s, none, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, Person, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Student, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor, (s in Professor)]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+[DEBUG] Hole values: [s, s, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor,  = ]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [s, Professor,  != ]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor,  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [s, Professor,  !in ]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+ [INFO] Fix failed, number of combinations tried: 14
+[DEBUG] Hole s
+[DEBUG] Size: 16
+[DEBUG] Fragments: [none, Person, Student, Professor, s, (Student+s), (Professor+s), (Student&s), (Professor&s), (Person-s), (Student-s), (Professor-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole Professor
+[DEBUG] Size: 16
+[DEBUG] Fragments: [none, Person, Student, Professor, s, (Student+s), (Professor+s), (Student&s), (Professor&s), (Person-s), (Student-s), (Professor-s), (Class.assistant_for), (Class.instructor_of), (Assignment.assigned_to), (a.assigned_to)]
+[DEBUG] Hole (s in Professor)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 615712375
+ [INFO] Search space: 1024
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [Person, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [Student, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [Professor, Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor, (s in Professor)]
+[DEBUG] Hole 4, Fragment: s, FailToPass: 0
+[DEBUG] Hole values: [(Student+s), Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [(Professor+s), Professor, (s in Professor)]
+[DEBUG] Hole 6, Fragment: (Professor+s), FailToPass: 0
+[DEBUG] Hole values: [(Student&s), Professor, (s in Professor)]
+[DEBUG] Hole 7, Fragment: (Student&s), FailToPass: 0
+[DEBUG] Hole values: [(Professor&s), Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [(Person-s), Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test25
+[DEBUG] Hole values: [(Student-s), Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test25
+[DEBUG] Hole values: [(Professor-s), Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [(Class.assistant_for), Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [(Class.instructor_of), Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [(Assignment.assigned_to), Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [(a.assigned_to), Professor, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, none, (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, Person, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Student, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor, (s in Professor)]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+[DEBUG] Hole values: [s, s, (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, (Student+s), (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, (Professor+s), (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, (Student&s), (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, (Professor&s), (s in Professor)]
+[DEBUG] Hole 8, Fragment: (Professor&s), FailToPass: 0
+[DEBUG] Hole values: [s, (Person-s), (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, (Student-s), (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, (Professor-s), (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test38
+[DEBUG] Hole values: [s, (Class.assistant_for), (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, (Class.instructor_of), (s in Professor)]
+[DEBUG] Hole 13, Fragment: (Class.instructor_of), FailToPass: 0
+[DEBUG] Hole values: [s, (Assignment.assigned_to), (s in Professor)]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, (a.assigned_to), (s in Professor)]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor,  = ]
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test31
+[DEBUG] Hole values: [s, Professor,  != ]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from pass to fail: test26
+[DEBUG] Hole values: [s, Professor,  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [s, Professor,  !in ]
+[DEBUG] Test from fail to pass: test1001
+[DEBUG] Test from fail to pass: test36
+[DEBUG] Test from pass to fail: test26
+ [INFO] Fix failed, number of combinations tried: 36
+[DEBUG] Rank Node 2:
+[DEBUG] sig Professor extends Person {}
+[DEBUG] Affected paragraph names: [Professor_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole sig Professor extends Person {}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 372000
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 3:
+[DEBUG] (set Student)
+[DEBUG] Affected paragraph names: [Class_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+ [INFO] Expression generation time: 4971500
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+ [INFO] Expression generation time: 848000
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 4:
+[DEBUG] sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+[DEBUG] Affected paragraph names: [Assignment_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Class
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Class]
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+ [INFO] Expression generation time: 1481542
+ [INFO] Search space: 8
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Student]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Class, Student]
+[DEBUG] Hole 1, Fragment: Class, FailToPass: 0
+[DEBUG] Hole values: [Class, none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Class, Person]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Class, Student]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Class, Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole Class
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Class]
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+ [INFO] Expression generation time: 413667
+ [INFO] Search space: 8
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Student]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Class, Student]
+[DEBUG] Hole 1, Fragment: Class, FailToPass: 0
+[DEBUG] Hole values: [Class, none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Class, Person]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Class, Student]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Class, Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole Class
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Class]
+[DEBUG] Hole (one Class)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+[DEBUG] Hole (some Student)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 18942041
+ [INFO] Search space: 128
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (one Class), Student, (some Student)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Class, (one Class), Student, (some Student)]
+[DEBUG] Hole 1, Fragment: Class, FailToPass: 0
+[DEBUG] Hole values: [Class, one , Student, (some Student)]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Class, set , Student, (some Student)]
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [Class, lone , Student, (some Student)]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [Class, some , Student, (some Student)]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+[DEBUG] Hole values: [Class, (one Class), none, (some Student)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Class, (one Class), Person, (some Student)]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Class, (one Class), Student, (some Student)]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Class, (one Class), Professor, (some Student)]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+[DEBUG] Hole values: [Class, (one Class), Student, one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Class, (one Class), Student, set ]
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [Class, (one Class), Student, lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [Class, (one Class), Student, some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 14
+[DEBUG] Hole sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 854958
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 5:
+[DEBUG] sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+[DEBUG] Affected paragraph names: [Class_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+[DEBUG] Hole Professor
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+ [INFO] Expression generation time: 1023083
+ [INFO] Search space: 16
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Professor]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person, Professor]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student, Professor]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Professor, Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+[DEBUG] Hole values: [Student, none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Student, Person]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student, Student]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Student, Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 8
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+[DEBUG] Hole Professor
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+ [INFO] Expression generation time: 243500
+ [INFO] Search space: 16
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Professor]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person, Professor]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student, Professor]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Professor, Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+[DEBUG] Hole values: [Student, none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Student, Person]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student, Student]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Student, Professor]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 8
+[DEBUG] Hole Student
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Student, Professor]
+[DEBUG] Hole (set Student)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+[DEBUG] Hole Professor
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Person, Student, Professor, (Class.assistant_for)]
+[DEBUG] Hole (one Professor)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 39414083
+ [INFO] Search space: 320
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (set Student), Professor, (one Professor)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person, (set Student), Professor, (one Professor)]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student, (set Student), Professor, (one Professor)]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Professor, (set Student), Professor, (one Professor)]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+[DEBUG] Hole values: [Student, one , Professor, (one Professor)]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Student, set , Professor, (one Professor)]
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [Student, lone , Professor, (one Professor)]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [Student, some , Professor, (one Professor)]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+[DEBUG] Hole values: [Student, (set Student), none, (one Professor)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Student, (set Student), Person, (one Professor)]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Student, (set Student), Student, (one Professor)]
+[DEBUG] Hole 2, Fragment: Student, FailToPass: 0
+[DEBUG] Hole values: [Student, (set Student), Professor, (one Professor)]
+[DEBUG] Hole 3, Fragment: Professor, FailToPass: 0
+[DEBUG] Hole values: [Student, (set Student), (Class.assistant_for), (one Professor)]
+[DEBUG] Hole 4, Fragment: (Class.assistant_for), FailToPass: 0
+[DEBUG] Hole values: [Student, (set Student), Professor, one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Student, (set Student), Professor, set ]
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [Student, (set Student), Professor, lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [Student, (set Student), Professor, some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 17
+[DEBUG] Hole sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 127250
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 6:
+[DEBUG] abstract sig Person {}
+[DEBUG] Affected paragraph names: [Person_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole abstract sig Person {}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 42834
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+(s in Professor)
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+abstract sig Person {}
+sig Student extends Person {}
+sig Professor extends Person {}
+sig Class {
+assistant_for: (set Student),
+instructor_of: (one Professor)
+}
+sig Assignment {
+associated_with: (one Class),
+assigned_to: (some Student)
+}
+pred PolicyAllowsGrading[s: Person,a: Assignment] {
+(s in Professor)
+}
+
+
+assert NoOneCanGradeTheirOwnAssignment {
+(all s: (one Person) {
+(all a: (one Assignment) {
+((PolicyAllowsGrading[s,a]) => (!(s in (a.assigned_to))))
+})
+})
+}
+
+check NoOneCanGradeTheirOwnAssignment

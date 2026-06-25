@@ -1,0 +1,1392 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred HasAtMostOneChildMUTATED[n: Node] {
+
+}
+EQUIV: check { all n: Node | HasAtMostOneChild[n] <=> HasAtMostOneChildMUTATED[n] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred HasAtMostOneChildMUTATED[n: Node] {
+(((#(n.left)) + (#(n.right))) !> 1)
+}
+EQUIV: check { all n: Node | HasAtMostOneChild[n] <=> HasAtMostOneChildMUTATED[n] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred HasAtMostOneChildMUTATED[n: Node] {
+(((#(n.left)) & (#(n.right))) <= 1)
+}
+EQUIV: check { all n: Node | HasAtMostOneChild[n] <=> HasAtMostOneChildMUTATED[n] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred HasAtMostOneChildMUTATED[n: Node] {
+(((#(n.left)) - (#(n.right))) <= 1)
+}
+EQUIV: check { all n: Node | HasAtMostOneChild[n] <=> HasAtMostOneChildMUTATED[n] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred HasAtMostOneChildMUTATED[n: Node] {
+(((#(n.(~left))) + (#(n.right))) <= 1)
+}
+EQUIV: check { all n: Node | HasAtMostOneChild[n] <=> HasAtMostOneChildMUTATED[n] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred HasAtMostOneChildMUTATED[n: Node] {
+(((#(n.left)) + (#(n.(~right)))) <= 1)
+}
+EQUIV: check { all n: Node | HasAtMostOneChild[n] <=> HasAtMostOneChildMUTATED[n] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred BalancedMUTATED[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) <=> (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+EQUIV: check { Balanced[] <=> BalancedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred BalancedMUTATED[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) || (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+EQUIV: check { Balanced[] <=> BalancedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred BalancedMUTATED[] {
+(all n1,n2: (one Node) {
+((HasAtMostOneChild[n2]) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+EQUIV: check { Balanced[] <=> BalancedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred BalancedMUTATED[] {
+(all n1,n2: (one Node) {
+((HasAtMostOneChild[n1]) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+EQUIV: check { Balanced[] <=> BalancedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred BalancedMUTATED[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+(diff <= 1)
+}))
+})
+}
+EQUIV: check { Balanced[] <=> BalancedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred BalancedMUTATED[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+(-1 <= diff)
+}))
+})
+}
+EQUIV: check { Balanced[] <=> BalancedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred BalancedMUTATED[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 !> diff) && (diff <= 1))
+}))
+})
+}
+EQUIV: check { Balanced[] <=> BalancedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+pred BalancedMUTATED[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff !> 1))
+}))
+})
+}
+EQUIV: check { Balanced[] <=> BalancedMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+((n !in (n.(~(^(left + right))))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+((n !in (n.(^(~(left + right))))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+((n !in (n.(^(^(left + right))))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+((n !in (n.(^((^left) + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+((n !in (n.(^(left + (^right))))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.(*left)) & (n.right))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.(^left)) & (n.right))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.(*right)))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) <= 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+pred Acyclic[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+
+
+pred AcyclicMUTATED[] {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.(^right)))))
+})
+}
+EQUIV: check { Acyclic[] <=> AcyclicMUTATED[] } for 3
+ [INFO] Fault localization time: 62798442903
+[DEBUG] Most suspicious node: (((#(n.left)) + (#(n.right))) <= 1)
+[DEBUG] Score: 1.0, FailToPass: 15, PassToFail: 0
+ [INFO] Fixed by mutation:
+module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) != 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] All tests pass.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) != 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+one sig BinaryTree {
+root: (lone Node)
+}
+sig Node {
+left,right: (lone Node),
+elem: (one Int)
+}
+pred Sorted[] {
+(all n: (one Node) {
+((all nl: (one ((n.left).(*(left + right)))) {
+((nl.elem) < (n.elem))
+}) && (all nr: (one ((n.right).(*(left + right)))) {
+((nr.elem) > (n.elem))
+}))
+})
+}
+pred HasAtMostOneChild[n: Node] {
+(((#(n.left)) + (#(n.right))) != 1)
+}
+pred Balanced[] {
+(all n1,n2: (one Node) {
+(((HasAtMostOneChild[n1]) && (HasAtMostOneChild[n2])) => (let diff = (integer/minus[(Depth[n1]),(Depth[n2])]) {
+((-1 <= diff) && (diff <= 1))
+}))
+})
+}
+pred RepOk[] {
+((Sorted[]) && (Balanced[]))
+}
+fun Depth[n: Node] : (one Int) {
+(#(n.(*(~(left + right)))))
+}
+fact Reachable {
+(Node = ((BinaryTree.root).(*(left + right))))
+}
+fact Acyclic {
+(all n: (one Node) {
+((n !in (n.(^(left + right)))) && (lone (n.(~(left + right)))) && (no ((n.left) & (n.right))))
+})
+}
+
+run RepOk for 5
+

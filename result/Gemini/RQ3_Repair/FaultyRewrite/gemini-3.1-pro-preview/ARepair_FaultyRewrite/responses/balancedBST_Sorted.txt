@@ -1,0 +1,57 @@
+pred Sorted() {
+  all n: Node | (all n2: n.^left | n2.elem < n.elem) and (all n2: n.^right | n2.elem > n.elem)
+}
+
+pred Sorted() {
+  all n: Node | all n2: n.^left | n2.elem < n.elem
+  all n: Node | all n2: n.^right | n2.elem > n.elem
+}
+
+pred Sorted() {
+  all n, n2: Node {
+    n2 in n.^left implies n2.elem < n.elem
+    n2 in n.^right implies n2.elem > n.elem
+  }
+}
+
+pred Sorted() {
+  all x: Node {
+    all y: x.^left | y.elem < x.elem
+    all z: x.^right | z.elem > x.elem
+  }
+}
+
+pred Sorted() {
+  not some n: Node {
+    some n2: n.^left | n2.elem >= n.elem
+  }
+  not some n: Node {
+    some n2: n.^right | n2.elem <= n.elem
+  }
+}
+
+pred Sorted() {
+  no n: Node, n2: n.^left | n2.elem >= n.elem
+  no n: Node, n2: n.^right | n2.elem <= n.elem
+}
+
+pred Sorted() {
+  all n1, n2: Node | n2 in n1.^left implies n2.elem < n1.elem
+  all n1, n2: Node | n2 in n1.^right implies n2.elem > n1.elem
+}
+
+pred Sorted() {
+  all n: Node {
+    all l: n.^left { l.elem < n.elem }
+    all r: n.^right { r.elem > n.elem }
+  }
+}
+
+pred Sorted() {
+  no n1, n2: Node | (n2 in n1.^left and n2.elem >= n1.elem) or (n2 in n1.^right and n2.elem <= n1.elem)
+}
+
+pred Sorted() {
+  all n: Node | let val = n.elem |
+    (all n2: n.^left | n2.elem < val) and (all n2: n.^right | n2.elem > val)
+}

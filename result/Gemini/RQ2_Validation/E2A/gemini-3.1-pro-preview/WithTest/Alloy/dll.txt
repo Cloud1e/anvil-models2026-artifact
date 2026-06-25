@@ -1,0 +1,95 @@
+UniqueElem: all n1, n2: Node | n1 != n2 implies n1.elem != n2.elem
+Correct
+
+UniqueElem: all disj n1, n2: Node | n1.elem != n2.elem
+Correct
+
+UniqueElem: no disj n1, n2: Node | n1.elem = n2.elem
+Correct
+
+UniqueElem: all n1, n2: Node | n1.elem = n2.elem implies n1 = n2
+Correct
+
+UniqueElem: no n1, n2: Node | n1 != n2 and n1.elem = n2.elem
+Correct
+
+UniqueElem: all x, y: Node | x != y implies x.elem != y.elem
+Correct
+
+UniqueElem: no x, y: Node | x != y and x.elem = y.elem
+Correct
+
+UniqueElem: all disj x, y: Node | x.elem != y.elem
+Correct
+
+UniqueElem: all a, b: Node | a.elem = b.elem implies a = b
+Correct
+
+UniqueElem: all u, v: Node | u != v implies u.elem != v.elem
+Correct
+
+Sorted: all n: Node | some n.nxt implies n.elem <= n.nxt.elem
+Correct
+
+Sorted: all n: Node, m: n.nxt | n.elem <= m.elem
+Correct
+
+Sorted: all n1, n2: Node | n2 in n1.nxt implies n1.elem <= n2.elem
+Correct
+
+Sorted: all n1, n2: Node | n1.nxt = n2 implies n1.elem <= n2.elem
+Correct
+
+Sorted: no n1, n2: Node | n1.nxt = n2 and n1.elem > n2.elem
+Correct
+
+Sorted: no n: Node | some n.nxt and n.elem > n.nxt.elem
+Correct
+
+Sorted: all x, y: Node | y in x.nxt implies x.elem <= y.elem
+Correct
+
+Sorted: all x: Node, y: x.nxt | x.elem <= y.elem
+Correct
+
+Sorted: no x: Node, y: x.nxt | x.elem > y.elem
+Correct
+
+Sorted: no n1, n2: Node | n2 = n1.nxt and n1.elem > n2.elem
+Correct
+
+ConsistentPreAndNxt: nxt = ~pre
+Correct
+
+ConsistentPreAndNxt: pre = ~nxt
+Correct
+
+ConsistentPreAndNxt: ~nxt = pre
+Correct
+
+ConsistentPreAndNxt: ~pre = nxt
+Correct
+
+ConsistentPreAndNxt: all n1, n2: Node | n1.nxt = n2 iff n2.pre = n1
+Correct
+
+ConsistentPreAndNxt: all n1, n2: Node | n2 in n1.nxt iff n1 in n2.pre
+Correct
+
+ConsistentPreAndNxt: all x, y: Node | y in x.nxt iff x in y.pre
+Correct
+
+ConsistentPreAndNxt: all a, b: Node | a.nxt = b iff b.pre = a
+Correct
+
+ConsistentPreAndNxt: all x, y: Node | x->y in nxt iff y->x in pre
+Correct
+
+ConsistentPreAndNxt: all n1, n2: Node | n1->n2 in nxt iff n2->n1 in pre
+Correct
+
+Total: 30
+Unique: 30
+Correct: 30
+Syntax Error: 0
+Wrong: 0

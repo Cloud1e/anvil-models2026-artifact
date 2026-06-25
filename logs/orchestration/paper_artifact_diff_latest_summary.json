@@ -1,0 +1,125 @@
+{
+  "total": 1692,
+  "matches": 1687,
+  "mismatches": [
+    {
+      "rq": "RQ2",
+      "table_name": "results-arepair-alloy-2-alloy-tests",
+      "row_id": "dll-ConsistentPreAndNxt",
+      "column_name": "lite/Rep/NT",
+      "paper_value": "3",
+      "artifact_value": "4",
+      "match": "false"
+    },
+    {
+      "rq": "RQ2",
+      "table_name": "results-arepair-alloy-2-alloy-tests",
+      "row_id": "Totals",
+      "column_name": "lite/Cor/NT",
+      "paper_value": "118",
+      "artifact_value": "116",
+      "match": "false"
+    },
+    {
+      "rq": "RQ2",
+      "table_name": "results-arepair-alloy-2-alloy-tests",
+      "row_id": "Totals",
+      "column_name": "lite/Rep/NT",
+      "paper_value": "20",
+      "artifact_value": "21",
+      "match": "false"
+    },
+    {
+      "rq": "RQ3",
+      "table_name": "results-arepair-faulty-alloy-2-alloy",
+      "row_id": "student-Contains",
+      "column_name": "pro/LLMRep",
+      "paper_value": "0/10",
+      "artifact_value": "1/10",
+      "match": "false"
+    },
+    {
+      "rq": "RQ3",
+      "table_name": "results-arepair-faulty-alloy-2-alloy",
+      "row_id": "Total",
+      "column_name": "pro/LLMRep",
+      "paper_value": "62/129",
+      "artifact_value": "63/129",
+      "match": "false"
+    }
+  ],
+  "by_rq": {
+    "RQ1": {
+      "rq": "RQ1",
+      "total": 264,
+      "matches": 264,
+      "mismatches": 0,
+      "mismatch_rows": [],
+      "diff_csv": "RQ1_Generation/comparison/diff_report.csv"
+    },
+    "RQ2": {
+      "rq": "RQ2",
+      "total": 1050,
+      "matches": 1047,
+      "mismatches": 3,
+      "mismatch_rows": [
+        {
+          "rq": "RQ2",
+          "table_name": "results-arepair-alloy-2-alloy-tests",
+          "row_id": "dll-ConsistentPreAndNxt",
+          "column_name": "lite/Rep/NT",
+          "paper_value": "3",
+          "artifact_value": "4",
+          "match": "false"
+        },
+        {
+          "rq": "RQ2",
+          "table_name": "results-arepair-alloy-2-alloy-tests",
+          "row_id": "Totals",
+          "column_name": "lite/Cor/NT",
+          "paper_value": "118",
+          "artifact_value": "116",
+          "match": "false"
+        },
+        {
+          "rq": "RQ2",
+          "table_name": "results-arepair-alloy-2-alloy-tests",
+          "row_id": "Totals",
+          "column_name": "lite/Rep/NT",
+          "paper_value": "20",
+          "artifact_value": "21",
+          "match": "false"
+        }
+      ],
+      "diff_csv": "RQ2_Validation/comparison/diff_report.csv"
+    },
+    "RQ3": {
+      "rq": "RQ3",
+      "total": 378,
+      "matches": 376,
+      "mismatches": 2,
+      "mismatch_rows": [
+        {
+          "rq": "RQ3",
+          "table_name": "results-arepair-faulty-alloy-2-alloy",
+          "row_id": "student-Contains",
+          "column_name": "pro/LLMRep",
+          "paper_value": "0/10",
+          "artifact_value": "1/10",
+          "match": "false"
+        },
+        {
+          "rq": "RQ3",
+          "table_name": "results-arepair-faulty-alloy-2-alloy",
+          "row_id": "Total",
+          "column_name": "pro/LLMRep",
+          "paper_value": "62/129",
+          "artifact_value": "63/129",
+          "match": "false"
+        }
+      ],
+      "diff_csv": "RQ3_Repair/comparison/diff_report.csv"
+    }
+  },
+  "combined_diff_csv": "logs/orchestration/paper_artifact_diff_latest.csv"
+}

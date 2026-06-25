@@ -1,0 +1,65 @@
+all s: S | one s.r
+Correct
+
+all s: S | #s.r = 1
+Correct
+
+r in S -> one S
+Correct
+
+all s: S | some s.r and lone s.r
+Correct
+
+all s: S | one r[s]
+Correct
+
+r.S = S and all s: S | lone s.r
+Correct
+
+no s: S | not one s.r
+Correct
+
+no s: S | #s.r != 1
+Correct
+
+S = {s: S | one s.r}
+Correct
+
+#r = #S and all s: S | some s.r
+Wrong
+
+#r = #S and all s: S | lone s.r
+Correct
+
+all s: S | one x: S | x in s.r
+Correct
+
+all s: S | some x: S | s.r = x
+Correct
+
+S in r.S and all s: S | lone s.r
+Correct
+
+r.S = S and r in S -> lone S
+Correct
+
+all s: S | one {x: S | s->x in r}
+Correct
+
+all s: S | one s <: r
+Correct
+
+all s: S | # (s <: r) = 1
+Correct
+
+#r = #S and r.S = S
+Wrong
+
+all s: S | some s.r and r in S -> lone S
+Correct
+
+Total: 20
+Unique: 20
+Correct: 18
+Syntax Error: 0
+Wrong: 2

@@ -1,0 +1,65 @@
+no n: Node | n in n.^link
+Correct
+
+all n: Node | n.^link & n = none
+Correct
+
+no n: Node | n in n.link or n in n.link.^link
+Correct
+
+all n: Node | no n.^link & n
+Correct
+
+all n: Node | n not in n.^(link)
+Correct
+
+all n: Node | n.^link not in n.*link - n
+Wrong
+
+all n: Node | all m: n.^link | m != n
+Correct
+
+all n: Node | not (n in n.^link)
+Correct
+
+all n: Node | (n.^link) & n = none
+Correct
+
+all n: Node | not (n in n.link or n in n.link.^link)
+Correct
+
+all n: Node | n not in n.^link
+Correct
+
+all n: Node | all m: n.^link | m not in n.^link
+Wrong
+
+all disj n, m: Node | m in n.^link implies n not in m.^link
+Wrong
+
+no n: Node | n in n.^(link)
+Correct
+
+all n: Node | n.^link = {m: Node | m in n.^link and m != n}
+Correct
+
+all n: Node | n.link^* = n.link^* & (Node - n) + iden
+Syntax Error
+
+all n: Node | no n & n.^link
+Correct
+
+no n: Node | n in n.^(~link)
+Correct
+
+all n: Node | n not in n.^(link.link) and n not in n.link
+Correct
+
+all n: Node | all m: n.^link | m not in n
+Correct
+
+Total: 20
+Unique: 20
+Correct: 16
+Syntax Error: 1
+Wrong: 3

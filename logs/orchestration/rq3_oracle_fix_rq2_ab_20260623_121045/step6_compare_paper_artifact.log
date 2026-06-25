@@ -1,0 +1,18 @@
+RUN_ID=20260623_121045
+STAGE=STEP6_DIFF_COMPARE
+PWD=.
+COMMAND=python3 scripts/compare_paper_artifact.py
+
+Paper/artifact diff complete.
+Combined: 1687/1692 matched; mismatches=5
+RQ1: 264/264 matched; mismatches=0
+RQ2: 1047/1050 matched; mismatches=3
+RQ3: 376/378 matched; mismatches=2
+Mismatches:
+  RQ2 results-arepair-alloy-2-alloy-tests dll-ConsistentPreAndNxt lite/Rep/NT: paper=3 artifact=4
+  RQ2 results-arepair-alloy-2-alloy-tests Totals lite/Cor/NT: paper=118 artifact=116
+  RQ2 results-arepair-alloy-2-alloy-tests Totals lite/Rep/NT: paper=20 artifact=21
+  RQ3 results-arepair-faulty-alloy-2-alloy student-Contains pro/LLMRep: paper=0/10 artifact=1/10
+  RQ3 results-arepair-faulty-alloy-2-alloy Total pro/LLMRep: paper=62/129 artifact=63/129
+
+STAGE_EXIT_CODE=0

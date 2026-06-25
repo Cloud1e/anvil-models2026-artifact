@@ -1,0 +1,3 @@
+pred Sorted() {
+  all n: Node | (all m: n.nxt | n.elem < m.elem) and (some n.nxt)
+}

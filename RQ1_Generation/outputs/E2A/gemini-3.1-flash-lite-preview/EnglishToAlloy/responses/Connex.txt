@@ -1,0 +1,20 @@
+all x, y: S | x->y in r or y->x in r
+all x, y: S | x != y implies (x->y in r or y->x in r)
+all disj x, y: S | x->y in r or y->x in r
+all x: S | S in (x.r + x.~r + x)
+all x: S | S = (x.r + x.~r + x)
+all x: S | S - x in (x.r + x.~r)
+no x: S | x not in (S.^(r + ~r)) and x not in (S.(r + ~r))
+all x: S | all y: S | y in x.r or x in y.r
+all x: S | S = x.^(r + ~r) + x
+all x: S | all y: S | y in x.(r + ~r) or x = y
+all disj x, y: S | y in x.(r + ~r)
+all x: S | S = x.(r + ~r) + x
+all x, y: S | x in y.(r + ~r) or x = y
+all x: S | all y: S | x->y in r + ~r + iden
+all x: S | all y: S | x->y in (r + ~r) or x = y
+all x: S | S = x.*(r + ~r)
+all x: S | all y: S | y in x.*(r + ~r)
+all x: S | S = x.(r + ~r + iden)
+all x: S | all y: S | x->y in (r + ~r) or x->y in iden
+all x, y: S | x->y in (r + ~r) + iden

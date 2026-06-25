@@ -1,0 +1,90 @@
+Task:
+Rewrite the body of a faulty Alloy predicate into 10 alternative syntactic forms.
+Keep the predicate name and parameters exactly the same.
+Do not intentionally fix any potential bug in the predicate. Each rewritten predicate should preserve the current (buggy) behavior.
+
+Faulty model:
+one sig BinaryTree {
+  root: lone Node
+}
+
+sig Node {
+  left, right: lone Node,
+  elem: Int
+}
+
+// All nodes are in the tree.
+fact Reachable {
+  Node = BinaryTree.root.*(left + right)
+}
+
+// Part (a)
+fact Acyclic {
+  all n : Node {
+    // There are no directed cycles, i.e., a node is not reachable
+    // from itself along one or more traversals of left or right.
+    n !in n.^(left + right)
+
+    // A node cannot have more than one parent.
+    lone n.~(left + right) 
+
+    // A node cannot have another node as both its left child and
+    // right child.
+    no n.left & n.right
+  }
+}
+
+// Part (b)
+pred Sorted() {
+  all n: Node {
+    // All elements in the n's left subtree are smaller than the n's elem.
+    all nl: n.left.*(left + right) | nl.elem < n.elem
+
+    // All elements in the n's right subtree are bigger than the n's elem.
+    all nr: n.right.*(left + right) | nr.elem > n.elem
+  }
+}
+
+// Part (c.1) — faulty HasAtMostOneChild predicate from realbugs/balancedBST2.als.
+pred HasAtMostOneChild(n: Node) {
+  // Node n has at most one child.
+  lone n.(left + right)
+}
+
+// Part (c.2)
+fun Depth(n: Node): one Int {
+  // The number of nodes from the tree's root to n.
+  #{n.*~(left + right)}
+}
+
+// Part (c.3)
+pred Balanced() {
+  all n1, n2: Node {
+    // If n1 has at most one child and n2 has at most one child,
+    // then the depths of n1 and n2 differ by at most 1.
+    (HasAtMostOneChild[n1] && HasAtMostOneChild[n2]) =>
+    (let diff = minus[Depth[n1], Depth[n2]] | -1 <= diff && diff <= 1)
+  }
+}
+
+pred RepOk() {
+  Sorted
+  Balanced
+}
+
+run RepOk for 5
+
+Target predicate name:
+HasAtMostOneChild
+
+Guidelines:
+- Keep the same predicate header (name and parameter list).
+- Keep the overall meaning and buggy behavior as close as possible to the original predicate.
+- You may freely restructure the body (e.g., change quantifier nesting, reorder conjuncts, use helper lets), as long as it is valid Alloy.
+- Ensure that each rewriting is a complete predicate definition for HasAtMostOneChild.
+- Do not add or remove other predicates, functions, signatures, facts, or comments in the module.
+
+Output:
+- Return 10 rewritten versions of the target predicate as Alloy code.
+- Separate each version clearly (for example, by a blank line).
+- Do not include any explanations or commentary, only Alloy code.

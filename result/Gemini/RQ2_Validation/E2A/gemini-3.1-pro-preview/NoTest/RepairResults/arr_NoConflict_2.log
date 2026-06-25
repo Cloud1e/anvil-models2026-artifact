@@ -1,0 +1,65 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no val: (one Element) {
+(some idx,idx': (one Int) {
+(((idx.(Array.i2e)) = val) && ((idx'.(Array.i2e)) = val) && (idx != idx'))
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+Syntax error in /workspace/ARepair/.hidden/tmp.als at line 1 column 8193:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+	at edu.mit.csail.sdg.parser.CompParser.syntax_error(CompParser.java:2218)
+	at edu.mit.csail.sdg.parser.CompParser.parse(CompParser.java:2079)
+	at edu.mit.csail.sdg.parser.CompParser.alloy_parseStream(CompParser.java:2259)
+	at edu.mit.csail.sdg.parser.CompUtil.parseRecursively(CompUtil.java:217)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:363)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at alloyfl.mutation.util.TestRunner.runTests(TestRunner.java:30)
+	at fl.FaultLocator.process(FaultLocator.java:355)
+	at fl.FaultLocator.lambda$visit$0(FaultLocator.java:101)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at fl.FaultLocator.visit(FaultLocator.java:101)
+	at parser.ast.nodes.SigDecl.accept(SigDecl.java:151)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$1(VoidVisitorAdapter.java:42)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:42)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:100)
+	at patcher.Patcher.main(Patcher.java:341)
+Exception in thread "main" java.lang.NullPointerException
+	at alloyfl.mutation.util.TestRunner.runTests(TestRunner.java:32)
+	at fl.FaultLocator.process(FaultLocator.java:355)
+	at fl.FaultLocator.lambda$visit$0(FaultLocator.java:101)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at fl.FaultLocator.visit(FaultLocator.java:101)
+	at parser.ast.nodes.SigDecl.accept(SigDecl.java:151)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$1(VoidVisitorAdapter.java:42)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:42)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:100)
+	at patcher.Patcher.main(Patcher.java:341)

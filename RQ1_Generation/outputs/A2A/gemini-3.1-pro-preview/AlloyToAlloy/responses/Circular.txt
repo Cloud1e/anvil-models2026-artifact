@@ -1,0 +1,20 @@
+(all n: Node | one n.link) and ^link = Node -> Node
+link in Node -> one Node and ^link = Node -> Node
+(all n: Node | one n.link) and (all m, n: Node | m in n.^link)
+link in Node -> one Node and (all m, n: Node | m in n.^link)
+(all n: Node | one n.link) and Node -> Node in ^link
+link in Node -> one Node and Node -> Node in ^link
+(all n: Node | #n.link = 1) and ^link = Node -> Node
+(all n: Node | #n.link = 1) and (all m, n: Node | m in n.^link)
+link in Node one -> one Node and ^link = Node -> Node
+link in Node one -> one Node and (all m, n: Node | m in n.^link)
+(all n: Node | one n.link) and (all x: Node | Node in x.^link)
+link in Node -> one Node and (all x: Node | Node in x.^link)
+(all n: Node | one n.link) and no (Node -> Node) - ^link
+link in Node -> one Node and no (Node -> Node) - ^link
+#Node = #link and (all n: Node | one n.link) and ^link = Node -> Node
+#Node = #link and link in Node -> one Node and ^link = Node -> Node
+#Node = #link and (all n: Node | one n.link) and (all m, n: Node | m in n.^link)
+#link = #Node and link in Node -> one Node and (all m, n: Node | m in n.^link)
+(all n: Node | #n.link = 1) and Node -> Node in ^link
+link in Node one -> one Node and Node -> Node in ^link

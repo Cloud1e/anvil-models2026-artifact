@@ -1,0 +1,127 @@
+Sorted: all n: Node { (all l: n.left.*(left+right) | l.elem < n.elem) and (all r: n.right.*(left+right) | r.elem > n.elem) }
+Correct
+
+Sorted: all n: Node { (all l: n.left.*(left+right) | l.elem < n.elem) (all r: n.right.*(left+right) | r.elem > n.elem) }
+Correct
+
+Sorted: all n: Node { (all l: n.left.*(left+right) | n.elem > l.elem) and (all r: n.right.*(left+right) | n.elem < r.elem) }
+Correct
+
+Sorted: all n: Node { (all l: n.left.*(left+right) | l.elem < n.elem) && (all r: n.right.*(left+right) | r.elem > n.elem) }
+Correct
+
+Sorted: all n: Node { (all l: n.left.*(left+right) | n.elem > l.elem) && (all r: n.right.*(left+right) | n.elem < r.elem) }
+Correct
+
+Sorted: all n: Node { (all l: n.left.^(left+right) + n.left | l.elem < n.elem) and (all r: n.right.^(left+right) + n.right | r.elem > n.elem) }
+Correct
+
+Sorted: all n: Node { (all m: n.left.*(left+right) | m.elem < n.elem) and (all k: n.right.*(left+right) | k.elem > n.elem) }
+Correct
+
+Sorted: all n: Node | (all l: n.left.*(left+right) | l.elem < n.elem) and (all r: n.right.*(left+right) | r.elem > n.elem)
+Correct
+
+Sorted: all n: Node { (all l: n.left.*(left+right) | n.elem > l.elem) and (all r: n.right.*(left+right) | r.elem > n.elem) }
+Correct
+
+Sorted: all n: Node { all l: n.left.*(left+right) | l.elem < n.elem all r: n.right.*(left+right) | r.elem > n.elem }
+Correct
+
+HasAtMostOneChild: lone (n.left + n.right)
+Correct
+
+HasAtMostOneChild: #(n.left + n.right) <= 1
+Correct
+
+HasAtMostOneChild: no n.left or no n.right
+Correct
+
+HasAtMostOneChild: lone n.left + n.right
+Correct
+
+HasAtMostOneChild: no n.left || no n.right
+Correct
+
+HasAtMostOneChild: #(n.left + n.right) < 2
+Correct
+
+HasAtMostOneChild: some n.left implies no n.right
+Correct
+
+HasAtMostOneChild: some n.right implies no n.left
+Correct
+
+HasAtMostOneChild: not (some n.left and some n.right)
+Correct
+
+HasAtMostOneChild: #(n.left) + #(n.right) <= 1
+Wrong
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth(n1), d2 = Depth(n2) | d1 - d2 <= 1 and d2 - d1 <= 1)
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth[n1], d2 = Depth[n2] | d1 - d2 <= 1 and d2 - d1 <= 1)
+Wrong
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] && HasAtMostOneChild[n2]) => (let d1 = Depth(n1), d2 = Depth(n2) | d1 - d2 <= 1 and d2 - d1 <= 1)
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth(n1) | let d2 = Depth(n2) | d1 - d2 <= 1 and d2 - d1 <= 1)
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth(n1), d2 = Depth(n2) | d1 - d2 <= 1 && d2 - d1 <= 1)
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (Depth(n1) - Depth(n2) <= 1 and Depth(n2) - Depth(n1) <= 1)
+Syntax Error
+SYN_MSG:
+There are 1 possible tokens that can appear here:
+) 
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (Depth[n1] - Depth[n2] <= 1 and Depth[n2] - Depth[n1] <= 1)
+Wrong
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth(n1), d2 = Depth(n2) | (d1 - d2) <= 1 and (d2 - d1) <= 1)
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth(n1), d2 = Depth(n2) | d1 - d2 < 2 and d2 - d1 < 2)
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let d1 = Depth(n1), d2 = Depth(n2) | d1 - d2 <= 1 and d2 - d1 < 2)
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+Total: 30
+Unique: 30
+Correct: 19
+Syntax Error: 8
+Wrong: 3

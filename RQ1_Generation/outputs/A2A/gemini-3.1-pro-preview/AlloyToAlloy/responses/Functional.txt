@@ -1,0 +1,20 @@
+all s: S | #s.r <= 1
+r in S -> lone S
+~r.r in iden
+all s: S | lone r[s]
+all s: S | s.r = none or one s.r
+all s: S | #s.r = 0 or #s.r = 1
+all s: S | #s.r < 2
+no s: S | #s.r > 1
+no s: S | #s.r >= 2
+all x, y, z: S | x->y in r and x->z in r implies y = z
+no x, y, z: S | x->y in r and x->z in r and y != z
+all s: S | no disj a, b: S | a in s.r and b in s.r
+no s: S | some disj y, z: S | s->y in r and s->z in r
+all s: S | lone y: S | s->y in r
+all s: S, a, b: s.r | a = b
+no s: S, a, b: s.r | a != b
+all s: S | some y: S | s.r in y
+all s: S | let dest = s.r | lone dest
+all s: S | no a, b: S | s->a in r and s->b in r and a != b
+all s: S | #(s <: r) <= 1

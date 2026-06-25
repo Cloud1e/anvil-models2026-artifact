@@ -1,0 +1,65 @@
+#Node = #link and all n: Node | Node in n.^link
+Wrong
+
+all n: Node | #link = #Node and n.^link = Node
+Wrong
+
+#link = #Node and some n: Node | n.^link = Node
+Wrong
+
+#Node = #link and (all n: Node | some n.^link & n) and (all n: Node | Node in n.^link)
+Wrong
+
+#link = #Node and all n: Node | Node in n.^(link)
+Wrong
+
+#Node = #link and all n: Node | n in n.^link and Node in n.^link
+Wrong
+
+#link = #Node and all n: Node | (all m: Node | m in n.^link)
+Wrong
+
+#Node = #link and some n: Node | Node in n.^link and all m: Node | m in n.^link
+Wrong
+
+#link = #Node and all n: Node | Node = n.^link
+Wrong
+
+#Node = #link and all n: Node | Node = n.^link
+Wrong
+
+#Node = link.#Node and some disj n: Node | n in n.^link and all n: Node | some n.^link & n
+Syntax Error
+
+all n: Node | one n.link and all n: Node | n in n.^(link) and #Node = #link
+Wrong
+
+#Node = #link and (all disj n1, n2: Node | n1 in n2.^link) and all n: Node | one n.link
+Correct
+
+all n: Node | one n.link and #Node = #link and Node in n.*link
+Correct
+
+#Node = #link and all n: Node | n in n.^link and all n: Node | one n.link
+Wrong
+
+all n: Node | one n.link and all n: Node | Node in n.^link
+Correct
+
+#Node = #link and all n: Node | one n.link and (all disj n1, n2: Node | n1 in n2.^link)
+Correct
+
+all n: Node | one n.link and all n: Node | n in n.^link and #Node = #link
+Wrong
+
+all n: Node | one n.link and #Node = #link and all n: Node | Node in n.*link
+Correct
+
+#Node = #link and all n: Node | one n.link and (all n: Node | Node in n.^link)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 6
+Syntax Error: 1
+Wrong: 13

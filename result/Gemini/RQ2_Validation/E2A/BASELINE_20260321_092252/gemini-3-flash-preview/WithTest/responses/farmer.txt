@@ -1,0 +1,20 @@
+crossRiver: some x : from - Farmer + none | from' = from - Farmer - x and to' = to + Farmer + x and no a, b : from' | a->b in eats
+crossRiver: some x : Object + none | from' = from - (Farmer + x) and to' = to + (Farmer + x) and no a, b : from' | a->b in eats
+crossRiver: some x : (from - Farmer) + none | from' = from - Farmer - x and to' = to + Farmer + x and no a : from', b : from' | a->b in eats
+crossRiver: some x : Object | (from' = from - Farmer - x or from' = from - Farmer) and (to' = to + Farmer + x or to' = to + Farmer) and (from - from' = to' - to) and (no a, b : from' | a->b in eats)
+crossRiver: some x : from + none | x - Farmer in Object and from' = from - x and to' = to + x and Farmer in x and #x <= 2 and no a, b : from' | a->b in eats
+crossRiver: some x : Object + none | x in from and from' = from - Farmer - x and to' = to + Farmer + x and no f : from' | no f2 : from' | f->f2 in eats
+crossRiver: some x : Object + none | from' = from - Farmer - x and to' = to + Farmer + x and no a, b : Object | a in from' and b in from' and a->b in eats
+crossRiver: some x : (from - Farmer) + none | from' = from - (Farmer + x) and to' = to + (Farmer + x) and no from' & eats.Object & from'
+crossRiver: some x : from - Farmer + none | from' = from - Farmer - x and to' = to + Farmer + x and no from' & eats.from'
+crossRiver: some x : Object + none | from - from' = Farmer + x and to' - to = Farmer + x and no a, b : from' | a->b in eats
+solvePuzzle: ord/last.far = Object
+solvePuzzle: no ord/last.near
+solvePuzzle: Object in ord/last.far
+solvePuzzle: all x : Object | x in ord/last.far
+solvePuzzle: #ord/last.far = 4
+solvePuzzle: ord/last.near = none
+solvePuzzle: Object = ord/last.far
+solvePuzzle: Object - ord/last.far = none
+solvePuzzle: no x : Object | x in ord/last.near
+solvePuzzle: Object = State.(ord/last).far

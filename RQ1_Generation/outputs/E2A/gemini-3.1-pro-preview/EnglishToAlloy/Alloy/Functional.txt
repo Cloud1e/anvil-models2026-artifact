@@ -1,0 +1,65 @@
+r in S -> lone S
+Correct
+
+all x: S | lone x.r
+Correct
+
+~r.r in iden
+Correct
+
+all x: S | #x.r <= 1
+Wrong
+
+all x: S | #x.r < 2
+Wrong
+
+no x: S | #x.r > 1
+Wrong
+
+no x: S | #x.r >= 2
+Wrong
+
+all x: S | #x.r = 0 or #x.r = 1
+Correct
+
+all x: S | x.r = none or one x.r
+Correct
+
+all x, y, z: S | x->y in r and x->z in r implies y = z
+Correct
+
+no x, y, z: S | x->y in r and x->z in r and y != z
+Correct
+
+all x: S | no y, z: S | y in x.r and z in x.r and y != z
+Correct
+
+no x: S | some y, z: S | y in x.r and z in x.r and y != z
+Correct
+
+all x: S, y: x.r, z: x.r | y = z
+Correct
+
+no (~r.r) - iden
+Correct
+
+all x: S | lone r[x]
+Correct
+
+all x: S | some y: S | x.r in y
+Correct
+
+all x: S | lone y: S | x->y in r
+Correct
+
+all x: S | no disj y, z: S | x->y in r and x->z in r
+Correct
+
+no x: S | some disj y, z: S | x->y in r and x->z in r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 16
+Syntax Error: 0
+Wrong: 4

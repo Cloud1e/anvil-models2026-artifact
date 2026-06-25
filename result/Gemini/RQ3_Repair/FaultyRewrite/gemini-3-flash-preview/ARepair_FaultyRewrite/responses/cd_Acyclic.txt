@@ -1,0 +1,39 @@
+pred Acyclic() {
+  all c: Class | c != c.ext
+}
+
+pred Acyclic() {
+  no iden & ext
+}
+
+pred Acyclic() {
+  all c: Class | not (c = c.ext)
+}
+
+pred Acyclic() {
+  iden & ext = none
+}
+
+pred Acyclic() {
+  not some c: Class | c = c.ext
+}
+
+pred Acyclic() {
+  {c: Class | c = c.ext} = none
+}
+
+pred Acyclic() {
+  all c: Class | c & c.ext = none
+}
+
+pred Acyclic() {
+  #{c: Class | c = c.ext} = 0
+}
+
+pred Acyclic() {
+  all c: Class | disj[c, c.ext]
+}
+
+pred Acyclic() {
+  no c: Class | c -> c in ext
+}

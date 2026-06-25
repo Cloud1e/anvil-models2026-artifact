@@ -1,0 +1,65 @@
+all x: S | one x.r
+Correct
+
+all x: S | lone x.r and some x.r
+Correct
+
+all x: S | #x.r = 1
+Correct
+
+all x: S | one y: S | y in x.r
+Correct
+
+all x: S | (some y: S | y in x.r) and (all y, z: x.r | y = z)
+Correct
+
+all x: S | x.r in S and all disj y, z: x.r | none
+Syntax Error
+
+all x: S | one y: S | x->y in r
+Correct
+
+all x: S | {y: S | x->y in r} = {y: S | y = (x.r)} and one x.r
+Correct
+
+all x: S | some y: S | y in x.r and all z: x.r | z = y
+Correct
+
+all x: S | r[x] in S and one r[x]
+Correct
+
+all x: S | r.r.r.r = r.r.r.r and one x.r
+Correct
+
+all x: S | {y: S | x->y in r} = {y: S | y in S and all z: S | z in x.r => z = y} and some x.r
+Correct
+
+all x: S | one y: S | r[x] = y
+Correct
+
+all x: S | {y: S | x->y in r} = {y: S | y in S and y = (x.r)} and #x.r = 1
+Correct
+
+all x: S | lone r[x] and some r[x]
+Correct
+
+all x: S | {y: S | y in x.r} = {y: S | y = (x.r)} and one x.r
+Correct
+
+all x: S | {y: S | x->y in r} = {y: S | y = (x.r)} and #x.r = 1
+Correct
+
+all x: S | # {y: S | x->y in r} = 1
+Correct
+
+all x: S | (x.r in S) and (all y, z: S | y in x.r and z in x.r => y = z) and (some x.r)
+Correct
+
+all x: S | one y: S | x.r = y
+Correct
+
+Total: 20
+Unique: 20
+Correct: 19
+Syntax Error: 1
+Wrong: 0

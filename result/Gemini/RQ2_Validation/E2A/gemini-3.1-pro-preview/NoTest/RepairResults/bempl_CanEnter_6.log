@@ -1,0 +1,666 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Room {}
+one sig secure_lab extends Room {}
+abstract sig Person {
+owns: (set Key)
+}
+sig Employee extends Person {}
+sig Researcher extends Person {}
+sig Key {
+authorized: (one Employee),
+opened_by: (one Room)
+}
+pred CanEnter[p: Person,r: Room] {
+(p in ((opened_by.r).(~owns)))
+}
+
+fact fact_1 {
+(no (Employee.owns))
+}
+assert no_thief_in_seclab {
+(all p: (one Person) {
+((CanEnter[p,secure_lab]) => (p in Researcher))
+})
+}
+
+check no_thief_in_seclab
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Room {}
+one sig secure_lab extends Room {}
+abstract sig Person {
+owns: (set Key)
+}
+sig Employee extends Person {}
+sig Researcher extends Person {}
+sig Key {
+authorized: (one Employee),
+opened_by: (one Room)
+}
+pred CanEnter[p: Person,r: Room] {
+(p in ((opened_by.r).(~owns)))
+}
+
+fact fact_1 {
+(no (Employee.owns))
+}
+assert no_thief_in_seclab {
+(all p: (one Person) {
+((CanEnter[p,secure_lab]) => (p in Researcher))
+})
+}
+
+check no_thief_in_seclab
+EQUIV: check { some Room } for 3
+ [INFO] Fault localization time: 6229164003
+[DEBUG] Test num: 25
+[DEBUG] Rank Node 0:
+[DEBUG] abstract sig Person {
+owns: (set Key)
+}
+[DEBUG] Affected paragraph names: [Person_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Key
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Key]
+ [INFO] Expression generation time: 82575500
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Key]
+[DEBUG] Hole 1, Fragment: Key, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Hole Key
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Key]
+ [INFO] Expression generation time: 3670958
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Key]
+[DEBUG] Hole 1, Fragment: Key, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Hole Key
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Key]
+[DEBUG] Hole (set Key)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 61157166
+ [INFO] Search space: 8
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (set Key)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Key, (set Key)]
+[DEBUG] Hole 1, Fragment: Key, FailToPass: 0
+[DEBUG] Hole values: [Key, one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Key, set ]
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [Key, lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [Key, some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole abstract sig Person {
+owns: (set Key)
+}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 977917
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 1:
+[DEBUG] (set Key)
+[DEBUG] Affected paragraph names: [Person_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Key
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Key]
+ [INFO] Expression generation time: 628834
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Key]
+[DEBUG] Hole 1, Fragment: Key, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Hole Key
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Key]
+ [INFO] Expression generation time: 353167
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Key]
+[DEBUG] Hole 1, Fragment: Key, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Rank Node 2:
+[DEBUG] sig Room {}
+[DEBUG] Affected paragraph names: [Room_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole sig Room {}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 33875
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 3:
+[DEBUG] (p in ((opened_by.r).(~owns)))
+[DEBUG] Affected paragraph names: [CanEnter]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 4): [test21, test20, test19, test22]
+[DEBUG] Hole opened_by
+[DEBUG] Size: 2
+[DEBUG] Fragments: [opened_by, (none->none)]
+[DEBUG] Hole r
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Room, secure_lab, r]
+[DEBUG] Hole owns
+[DEBUG] Size: 2
+[DEBUG] Fragments: [owns, (none->none)]
+ [INFO] Expression generation time: 43197125
+ [INFO] Search space: 16
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [opened_by, r, owns]
+[DEBUG] Hole 0, Fragment: opened_by, FailToPass: 0
+[DEBUG] Hole values: [(none->none), r, owns]
+[DEBUG] Hole 1, Fragment: (none->none), FailToPass: 0
+[DEBUG] Hole values: [opened_by, none, owns]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [opened_by, Room, owns]
+[DEBUG] Hole 1, Fragment: Room, FailToPass: 0
+[DEBUG] Hole values: [opened_by, secure_lab, owns]
+[DEBUG] Hole 2, Fragment: secure_lab, FailToPass: 0
+[DEBUG] Hole values: [opened_by, r, owns]
+[DEBUG] Hole 3, Fragment: r, FailToPass: 0
+[DEBUG] Hole values: [opened_by, r, owns]
+[DEBUG] Hole 0, Fragment: owns, FailToPass: 0
+[DEBUG] Hole values: [opened_by, r, (none->none)]
+[DEBUG] Hole 1, Fragment: (none->none), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 8
+[DEBUG] Hole (opened_by.r)
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Key]
+[DEBUG] Hole (~owns)
+[DEBUG] Size: 3
+[DEBUG] Fragments: [authorized, (none->none), (~owns)]
+ [INFO] Expression generation time: 8404042
+ [INFO] Search space: 6
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (~owns)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Key, (~owns)]
+[DEBUG] Hole 1, Fragment: Key, FailToPass: 0
+[DEBUG] Hole values: [(opened_by.r), authorized]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(opened_by.r), (none->none)]
+[DEBUG] Hole 1, Fragment: (none->none), FailToPass: 0
+[DEBUG] Hole values: [(opened_by.r), (~owns)]
+[DEBUG] Hole 2, Fragment: (~owns), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Hole p
+[DEBUG] Size: 14
+[DEBUG] Fragments: [none, Person, Employee, Researcher, p, (Employee+p), (Researcher+p), (Employee&p), (Researcher&p), (Person-p), (Employee-p), (Researcher-p), (Key.authorized), (owns.Key)]
+[DEBUG] Hole ((opened_by.r).(~owns))
+[DEBUG] Size: 14
+[DEBUG] Fragments: [none, Person, Employee, Researcher, p, (Employee+p), (Researcher+p), (Employee&p), (Researcher&p), (Person-p), (Employee-p), (Researcher-p), (Key.authorized), (owns.Key)]
+ [INFO] Expression generation time: 292474209
+ [INFO] Search space: 196
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((opened_by.r).(~owns))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [Person, ((opened_by.r).(~owns))]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Employee, ((opened_by.r).(~owns))]
+[DEBUG] Hole 2, Fragment: Employee, FailToPass: 0
+[DEBUG] Hole values: [Researcher, ((opened_by.r).(~owns))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, ((opened_by.r).(~owns))]
+[DEBUG] Hole 4, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [(Employee+p), ((opened_by.r).(~owns))]
+[DEBUG] Hole 5, Fragment: (Employee+p), FailToPass: 0
+[DEBUG] Hole values: [(Researcher+p), ((opened_by.r).(~owns))]
+[DEBUG] Hole 6, Fragment: (Researcher+p), FailToPass: 0
+[DEBUG] Hole values: [(Employee&p), ((opened_by.r).(~owns))]
+[DEBUG] Hole 7, Fragment: (Employee&p), FailToPass: 0
+[DEBUG] Hole values: [(Researcher&p), ((opened_by.r).(~owns))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Person-p), ((opened_by.r).(~owns))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Employee-p), ((opened_by.r).(~owns))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Researcher-p), ((opened_by.r).(~owns))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Key.authorized), ((opened_by.r).(~owns))]
+[DEBUG] Hole 12, Fragment: (Key.authorized), FailToPass: 0
+[DEBUG] Hole values: [(owns.Key), ((opened_by.r).(~owns))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [p, Person]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, Employee]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, Researcher]
+[DEBUG] Hole 3, Fragment: Researcher, FailToPass: 0
+[DEBUG] Hole values: [p, p]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, (Employee+p)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, (Researcher+p)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, (Employee&p)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, (Researcher&p)]
+[DEBUG] Hole 8, Fragment: (Researcher&p), FailToPass: 0
+[DEBUG] Hole values: [p, (Person-p)]
+[DEBUG] Hole 9, Fragment: (Person-p), FailToPass: 0
+[DEBUG] Hole values: [p, (Employee-p)]
+[DEBUG] Hole 10, Fragment: (Employee-p), FailToPass: 0
+[DEBUG] Hole values: [p, (Researcher-p)]
+[DEBUG] Hole 11, Fragment: (Researcher-p), FailToPass: 0
+[DEBUG] Hole values: [p, (Key.authorized)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, (owns.Key)]
+[DEBUG] Hole 13, Fragment: (owns.Key), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Hole p
+[DEBUG] Size: 14
+[DEBUG] Fragments: [none, Person, Employee, Researcher, p, (Employee+p), (Researcher+p), (Employee&p), (Researcher&p), (Person-p), (Employee-p), (Researcher-p), (Key.authorized), (owns.Key)]
+[DEBUG] Hole ((opened_by.r).(~owns))
+[DEBUG] Size: 14
+[DEBUG] Fragments: [none, Person, Employee, Researcher, p, (Employee+p), (Researcher+p), (Employee&p), (Researcher&p), (Person-p), (Employee-p), (Researcher-p), (Key.authorized), (owns.Key)]
+[DEBUG] Hole (p in ((opened_by.r).(~owns)))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [=, !=, in, !in]
+ [INFO] Expression generation time: 181547625
+ [INFO] Search space: 784
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [Person, ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Employee, ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 2, Fragment: Employee, FailToPass: 0
+[DEBUG] Hole values: [Researcher, ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 4, Fragment: p, FailToPass: 0
+[DEBUG] Hole values: [(Employee+p), ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 5, Fragment: (Employee+p), FailToPass: 0
+[DEBUG] Hole values: [(Researcher+p), ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 6, Fragment: (Researcher+p), FailToPass: 0
+[DEBUG] Hole values: [(Employee&p), ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 7, Fragment: (Employee&p), FailToPass: 0
+[DEBUG] Hole values: [(Researcher&p), ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Person-p), ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Employee-p), ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Researcher-p), ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Key.authorized), ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 12, Fragment: (Key.authorized), FailToPass: 0
+[DEBUG] Hole values: [(owns.Key), ((opened_by.r).(~owns)), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, none, (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [p, Person, (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, Employee, (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, Researcher, (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 3, Fragment: Researcher, FailToPass: 0
+[DEBUG] Hole values: [p, p, (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, (Employee+p), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, (Researcher+p), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, (Employee&p), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, (Researcher&p), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 8, Fragment: (Researcher&p), FailToPass: 0
+[DEBUG] Hole values: [p, (Person-p), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 9, Fragment: (Person-p), FailToPass: 0
+[DEBUG] Hole values: [p, (Employee-p), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 10, Fragment: (Employee-p), FailToPass: 0
+[DEBUG] Hole values: [p, (Researcher-p), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 11, Fragment: (Researcher-p), FailToPass: 0
+[DEBUG] Hole values: [p, (Key.authorized), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, (owns.Key), (p in ((opened_by.r).(~owns)))]
+[DEBUG] Hole 13, Fragment: (owns.Key), FailToPass: 0
+[DEBUG] Hole values: [p, ((opened_by.r).(~owns)),  = ]
+[DEBUG] Hole 0, Fragment: =, FailToPass: 0
+[DEBUG] Hole values: [p, ((opened_by.r).(~owns)),  != ]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [p, ((opened_by.r).(~owns)),  in ]
+[DEBUG] Hole 2, Fragment: in, FailToPass: 0
+[DEBUG] Hole values: [p, ((opened_by.r).(~owns)),  !in ]
+[DEBUG] Test from pass to fail: test22
+ [INFO] Fix failed, number of combinations tried: 32
+[DEBUG] Rank Node 4:
+[DEBUG] sig Key {
+authorized: (one Employee),
+opened_by: (one Room)
+}
+[DEBUG] Affected paragraph names: [Key_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Employee
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Employee, Researcher]
+[DEBUG] Hole Room
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Room, secure_lab]
+ [INFO] Expression generation time: 2014209
+ [INFO] Search space: 12
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Room]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person, Room]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Employee, Room]
+[DEBUG] Hole 2, Fragment: Employee, FailToPass: 0
+[DEBUG] Hole values: [Researcher, Room]
+[DEBUG] Hole 3, Fragment: Researcher, FailToPass: 0
+[DEBUG] Hole values: [Employee, none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Employee, Room]
+[DEBUG] Hole 1, Fragment: Room, FailToPass: 0
+[DEBUG] Hole values: [Employee, secure_lab]
+[DEBUG] Hole 2, Fragment: secure_lab, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 7
+[DEBUG] Hole Employee
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Employee, Researcher]
+[DEBUG] Hole Room
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Room, secure_lab]
+ [INFO] Expression generation time: 557417
+ [INFO] Search space: 12
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, Room]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person, Room]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Employee, Room]
+[DEBUG] Hole 2, Fragment: Employee, FailToPass: 0
+[DEBUG] Hole values: [Researcher, Room]
+[DEBUG] Hole 3, Fragment: Researcher, FailToPass: 0
+[DEBUG] Hole values: [Employee, none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Employee, Room]
+[DEBUG] Hole 1, Fragment: Room, FailToPass: 0
+[DEBUG] Hole values: [Employee, secure_lab]
+[DEBUG] Hole 2, Fragment: secure_lab, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 7
+[DEBUG] Hole Employee
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Employee, Researcher]
+[DEBUG] Hole (one Employee)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+[DEBUG] Hole Room
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Room, secure_lab, (Room-secure_lab)]
+[DEBUG] Hole (one Room)
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 7543541
+ [INFO] Search space: 256
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (one Employee), Room, (one Room)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Person, (one Employee), Room, (one Room)]
+[DEBUG] Hole 1, Fragment: Person, FailToPass: 0
+[DEBUG] Hole values: [Employee, (one Employee), Room, (one Room)]
+[DEBUG] Hole 2, Fragment: Employee, FailToPass: 0
+[DEBUG] Hole values: [Researcher, (one Employee), Room, (one Room)]
+[DEBUG] Hole 3, Fragment: Researcher, FailToPass: 0
+[DEBUG] Hole values: [Employee, one , Room, (one Room)]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Employee, set , Room, (one Room)]
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [Employee, lone , Room, (one Room)]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [Employee, some , Room, (one Room)]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+[DEBUG] Hole values: [Employee, (one Employee), none, (one Room)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Employee, (one Employee), Room, (one Room)]
+[DEBUG] Hole 1, Fragment: Room, FailToPass: 0
+[DEBUG] Hole values: [Employee, (one Employee), secure_lab, (one Room)]
+[DEBUG] Hole 2, Fragment: secure_lab, FailToPass: 0
+[DEBUG] Hole values: [Employee, (one Employee), (Room-secure_lab), (one Room)]
+[DEBUG] Hole 3, Fragment: (Room-secure_lab), FailToPass: 0
+[DEBUG] Hole values: [Employee, (one Employee), Room, one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: [Employee, (one Employee), Room, set ]
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [Employee, (one Employee), Room, lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [Employee, (one Employee), Room, some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 16
+[DEBUG] Hole sig Key {
+authorized: (one Employee),
+opened_by: (one Room)
+}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 354792
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 5:
+[DEBUG] (no (Employee.owns))
+[DEBUG] Affected paragraph names: [fact_1]
+[DEBUG] Affected facts: [fact_1]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Employee
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Person, Employee, Researcher]
+[DEBUG] Hole owns
+[DEBUG] Size: 2
+[DEBUG] Fragments: [owns, (none->none)]
+ [INFO] Expression generation time: 638208
+ [INFO] Search space: 8
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, owns]
+[DEBUG] Test from pass to fail: test24
+[DEBUG] Hole values: [Person, owns]
+[DEBUG] Test from pass to fail: test10
+[DEBUG] Hole values: [Employee, owns]
+[DEBUG] Hole 2, Fragment: Employee, FailToPass: 0
+[DEBUG] Hole values: [Researcher, owns]
+[DEBUG] Test from pass to fail: test10
+[DEBUG] Hole values: [Employee, owns]
+[DEBUG] Hole 0, Fragment: owns, FailToPass: 0
+[DEBUG] Hole values: [Employee, (none->none)]
+[DEBUG] Test from pass to fail: test24
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole (Employee.owns)
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Key]
+ [INFO] Expression generation time: 1044500
+ [INFO] Search space: 2
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Test from pass to fail: test24
+[DEBUG] Hole values: [Key]
+[DEBUG] Test from pass to fail: test10
+ [INFO] Fix failed, number of combinations tried: 2
+[DEBUG] Hole (Employee.owns)
+[DEBUG] Size: 8
+[DEBUG] Fragments: [none, Key, (Person.owns), (Employee.owns), (Researcher.owns), (authorized.Person), (opened_by.Room), (opened_by.secure_lab)]
+[DEBUG] Hole (no (Employee.owns))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 35992417
+ [INFO] Search space: 32
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (no (Employee.owns))]
+[DEBUG] Test from pass to fail: test24
+[DEBUG] Hole values: [Key, (no (Employee.owns))]
+[DEBUG] Test from pass to fail: test10
+[DEBUG] Hole values: [(Person.owns), (no (Employee.owns))]
+[DEBUG] Test from pass to fail: test10
+[DEBUG] Hole values: [(Employee.owns), (no (Employee.owns))]
+[DEBUG] Hole 3, Fragment: (Employee.owns), FailToPass: 0
+[DEBUG] Hole values: [(Researcher.owns), (no (Employee.owns))]
+[DEBUG] Test from pass to fail: test10
+[DEBUG] Hole values: [(authorized.Person), (no (Employee.owns))]
+[DEBUG] Test from pass to fail: test10
+[DEBUG] Hole values: [(opened_by.Room), (no (Employee.owns))]
+[DEBUG] Test from pass to fail: test10
+[DEBUG] Hole values: [(opened_by.secure_lab), (no (Employee.owns))]
+[DEBUG] Test from pass to fail: test10
+[DEBUG] Hole values: [(Employee.owns), some ]
+[DEBUG] Test from pass to fail: test10
+[DEBUG] Hole values: [(Employee.owns), no ]
+[DEBUG] Hole 1, Fragment: no, FailToPass: 0
+[DEBUG] Hole values: [(Employee.owns), one ]
+[DEBUG] Test from pass to fail: test10
+[DEBUG] Hole values: [(Employee.owns), lone ]
+[DEBUG] Test from pass to fail: test24
+ [INFO] Fix failed, number of combinations tried: 12
+[DEBUG] Rank Node 6:
+[DEBUG] sig Employee extends Person {}
+[DEBUG] Affected paragraph names: [Employee_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole sig Employee extends Person {}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 36583
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 7:
+[DEBUG] sig Researcher extends Person {}
+[DEBUG] Affected paragraph names: [Researcher_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole sig Researcher extends Person {}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 23500
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Room {}
+one sig secure_lab extends Room {}
+abstract sig Person {
+owns: (set Key)
+}
+sig Employee extends Person {}
+sig Researcher extends Person {}
+sig Key {
+authorized: (one Employee),
+opened_by: (one Room)
+}
+pred CanEnter[p: Person,r: Room] {
+(p in ((opened_by.r).(~owns)))
+}
+
+fact fact_1 {
+(no (Employee.owns))
+}
+assert no_thief_in_seclab {
+(all p: (one Person) {
+((CanEnter[p,secure_lab]) => (p in Researcher))
+})
+}
+
+check no_thief_in_seclab
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Room {}
+one sig secure_lab extends Room {}
+abstract sig Person {
+owns: (set Key)
+}
+sig Employee extends Person {}
+sig Researcher extends Person {}
+sig Key {
+authorized: (one Employee),
+opened_by: (one Room)
+}
+pred CanEnter[p: Person,r: Room] {
+(p in ((opened_by.r).(~owns)))
+}
+
+fact fact_1 {
+(no (Employee.owns))
+}
+assert no_thief_in_seclab {
+(all p: (one Person) {
+((CanEnter[p,secure_lab]) => (p in Researcher))
+})
+}
+
+check no_thief_in_seclab

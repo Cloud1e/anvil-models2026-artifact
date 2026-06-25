@@ -1,0 +1,14 @@
+Complete the following sketch of the Alloy predicate (without markdown or comments or ```) by selecting values for the holes with respect to the given constraints such that the predicate is correct with respect to the property described in the comments:
+
+Note: In Alloy, "Function" is only the predicate name (a constraint on relation r), not a programming-language function or API.
+
+sig S {
+   r: set S
+}
+pred Function{
+//Every element in S is related to exactly one element (making r a total function)
+all s: S | \Q,q\ \E,e\
+}
+
+q := {| all|no|some|lone|one |}
+e := {| r|s|(s.r) |}

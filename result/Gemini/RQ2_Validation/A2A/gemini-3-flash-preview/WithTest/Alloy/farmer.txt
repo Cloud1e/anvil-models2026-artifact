@@ -1,0 +1,74 @@
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+Correct
+
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some item : from - Farmer | { to' = to + Farmer + item and from' = from - Farmer - item - from'.eats })
+Correct
+
+crossRiver: some item : set (from - Farmer) | lone item and { from' = from - Farmer - item - from'.eats and to' = to + Farmer + item }
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (one item : from - Farmer | { from' = from - Farmer - item - from'.eats and to' = to + Farmer + item })
+Correct
+
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some boat : from - Farmer | { to' = to + Farmer + boat and from' = from - Farmer - boat - from'.eats })
+Correct
+
+crossRiver: (some item : from - Farmer | { from' = (from - Farmer - item) - from'.eats and to' = to + Farmer + item }) or { from' = (from - Farmer) - from'.eats and to' = to + Farmer }
+Correct
+
+crossRiver: some item : set (from - Farmer) | { lone item and from' = from - Farmer - item - from'.eats and to' = to + Farmer + item }
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : Object | item in from - Farmer and from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+Correct
+
+crossRiver: (some boat : from - Farmer | { to' = to + Farmer + boat and from' = from - Farmer - boat - from'.eats }) or { from' = from - Farmer - from'.eats and to' = to + Farmer }
+Correct
+
+crossRiver: some item : set (from - Farmer) | lone item and to' = to + Farmer + item and from' = from - Farmer - item - from'.eats
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+solvePuzzle: ord/last.far = Object
+Correct
+
+solvePuzzle: Object = ord/last.far
+Correct
+
+solvePuzzle: Object in ord/last.far
+Correct
+
+solvePuzzle: all o: Object | o in ord/last.far
+Correct
+
+solvePuzzle: no o: Object | o not in ord/last.far
+Correct
+
+solvePuzzle: ord/last.near = none
+Correct
+
+solvePuzzle: no ord/last.near
+Correct
+
+solvePuzzle: ord/last.near in none
+Correct
+
+solvePuzzle: Object - ord/last.far = none
+Correct
+
+solvePuzzle: all o: Object | some (o & ord/last.far)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 17
+Syntax Error: 3
+Wrong: 0

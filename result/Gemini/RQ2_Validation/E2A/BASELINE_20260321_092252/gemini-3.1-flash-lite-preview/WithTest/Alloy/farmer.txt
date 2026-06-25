@@ -1,0 +1,95 @@
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all o: Object | o in (from - carry) implies (some e: Object | e in (from - carry) and o in e.eats implies (Farmer in (from - carry)))) and from' = from - carry and to' = to + carry)
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all o: Object | o in (from - carry) implies (all e: Object | e in (from - carry) and o in e.eats implies (Farmer in (from - carry)))) and from' = from - carry and to' = to + carry)
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all disj a, b: from - carry | b not in a.eats) and from' = from - carry and to' = to + carry)
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all a: from - carry | all b: from - carry | b in a.eats implies no (from - carry & Farmer)) and from' = from - carry and to' = to + carry)
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (no a, b: from - carry | b in a.eats) and from' = from - carry and to' = to + carry)
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all a: from - carry | all b: Object | b in a.eats and b in (from - carry) implies (Farmer in (from - carry))) and from' = from - carry and to' = to + carry)
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all a, b: Object | a in (from - carry) and b in (from - carry) and b in a.eats implies (Farmer in (from - carry))) and from' = from - carry and to' = to + carry)
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all x, y: (from - carry) | y in x.eats implies Farmer in (from - carry)) and from' = from - carry and to' = to + carry)
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all x: Object | x in (from - carry) and (some y: (from - carry) | y in x.eats) implies Farmer in (from - carry)) and from' = from - carry and to' = to + carry)
+Syntax Error
+SYN_MSG:
+Analysis cannot be performed since it requires higher-order quantification that could not be skolemized.
+END_SYN_MSG
+
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (no (from-carry) & {a: Object | some b: (from-carry) | b in a.eats}) implies true else Farmer in (from - carry) and from' = from - carry and to' = to + carry)
+Syntax Error
+SYN_MSG:
+The name "true" cannot be found.
+END_SYN_MSG
+
+solvePuzzle: (some s: State | s = ord/last and s.far = Object)
+Correct
+
+solvePuzzle: (some s: State | s = ord/last and Farmer in s.far and Fox in s.far and Chicken in s.far and Grain in s.far)
+Correct
+
+solvePuzzle: (Object in ord/last.far)
+Correct
+
+solvePuzzle: (all o: Object | o in ord/last.far)
+Correct
+
+solvePuzzle: (ord/last.far = Farmer + Fox + Chicken + Grain)
+Correct
+
+solvePuzzle: (no (Object - ord/last.far))
+Correct
+
+solvePuzzle: (no ord/last.near)
+Correct
+
+solvePuzzle: (ord/last.near = none)
+Correct
+
+solvePuzzle: (some s: State | s = ord/last and all o: Object | o in s.far)
+Correct
+
+solvePuzzle: (ord/last.near = none and ord/last.far = Object)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 10
+Syntax Error: 10
+Wrong: 0

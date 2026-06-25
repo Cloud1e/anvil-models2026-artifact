@@ -1,0 +1,10 @@
+s in a.associated_with.assistant_for and s not in a.assigned_to
+s in a.associated_with.assistant_for and all x: a.assigned_to | s != x
+s in a.associated_with.assistant_for and no (s & a.assigned_to)
+s in a.associated_with.assistant_for and s not in a.(assigned_to)
+s in a.associated_with.assistant_for and (a.assigned_to & s) = none
+s in a.associated_with.assistant_for and not (some x: a.assigned_to | x = s)
+s in a.associated_with.assistant_for and (s in Student implies s not in a.assigned_to)
+s in a.associated_with.assistant_for and s != (a.assigned_to & s)
+s in a.associated_with.assistant_for and s not in (a.assigned_to)
+s in a.associated_with.assistant_for and lone (a.assigned_to & s) and no (a.assigned_to & s)

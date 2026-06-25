@@ -1,0 +1,100 @@
+UniqueElem: all disj n1, n2: Node | n1.elem != n2.elem
+Correct
+
+UniqueElem: all n1: Node, n2: Node - n1 | n1.elem != n2.elem
+Correct
+
+UniqueElem: no n1, n2: Node | n1 != n2 and n1.elem = n2.elem
+Correct
+
+UniqueElem: all n: Node | lone n.~elem
+Wrong
+
+UniqueElem: all e: Int | lone e.~elem
+Correct
+
+UniqueElem: (all n: Node | one n.elem) and (all disj n1, n2: Node | n1.elem != n2.elem)
+Correct
+
+UniqueElem: all n1, n2: Node | n1.elem = n2.elem implies n1 = n2
+Correct
+
+UniqueElem: all n1: Node | all n2: Node | n1.elem = n2.elem implies n1 = n2
+Correct
+
+UniqueElem: no n1: Node | some n2: Node - n1 | n1.elem = n2.elem
+Correct
+
+UniqueElem: all e: Int | e.~elem in Node implies lone e.~elem
+Correct
+
+Sorted: all n: Node | some n.nxt implies n.elem <= n.nxt.elem
+Correct
+
+Sorted: all n: Node, next: n.nxt | n.elem <= next.elem
+Correct
+
+Sorted: all n1, n2: Node | n2 in n1.^nxt implies n1.elem <= n2.elem
+Correct
+
+Sorted: all n: Node | all m: n.^nxt | n.elem <= m.elem
+Correct
+
+Sorted: all n: Node | n.nxt != none implies n.elem <= n.nxt.elem
+Correct
+
+Sorted: all n1: Node | all n2: n1.nxt | n1.elem <= n2.elem
+Correct
+
+Sorted: all n1: Node | all n2: Node | n2 in n1.^nxt implies n1.elem <= n2.elem
+Correct
+
+Sorted: no n: Node | some next: n.nxt | n.elem > next.elem
+Correct
+
+Sorted: all n: Node, m: n.nxt | not (n.elem > m.elem)
+Correct
+
+Sorted: all n: Node | all m: n.nxt | n.elem <= m.elem
+Correct
+
+ConsistentPreAndNxt: (all n1, n2: Node | n1.nxt = n2 <=> n2.pre = n1)
+Correct
+
+ConsistentPreAndNxt: (all n1, n2: Node | n1.nxt = n2 => n2.pre = n1) and (all n1, n2: Node | n2.pre = n1 => n1.nxt = n2)
+Correct
+
+ConsistentPreAndNxt: nxt = ~pre
+Correct
+
+ConsistentPreAndNxt: all n: Node | n.nxt.pre = n and n.pre.nxt = n
+Wrong
+
+ConsistentPreAndNxt: all n: Node | (some n.nxt => n.nxt.pre = n) and (some n.pre => n.pre.nxt = n)
+Correct
+
+ConsistentPreAndNxt: nxt.~pre = Node and pre.~nxt = Node
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Node->this/Node}
+Right type = {this/Node}
+END_SYN_MSG
+
+ConsistentPreAndNxt: all n: Node | n.nxt = {m: Node | m.pre = n}
+Correct
+
+ConsistentPreAndNxt: all n: Node | n.pre = {m: Node | m.nxt = n}
+Correct
+
+ConsistentPreAndNxt: (all n: Node | n.nxt.pre = n) and (all n: Node | n.pre.nxt = n)
+Wrong
+
+ConsistentPreAndNxt: all n: Node | n.nxt.pre = n and n.pre.nxt = n and n.nxt.pre = n and n.pre.nxt = n
+Wrong
+
+Total: 30
+Unique: 30
+Correct: 25
+Syntax Error: 1
+Wrong: 4

@@ -1,0 +1,20 @@
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (some item : from - Farmer | to' = to + Farmer + item and from' = from - Farmer - item - from'.eats)
+crossRiver: some item : set (from - Farmer) | #item <= 1 and from' = from - Farmer - item - from'.eats and to' = to + Farmer + item
+crossRiver: some items : set Object | (items = Farmer or (some i : from - Farmer | items = Farmer + i)) and from' = from - items - from'.eats and to' = to + items
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : Object | item in from and item != Farmer and from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+crossRiver: let f = Farmer | (from' = from - f - from'.eats and to' = to + f) or (some i : from - f | from' = from - f - i - from'.eats and to' = to + f + i)
+crossRiver: not ((from' != from - Farmer - from'.eats or to' != to + Farmer) and (all item : from - Farmer | from' != from - Farmer - item - from'.eats or to' != to + Farmer + item))
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (some item : from | item != Farmer and from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+crossRiver: some item : from | (item = Farmer and from' = from - Farmer - from'.eats and to' = to + Farmer) or (item != Farmer and from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+crossRiver: (some item : from - Farmer | to' = item + Farmer + to and from' = from - item - Farmer - from'.eats) or (to' = Farmer + to and from' = from - Farmer - from'.eats)
+solvePuzzle: Object = ord/last.far
+solvePuzzle: Object in ord/last.far
+solvePuzzle: no Object - ord/last.far
+solvePuzzle: all o: Object | o in ord/last.far
+solvePuzzle: no o: Object | o !in ord/last.far
+solvePuzzle: ord/last.near = none
+solvePuzzle: 0 = #ord/last.near
+solvePuzzle: #ord/last.far = 4
+solvePuzzle: #ord/last.far = #Object
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain

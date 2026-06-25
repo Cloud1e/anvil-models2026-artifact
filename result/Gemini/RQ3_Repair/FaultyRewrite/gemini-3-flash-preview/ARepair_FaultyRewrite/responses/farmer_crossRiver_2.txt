@@ -1,0 +1,7 @@
+pred crossRiver [from, from', to, to': set Object] {
+  some item: set (from - Farmer) {
+    lone item
+    from' = from - Farmer - item
+    to' = to - to.eats + Farmer + item
+  }
+}

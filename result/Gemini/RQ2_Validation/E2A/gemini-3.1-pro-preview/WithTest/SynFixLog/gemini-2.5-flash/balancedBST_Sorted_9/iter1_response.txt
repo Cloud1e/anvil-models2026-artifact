@@ -1,0 +1,7 @@
+```alloy
+pred Sorted() {
+  all n : Node {
+    all l : n.left.^(left+right) {l.elem < n.elem}
+  }
+}
+```

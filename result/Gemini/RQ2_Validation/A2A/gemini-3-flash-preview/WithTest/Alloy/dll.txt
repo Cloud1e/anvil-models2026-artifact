@@ -1,0 +1,95 @@
+ConsistentPreAndNxt: nxt = ~pre
+Correct
+
+ConsistentPreAndNxt: pre = ~nxt
+Correct
+
+ConsistentPreAndNxt: all n1, n2: Node | n1.nxt = n2 <=> n2.pre = n1
+Correct
+
+ConsistentPreAndNxt: all n: Node | n.nxt = n.~pre
+Correct
+
+ConsistentPreAndNxt: all n: Node | n.pre = n.~nxt
+Correct
+
+ConsistentPreAndNxt: no n: Node | n.nxt != n.~pre
+Correct
+
+ConsistentPreAndNxt: no n: Node | n.pre != n.~nxt
+Correct
+
+ConsistentPreAndNxt: all n1, n2: Node | n1->n2 in nxt iff n2->n1 in pre
+Correct
+
+ConsistentPreAndNxt: all n: Node | n.nxt = {m: Node | m.pre = n}
+Correct
+
+ConsistentPreAndNxt: no n1, n2: Node | (n2 in n1.nxt and n1 !in n2.pre) or (n1 in n2.pre and n2 !in n1.nxt)
+Correct
+
+Sorted: all n: Node | some n.nxt => n.elem <= n.nxt.elem
+Correct
+
+Sorted: all n: Node | all n_nxt: n.nxt | n.elem <= n_nxt.elem
+Correct
+
+Sorted: no n: Node | some n.nxt and n.elem > n.nxt.elem
+Correct
+
+Sorted: all n1, n2: Node | n1.nxt = n2 => n1.elem <= n2.elem
+Correct
+
+Sorted: all n: Node | n.nxt != none => n.elem <= n.nxt.elem
+Correct
+
+Sorted: all n: nxt.Node | n.elem <= n.nxt.elem
+Correct
+
+Sorted: no n: nxt.Node | n.elem > n.nxt.elem
+Correct
+
+Sorted: all n: Node | no n_nxt: n.nxt | n_nxt.elem < n.elem
+Correct
+
+Sorted: all n: Node | some n.nxt => not (n.nxt.elem < n.elem)
+Correct
+
+Sorted: all n: Node | all n2: n.nxt | not (n.elem > n2.elem)
+Correct
+
+UniqueElem: no disj n1, n2: Node | n1.elem = n2.elem
+Correct
+
+UniqueElem: all n1, n2: Node | n1.elem = n2.elem => n1 = n2
+Correct
+
+UniqueElem: all n1, n2: Node | n1 != n2 => n1.elem != n2.elem
+Correct
+
+UniqueElem: all n: Node | n.elem !in (Node - n).elem
+Correct
+
+UniqueElem: all n: Node | no n': Node - n | n.elem = n'.elem
+Correct
+
+UniqueElem: all e: Int | lone elem.e
+Correct
+
+UniqueElem: elem.~elem in iden
+Correct
+
+UniqueElem: all disj n1, n2: Node | n1.elem != n2.elem
+Correct
+
+UniqueElem: no n1, n2: Node | n1 != n2 and n1.elem = n2.elem
+Correct
+
+UniqueElem: all n: Node | lone m: Node | m.elem = n.elem
+Correct
+
+Total: 30
+Unique: 30
+Correct: 30
+Syntax Error: 0
+Wrong: 0

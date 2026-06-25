@@ -1,0 +1,10 @@
+no idx: Array.i2e.Element | some e: Element | idx = some otherIdx: Array.i2e.Element | otherIdx != idx && Array.i2e[idx] = Array.i2e[otherIdx]
+no disj idx1, idx2: Int, e: Element | (idx1 != idx2 && Array.i2e[idx1] = e && Array.i2e[idx2] = e)
+no disj idx: Int, e1, e2: Element | (e1 != e2 && Array.i2e[idx] = e1 && Array.i2e[idx] = e2)
+no disj idx: Int | #(Array.i2e[idx]) > 1
+no idx: Int, e1, e2: Element | (idx in dom(Array.i2e) && e1 != e2 && Array.i2e[idx] = e1 && Array.i2e[idx] = e2)
+no disj idx: Int, e: Element | some e2: Element | (e != e2 && Array.i2e[idx] = e && Array.i2e[idx] = e2)
+no e: Element | some disj idx1, idx2: Int | (idx1 != idx2 && Array.i2e[idx1] = e && Array.i2e[idx2] = e)
+no idx: Int | some e1, e2: Element | (e1 != e2 && Array.i2e[idx] = e1 && Array.i2e[idx] = e2)
+no idx: Int, e: Element | some e2: Element | (e != e2 && Array.i2e[idx] = e && Array.i2e[idx] = e2)
+no idx: Int, e: Element | some e2: Element | (e != e2 && Array.i2e[idx] = e && Array.i2e[idx] = e2)

@@ -1,0 +1,20 @@
+no n: Node | n in n.^link
+all n: Node | n not in n.^link
+all n: Node | no n.^link & n
+all n: Node | n not in link.n.^~link
+all n: Node | n.^link & n = none
+all n: Node | n not in n.^link and all n1: Node | n1 in n.^link implies n not in n1.^link
+all n: Node | n not in n.^(link)
+all n: Node | lone n.^link & n
+all n: Node | n not in n.^link and all m: n.^link | m not in m.^link
+all n: Node | not (n in n.^link)
+all n: Node | all disj m, k: n.^link | m != k
+no iden & ^link
+all n: Node | n not in ^link.n
+all n: Node | no n.^link & n.~^link
+all n: Node | n.^link & n.~^link = none
+all n: Node | n not in link.n.^link
+closure[link] & iden = iden
+all n: Node | n not in link[n] and (all m: n.^link | m not in link[m] and n not in m.^link)
+all n: Node | all m: n.^link | n not in m.^link
+all n: Node | no (n.^link & n)

@@ -1,0 +1,20 @@
+r in S -> lone S
+all x: S | lone x.r
+~r.r in iden
+all x: S | #x.r <= 1
+all x: S | #x.r < 2
+no x: S | #x.r > 1
+no x: S | #x.r >= 2
+all x: S | #x.r = 0 or #x.r = 1
+all x: S | x.r = none or one x.r
+all x, y, z: S | x->y in r and x->z in r implies y = z
+no x, y, z: S | x->y in r and x->z in r and y != z
+all x: S | no y, z: S | y in x.r and z in x.r and y != z
+no x: S | some y, z: S | y in x.r and z in x.r and y != z
+all x: S, y: x.r, z: x.r | y = z
+no (~r.r) - iden
+all x: S | lone r[x]
+all x: S | some y: S | x.r in y
+all x: S | lone y: S | x->y in r
+all x: S | no disj y, z: S | x->y in r and x->z in r
+no x: S | some disj y, z: S | x->y in r and x->z in r

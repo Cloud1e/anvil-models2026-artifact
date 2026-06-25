@@ -1,0 +1,30 @@
+ConsistentPreAndNxt: all n1, n2: Node | n1.nxt = n2 <=> n2.pre = n1
+ConsistentPreAndNxt: pre = ~nxt
+ConsistentPreAndNxt: nxt in ~pre and ~pre in nxt
+ConsistentPreAndNxt: all n: Node | (some n.nxt => n.nxt.pre = n) and (some n.pre => n.pre.nxt = n)
+ConsistentPreAndNxt: all n1, n2: Node | n1->n2 in nxt <=> n2->n1 in pre
+ConsistentPreAndNxt: no n1, n2: Node | (n1.nxt = n2 and n2.pre != n1) or (n2.pre = n1 and n1.nxt != n2)
+ConsistentPreAndNxt: all n: Node | n.nxt = {m: Node | m.pre = n}
+ConsistentPreAndNxt: all n: Node | n.pre = {m: Node | m.nxt = n}
+ConsistentPreAndNxt: all n: Node | n.~nxt = n.pre
+ConsistentPreAndNxt: all n: Node | (all m: n.nxt | m.pre = n) and (all m: n.pre | m.nxt = n)
+Sorted: all n1: Node, n2: n1.nxt | n1.elem <= n2.elem
+Sorted: all n1, n2: Node | n2 = n1.nxt => n1.elem <= n2.elem
+Sorted: no n: Node | some n.nxt and n.elem > n.nxt.elem
+Sorted: all n: Node | n.nxt != none => n.elem <= n.nxt.elem
+Sorted: all n: {m: Node | some m.nxt} | n.elem <= n.nxt.elem
+Sorted: all n1, n2: Node | n1 -> n2 in nxt implies n1.elem <= n2.elem
+Sorted: no n1, n2: Node | n2 = n1.nxt and n1.elem > n2.elem
+Sorted: all n: Node | (some m: n.nxt) => (n.elem <= m.elem)
+Sorted: all n: Node | n.nxt = none or n.elem <= n.nxt.elem
+Sorted: all n: Node | let m = n.nxt | some m implies n.elem <= m.elem
+UniqueElem: all n1, n2: Node | n1.elem = n2.elem => n1 = n2
+UniqueElem: all n1: Node, n2: Node - n1 | n1.elem != n2.elem
+UniqueElem: all n: Node | n.elem not in (Node - n).elem
+UniqueElem: #Node.elem = #Node
+UniqueElem: all e: Node.elem | one n: Node | n.elem = e
+UniqueElem: all n1, n2: Node | n1 != n2 => n1.elem != n2.elem
+UniqueElem: no n1: Node | some n2: Node - n1 | n1.elem = n2.elem
+UniqueElem: all e: Int | lone n: Node | n.elem = e
+UniqueElem: elem.~elem in iden
+UniqueElem: all n: Node | n.elem.~elem = n

@@ -1,0 +1,1364 @@
+CD Test Suite Detailed Report
+Timestamp: 2026-06-23_04-58-11
+
+Model run commands: 1
+==============================
+Candidate 1
+Acyclic: no c: Class | c in c.^ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 2
+Acyclic: all c: Class | not (c in c.^ext)
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 3
+Acyclic: all c: Class | c.^ext & c = none
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 4
+Acyclic: no ^ext & iden
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 5
+Acyclic: all c: Class | c not in c.^ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 6
+Acyclic: all c: Class | c not in c.*ext - c
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=1 FAIL
+Test test1007   expect=0 actual=1 FAIL
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=1 FAIL
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=1 FAIL
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=1 FAIL
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=1 FAIL
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 31/31)
+
+==============================
+Candidate 7
+Acyclic: no c: Class | c in c.ext + c.ext.ext + c.ext.ext.ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 8
+Acyclic: all c: Class | lone c.*ext & c
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=1 FAIL
+Test test1007   expect=0 actual=1 FAIL
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=1 FAIL
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=1 FAIL
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=1 FAIL
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=1 FAIL
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 31/31)
+
+==============================
+Candidate 9
+Acyclic: all c: Class | not (some t: Class | t in c.ext and t in c.^~ext)
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 10
+Acyclic: no (ext.~(^ext)) & iden
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=0 FAIL
+Test test1004   expect=1 actual=0 FAIL
+Test test1005   expect=1 actual=0 FAIL
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 31/31)
+
+==============================
+Candidate 11
+AllExtObject: all c: Class - Object | Object in c.^~ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=0 FAIL
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=0 FAIL
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=0 FAIL
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 31/31)
+
+==============================
+Candidate 12
+AllExtObject: all c: Class | c != Object implies c in Object.^~ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 13
+AllExtObject: (Class - Object) in Object.^~ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 14
+AllExtObject: all c: Class | c = Object or c in Object.^~ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 15
+AllExtObject: all c: Class - Object | c in {x: Class | Object in x.^~ext}
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=0 FAIL
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=1 FAIL
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=0 FAIL
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=0 FAIL
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 31/31)
+
+==============================
+Candidate 16
+AllExtObject: no (Class - Object) - Object.^~ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 17
+AllExtObject: all c: Class | c in Object implies c = Object else c in Object.^~ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 18
+AllExtObject: Class = Object + Object.^~ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 19
+AllExtObject: all c: Class - Object | c.^ext.*ext = Object
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=0 FAIL
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 31/31)
+
+==============================
+Candidate 20
+AllExtObject: all c: Class | not (c = Object) => c in Object.^~ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 21
+ClassHierarchy: ObjectNoExt and Acyclic and AllExtObject
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 22
+ClassHierarchy: {ObjectNoExt, Acyclic, AllExtObject}
+
+Result: Syntax Error
+
+==============================
+Candidate 23
+ClassHierarchy: ObjectNoExt implies (Acyclic implies AllExtObject)
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=1 FAIL
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=1 FAIL
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 31/31)
+
+==============================
+Candidate 24
+ClassHierarchy: all x: {ObjectNoExt, Acyclic, AllExtObject} | x
+
+Result: Syntax Error
+
+==============================
+Candidate 25
+ClassHierarchy: (no Object.ext) and (all c: Class | c !in c.^ext) and (all c: Class - Object | c in Object.^~ext)
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 26
+ClassHierarchy: ObjectNoExt && Acyclic && AllExtObject
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 27
+ClassHierarchy: ObjectNoExt | Acyclic | AllExtObject
+
+Result: Syntax Error
+
+==============================
+Candidate 28
+ClassHierarchy: all c: Class | (c=Object => no c.ext) and (c !in c.^ext) and (c!=Object => c in Object.^~ext)
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 29
+ClassHierarchy: ObjectNoExt and (all c: Class | c !in c.^ext and (c != Object implies c in Object.^~ext))
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 30
+ClassHierarchy: {c: Class | no c.ext} = {Object} and Acyclic and AllExtObject
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 31
+ObjectNoExt: no ext.Object
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=1 FAIL
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 31/31)
+
+==============================
+Candidate 32
+ObjectNoExt: Object.ext = none
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 33
+ObjectNoExt: not some Object.ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 34
+ObjectNoExt: all c: Class | c = Object implies no c.ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 35
+ObjectNoExt: #Object.ext = 0
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 36
+ObjectNoExt: lone c: Class | c in Object.ext is none
+
+Result: Syntax Error
+
+==============================
+Candidate 37
+ObjectNoExt: Object not in Class.ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=1 FAIL
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Wrong (Tests run: 31/31)
+
+==============================
+Candidate 38
+ObjectNoExt: none = Object.ext
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+
+==============================
+Candidate 39
+ObjectNoExt: all x: Object.ext | false
+
+Result: Syntax Error
+
+==============================
+Candidate 40
+ObjectNoExt: not (some c: Class | Object->c in ext)
+
+Test test1001   expect=0 actual=0 OK
+Test test1002   expect=0 actual=0 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test13     expect=1 actual=1 OK
+Test test14     expect=1 actual=1 OK
+Test test18     expect=0 actual=0 OK
+Test test7      expect=0 actual=0 OK
+Test test11     expect=0 actual=0 OK
+Test test21     expect=1 actual=1 OK
+Test test15     expect=0 actual=0 OK
+Test test16     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test24     expect=0 actual=0 OK
+Test test8      expect=0 actual=0 OK
+Test test5      expect=0 actual=0 OK
+Test test19     expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test6      expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test2      expect=0 actual=0 OK
+Test test22     expect=0 actual=0 OK
+Test test12     expect=0 actual=0 OK
+Test test23     expect=0 actual=0 OK
+Test test10     expect=0 actual=0 OK
+Test test1      expect=1 actual=1 OK
+Test test4      expect=0 actual=0 OK
+
+Result: Correct (Tests run: 31/31)
+

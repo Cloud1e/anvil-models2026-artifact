@@ -1,0 +1,26 @@
+abstract sig Person {}
+
+sig Student extends Person {}
+
+sig Professor extends Person {}
+
+sig Class {
+	assistant_for: set Student,
+	instructor_of: one Professor
+}
+
+sig Assignment {
+	associated_with: one Class,
+	assigned_to: some Student
+}
+
+pred PolicyAllowsGrading(s: Person, a: Assignment) {
+	a in s.~assistant_for.~associated_with or a in s.~instructor_of.~associated_with
+}
+
+// Should help create tests.
+assert NoOneCanGradeTheirOwnAssignment {
+	all s : Person | all a: Assignment | PolicyAllowsGrading[s, a] implies not s in a.assigned_to 
+}
+
+check NoOneCanGradeTheirOwnAssignment

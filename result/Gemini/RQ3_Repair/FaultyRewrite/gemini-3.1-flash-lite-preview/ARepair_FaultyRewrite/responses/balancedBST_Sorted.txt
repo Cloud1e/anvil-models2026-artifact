@@ -1,0 +1,55 @@
+pred Sorted() {
+  all n: Node | (all n2: n.^left | n2.elem < n.elem) and (all n2: n.^right | n2.elem > n.elem)
+}
+
+pred Sorted() {
+  all n: Node {
+    all n2: n.^left | n2.elem < n.elem
+    not (some n2: n.^right | n2.elem <= n.elem)
+  }
+}
+
+pred Sorted() {
+  all n: Node, n2: n.^left | n2.elem < n.elem
+  all n: Node, n2: n.^right | n2.elem > n.elem
+}
+
+pred Sorted() {
+  all n: Node {
+    all n2: n.^left | lt[n2.elem, n.elem]
+    all n2: n.^right | gt[n2.elem, n.elem]
+  }
+}
+
+pred Sorted() {
+  all n: Node | {
+    {n2: n.^left | n2.elem >= n.elem} = none
+    {n2: n.^right | n2.elem <= n.elem} = none
+  }
+}
+
+pred Sorted() {
+  all n: Node | (all n2: Node | n2 in n.^left implies n2.elem < n.elem) && (all n2: Node | n2 in n.^right implies n2.elem > n.elem)
+}
+
+pred Sorted() {
+  all n: Node {
+    all n2: Node {
+      n2 in n.^left => n2.elem < n.elem
+      n2 in n.^right => n2.elem > n.elem
+    }
+  }
+}
+
+pred Sorted() {
+  all n: Node | no n2: n.^left | n2.elem >= n.elem
+  all n: Node | no n2: n.^right | n2.elem <= n.elem
+}
+
+pred Sorted() {
+  all n: Node | (n.^left.elem < n.elem) and (n.^right.elem > n.elem)
+}
+
+pred Sorted() {
+  all n: Node | all n2: n.^left + n.^right | (n2 in n.^left => n2.elem < n.elem) && (n2 in n.^right => n2.elem > n.elem)
+}

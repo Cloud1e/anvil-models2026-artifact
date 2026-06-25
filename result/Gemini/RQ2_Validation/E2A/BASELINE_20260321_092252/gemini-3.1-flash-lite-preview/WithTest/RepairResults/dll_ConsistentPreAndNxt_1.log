@@ -1,0 +1,154 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one Node) {
+((some (n.nxt)) => ((n.elem) <= ((n.nxt).elem)))
+})
+}
+pred ConsistentPreAndNxt[] {
+((all n: (one Node) {
+(((n.nxt).pre) = n)
+}) && (all n: (one Node) {
+(((n.pre).nxt) = n)
+}))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 16822636966
+ [INFO] Expression generation time: 178376333
+ [INFO] Search space: 81
+ [INFO] Fix failed, number of combinations tried: 12
+ [INFO] Expression generation time: 61420667
+ [INFO] Search space: 729
+ [INFO] Fix failed, number of combinations tried: 24
+ [INFO] Expression generation time: 542077167
+ [INFO] Search space: 2458624
+ [INFO] Fix failed, number of combinations tried: 72
+ [INFO] Expression generation time: 2017901126
+ [INFO] Search space: 239878144
+ [INFO] Fix failed, number of combinations tried: 112
+ [INFO] Expression generation time: 1272750
+ [INFO] Search space: 239878144
+ [INFO] Fix failed, number of combinations tried: 112
+ [INFO] Expression generation time: 6681125
+ [INFO] Search space: 5996953600
+ [INFO] Fix failed, number of combinations tried: 122
+ [INFO] Expression generation time: 2628291
+ [INFO] Search space: 11993907200
+ [INFO] Fix failed, number of combinations tried: 124
+ [INFO] Expression generation time: 968084
+ [INFO] Search space: 11993907200
+ [INFO] Fix failed, number of combinations tried: 124
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one Node) {
+((some (n.nxt)) => ((n.elem) <= ((n.nxt).elem)))
+})
+}
+pred ConsistentPreAndNxt[] {
+((all n: (one Node) {
+(((n.nxt).pre) = n)
+}) && (all n: (one Node) {
+(((n.pre).nxt) = n)
+}))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+one sig DLL {
+header: (lone Node)
+}
+sig Node {
+pre,nxt: (lone Node),
+elem: (one Int)
+}
+pred UniqueElem[] {
+(no disj n1,n2: (one Node) {
+((n1.elem) = (n2.elem))
+})
+}
+pred Sorted[] {
+(all n: (one Node) {
+((some (n.nxt)) => ((n.elem) <= ((n.nxt).elem)))
+})
+}
+pred ConsistentPreAndNxt[] {
+((all n: (one Node) {
+(((n.nxt).pre) = n)
+}) && (all n: (one Node) {
+(((n.pre).nxt) = n)
+}))
+}
+pred RepOk[] {
+((UniqueElem[]) && (Sorted[]) && (ConsistentPreAndNxt[]))
+}
+
+fact Reachable {
+(Node = ((DLL.header).(*nxt)))
+}
+fact Acyclic {
+(all n: (one Node) {
+(n !in (n.(^nxt)))
+})
+}
+
+run RepOk for 3
+

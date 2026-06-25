@@ -1,0 +1,5 @@
+pred Loop(This: List) {
+  no n: Node | (n - This.header).link = n
+  some n: Node | n.link = This.header
+  lone n: Node | n.link = This.header
+}

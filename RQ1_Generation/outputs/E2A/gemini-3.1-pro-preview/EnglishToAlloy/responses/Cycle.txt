@@ -1,0 +1,20 @@
+some n: Node | n in n.^link
+some n: Node | n in ^link.n
+some iden & ^link
+some ^link & iden
+not no iden & ^link
+not no ^link & iden
+iden & ^link != none
+^link & iden != none
+some n: Node | n->n in ^link
+not all n: Node | n not in n.^link
+not all n: Node | n->n not in ^link
+some x, y: Node | x->y in ^link and y->x in ^link
+some x, y: Node | x in y.^link and y in x.^link
+some n: Node | n in n.link + n.link.^link
+some n: Node | n->n in link + link.^link
+some n: Node | n in n.link.*link
+some n: Node | n in n.*link.link
+some n: Node | n->n in link.*link
+some n: Node | n->n in *link.link
+some n: Node | n->n in link + ^link.link

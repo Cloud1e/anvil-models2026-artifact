@@ -1,0 +1,5 @@
+pred Balanced() {
+  all n1, n2: Node | {
+    #{c: Node | c = n1.left or c = n1.right} - #{c: Node | c = n2.left or c = n2.right} in -1..1
+  }
+}

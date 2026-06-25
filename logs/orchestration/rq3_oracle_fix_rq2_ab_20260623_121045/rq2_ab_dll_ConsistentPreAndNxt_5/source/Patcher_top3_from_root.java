@@ -1,0 +1,458 @@
+package patcher;
+
+import static clean.ModelSimplifier.simplify;
+import static parser.etc.Context.logger;
+import static parser.etc.Context.timer;
+import static parser.util.AlloyUtil.countDescendantNum;
+import static parser.util.AlloyUtil.mergeModelAndTests;
+import static patcher.etc.Constants.BOUND_TYPE;
+import static patcher.etc.Constants.CLI_USAGE_DESCRIPTION_WIDTH;
+import static patcher.etc.Constants.DEFAULT_NUM_TRY_NUM_PER_DEPTH;
+import static patcher.etc.Constants.DEFAULT_NUM_TRY_PER_HOLE;
+import static patcher.etc.Constants.DEFAULT_PARTITION_NUM;
+import static patcher.etc.Constants.ENABLE_CACHE;
+import static patcher.etc.Constants.FIX_FILE_PATH;
+import static patcher.etc.Constants.MAX_ARITY;
+import static patcher.etc.Constants.MAX_DEPTH_OR_COST;
+import static patcher.etc.Constants.MAX_OP_NUM;
+import static patcher.etc.Constants.MAX_TRY_NUM_PER_DEPTH;
+import static patcher.etc.Constants.MAX_TRY_PER_HOLE;
+import static patcher.etc.Constants.MINIMUM_COST;
+import static patcher.etc.Constants.MODEL_PATH;
+import static patcher.etc.Constants.PARTITION_NUM;
+import static patcher.etc.Constants.REPAIR_SPACE_JSON;
+import static patcher.etc.Constants.SCOPE;
+import static patcher.etc.Constants.SEARCH_STRATEGY;
+import static patcher.etc.Constants.SUSPICIOUSNESS_THRESHOLD;
+import static patcher.etc.Constants.TEST_PATH;
+import static patcher.etc.SearchStrategy.ALL_COMBINATIONS;
+
+import alloyfl.coverage.util.TestResult;
+import alloyfl.coverage.util.TestRunner;
+import alloyfl.hybrid.visitor.DescendantCollector;
+import alloyfl.mutation.util.ScoreInfo;
+import edu.mit.csail.sdg.parser.CompModule;
+import fl.FaultLocator;
+import fl.MutationImpact;
+import generator.Generator;
+import generator.opt.GeneratorOpt;
+import generator.util.TypeAnalyzer;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
+import parser.ast.nodes.ModelUnit;
+import parser.ast.nodes.Node;
+import parser.util.AlloyUtil;
+import parser.util.FileUtil;
+import parser.util.Logger;
+import patcher.etc.RelevantTestResults;
+import patcher.etc.SearchStrategy;
+import patcher.opt.PatcherOpt;
+import synthesizer.Synthesizer;
+import synthesizer.util.DepthInfo;
+
+public class Patcher {
+
+  private static String jsonEscape(String s) {
+    if (s == null) {
+      return "";
+    }
+    return s.replace("\\", "\\\\")
+        .replace("\"", "\\\"")
+        .replace("\n", "\\n")
+        .replace("\r", "\\r");
+  }
+
+  /**
+   * Log top-k suspicious nodes at INFO (for captured logs) and write sibling JSON:
+   * {@code <model_stem>_arepair_top3.json} next to the input model.
+   */
+  private static void logAndWriteTop3(
+      PatcherOpt opt, FaultLocator faultLocator, List<Node> rankedNodes, int iterationShown) {
+    int k = Math.min(3, rankedNodes.size());
+    Path modelPath = Paths.get(opt.getModelPath());
+    String fileName = modelPath.getFileName().toString().replaceFirst("\\.als$", "");
+    StringBuilder json = new StringBuilder();
+    json.append("{\n  \"model_path\": \"").append(jsonEscape(opt.getModelPath())).append("\",\n");
+    json.append("  \"iteration\": ").append(iterationShown).append(",\n");
+    json.append("  \"top3\": [\n");
+    for (int i = 0; i < k; i++) {
+      Node node = rankedNodes.get(i);
+      String expr = node.accept(opt.getPSV(), null);
+      double score = 0;
+      int failToPass = 0;
+      int passToFail = 0;
+      try {
+        MutationImpact imp = faultLocator.getMutationImpact(node);
+        score = imp.getScore();
+        failToPass = imp.getFailToPass();
+        passToFail = imp.getPassToFail();
+      } catch (Exception e) {
+        logger.error("getMutationImpact failed for rank " + (i + 1) + ": " + e.getMessage());
+      }
+      if (i > 0) {
+        json.append(",\n");
+      }
+      json.append("    {\"rank\": ").append(i + 1)
+          .append(", \"expr\": \"").append(jsonEscape(expr)).append("\"")
+          .append(", \"score\": ").append(score)
+          .append(", \"failToPass\": ").append(failToPass)
+          .append(", \"passToFail\": ").append(passToFail)
+          .append("}");
+      logger.info("ARepair suspicious rank " + (i + 1) + "/" + k + ": " + expr);
+      logger.info("ARepair suspicious rank " + (i + 1) + " impact: score=" + score
+          + " failToPass=" + failToPass + " passToFail=" + passToFail);
+    }
+    json.append("\n  ]\n}\n");
+    Path out = modelPath.resolveSibling(fileName + "_arepair_top3.json");
+    try {
+      Files.write(out, json.toString().getBytes(StandardCharsets.UTF_8));
+      logger.info("Wrote ARepair top-3 localization: " + out.toAbsolutePath());
+    } catch (Exception e) {
+      logger.error("Failed to write ARepair top-3 file: " + e.getMessage());
+    }
+  }
+
+  private static void configureLogging() {
+    // ARepair uses a lightweight logger from aparser-1.0.jar (parser.util.Logger),
+    // not log4j/logback. Enable DEBUG via env/sysprop so Docker logs contain
+    // fault-localization details like "Most suspicious node".
+    String level = System.getProperty("arepair.log.level");
+    if (level == null || level.trim().isEmpty()) {
+      level = System.getenv("AREPAIR_LOG_LEVEL");
+    }
+    if (level == null) return;
+    String t = level.trim();
+    if (t.isEmpty()) return;
+    if ("DEBUG".equalsIgnoreCase(t) || "1".equals(t) || "TRUE".equalsIgnoreCase(t)) {
+      logger.setMode(Logger.DEBUG);
+    } else if ("INFO".equalsIgnoreCase(t) || "0".equals(t) || "FALSE".equalsIgnoreCase(t)) {
+      logger.setMode(Logger.INFO);
+    }
+  }
+
+  public static void patch(PatcherOpt opt) {
+    if (opt.getRepairSpaceExportPath() != null) {
+      try {
+        Path rsp = Paths.get(opt.getRepairSpaceExportPath());
+        Files.deleteIfExists(rsp);
+        if (rsp.getParent() != null) {
+          Files.createDirectories(rsp.getParent());
+        }
+      } catch (IOException e) {
+        logger.info("Could not reset repair-space JSONL: " + e.getMessage());
+      }
+    }
+    CompModule modelModule = AlloyUtil.compileAlloyModule(opt.getModelPath());
+    assert modelModule != null;
+    ModelUnit modelUnit = new ModelUnit(null, modelModule);
+    FileUtil.writeText(modelUnit.accept(opt.getPSV(), null), FIX_FILE_PATH, false);
+    logger.info("Original model:");
+    System.out.println(FileUtil.readText(FIX_FILE_PATH));
+    logger.info("==========");
+    // Keep track of the depths visited by the synthesizer before.  We do not want to
+    // synthesize expressions from the lowest depth every time we fixed some tests.
+    DepthInfo depthInfo = new DepthInfo();
+    int iteration = 1; // Debugging
+    // Assume the model can be fixed.
+    boolean canFix = true;
+    boolean wroteFirstTop3 = false;
+    while (canFix) {
+      logger.info("Iteration " + iteration++ + ":");
+      CompModule moduleToFix = AlloyUtil.compileAlloyModule(FIX_FILE_PATH);
+      ModelUnit modelToFix = new ModelUnit(null, moduleToFix);
+      // The test runner saves the model with tests into TMPT_FILE_PATH.
+      List<TestResult> testResults = TestRunner
+          .runTests(modelToFix, opt.getTestSuitePath(), opt.getPSV(), opt.getOptions());
+      List<Boolean> testBooleanResults = testResults
+          .stream()
+          // True means the test passes.
+          .map(testResult -> !testResult.isFailed())
+          .collect(Collectors.toList());
+      if (testBooleanResults.stream().allMatch(result -> result)) {
+        break;
+      }
+      canFix = false;
+      Set<Node> nodesCoveredByFailingTests = getNodesCoveredByFailingTests(modelToFix, testResults);
+      FaultLocator faultLocator = new FaultLocator(opt, testBooleanResults,
+          nodesCoveredByFailingTests);
+      timer.record();
+      modelToFix.accept(faultLocator, null);
+      Map<Node, Integer> descNum = countDescendantNum(modelToFix);
+      List<Node> rankedNodes = faultLocator.rankNode(descNum).stream()
+          .map(ScoreInfo::getNode)
+          .collect(Collectors.toList());
+      timer.show("Fault localization time");
+      if (rankedNodes.isEmpty()) {
+        // Cannot find any location to fix.
+        break;
+      }
+      if (!wroteFirstTop3) {
+        // First successful localization in this run: stable evidence for downstream LLM prompts.
+        logAndWriteTop3(opt, faultLocator, rankedNodes, iteration - 1);
+        wroteFirstTop3 = true;
+      }
+      Node mostSuspiciousNode = rankedNodes.get(0);
+      MutationImpact mostSuspiciousImpact = faultLocator.getMutationImpact(mostSuspiciousNode);
+      // We prioritize mutations that make some failing test pass and no passing test fails.
+      // If such mutation does not exist, then we use the most suspicious mutation.
+      if (mostSuspiciousImpact.getFailToPass() > 0 && mostSuspiciousImpact.getPassToFail() == 0
+          || mostSuspiciousImpact.getScore() > SUSPICIOUSNESS_THRESHOLD) {
+        logger.debug("Most suspicious node: " + mostSuspiciousNode.accept(opt.getPSV(), null));
+        logger.debug(
+            "Score: " + mostSuspiciousImpact.getScore() + ", FailToPass: " + mostSuspiciousImpact
+                .getFailToPass() + ", PassToFail: " + mostSuspiciousImpact.getPassToFail());
+        // Mutation can partially fix the bug.
+        FileUtil.writeText(mostSuspiciousImpact.getMutant(), FIX_FILE_PATH, false);
+        logger.info("Fixed by mutation:");
+        System.out.println(FileUtil.readText(FIX_FILE_PATH));
+        logger.info("==========");
+        canFix = true;
+      } else { // Mutation cannot fix the bug and we need to synthesize the components.
+        GeneratorOpt generatorOpt = new GeneratorOpt(BOUND_TYPE, MAX_DEPTH_OR_COST, MAX_ARITY,
+            MAX_OP_NUM, opt.getScope(), opt.enableCaching());
+        TypeAnalyzer analyzer = new TypeAnalyzer(modelToFix);
+        // ModuloInputChecker needs model with tests.
+        CompModule moduleWithTests = mergeModelAndTests(modelUnit, opt.getTestSuitePath(),
+            opt.getPSV());
+        ModelUnit modelUnitWithTests = new ModelUnit(null, moduleWithTests);
+        Generator generator = new Generator(analyzer, generatorOpt, modelUnitWithTests);
+        logger.debug("Test num: " + generator.getTests().size());
+        Synthesizer synthesizer = new Synthesizer(modelToFix, modelUnitWithTests, generatorOpt,
+            generator, analyzer);
+        for (int i = 0; i < rankedNodes.size(); i++) {
+          Node rankedNode = rankedNodes.get(i);
+          logger.debug("Rank Node " + i + ":");
+          logger.debug(rankedNode.accept(opt.getPSV(), null));
+          if (synthesizer.synthesize(rankedNode, depthInfo, opt)) {
+            logger.info("Fixed by synthesizer:");
+            System.out.println(FileUtil.readText(FIX_FILE_PATH));
+            logger.info("==========");
+            canFix = true;
+            break;
+          }
+        }
+      }
+    }
+    if (canFix) {
+      logger.info("All tests pass.");
+    } else {
+      logger.info("Cannot fix the model.");
+    }
+    logger.info("Raw patched model:");
+    System.out.println(FileUtil.readText(FIX_FILE_PATH));
+    logger.info("After simplification:");
+    String simplifiedModel = simplify(
+        new ModelUnit(null, AlloyUtil.compileAlloyModule(FIX_FILE_PATH)));
+    FileUtil.writeText(simplifiedModel, FIX_FILE_PATH, false);
+    System.out.println(simplifiedModel);
+  }
+
+  private static Set<Node> getNodesCoveredByFailingTests(ModelUnit modelUnit,
+      List<TestResult> testResults) {
+    Set<Node> paragraphsCoveredByFailingTests = testResults.stream()
+        .filter(TestResult::isFailed)
+        .map(TestResult::getRelevantNodes)
+        .flatMap(Collection::stream)
+        .collect(Collectors.toSet());
+    Set<Node> visitedNodes = new HashSet<>();
+    Set<Node> descendants = new HashSet<>();
+    for (Node coveredParagraph : paragraphsCoveredByFailingTests) {
+      DescendantCollector descendantCollector = new DescendantCollector(coveredParagraph,
+          visitedNodes);
+      modelUnit.accept(descendantCollector, null);
+      descendants.addAll(descendantCollector.getDescendants());
+      visitedNodes.addAll(descendantCollector.getDescendants());
+    }
+    return descendants;
+  }
+
+  private static Map<Node, RelevantTestResults> constructNodeToTestMapping(ModelUnit modelUnit,
+      List<TestResult> testResults) {
+    // Find all nodes that are covered by failing tests and establish the mapping
+    // between those nodes and the test results.
+    Map<Node, RelevantTestResults> node2test = new HashMap<>();
+    // First collect nodes covered by failing tests.
+    Set<Node> nodesCoveredByFailingTests = testResults.stream()
+        .filter(TestResult::isFailed)
+        .map(TestResult::getRelevantNodes)
+        .flatMap(Collection::stream)
+        .collect(Collectors.toSet());
+    // Then collect tests that execute nodes covered by failing tests.
+    testResults.forEach(testResult -> {
+      testResult.getRelevantNodes().stream()
+          .filter(nodesCoveredByFailingTests::contains)
+          .forEach(nodeCoveredByFailingTests -> {
+            if (!node2test.containsKey(nodeCoveredByFailingTests)) {
+              node2test.put(nodeCoveredByFailingTests, new RelevantTestResults());
+            }
+            node2test.get(nodeCoveredByFailingTests).addTestResult(testResult);
+          });
+    });
+    // Finally map all descendants to the same test results as the paragraph node.
+    // Note that all descendants keep the same test results copy as the paragraph node.
+    node2test.forEach((paraNode, results) -> {
+      DescendantCollector descendantCollector = new DescendantCollector(paraNode, new HashSet<>());
+      modelUnit.accept(descendantCollector, null);
+      descendantCollector.getDescendants().forEach(descendant -> {
+        node2test.put(descendant, results);
+      });
+    });
+    return node2test;
+  }
+
+  private static SearchStrategy findSearchStrategy(String strategy) {
+    switch (strategy) {
+      case "base-choice":
+        return SearchStrategy.BASE_CHOICE;
+      case "all-combinations":
+        return ALL_COMBINATIONS;
+      default:
+        return null;
+    }
+  }
+
+  private static void printAlloyPatcherUsage() {
+    logger.info(
+        "Patcher requires: model path, test path, scope, lowest cost, search strategy"
+            + " and whether to enable sub-formula caching.  If the search strategy is base-choice,"
+            + " then --" + MAX_TRY_PER_HOLE
+            + " must be set.  If the search strategy is all-combinations,"
+            + " then --" + PARTITION_NUM + " and --" + MAX_TRY_NUM_PER_DEPTH + " must be set."
+    );
+  }
+
+  public static void printARepairUsage(HelpFormatter formatter, Options options) {
+    formatter.setOptionComparator(null);
+    formatter.printHelp(
+        CLI_USAGE_DESCRIPTION_WIDTH,
+        Patcher.class.getSimpleName(),
+        "Repair faulty Alloy models.",
+        options,
+        null,
+        true);
+  }
+
+  private static PatcherOpt parseCommandLineArgs(String[] args) {
+    Options options = new Options();
+    options.addRequiredOption("m", MODEL_PATH, true, "Path of the faulty model to repair.");
+    options.addRequiredOption("t", TEST_PATH, true, "Path of the AUnit test suite.");
+    options.addRequiredOption("s", SCOPE, true, "Scope to run all AUnit tests properly.");
+    options.addRequiredOption("c", MINIMUM_COST, true,
+        "Minimum cost/size of the generate expressions.");
+    options.addOption("e", ENABLE_CACHE, false, "Enable hierarchical caching.");
+    options.addRequiredOption("g", SEARCH_STRATEGY, true, "Search strategy of the synthesizer.");
+    // Required for base choice search strategy.
+    options.addOption("h", MAX_TRY_PER_HOLE, true, "Max number of tries per hole.");
+    // Required for all combination search strategy.
+    options.addOption("p", PARTITION_NUM, true, "Number of partitions.");
+    options.addOption("d", MAX_TRY_NUM_PER_DEPTH, true, "Max number of tries per depth.");
+    options.addOption(
+        "r",
+        REPAIR_SPACE_JSON,
+        true,
+        "Append repair-space JSONL (one line per synthesize attempt) to this path.");
+
+    CommandLineParser parser = new DefaultParser();
+    HelpFormatter formatter = new HelpFormatter();
+
+    try {
+      CommandLine commandLine = parser.parse(options, args);
+      String modelPath = Paths.get(commandLine.getOptionValue(MODEL_PATH)).toAbsolutePath()
+          .toString();
+      if (!FileUtil.fileExists(modelPath)) {
+        logger.error("Cannot find model at " + modelPath);
+        printARepairUsage(formatter, options);
+        return null;
+      }
+      String testPath = Paths.get(commandLine.getOptionValue(TEST_PATH)).toAbsolutePath()
+          .toString();
+      if (!FileUtil.fileExists(testPath)) {
+        logger.error("Cannot find tests at " + testPath);
+        printARepairUsage(formatter, options);
+        return null;
+      }
+      int scope = Integer.parseInt(commandLine.getOptionValue(SCOPE));
+      if (scope <= 0) {
+        logger.error("Scope must be greater than 0, but found " + scope);
+        printAlloyPatcherUsage();
+        return null;
+      }
+      int minimumCost = Integer.parseInt(commandLine.getOptionValue(MINIMUM_COST));
+      if (minimumCost <= 0) {
+        logger.error("Minimum cost/size must be greater than 0, but found " + minimumCost);
+        printAlloyPatcherUsage();
+        return null;
+      }
+      String searchStrategyOption = commandLine.getOptionValue(SEARCH_STRATEGY);
+      SearchStrategy searchStrategy = findSearchStrategy(searchStrategyOption);
+      if (searchStrategy == null) {
+        logger.error(
+            "Search strategy must be in " + Arrays.asList(SearchStrategy.values()) + ", but found "
+                + searchStrategyOption);
+        printAlloyPatcherUsage();
+        return null;
+      }
+      int maxTryPerHole = DEFAULT_NUM_TRY_PER_HOLE;
+      int partitionNum = DEFAULT_PARTITION_NUM;
+      int maxTryPerDepth = DEFAULT_NUM_TRY_NUM_PER_DEPTH;
+      switch (searchStrategy) {
+        case BASE_CHOICE:
+          if (commandLine.hasOption(MAX_TRY_PER_HOLE)) {
+            maxTryPerHole = Integer.parseInt(commandLine.getOptionValue(MAX_TRY_PER_HOLE));
+          }
+          break;
+        case ALL_COMBINATIONS:
+          if (commandLine.hasOption(PARTITION_NUM)) {
+            partitionNum = Integer.parseInt(commandLine.getOptionValue(PARTITION_NUM));
+          }
+          if (commandLine.hasOption(MAX_TRY_NUM_PER_DEPTH)) {
+            maxTryPerDepth = Integer.parseInt(commandLine.getOptionValue(MAX_TRY_NUM_PER_DEPTH));
+          }
+          break;
+        default:
+          throw new RuntimeException("Should not happen");
+      }
+      String repairSpaceExportPath = null;
+      if (commandLine.hasOption(REPAIR_SPACE_JSON)) {
+        repairSpaceExportPath =
+            Paths.get(commandLine.getOptionValue(REPAIR_SPACE_JSON))
+                .toAbsolutePath()
+                .normalize()
+                .toString();
+      }
+      return new PatcherOpt(modelPath, testPath, scope, searchStrategy,
+          commandLine.hasOption(ENABLE_CACHE), minimumCost, maxTryPerHole, partitionNum,
+          maxTryPerDepth, repairSpaceExportPath);
+    } catch (ParseException e) {
+      logger.error(e.getMessage());
+      printARepairUsage(formatter, options);
+      return null;
+    }
+  }
+
+  public static void main(String... args) {
+    configureLogging();
+    PatcherOpt patcherOpt = parseCommandLineArgs(args);
+    if (patcherOpt == null) {
+      return;
+    }
+    patch(patcherOpt);
+  }
+}

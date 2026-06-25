@@ -1,0 +1,20 @@
+r & ~r in iden
+no (r & ~r) - iden
+all x, y: S | x->y in r and y->x in r implies x = y
+all x, y: S | y in x.r and x in y.r implies x = y
+all x: S | x.r & r.x in x
+no x, y: S | x != y and x->y in r and y->x in r
+all disj x, y: S | x->y in r implies y->x not in r
+all x, y: S | x in y.r and y in x.r implies x = y
+no x, y: S | x->y in r and y->x in r and x != y
+no disj x, y: S | x->y in r and y->x in r
+all x: S | no y: S - x | x->y in r and y->x in r
+all x: S | all y: x.r | y->x in r implies x = y
+(r & ~r) - iden = none
+all x, y: S | x != y and x->y in r implies y->x not in r
+all x: S | x.r & r.x - x = none
+~r & r in iden
+no x, y: S | x in y.r and y in x.r and x != y
+no disj x, y: S | x in y.r and y in x.r
+all x, y: S | (x in y.r and y in x.r) => x = y
+all x, y: S | x->y in r and y->x

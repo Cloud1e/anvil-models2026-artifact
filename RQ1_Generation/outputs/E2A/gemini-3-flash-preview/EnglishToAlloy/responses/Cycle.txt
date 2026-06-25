@@ -1,0 +1,20 @@
+some n: Node | n in n.^link
+some (^link & iden)
+some n: Node | n in n.link.*link
+some n: Node | some m: n.link | n in m.*link
+some n: Node | n -> n in ^link
+not (all n: Node | n !in n.^link)
+some n: Node | n in n.link or n in n.link.^link
+some n: Node | n in n.link.link.*link
+some n: Node | some m: Node | n -> m in link and m -> n in *link
+some n: Node | some m: n.link | m -> n in *link
+some n: Node | some m: Node | m in n.link and n in m.*link
+some n: Node | some m: n.^link | m -> n in link
+some n: Node | some m: Node | n in m.link and m in n.*link
+some n: Node | some m: Node | n in m.^link and m in n.link
+some n: Node | n in n.link.^link
+some n: Node | n in n.^link.link
+some n: Node | some (n.^link & n)
+some n: Node | n in n.(^link)
+some n: Node | n in (^link).n
+some n: Node | n in n.link.(link.*link)

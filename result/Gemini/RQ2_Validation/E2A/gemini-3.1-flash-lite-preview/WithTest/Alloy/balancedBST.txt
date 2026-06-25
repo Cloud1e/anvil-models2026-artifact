@@ -1,0 +1,110 @@
+Sorted: all n: Node | (all n' : n.left.*(left+right) | n'.elem < n.elem) and (all n' : n.right.*(left+right) | n'.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all m: n.left.*(left + right) | m.elem < n.elem) and (all m: n.right.*(left + right) | m.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all leftSub: n.left.*(left + right) | leftSub.elem < n.elem) and (all rightSub: n.right.*(left + right) | rightSub.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all n': n.left.*(left+right) | n'.elem < n.elem) and (all n': n.right.*(left+right) | n'.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all l: n.left.*(left + right) | l.elem < n.elem) and (all r: n.right.*(left + right) | r.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all m: Node | m in n.left.*(left+right) implies m.elem < n.elem) and (all m: Node | m in n.right.*(left+right) implies m.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all x: n.left.*(left + right) | x.elem < n.elem) and (all x: n.right.*(left + right) | x.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all y: n.left.*(left+right) | y.elem < n.elem) and (all y: n.right.*(left+right) | y.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all l: n.left.*(left+right) | l.elem < n.elem) and (all r: n.right.*(left+right) | r.elem > n.elem)
+Correct
+
+Sorted: all n: Node | (all m: n.left.*(left+right) | m.elem < n.elem) and (all m: n.right.*(left+right) | m.elem > n.elem)
+Correct
+
+Balanced: all n1, n2: {n: Node | no n.left or no n.right} | let d1 = Depth[n1], d2 = Depth[n2] | d1.minus[d2].abs <= 1
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: {n: Node | no n.left or no n.right} | let diff = Depth[n1].minus[Depth[n2]] | diff.abs <= 1
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: {n: Node | no n.left or no n.right} | let diff = Depth[n1] - Depth[n2] | diff <= 1 and diff >= -1
+Wrong
+
+Balanced: all n1, n2: {n: Node | no n.left or no n.right} | let d1 = Depth[n1], d2 = Depth[n2] | d1 <= d2.plus[1] and d2 <= d1.plus[1]
+Correct
+
+Balanced: all n1, n2: {n: Node | no n.left or no n.right} | let d = Depth[n1].minus[Depth[n2]] | d <= 1 and d >= -1
+Correct
+
+Balanced: all n1, n2: {n: Node | no n.left or no n.right} | Depth[n1].minus[Depth[n2]].abs <= 1
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: {n: Node | no n.left or no n.right} | let d1 = Depth[n1], d2 = Depth[n2] | d1 > d2 ? d1 - d2 <= 1 : d2 - d1 <= 1
+Syntax Error
+SYN_MSG:
+Syntax error at the ? character.
+END_SYN_MSG
+
+Balanced: all n1, n2: {n: Node | no n.left or no n.right} | Depth[n1] - Depth[n2] <= 1 and Depth[n2] - Depth[n1] <= 1
+Wrong
+
+Balanced: all n1, n2: {n: Node | no n.left or no n.right} | abs[Depth[n1] - Depth[n2]] <= 1
+Syntax Error
+SYN_MSG:
+The name "abs" cannot be found.
+END_SYN_MSG
+
+Balanced: all n1, n2: {n: Node | no n.left or no n.right} | let d = Depth[n1] - Depth[n2] | d >= -1 and d <= 1
+Wrong
+
+HasAtMostOneChild: no n.left or no n.right
+Correct
+
+HasAtMostOneChild: not (some n.left and some n.right)
+Correct
+
+HasAtMostOneChild: lone n.left + n.right
+Correct
+
+HasAtMostOneChild: not (some n.left) or not (some n.right)
+Correct
+
+HasAtMostOneChild: (no n.left) or (no n.right)
+Correct
+
+HasAtMostOneChild: lone (n.left + n.right)
+Correct
+
+HasAtMostOneChild: no n.left or no n.right -- aug7
+Correct
+
+HasAtMostOneChild: not (some n.left and some n.right) -- aug8
+Correct
+
+HasAtMostOneChild: lone n.left + n.right -- aug9
+Correct
+
+HasAtMostOneChild: not (some n.left) or not (some n.right) -- aug10
+Correct
+
+Total: 30
+Unique: 30
+Correct: 22
+Syntax Error: 5
+Wrong: 3

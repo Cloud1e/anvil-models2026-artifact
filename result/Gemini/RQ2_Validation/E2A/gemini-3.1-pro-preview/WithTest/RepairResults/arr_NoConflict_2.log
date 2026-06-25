@@ -1,0 +1,135 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int),e: (one Element) {
+(some e2: (one Element) {
+((e != e2) && ((idx.(Array.i2e)) = e) && ((idx.(Array.i2e)) = e2))
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 26 column 5:
+There are 5 possible tokens that can appear here:
+enum fun let open pred 
+	at edu.mit.csail.sdg.parser.CompParser.syntax_error(CompParser.java:2218)
+	at edu.mit.csail.sdg.parser.CompParser.parse(CompParser.java:2079)
+	at edu.mit.csail.sdg.parser.CompParser.alloy_parseStream(CompParser.java:2259)
+	at edu.mit.csail.sdg.parser.CompUtil.parseRecursively(CompUtil.java:217)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:363)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:107)
+	at fl.FaultLocator.visit(FaultLocator.java:205)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$13(VoidVisitorAdapter.java:131)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:131)
+	at fl.FaultLocator.visit(FaultLocator.java:228)
+	at parser.ast.nodes.ListFormula.accept(ListFormula.java:48)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:100)
+	at patcher.Patcher.main(Patcher.java:341)
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int),e: (one Element) {
+(some e2: (one Element) {
+((e = e2) && ((idx.(Array.i2e)) = e) && ((idx.(Array.i2e)) = e2))
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Left Int: false, Right Int: false
+Exception in thread "main" java.util.NoSuchElementException: No value present
+	at java.util.Optional.get(Optional.java:135)
+	at mualloy.util.MutantEquivalenceChecker.checkEquivalenceAndGenerateTest(MutantEquivalenceChecker.java:172)
+	at mualloy.rule.BOR.mutate(BOR.java:130)
+	at fl.FaultLocator.visit(FaultLocator.java:205)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$13(VoidVisitorAdapter.java:131)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:131)
+	at fl.FaultLocator.visit(FaultLocator.java:228)
+	at parser.ast.nodes.ListFormula.accept(ListFormula.java:48)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:100)
+	at patcher.Patcher.main(Patcher.java:341)

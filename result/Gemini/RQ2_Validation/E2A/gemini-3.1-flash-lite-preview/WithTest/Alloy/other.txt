@@ -1,0 +1,35 @@
+CanEnter: p.member_of in r.located_in
+Correct
+
+CanEnter: some p.member_of & r.located_in
+Wrong
+
+CanEnter: p.member_of & r.located_in != none
+Wrong
+
+CanEnter: not (p.member_of & r.located_in = none)
+Wrong
+
+CanEnter: all g: p.member_of | g in r.located_in
+Correct
+
+CanEnter: some g: p.member_of | g in r.located_in
+Wrong
+
+CanEnter: p.member_of in (r.located_in)
+Correct
+
+CanEnter: (p.member_of & r.located_in) in Group
+Wrong
+
+CanEnter: r.located_in & p.member_of != none
+Wrong
+
+CanEnter: p.member_of & r.located_in in Group
+Wrong
+
+Total: 10
+Unique: 10
+Correct: 3
+Syntax Error: 0
+Wrong: 7

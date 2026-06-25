@@ -1,0 +1,13 @@
+no idx: Array.i2e.Element | some other_idx: Array.i2e.Element | idx != other_idx && Array.i2e[idx] = Array.i2e[other_idx]
+disjoint Array.i2e[Int]
+no idx: Int, val: Element, idx': Int, val': Element | idx != idx' && Array.i2e[idx] = val && Array.i2e[idx'] = val' implies idx = idx'
+no val: Element | some idx, idx': Int | Array.i2e[idx] = val && Array.i2e[idx'] = val && idx != idx'
+let elems = Array.i2e.Element | no idx, idx': Int | idx != idx' && Array.i2e[idx] = Array.i2e[idx']
+disjoint dom = { i: Int | i in Array.i2e.Element } and range = Array.i2e.Element
+no i, i': Int | i != i' && Array.i2e[i] = Array.i2e[i']
+fun Array_Inv (elems: set Element): set Int {
+  {i: Int | some e: elems | Array.i2e[i] = e}
+}
+no e: Element | #(Array_Inv({e}) & dom Array.i2e) > 1
+#Array.i2e.Element = #(Array.i2e.Element.Int)
+no idx: Int, idx': Int, elem: Element | idx != idx' && Array.i2e[idx] = elem && Array.i2e[idx'] = elem

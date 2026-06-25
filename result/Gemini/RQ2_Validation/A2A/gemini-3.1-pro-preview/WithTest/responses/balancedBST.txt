@@ -1,0 +1,30 @@
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] && HasAtMostOneChild[n2]) => (let diff = minus[Depth[n1], Depth[n2]] | -1 <= diff && diff <= 1)
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (let diff = minus[Depth[n1], Depth[n2]] | diff >= -1 and diff <= 1)
+Balanced: all x, y: Node | (HasAtMostOneChild[x] && HasAtMostOneChild[y]) => (let diff = minus[Depth[x], Depth[y]] | -1 <= diff && diff <= 1)
+Balanced: all a, b: Node | (HasAtMostOneChild[a] and HasAtMostOneChild[b]) => (let diff = minus[Depth[a], Depth[b]] | -1 <= diff and diff <= 1)
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] && HasAtMostOneChild[n2]) => (minus[Depth[n1], Depth[n2]] >= -1 && minus[Depth[n1], Depth[n2]] <= 1)
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (minus[Depth[n1], Depth[n2]] >= -1 and minus[Depth[n1], Depth[n2]] <= 1)
+Balanced: all a, b: Node | (HasAtMostOneChild[a] && HasAtMostOneChild[b]) => (minus[Depth[a], Depth[b]] >= -1 && minus[Depth[a], Depth[b]] <= 1)
+Balanced: all x, y: Node | (HasAtMostOneChild[x] and HasAtMostOneChild[y]) implies let d = minus[Depth[x], Depth[y]] | -1 <= d and d <= 1
+Balanced: all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (minus[Depth[n1], Depth[n2]] >= -1 and minus[Depth[n1], Depth[n2]] <= 1)
+Balanced: all n1, n2: Node | not (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) or (let diff = minus[Depth[n1], Depth[n2]] | -1 <= diff and diff <= 1)
+HasAtMostOneChild: no n.left || no n.right
+HasAtMostOneChild: no n.left or no n.right
+HasAtMostOneChild: #(n.left + n.right) <= 1
+HasAtMostOneChild: lone n.left + n.right
+HasAtMostOneChild: lone n.(left + right)
+HasAtMostOneChild: some n.left implies no n.right
+HasAtMostOneChild: some n.right implies no n.left
+HasAtMostOneChild: not (some n.left and some n.right)
+HasAtMostOneChild: not (some n.left && some n.right)
+HasAtMostOneChild: #(n.left) + #(n.right) <= 1
+Sorted: all n: Node | (all nl: n.left.*(left + right) | nl.elem < n.elem) and (all nr: n.right.*(left + right) | nr.elem > n.elem)
+Sorted: all n: Node | (all l: n.left.*(left + right) | l.elem < n.elem) and (all r: n.right.*(left + right) | r.elem > n.elem)
+Sorted: all x: Node | (all l: x.left.*(left + right) | l.elem < x.elem) and (all r: x.right.*(left + right) | r.elem > x.elem)
+Sorted: all n: Node | (no l: n.left.*(left + right) | l.elem >= n.elem) and (no r: n.right.*(left + right) | r.elem <= n.elem)
+Sorted: all n: Node | (all nl: n.left.*(left + right) | n.elem > nl.elem) and (all nr: n.right.*(left + right) | n.elem < nr.elem)
+Sorted: all n: Node | (no nl: n.left.*(left + right) | n.elem <= nl.elem) and (no nr: n.right.*(left + right) | n.elem >= nr.elem)
+Sorted: all a: Node | (all nl: a.left.*(left + right) | nl.elem < a.elem) and (all nr: a.right.*(left + right) | nr.elem > a.elem)
+Sorted: all y: Node | (all nl: y.left.*(left + right) | nl.elem < y.elem) and (all nr: y.right.*(left + right) | nr.elem > y.elem)
+Sorted: all n: Node | (all l: n.left.*(left + right) | n.elem > l.elem) and (all r: n.right.*(left + right) | n.elem < r.elem)
+Sorted: all m: Node | (all ml: m.left.*(left + right) | ml.elem < m.elem) and (all mr: m.right.*(left + right) | mr.elem > m.elem)

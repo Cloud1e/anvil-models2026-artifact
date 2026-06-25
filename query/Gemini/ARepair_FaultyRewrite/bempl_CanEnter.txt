@@ -1,0 +1,48 @@
+Task:
+Rewrite the body of a faulty Alloy predicate into 10 alternative syntactic forms.
+Keep the predicate name and parameters exactly the same.
+Do not intentionally fix any potential bug in the predicate. Each rewritten predicate should preserve the current (buggy) behavior.
+
+Faulty model:
+sig Room {}
+one sig secure_lab extends Room {}
+
+abstract sig Person {
+  owns : set Key
+}
+sig Employee extends Person {}
+sig Researcher extends Person {}
+
+sig Key {
+  authorized: one Employee,
+  opened_by: one Room
+}
+
+pred CanEnter(p: Person, r:Room) {
+	r in p.owns.opened_by
+}
+
+fact {
+  no Employee.owns
+}
+
+// Should help create tests.
+assert no_thief_in_seclab {
+  all p : Person | CanEnter[p, secure_lab] implies p in Researcher
+}
+check no_thief_in_seclab
+
+Target predicate name:
+CanEnter
+
+Guidelines:
+- Keep the same predicate header (name and parameter list).
+- Keep the overall meaning and buggy behavior as close as possible to the original predicate.
+- You may freely restructure the body (e.g., change quantifier nesting, reorder conjuncts, use helper lets), as long as it is valid Alloy.
+- Ensure that each rewriting is a complete predicate definition for CanEnter.
+- Do not add or remove other predicates, functions, signatures, facts, or comments in the module.
+
+Output:
+- Return 10 rewritten versions of the target predicate as Alloy code.
+- Separate each version clearly (for example, by a blank line).
+- Do not include any explanations or commentary, only Alloy code.

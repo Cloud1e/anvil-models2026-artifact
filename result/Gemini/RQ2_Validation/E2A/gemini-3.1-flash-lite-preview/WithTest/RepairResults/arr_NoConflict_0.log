@@ -1,0 +1,1826 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+(some i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) != 1)
+})
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) < 1)
+})
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) !> 1)
+})
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) !>= 1)
+})
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e))->some Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e))->one Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e))->lone Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) some->Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) some->some Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) some->one Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) some->lone Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) one->Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) one->some Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) one->one Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) one->lone Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) lone->Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) lone->some Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) lone->one Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 31:
+Multiplicity expression not allowed here.
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:459)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:491)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:475)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] Multiplicity expression not allowed here.
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) lone->lone Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+Syntax error in /workspace/ARepair/.hidden/attempt.als at line 10 column 46:
+There are 1 possible tokens that can appear here:
+) 
+	at edu.mit.csail.sdg.parser.CompParser.syntax_error(CompParser.java:2218)
+	at edu.mit.csail.sdg.parser.CompParser.parse(CompParser.java:2079)
+	at edu.mit.csail.sdg.parser.CompParser.alloy_parseStream(CompParser.java:2259)
+	at edu.mit.csail.sdg.parser.CompUtil.parseRecursively(CompUtil.java:217)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:363)
+	at parser.util.AlloyUtil.compileAlloyModule(AlloyUtil.java:41)
+	at parser.util.AlloyUtil.isValidModel(AlloyUtil.java:51)
+	at mualloy.rule.BOR.mutate(BOR.java:39)
+	at fl.FaultLocator.visit(FaultLocator.java:190)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:115)
+	at fl.FaultLocator.visit(FaultLocator.java:199)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:108)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:104)
+	at fl.FaultLocator.visit(FaultLocator.java:171)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:78)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:120)
+	at fl.FaultLocator.visit(FaultLocator.java:212)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:76)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:153)
+	at fl.FaultLocator.visit(FaultLocator.java:252)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:54)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:183)
+	at fl.FaultLocator.visit(FaultLocator.java:284)
+	at parser.ast.nodes.Body.accept(Body.java:40)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:189)
+	at fl.FaultLocator.visit(FaultLocator.java:298)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:26)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$2(VoidVisitorAdapter.java:43)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:43)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:389)
+[DEBUG] There are 1 possible tokens that can appear here:
+) 
+[DEBUG] Error model: 
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) isSeq->lone Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) :> Element))) <= 1)
+})
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) ++ Element))) <= 1)
+})
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx !< 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx !>= (Array.length)))
+}) && ((Array.length) >= 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all i: (one Int) {
+((#(((Array.i2e).Element) & ((i.(Array.i2e)) <: Element))) <= 1)
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) !< 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+ [INFO] Fault localization time: 11489579297
+Exception in thread "main" java.lang.RuntimeException: Unsupported binary operator  <: 
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:563)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:103)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:468)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.BinaryExpr.accept(BinaryExpr.java:103)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:397)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.UnaryExpr.accept(UnaryExpr.java:73)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:573)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.BinaryFormula.accept(BinaryFormula.java:71)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:720)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.Body.accept(Body.java:35)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:648)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.QtFormula.accept(QtFormula.java:49)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:720)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.Body.accept(Body.java:35)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:736)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.Predicate.accept(Predicate.java:21)
+	at generator.util.TypeAnalyzer.lambda$visit$5(TypeAnalyzer.java:253)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:175)
+	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1384)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:485)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:253)
+	at generator.util.TypeAnalyzer.visit(TypeAnalyzer.java:100)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:169)
+	at generator.util.TypeAnalyzer.<init>(TypeAnalyzer.java:131)
+	at patcher.Patcher.patch(Patcher.java:163)
+	at patcher.Patcher.main(Patcher.java:389)

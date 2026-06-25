@@ -1,0 +1,39 @@
+pred UniqueElem() {
+  all n: Node | no (n.pre.elem & n.nxt.elem)
+}
+
+pred UniqueElem() {
+  no n: Node | some (n.pre.elem & n.nxt.elem)
+}
+
+pred UniqueElem() {
+  all n: Node | disjoint[n.pre.elem, n.nxt.elem]
+}
+
+pred UniqueElem() {
+  all n: Node | #(n.pre.elem & n.nxt.elem) = 0
+}
+
+pred UniqueElem() {
+  all n: Node | (some n.pre and some n.nxt) => n.pre.elem != n.nxt.elem
+}
+
+pred UniqueElem() {
+  all n: Node | let p = n.pre, s = n.nxt | p.elem & s.elem = none
+}
+
+pred UniqueElem() {
+  all n: Node | n.pre.elem & n.nxt.elem in none
+}
+
+pred UniqueElem() {
+  all n: Node | not (some i: Int | i in n.pre.elem and i in n.nxt.elem)
+}
+
+pred UniqueElem() {
+  all n: Node | n.pre.elem & n.nxt.elem = {i: Int | i != i}
+}
+
+pred UniqueElem() {
+  all n: Node | all p: n.pre.elem, s: n.nxt.elem | p != s
+}

@@ -1,0 +1,20 @@
+~r . r in iden
+all s: S | lone s.r
+all s: S | #s.r <= 1
+all s: S | lone r[s]
+all s: S | s.r -> s.r in iden
+all s: S, x, y: S | s->x in r and s->y in r implies x = y
+no s: S | some disj x, y: S | s->x in r and s->y in r
+#(r) = #r.S
+all s: S | s.r = none or one s.r
+no (~r . r - iden)
+all s: S | lone x: S | s->x in r
+not some s: S | #s.r > 1
+all s: S | no x, y: S | x != y and s->x in r and s->y in r
+all s: S | lone {x: S | s->x in r}
+all s: S | s.r = none or (some x: S | s.r = x)
+all s: S | #(s.r) < 2
+r in S lone -> S
+all s: S | lone (s <: r)
+no s: S | some x: s.r, y: s.r | x != y
+all s: S | lone (r & s->S)

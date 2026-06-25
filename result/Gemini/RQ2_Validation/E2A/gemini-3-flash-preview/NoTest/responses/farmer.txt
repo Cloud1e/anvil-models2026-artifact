@@ -1,0 +1,20 @@
+crossRiver: some p: from | from' = from - Farmer - p and to' = to + Farmer + p and all x, y: from' | x -> y not in eats
+crossRiver: some p: from | from' = from - Farmer - p and to' = to + Farmer + p and no x, y: from' | x -> y in eats
+crossRiver: some p: from | from' = from - Farmer - p and to' = to + Farmer + p and all x, y: from' | y not in x.eats
+crossRiver: some p: from | from' = from - Farmer - p and to' = to + Farmer + p and no x, y: from' | y in x.eats
+crossRiver: some p: from | {from' = from - Farmer - p and to' = to + Farmer + p and all x, y: from' | x -> y not in eats}
+crossRiver: some p: from | {from' = from - Farmer - p and to' = to + Farmer + p and no x, y: from' | x -> y in eats}
+crossRiver: some p: from | (from' = from - Farmer - p and to' = to + Farmer + p) and all x, y: from' | x -> y not in eats
+crossRiver: some p: from | (from' = from - Farmer - p and to' = to + Farmer + p) and no x, y: from' | x -> y in eats
+crossRiver: some p: from | no from'->from' & eats and from' = from - Farmer - p and to' = to + Farmer + p
+crossRiver: some p: from | (all x, y: from' | x -> y not in eats) and from' = from - Farmer - p and to' = to + Farmer + p
+solvePuzzle: ord/last.far = Object
+solvePuzzle: Object = ord/last.far
+solvePuzzle: Object in ord/last.far
+solvePuzzle: all x: Object | x in ord/last.far
+solvePuzzle: no x: Object | x not in ord/last.far
+solvePuzzle: ord/last.near = none
+solvePuzzle: none = ord/last.near
+solvePuzzle: no ord/last.near
+solvePuzzle: all x: Object | x not in ord/last.near
+solvePuzzle: ord/last.far = ord/first.near

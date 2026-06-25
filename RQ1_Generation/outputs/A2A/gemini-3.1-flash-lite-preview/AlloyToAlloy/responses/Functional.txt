@@ -1,0 +1,20 @@
+all s: S | all disj x, y: s.r | none
+all s: S | #s.r <= 1
+all s: S | no disj x, y: s.r
+all s: S | lone x: S | x in s.r
+all s: S | not some disj x, y: s.r
+all s: S | (s.r = none) or (one s.r)
+all s: S | all x: s.r | all y: s.r | x = y
+all s: S | (s.r = none) or (all x: s.r | all y: s.r | x = y)
+all s: S | lone (s.r & S)
+all s: S | (s.r in S) and (all disj x, y: s.r | x = y and false)
+all s: S | not (some x: S | some y: S | x != y and x in s.r and y in s.r)
+all s: S | all x, y: S | (x in s.r and y in s.r) => x = y
+all s: S | (s.r = none) or (some x: S | s.r = x)
+all s: S | lone x: S | s->x in r
+all s: S | not (some x, y: s.r | x != y)
+all s: S | # {x: S | x in s.r} <= 1
+all s: S | (no s.r) or (one s.r)
+all s: S | all x, y: s.r | x = y
+all s: S | (s.r = none) or (all x: s.r | x = (some y: s.r | y))
+all s: S | lone x: s.r

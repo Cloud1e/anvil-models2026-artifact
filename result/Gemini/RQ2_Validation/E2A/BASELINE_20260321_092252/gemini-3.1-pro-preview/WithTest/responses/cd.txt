@@ -1,0 +1,40 @@
+ObjectNoExt: no Object.ext
+ObjectNoExt: Object.ext = none
+ObjectNoExt: not some Object.ext
+ObjectNoExt: all c: Class | c not in Object.ext
+ObjectNoExt: no c: Class | c in Object.ext
+ObjectNoExt: all x: Class | x not in Object.ext
+ObjectNoExt: no x: Class | x in Object.ext
+ObjectNoExt: Object.ext in none
+ObjectNoExt: none = Object.ext
+ObjectNoExt: not some c: Class | Object->c in ext
+Acyclic: no c: Class | c in c.^ext
+Acyclic: all c: Class | c not in c.^ext
+Acyclic: no iden & ^ext
+Acyclic: ^ext & iden = none
+Acyclic: no (^ext & iden)
+Acyclic: all x: Class | x not in x.^ext
+Acyclic: no x: Class | x in x.^ext
+Acyclic: not some c: Class | c in c.^ext
+Acyclic: not some x: Class | x in x.^ext
+Acyclic: none = iden & ^ext
+AllExtObject: all c: Class - Object | Object in c.^ext
+AllExtObject: all x: Class - Object | Object in x.^ext
+AllExtObject: no c: Class - Object | Object not in c.^ext
+AllExtObject: all c: Class | c != Object implies Object in c.^ext
+AllExtObject: all x: Class | x != Object implies Object in x.^ext
+AllExtObject: not some c: Class - Object | Object not in c.^ext
+AllExtObject: not some x: Class - Object | Object not in x.^ext
+AllExtObject: Class - Object in Object.~^ext
+AllExtObject: Class in Object.~^ext + Object
+AllExtObject: all c: Class - Object | some (c.^ext & Object)
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and AllExtObject[]
+ClassHierarchy: Acyclic[] and ObjectNoExt[] and AllExtObject[]
+ClassHierarchy: AllExtObject[] and ObjectNoExt[] and Acyclic[]
+ClassHierarchy: AllExtObject[] and Acyclic[] and ObjectNoExt[]
+ClassHierarchy: ObjectNoExt[] && Acyclic[] && AllExtObject[]
+ClassHierarchy: Acyclic[] && ObjectNoExt[] && AllExtObject[]
+ClassHierarchy: AllExtObject[] && ObjectNoExt[] && Acyclic[]
+ClassHierarchy: AllExtObject[] && Acyclic[] && ObjectNoExt[]
+ClassHierarchy: ObjectNoExt() and Acyclic() and AllExtObject()
+ClassHierarchy: Acyclic() and ObjectNoExt() and AllExtObject()

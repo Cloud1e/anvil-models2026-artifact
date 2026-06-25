@@ -1,0 +1,65 @@
+r in ~r
+Correct
+
+~r in r
+Correct
+
+r = ~r
+Correct
+
+no r - ~r
+Correct
+
+no ~r - r
+Correct
+
+r - ~r = none
+Syntax Error
+
+~r - r = none
+Syntax Error
+
+r & ~r = r
+Correct
+
+r + ~r = r
+Correct
+
+all x, y: S | x->y in r <=> y->x in r
+Correct
+
+all x, y: S | x->y in r => y->x in r
+Correct
+
+all x, y: S | y in x.r => x in y.r
+Correct
+
+all x, y: S | x in r.y => y in r.x
+Correct
+
+all x: S | x.r in r.x
+Correct
+
+all x: S | r.x in x.r
+Correct
+
+all x: S | x.r = r.x
+Correct
+
+no x, y: S | x->y in r and not y->x in r
+Correct
+
+all x, y: S | not x->y in r or y->x in r
+Correct
+
+no x: S | some x.r - r.x
+Correct
+
+all x: S | no x.r - r.x
+Correct
+
+Total: 20
+Unique: 20
+Correct: 18
+Syntax Error: 2
+Wrong: 0

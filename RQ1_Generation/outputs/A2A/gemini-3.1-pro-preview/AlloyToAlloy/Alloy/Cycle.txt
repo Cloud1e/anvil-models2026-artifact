@@ -1,0 +1,65 @@
+some iden & ^link
+Correct
+
+not no iden & ^link
+Correct
+
+some ^link & iden
+Correct
+
+not no ^link & iden
+Correct
+
+some x: Node | x in x.^link
+Correct
+
+not all n: Node | n not in n.^link
+Correct
+
+not no n: Node | n in n.^link
+Correct
+
+some n: Node | n->n in ^link
+Correct
+
+not no n: Node | n->n in ^link
+Correct
+
+some iden & link.*link
+Correct
+
+some iden & *link.link
+Correct
+
+some n: Node | n in n.(link.*link)
+Correct
+
+some n: Node | n in n.(*link.link)
+Correct
+
+some n: Node | n->n in link.*link
+Correct
+
+some x, y: Node | x->y in link and y->x in *link
+Correct
+
+not all x, y: Node | x->y in link implies y->x not in *link
+Correct
+
+some x: Node | x in ^link.x
+Correct
+
+some n: Node | n in n.link + n.link.^link
+Correct
+
+some n: Node | n in n.link or n in n.link.^link
+Correct
+
+some x, y: Node | x->y in ^link and y->x in ^link
+Correct
+
+Total: 20
+Unique: 20
+Correct: 20
+Syntax Error: 0
+Wrong: 0

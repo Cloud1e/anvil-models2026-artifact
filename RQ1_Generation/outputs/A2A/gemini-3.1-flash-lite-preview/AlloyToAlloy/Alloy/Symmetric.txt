@@ -1,0 +1,65 @@
+all s, t: S | t->s in r iff s->t in r
+Correct
+
+r = ~r
+Correct
+
+r = r.~iden
+Wrong
+
+all s: S | r[s] = {t: S | s in r[t]}
+Correct
+
+no (r - ~r)
+Correct
+
+all s: S | all t: s.r | s in t.r
+Correct
+
+r in ~r and ~r in r
+Correct
+
+all disj s, t: S | s->t in r implies t->s in r
+Correct
+
+r.univ = (~r).univ and all s: S | all t: S | s->t in r implies t->s in r
+Correct
+
+r = r & ~r + ~(r & ~r)
+Correct
+
+all s, t: S | t->s in r or s->t not in r
+Correct
+
+no s, t: S | s->t in r and t->s not in r
+Correct
+
+r.S = S.r and all s: S | s in r.s implies s in s.r
+Wrong
+
+r = {s, t: S | t->s in r}
+Correct
+
+all s, t: S | s->t in r iff t->s in r
+Correct
+
+all s: S | all t: S | (s->t in r) => (t->s in r)
+Correct
+
+not some s, t: S | s->t in r and not (t->s in r)
+Correct
+
+all x, y: S | x->y in r iff y->x in r
+Correct
+
+no r - ~r
+Correct
+
+all x: S | r[x] = {y: S | x in r[y]}
+Correct
+
+Total: 20
+Unique: 20
+Correct: 18
+Syntax Error: 0
+Wrong: 2

@@ -1,0 +1,39 @@
+pred ObjectNoExt() {
+  no c: Class | Object in c.^ext
+}
+
+pred ObjectNoExt() {
+  all c: Class | not (Object in c.^ext)
+}
+
+pred ObjectNoExt() {
+  Object !in Class.^ext
+}
+
+pred ObjectNoExt() {
+  no Class.^ext & Object
+}
+
+pred ObjectNoExt() {
+  no Object & Class.^ext
+}
+
+pred ObjectNoExt() {
+  all c: Class | no c.^ext & Object
+}
+
+pred ObjectNoExt() {
+  all c: Class | Object & c.^ext = none
+}
+
+pred ObjectNoExt() {
+  Class.^ext & Object = none
+}
+
+pred ObjectNoExt() {
+  Object & Class.^ext = none
+}
+
+pred ObjectNoExt() {
+  all c: Class | c.^ext & Object in none
+}

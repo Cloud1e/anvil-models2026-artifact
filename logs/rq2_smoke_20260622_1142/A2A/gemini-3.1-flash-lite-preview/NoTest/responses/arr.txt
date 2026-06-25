@@ -1,0 +1,10 @@
+all i: Array.i2e.Element | no (Array.i2e[i] & (Array.i2e.Element - i).Array.i2e)
+all i: Array.i2e.Element | #Array.i2e[i] <= 1
+all i: Array.i2e.Element | one e: Element | Array.i2e[i] = e implies Array.i2e[i] = e
+all i: dom[Array.i2e] | lone Array.i2e[i]
+no i: Array.i2e.Element | #(Array.i2e[i]) > 1
+all disj i, j: Array.i2e.Element | no (Array.i2e[i] & Array.i2e[j])
+all i: Array.i2e.Element | not some e1, e2: Element | e1 != e2 and Array.i2e[i] = e1 and Array.i2e[i] = e2
+all i: Array.i2e.Element | #(Array.i2e[i] <: Element) <= 1
+all i: Array.i2e.Element | i in Array.i2e.Element implies lone Array.i2e[i]
+all i: Int | lone Array.i2e[i]

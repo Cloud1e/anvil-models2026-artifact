@@ -1,0 +1,894 @@
+FARMER Test Suite Detailed Report
+Timestamp: 2026-06-22_21-04-26
+
+Model run commands: 1
+==============================
+Candidate 1
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all o: Object | o in (from - carry) implies (some e: Object | e in (from - carry) and o in e.eats implies (Farmer in (from - carry)))) and from' = from - carry and to' = to + carry)
+
+Result: Syntax Error
+
+==============================
+Candidate 2
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all o: Object | o in (from - carry) implies (all e: Object | e in (from - carry) and o in e.eats implies (Farmer in (from - carry)))) and from' = from - carry and to' = to + carry)
+
+Result: Syntax Error
+
+==============================
+Candidate 3
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all disj a, b: from - carry | b not in a.eats) and from' = from - carry and to' = to + carry)
+
+Result: Syntax Error
+
+==============================
+Candidate 4
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all a: from - carry | all b: from - carry | b in a.eats implies no (from - carry & Farmer)) and from' = from - carry and to' = to + carry)
+
+Result: Syntax Error
+
+==============================
+Candidate 5
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (no a, b: from - carry | b in a.eats) and from' = from - carry and to' = to + carry)
+
+Result: Syntax Error
+
+==============================
+Candidate 6
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all a: from - carry | all b: Object | b in a.eats and b in (from - carry) implies (Farmer in (from - carry))) and from' = from - carry and to' = to + carry)
+
+Result: Syntax Error
+
+==============================
+Candidate 7
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all a, b: Object | a in (from - carry) and b in (from - carry) and b in a.eats implies (Farmer in (from - carry))) and from' = from - carry and to' = to + carry)
+
+Result: Syntax Error
+
+==============================
+Candidate 8
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all x, y: (from - carry) | y in x.eats implies Farmer in (from - carry)) and from' = from - carry and to' = to + carry)
+
+Result: Syntax Error
+
+==============================
+Candidate 9
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (all x: Object | x in (from - carry) and (some y: (from - carry) | y in x.eats) implies Farmer in (from - carry)) and from' = from - carry and to' = to + carry)
+
+Result: Syntax Error
+
+==============================
+Candidate 10
+crossRiver: (some carry: set Object | carry in from and Farmer in carry and #carry <= 2 and (no (from-carry) & {a: Object | some b: (from-carry) | b in a.eats}) implies true else Farmer in (from - carry) and from' = from - carry and to' = to + carry)
+
+Result: Syntax Error
+
+==============================
+Candidate 11
+solvePuzzle: (some s: State | s = ord/last and s.far = Object)
+
+Test test1001   expect=1 actual=1 OK
+Test test1002   expect=1 actual=1 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test1008   expect=0 actual=0 OK
+Test test1009   expect=0 actual=0 OK
+Test test1010   expect=0 actual=0 OK
+Test test1011   expect=1 actual=1 OK
+Test test1012   expect=0 actual=0 OK
+Test test1013   expect=0 actual=0 OK
+Test test1014   expect=0 actual=0 OK
+Test test1015   expect=0 actual=0 OK
+Test test1016   expect=0 actual=0 OK
+Test test1017   expect=0 actual=0 OK
+Test test1018   expect=0 actual=0 OK
+Test test1019   expect=0 actual=0 OK
+Test test1020   expect=0 actual=0 OK
+Test test27     expect=1 actual=1 OK
+Test test16     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test39     expect=1 actual=1 OK
+Test test46     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test21     expect=1 actual=1 OK
+Test test17     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test43     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test30     expect=1 actual=1 OK
+Test test31     expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test41     expect=1 actual=1 OK
+Test test45     expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test29     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test48     expect=0 actual=0 OK
+Test test54     expect=0 actual=0 OK
+Test test50     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test49     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+Test test47     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test51     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test33     expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test44     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test5      expect=0 actual=0 OK
+Test test53     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test56     expect=1 actual=1 OK
+Test test11     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test32     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test55     expect=0 actual=0 OK
+Test test52     expect=0 actual=0 OK
+
+Result: Correct (Tests run: 76/76)
+
+==============================
+Candidate 12
+solvePuzzle: (some s: State | s = ord/last and Farmer in s.far and Fox in s.far and Chicken in s.far and Grain in s.far)
+
+Test test1001   expect=1 actual=1 OK
+Test test1002   expect=1 actual=1 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test1008   expect=0 actual=0 OK
+Test test1009   expect=0 actual=0 OK
+Test test1010   expect=0 actual=0 OK
+Test test1011   expect=1 actual=1 OK
+Test test1012   expect=0 actual=0 OK
+Test test1013   expect=0 actual=0 OK
+Test test1014   expect=0 actual=0 OK
+Test test1015   expect=0 actual=0 OK
+Test test1016   expect=0 actual=0 OK
+Test test1017   expect=0 actual=0 OK
+Test test1018   expect=0 actual=0 OK
+Test test1019   expect=0 actual=0 OK
+Test test1020   expect=0 actual=0 OK
+Test test27     expect=1 actual=1 OK
+Test test16     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test39     expect=1 actual=1 OK
+Test test46     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test21     expect=1 actual=1 OK
+Test test17     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test43     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test30     expect=1 actual=1 OK
+Test test31     expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test41     expect=1 actual=1 OK
+Test test45     expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test29     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test48     expect=0 actual=0 OK
+Test test54     expect=0 actual=0 OK
+Test test50     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test49     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+Test test47     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test51     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test33     expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test44     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test5      expect=0 actual=0 OK
+Test test53     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test56     expect=1 actual=1 OK
+Test test11     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test32     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test55     expect=0 actual=0 OK
+Test test52     expect=0 actual=0 OK
+
+Result: Correct (Tests run: 76/76)
+
+==============================
+Candidate 13
+solvePuzzle: (Object in ord/last.far)
+
+Test test1001   expect=1 actual=1 OK
+Test test1002   expect=1 actual=1 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test1008   expect=0 actual=0 OK
+Test test1009   expect=0 actual=0 OK
+Test test1010   expect=0 actual=0 OK
+Test test1011   expect=1 actual=1 OK
+Test test1012   expect=0 actual=0 OK
+Test test1013   expect=0 actual=0 OK
+Test test1014   expect=0 actual=0 OK
+Test test1015   expect=0 actual=0 OK
+Test test1016   expect=0 actual=0 OK
+Test test1017   expect=0 actual=0 OK
+Test test1018   expect=0 actual=0 OK
+Test test1019   expect=0 actual=0 OK
+Test test1020   expect=0 actual=0 OK
+Test test27     expect=1 actual=1 OK
+Test test16     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test39     expect=1 actual=1 OK
+Test test46     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test21     expect=1 actual=1 OK
+Test test17     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test43     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test30     expect=1 actual=1 OK
+Test test31     expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test41     expect=1 actual=1 OK
+Test test45     expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test29     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test48     expect=0 actual=0 OK
+Test test54     expect=0 actual=0 OK
+Test test50     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test49     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+Test test47     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test51     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test33     expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test44     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test5      expect=0 actual=0 OK
+Test test53     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test56     expect=1 actual=1 OK
+Test test11     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test32     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test55     expect=0 actual=0 OK
+Test test52     expect=0 actual=0 OK
+
+Result: Correct (Tests run: 76/76)
+
+==============================
+Candidate 14
+solvePuzzle: (all o: Object | o in ord/last.far)
+
+Test test1001   expect=1 actual=1 OK
+Test test1002   expect=1 actual=1 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test1008   expect=0 actual=0 OK
+Test test1009   expect=0 actual=0 OK
+Test test1010   expect=0 actual=0 OK
+Test test1011   expect=1 actual=1 OK
+Test test1012   expect=0 actual=0 OK
+Test test1013   expect=0 actual=0 OK
+Test test1014   expect=0 actual=0 OK
+Test test1015   expect=0 actual=0 OK
+Test test1016   expect=0 actual=0 OK
+Test test1017   expect=0 actual=0 OK
+Test test1018   expect=0 actual=0 OK
+Test test1019   expect=0 actual=0 OK
+Test test1020   expect=0 actual=0 OK
+Test test27     expect=1 actual=1 OK
+Test test16     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test39     expect=1 actual=1 OK
+Test test46     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test21     expect=1 actual=1 OK
+Test test17     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test43     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test30     expect=1 actual=1 OK
+Test test31     expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test41     expect=1 actual=1 OK
+Test test45     expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test29     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test48     expect=0 actual=0 OK
+Test test54     expect=0 actual=0 OK
+Test test50     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test49     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+Test test47     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test51     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test33     expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test44     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test5      expect=0 actual=0 OK
+Test test53     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test56     expect=1 actual=1 OK
+Test test11     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test32     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test55     expect=0 actual=0 OK
+Test test52     expect=0 actual=0 OK
+
+Result: Correct (Tests run: 76/76)
+
+==============================
+Candidate 15
+solvePuzzle: (ord/last.far = Farmer + Fox + Chicken + Grain)
+
+Test test1001   expect=1 actual=1 OK
+Test test1002   expect=1 actual=1 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test1008   expect=0 actual=0 OK
+Test test1009   expect=0 actual=0 OK
+Test test1010   expect=0 actual=0 OK
+Test test1011   expect=1 actual=1 OK
+Test test1012   expect=0 actual=0 OK
+Test test1013   expect=0 actual=0 OK
+Test test1014   expect=0 actual=0 OK
+Test test1015   expect=0 actual=0 OK
+Test test1016   expect=0 actual=0 OK
+Test test1017   expect=0 actual=0 OK
+Test test1018   expect=0 actual=0 OK
+Test test1019   expect=0 actual=0 OK
+Test test1020   expect=0 actual=0 OK
+Test test27     expect=1 actual=1 OK
+Test test16     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test39     expect=1 actual=1 OK
+Test test46     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test21     expect=1 actual=1 OK
+Test test17     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test43     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test30     expect=1 actual=1 OK
+Test test31     expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test41     expect=1 actual=1 OK
+Test test45     expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test29     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test48     expect=0 actual=0 OK
+Test test54     expect=0 actual=0 OK
+Test test50     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test49     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+Test test47     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test51     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test33     expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test44     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test5      expect=0 actual=0 OK
+Test test53     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test56     expect=1 actual=1 OK
+Test test11     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test32     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test55     expect=0 actual=0 OK
+Test test52     expect=0 actual=0 OK
+
+Result: Correct (Tests run: 76/76)
+
+==============================
+Candidate 16
+solvePuzzle: (no (Object - ord/last.far))
+
+Test test1001   expect=1 actual=1 OK
+Test test1002   expect=1 actual=1 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test1008   expect=0 actual=0 OK
+Test test1009   expect=0 actual=0 OK
+Test test1010   expect=0 actual=0 OK
+Test test1011   expect=1 actual=1 OK
+Test test1012   expect=0 actual=0 OK
+Test test1013   expect=0 actual=0 OK
+Test test1014   expect=0 actual=0 OK
+Test test1015   expect=0 actual=0 OK
+Test test1016   expect=0 actual=0 OK
+Test test1017   expect=0 actual=0 OK
+Test test1018   expect=0 actual=0 OK
+Test test1019   expect=0 actual=0 OK
+Test test1020   expect=0 actual=0 OK
+Test test27     expect=1 actual=1 OK
+Test test16     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test39     expect=1 actual=1 OK
+Test test46     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test21     expect=1 actual=1 OK
+Test test17     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test43     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test30     expect=1 actual=1 OK
+Test test31     expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test41     expect=1 actual=1 OK
+Test test45     expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test29     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test48     expect=0 actual=0 OK
+Test test54     expect=0 actual=0 OK
+Test test50     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test49     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+Test test47     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test51     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test33     expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test44     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test5      expect=0 actual=0 OK
+Test test53     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test56     expect=1 actual=1 OK
+Test test11     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test32     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test55     expect=0 actual=0 OK
+Test test52     expect=0 actual=0 OK
+
+Result: Correct (Tests run: 76/76)
+
+==============================
+Candidate 17
+solvePuzzle: (no ord/last.near)
+
+Test test1001   expect=1 actual=1 OK
+Test test1002   expect=1 actual=1 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test1008   expect=0 actual=0 OK
+Test test1009   expect=0 actual=0 OK
+Test test1010   expect=0 actual=0 OK
+Test test1011   expect=1 actual=1 OK
+Test test1012   expect=0 actual=0 OK
+Test test1013   expect=0 actual=0 OK
+Test test1014   expect=0 actual=0 OK
+Test test1015   expect=0 actual=0 OK
+Test test1016   expect=0 actual=0 OK
+Test test1017   expect=0 actual=0 OK
+Test test1018   expect=0 actual=0 OK
+Test test1019   expect=0 actual=0 OK
+Test test1020   expect=0 actual=0 OK
+Test test27     expect=1 actual=1 OK
+Test test16     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test39     expect=1 actual=1 OK
+Test test46     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test21     expect=1 actual=1 OK
+Test test17     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test43     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test30     expect=1 actual=1 OK
+Test test31     expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test41     expect=1 actual=1 OK
+Test test45     expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test29     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test48     expect=0 actual=0 OK
+Test test54     expect=0 actual=0 OK
+Test test50     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test49     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+Test test47     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test51     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test33     expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test44     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test5      expect=0 actual=0 OK
+Test test53     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test56     expect=1 actual=1 OK
+Test test11     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test32     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test55     expect=0 actual=0 OK
+Test test52     expect=0 actual=0 OK
+
+Result: Correct (Tests run: 76/76)
+
+==============================
+Candidate 18
+solvePuzzle: (ord/last.near = none)
+
+Test test1001   expect=1 actual=1 OK
+Test test1002   expect=1 actual=1 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test1008   expect=0 actual=0 OK
+Test test1009   expect=0 actual=0 OK
+Test test1010   expect=0 actual=0 OK
+Test test1011   expect=1 actual=1 OK
+Test test1012   expect=0 actual=0 OK
+Test test1013   expect=0 actual=0 OK
+Test test1014   expect=0 actual=0 OK
+Test test1015   expect=0 actual=0 OK
+Test test1016   expect=0 actual=0 OK
+Test test1017   expect=0 actual=0 OK
+Test test1018   expect=0 actual=0 OK
+Test test1019   expect=0 actual=0 OK
+Test test1020   expect=0 actual=0 OK
+Test test27     expect=1 actual=1 OK
+Test test16     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test39     expect=1 actual=1 OK
+Test test46     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test21     expect=1 actual=1 OK
+Test test17     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test43     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test30     expect=1 actual=1 OK
+Test test31     expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test41     expect=1 actual=1 OK
+Test test45     expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test29     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test48     expect=0 actual=0 OK
+Test test54     expect=0 actual=0 OK
+Test test50     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test49     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+Test test47     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test51     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test33     expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test44     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test5      expect=0 actual=0 OK
+Test test53     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test56     expect=1 actual=1 OK
+Test test11     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test32     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test55     expect=0 actual=0 OK
+Test test52     expect=0 actual=0 OK
+
+Result: Correct (Tests run: 76/76)
+
+==============================
+Candidate 19
+solvePuzzle: (some s: State | s = ord/last and all o: Object | o in s.far)
+
+Test test1001   expect=1 actual=1 OK
+Test test1002   expect=1 actual=1 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test1008   expect=0 actual=0 OK
+Test test1009   expect=0 actual=0 OK
+Test test1010   expect=0 actual=0 OK
+Test test1011   expect=1 actual=1 OK
+Test test1012   expect=0 actual=0 OK
+Test test1013   expect=0 actual=0 OK
+Test test1014   expect=0 actual=0 OK
+Test test1015   expect=0 actual=0 OK
+Test test1016   expect=0 actual=0 OK
+Test test1017   expect=0 actual=0 OK
+Test test1018   expect=0 actual=0 OK
+Test test1019   expect=0 actual=0 OK
+Test test1020   expect=0 actual=0 OK
+Test test27     expect=1 actual=1 OK
+Test test16     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test39     expect=1 actual=1 OK
+Test test46     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test21     expect=1 actual=1 OK
+Test test17     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test43     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test30     expect=1 actual=1 OK
+Test test31     expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test41     expect=1 actual=1 OK
+Test test45     expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test29     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test48     expect=0 actual=0 OK
+Test test54     expect=0 actual=0 OK
+Test test50     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test49     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+Test test47     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test51     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test33     expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test44     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test5      expect=0 actual=0 OK
+Test test53     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test56     expect=1 actual=1 OK
+Test test11     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test32     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test55     expect=0 actual=0 OK
+Test test52     expect=0 actual=0 OK
+
+Result: Correct (Tests run: 76/76)
+
+==============================
+Candidate 20
+solvePuzzle: (ord/last.near = none and ord/last.far = Object)
+
+Test test1001   expect=1 actual=1 OK
+Test test1002   expect=1 actual=1 OK
+Test test1003   expect=1 actual=1 OK
+Test test1004   expect=1 actual=1 OK
+Test test1005   expect=1 actual=1 OK
+Test test1006   expect=0 actual=0 OK
+Test test1007   expect=0 actual=0 OK
+Test test1008   expect=0 actual=0 OK
+Test test1009   expect=0 actual=0 OK
+Test test1010   expect=0 actual=0 OK
+Test test1011   expect=1 actual=1 OK
+Test test1012   expect=0 actual=0 OK
+Test test1013   expect=0 actual=0 OK
+Test test1014   expect=0 actual=0 OK
+Test test1015   expect=0 actual=0 OK
+Test test1016   expect=0 actual=0 OK
+Test test1017   expect=0 actual=0 OK
+Test test1018   expect=0 actual=0 OK
+Test test1019   expect=0 actual=0 OK
+Test test1020   expect=0 actual=0 OK
+Test test27     expect=1 actual=1 OK
+Test test16     expect=1 actual=1 OK
+Test test42     expect=0 actual=0 OK
+Test test39     expect=1 actual=1 OK
+Test test46     expect=0 actual=0 OK
+Test test2      expect=0 actual=0 OK
+Test test40     expect=1 actual=1 OK
+Test test21     expect=1 actual=1 OK
+Test test17     expect=1 actual=1 OK
+Test test8      expect=0 actual=0 OK
+Test test26     expect=1 actual=1 OK
+Test test35     expect=1 actual=1 OK
+Test test43     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test10     expect=1 actual=1 OK
+Test test20     expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test30     expect=1 actual=1 OK
+Test test31     expect=1 actual=1 OK
+Test test12     expect=0 actual=0 OK
+Test test6      expect=1 actual=1 OK
+Test test41     expect=1 actual=1 OK
+Test test45     expect=1 actual=1 OK
+Test test19     expect=1 actual=1 OK
+Test test29     expect=1 actual=1 OK
+Test test25     expect=0 actual=0 OK
+Test test48     expect=0 actual=0 OK
+Test test54     expect=0 actual=0 OK
+Test test50     expect=0 actual=0 OK
+Test test24     expect=0 actual=0 OK
+Test test49     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+Test test47     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test51     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test37     expect=1 actual=1 OK
+Test test33     expect=1 actual=1 OK
+Test test18     expect=1 actual=1 OK
+Test test44     expect=1 actual=1 OK
+Test test22     expect=0 actual=0 OK
+Test test23     expect=1 actual=1 OK
+Test test5      expect=0 actual=0 OK
+Test test53     expect=0 actual=0 OK
+Test test13     expect=0 actual=0 OK
+Test test4      expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test3      expect=0 actual=0 OK
+Test test56     expect=1 actual=1 OK
+Test test11     expect=1 actual=1 OK
+Test test36     expect=1 actual=1 OK
+Test test32     expect=1 actual=1 OK
+Test test38     expect=1 actual=1 OK
+Test test55     expect=0 actual=0 OK
+Test test52     expect=0 actual=0 OK
+
+Result: Correct (Tests run: 76/76)
+

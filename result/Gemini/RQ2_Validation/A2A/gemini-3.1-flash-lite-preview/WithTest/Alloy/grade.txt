@@ -1,0 +1,35 @@
+s in a.associated_with.(assistant_for + instructor_of) and s not in a.assigned_to
+Correct
+
+s in a.associated_with.assistant_for or s in a.associated_with.instructor_of and not (s in a.assigned_to)
+Wrong
+
+s !in a.assigned_to and (s in a.associated_with.assistant_for or s in a.associated_with.instructor_of)
+Correct
+
+s in (a.associated_with).assistant_for + (a.associated_with).instructor_of and not s in a.assigned_to
+Correct
+
+s in a.associated_with.assistant_for + a.associated_with.instructor_of and no s & a.assigned_to
+Correct
+
+s not in a.assigned_to and s in (a.associated_with).*(assistant_for + instructor_of) & Person
+Correct
+
+(s in a.associated_with.assistant_for or s in a.associated_with.instructor_of) and (s not in a.assigned_to)
+Correct
+
+s in a.associated_with.(assistant_for + instructor_of) and (s in a.assigned_to => 1=0)
+Correct
+
+s in {p: Person | p in a.associated_with.assistant_for or p in a.associated_with.instructor_of} and s !in a.assigned_to
+Correct
+
+s !in a.assigned_to and (some c: a.associated_with | s in c.assistant_for + c.instructor_of)
+Correct
+
+Total: 10
+Unique: 10
+Correct: 9
+Syntax Error: 0
+Wrong: 1

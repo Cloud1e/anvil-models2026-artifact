@@ -1,0 +1,10 @@
+CanEnter: p.member_of in r.located_in
+CanEnter: some p.member_of & r.located_in
+CanEnter: p.member_of & r.located_in != none
+CanEnter: not (p.member_of & r.located_in = none)
+CanEnter: all g: p.member_of | g in r.located_in
+CanEnter: some g: p.member_of | g in r.located_in
+CanEnter: p.member_of in (r.located_in)
+CanEnter: (p.member_of & r.located_in) in Group
+CanEnter: r.located_in & p.member_of != none
+CanEnter: p.member_of & r.located_in in Group

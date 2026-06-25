@@ -1,0 +1,30 @@
+UniqueElem: all disj n1, n2: Node | n1.elem != n2.elem
+UniqueElem: all n1, n2: Node | n1.elem = n2.elem => n1 = n2
+UniqueElem: lone n1, n2: Node | n1.elem = n2.elem
+UniqueElem: all n: Node | lone m: Node | m.elem = n.elem
+UniqueElem: #elem[Node] = #Node
+UniqueElem: all n: Node | n = {m: Node | m.elem = n.elem}
+UniqueElem: no n: Node | some m: Node - n | m.elem = n.elem
+UniqueElem: all n: Node | all m: Node - n | m.elem != n.elem
+UniqueElem: (all n1, n2: Node | n1.elem = n2.elem implies n1 = n2)
+UniqueElem: all n: Node | n.elem !in (Node - n).elem
+Sorted: all n: Node - DLL.header.*nxt.nxt | n.elem <= n.nxt.elem
+Sorted: all n: Node | n.nxt != none => n.elem <= n.nxt.elem
+Sorted: all n1, n2: Node | n2 in n1.nxt => n1.elem <= n2.elem
+Sorted: all n: Node | some n.nxt implies n.elem <= n.nxt.elem
+Sorted: all n: Node | n.nxt in n.^nxt => n.elem <= n.nxt.elem
+Sorted: all n: Node | n.nxt = none or n.elem <= n.nxt.elem
+Sorted: all n: Node | n.nxt in Node implies n.elem <= n.nxt.elem
+Sorted: all n: Node | n.nxt in n.nxt => n.elem <= n.nxt.elem
+Sorted: all n: Node | n.elem <= (n.nxt).elem
+Sorted: all n: Node | all m: n.nxt | n.elem <= m.elem
+ConsistentPreAndNxt: all n1, n2: Node | n1.nxt = n2 <=> n2.pre = n1
+ConsistentPreAndNxt: nxt = ~pre and pre = ~nxt
+ConsistentPreAndNxt: all n: Node | n.nxt.pre = n and n.pre.nxt = n
+ConsistentPreAndNxt: all n: Node | n.nxt.pre = n && n.pre.nxt = n
+ConsistentPreAndNxt: all n1: Node | n1.nxt.pre = n1 and n1.pre.nxt = n1
+ConsistentPreAndNxt: all n: Node | n in n.nxt.pre and n in n.pre.nxt
+ConsistentPreAndNxt: (all n: Node | n.nxt.pre = n) and (all n: Node | n.pre.nxt = n)
+ConsistentPreAndNxt: all n: Node | n.nxt.pre = n iff n.pre.nxt = n
+ConsistentPreAndNxt: no n: Node | n.nxt.pre != n or n.pre.nxt != n
+ConsistentPreAndNxt: all n1, n2: Node | n1.nxt = n2 <=> n2.pre = n1 -- aug10

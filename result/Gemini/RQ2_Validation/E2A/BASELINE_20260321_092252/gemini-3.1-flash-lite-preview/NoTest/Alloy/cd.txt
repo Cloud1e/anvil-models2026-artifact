@@ -1,0 +1,123 @@
+ObjectNoExt: no Object.ext
+Correct
+
+ObjectNoExt: all c: Class | c = Object implies no c.ext
+Correct
+
+ObjectNoExt: Object.ext = none
+Correct
+
+ObjectNoExt: #Object.ext = 0
+Correct
+
+ObjectNoExt: Object not in Class.ext
+Wrong
+
+ObjectNoExt: not some c: Class | c.ext = Object
+Wrong
+
+ObjectNoExt: all o: Object | no o.ext
+Correct
+
+ObjectNoExt: no c: Class | c in Object.ext
+Correct
+
+ObjectNoExt: Object.ext in none
+Correct
+
+ObjectNoExt: one c: Class | c = Object and no c.ext
+Correct
+
+Acyclic: no ^ext & iden
+Correct
+
+Acyclic: all c: Class | c not in c.^ext
+Correct
+
+Acyclic: all c: Class | not (c in c.ext.^+ext)
+Syntax Error
+SYN_MSG:
+There are 17 possible tokens that can appear here:
+( * @ Int NAME NUMBER STRING String ^ fun iden none seq this univ { ~ 
+END_SYN_MSG
+
+Acyclic: no c: Class | c in c.^ext
+Correct
+
+Acyclic: iden not in ^ext
+Wrong
+
+Acyclic: all c: Class | c.^ext & c = none
+Correct
+
+Acyclic: all c: Class | not (c in c.^ext)
+Correct
+
+Acyclic: all c: Class | c.^ext not in c.*ext
+Wrong
+
+AllExtObject: all c: Class - Object | c.ext = Object
+Wrong
+
+AllExtObject: all c: Class | c != Object implies c.ext = Object
+Wrong
+
+AllExtObject: Class - Object = Object.~ext
+Wrong
+
+AllExtObject: (Class - Object).ext = Object
+Wrong
+
+AllExtObject: all c: Class | (c != Object) => (c.ext = Object)
+Wrong
+
+AllExtObject: all c: Class - Object | some c.ext and c.ext = Object
+Wrong
+
+AllExtObject: all c: Class | c in Object => no c.ext else c.ext = Object
+Wrong
+
+AllExtObject: {c: Class | c != Object}.ext = Object
+Wrong
+
+AllExtObject: all c: Class | c != Object implies one c.ext and c.ext = Object
+Wrong
+
+AllExtObject: all c: Class - Object | c in Object.~ext
+Wrong
+
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and AllExtObject[]
+Correct
+
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and (all c: Class - Object | c.ext = Object)
+Correct
+
+ClassHierarchy: (no Object.ext) and (no ^ext & iden) and (all c: Class - Object | c.ext = Object)
+Correct
+
+ClassHierarchy: no Object.ext and all c: Class | c not in c.^ext and all c: Class - Object | c.ext = Object
+Correct
+
+ClassHierarchy: Object.ext = none and no (iden & ^ext) and (Class - Object).ext = Object
+Correct
+
+ClassHierarchy: ObjectNoExt[] and AllExtObject[] and all c: Class | c not in c.^ext
+Correct
+
+ClassHierarchy: all c: Class | (c = Object implies no c.ext) and (c != Object implies c.ext = Object) and (c not in c.^ext)
+Correct
+
+ClassHierarchy: (all c: Class - Object | c.ext = Object) and (no ^ext & iden) and (no Object.ext)
+Correct
+
+ClassHierarchy: (no Object.ext) and (all c: Class - Object | c.ext = Object) and (all c: Class | c not in c.^ext)
+Correct
+
+ClassHierarchy: (all c: Class | c in Object <=> no c.ext) and (all c: Class - Object | c.ext = Object) and Acyclic[]
+Correct
+
+Total: 38
+Unique: 38
+Correct: 23
+Syntax Error: 1
+Wrong: 14

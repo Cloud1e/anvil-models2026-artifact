@@ -1,0 +1,47 @@
+You are fixing Alloy specification syntax errors. The user will provide the full Alloy module containing exactly one predicate that is currently broken, and the parser error message.
+
+Your task is to fix ONLY that predicate's definition so that the whole module parses without syntax errors. All other sigs, facts, predicates, and tests must remain unchanged.
+
+Reply with ONLY the complete fixed predicate definition (including the 'pred name(...) { ... }' header and body), no explanation and no other code. Do NOT return the rest of the module.
+
+The following Alloy module has a syntax error in the predicate `CanEnter`.
+
+Full module:
+
+sig Room {}
+one sig secure_lab extends Room {}
+
+abstract sig Person {
+  owns : set Key
+}
+sig Employee extends Person {}
+sig Researcher extends Person {}
+
+sig Key {
+  authorized: one Employee,
+  opened_by: one Room
+}
+
+pred CanEnter(p: Person, r:Room) {
+
+	r in p.owns.Key.opened_by
+
+}
+
+fact {
+  no Employee.owns
+}
+
+// Should help create tests.
+assert no_thief_in_seclab {
+  all p : Person | CanEnter[p, secure_lab] implies p in Researcher
+}
+check no_thief_in_seclab
+
+
+Parser error:
+This cannot be a legal relational join where
+left hand side is p . (this/Person <: owns) (type = {this/Key})
+right hand side is this/Key (type = {this/Key})
+
+Output ONLY the complete fixed definition of that predicate, in Alloy syntax.

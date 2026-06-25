@@ -1,0 +1,35 @@
+s in a.associated_with.instructor_of
+Wrong
+
+s not in a.assigned_to
+Wrong
+
+s in Professor
+Wrong
+
+s in a.associated_with.assistant_for and s not in a.assigned_to
+Wrong
+
+s in a.associated_with.instructor_of or (s in a.associated_with.assistant_for and s not in a.assigned_to)
+Correct
+
+s in Student and s not in a.assigned_to
+Wrong
+
+s in Professor or s not in a.assigned_to
+Wrong
+
+s in Class.instructor_of
+Wrong
+
+no s & a.assigned_to
+Wrong
+
+s in a.associated_with.(instructor_of + assistant_for) - a.assigned_to
+Correct
+
+Total: 10
+Unique: 10
+Correct: 2
+Syntax Error: 0
+Wrong: 8

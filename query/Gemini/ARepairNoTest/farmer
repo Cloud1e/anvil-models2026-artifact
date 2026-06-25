@@ -1,0 +1,47 @@
+Synthesize the following Alloy model by filling in the predicate bodies marked with '// your code go here'. The predicates should be correct with respect to the properties described in the comments.
+For each predicate that needs repair, provide exactly 10 unique solutions. Format: each line should be "predicateName: body", where body is the expression inside the braces.
+
+module farmer
+
+open util/ordering[State] as ord
+
+abstract sig Object { eats: set Object }
+one sig Farmer, Fox, Chicken, Grain extends Object {}
+
+fact eating { eats = Fox->Chicken + Chicken->Grain }
+
+sig State {
+   near: set Object,
+   far: set Object
+}
+
+fact initialState {
+   let s0 = ord/first |
+     s0.near = Object && no s0.far
+}
+
+pred crossRiver [from, from', to, to': set Object] {
+  // your code go here
+}
+
+fact stateTransition {
+  all s: State, s': ord/next[s] {
+    Farmer in s.near =>
+      crossRiver[s.near, s'.near, s.far, s'.far] else
+      crossRiver[s.far, s'.far, s.near, s'.near]
+  }
+}
+
+pred solvePuzzle {
+  // your code go here
+}
+
+run solvePuzzle for 8 State expect 1
+
+assert NoQuantumObjects {
+   no s : State | some x : Object | x in s.near and x in s.far
+}
+
+check NoQuantumObjects for 8 State expect 0
+
+Return exactly 10 lines per predicate (total = 10 × number of predicates), each line formatted as "predicateName: body" with no numbering or commentary before/after the list. Do not include introductions, explanations, or any extra text outside these lines.

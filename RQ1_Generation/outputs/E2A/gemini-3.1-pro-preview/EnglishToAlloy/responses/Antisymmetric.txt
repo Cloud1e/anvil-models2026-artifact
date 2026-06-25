@@ -1,0 +1,20 @@
+all x, y: S | x->y in r and y->x in r implies x = y
+all x, y: S | y in x.r and x in y.r implies x = y
+r & ~r in iden
+no (r & ~r) - iden
+all x: S | x.r & r.x in x
+all x: S | x.r & x.~r in x
+all disj x, y: S | x->y in r implies y->x not in r
+all disj x, y: S | y in x.r implies x not in y.r
+all x, y: S | x != y implies not (x->y in r and y->x in r)
+all x, y: S | x != y implies (y not in x.r or x not in y.r)
+no {x, y: S | x->y in r and y->x in r and x != y}
+no {x, y: S | y in x.r and x in y.r and x != y}
+no (r - iden) & ~(r - iden)
+all x: S | all y: x.r | x in y.r implies x = y
+all x: S | all y: S | x->y in r implies (y->x in r implies x = y)
+all x, y: S | x->y not in r or y->x not in r or x = y
+all x, y: S | y in x.r and x != y implies x not in y.r
+all x: S | no (x.r & x.~r) - x
+all x: S, y: x.r - x | x not in y.r
+all disj x, y: S | not (x->y in r and y->x in r)

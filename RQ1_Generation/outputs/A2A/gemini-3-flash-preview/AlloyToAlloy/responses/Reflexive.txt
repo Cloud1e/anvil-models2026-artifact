@@ -1,0 +1,20 @@
+iden & S->S in r
+all s: S | s in s.r
+all s: S | s in r.s
+no s: S | s->s !in r
+(iden & S->S) - r = none
+(iden & S->S) & r = (iden & S->S)
+r + (iden & S->S) = r
+all s, t: S | s = t implies s->t in r
+all s: S | s in r[s]
+no ((iden & S->S) - r)
+S <: iden in r
+iden :> S in r
+all s: S | s->s = s->s & r
+all s: S | some (s & s.r)
+all s: S | some (s & r.s)
+no s: S | s !in s.r
+no s: S | s !in r.s
+~(iden & S->S) in r
+all s: S | s <: iden in r
+all s: S | s = s & s.r

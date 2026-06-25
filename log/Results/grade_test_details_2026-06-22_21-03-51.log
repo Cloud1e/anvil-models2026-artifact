@@ -1,0 +1,494 @@
+GRADE Test Suite Detailed Report
+Timestamp: 2026-06-22_21-03-51
+
+Model run commands: 0
+==============================
+Candidate 1
+s in a.associated_with.assistant_for and s not in a.assigned_to
+
+Test test1001   expect=1 actual=1 OK
+Test test36     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test26     expect=0 actual=0 OK
+Test test39     expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test41     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test25     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test16     expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test31     expect=1 actual=0 FAIL
+Test test35     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test40     expect=1 actual=0 FAIL
+Test test22     expect=0 actual=0 OK
+Test test10     expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test13     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test37     expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test27     expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test12     expect=1 actual=1 OK
+Test test29     expect=1 actual=0 FAIL
+Test test11     expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 42/42)
+
+==============================
+Candidate 2
+s in a.associated_with.assistant_for and all x: a.assigned_to | s != x
+
+Test test1001   expect=1 actual=1 OK
+Test test36     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test26     expect=0 actual=0 OK
+Test test39     expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test41     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test25     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test16     expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test31     expect=1 actual=0 FAIL
+Test test35     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test40     expect=1 actual=0 FAIL
+Test test22     expect=0 actual=0 OK
+Test test10     expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test13     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test37     expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test27     expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test12     expect=1 actual=1 OK
+Test test29     expect=1 actual=0 FAIL
+Test test11     expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 42/42)
+
+==============================
+Candidate 3
+s in a.associated_with.assistant_for and no (s & a.assigned_to)
+
+Test test1001   expect=1 actual=1 OK
+Test test36     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test26     expect=0 actual=0 OK
+Test test39     expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test41     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test25     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test16     expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test31     expect=1 actual=0 FAIL
+Test test35     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test40     expect=1 actual=0 FAIL
+Test test22     expect=0 actual=0 OK
+Test test10     expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test13     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test37     expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test27     expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test12     expect=1 actual=1 OK
+Test test29     expect=1 actual=0 FAIL
+Test test11     expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 42/42)
+
+==============================
+Candidate 4
+s in a.associated_with.assistant_for and s not in a.(assigned_to)
+
+Test test1001   expect=1 actual=1 OK
+Test test36     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test26     expect=0 actual=0 OK
+Test test39     expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test41     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test25     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test16     expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test31     expect=1 actual=0 FAIL
+Test test35     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test40     expect=1 actual=0 FAIL
+Test test22     expect=0 actual=0 OK
+Test test10     expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test13     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test37     expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test27     expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test12     expect=1 actual=1 OK
+Test test29     expect=1 actual=0 FAIL
+Test test11     expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 42/42)
+
+==============================
+Candidate 5
+s in a.associated_with.assistant_for and (a.assigned_to & s) = none
+
+Test test1001   expect=1 actual=1 OK
+Test test36     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test26     expect=0 actual=0 OK
+Test test39     expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test41     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test25     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test16     expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test31     expect=1 actual=0 FAIL
+Test test35     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test40     expect=1 actual=0 FAIL
+Test test22     expect=0 actual=0 OK
+Test test10     expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test13     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test37     expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test27     expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test12     expect=1 actual=1 OK
+Test test29     expect=1 actual=0 FAIL
+Test test11     expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 42/42)
+
+==============================
+Candidate 6
+s in a.associated_with.assistant_for and not (some x: a.assigned_to | x = s)
+
+Test test1001   expect=1 actual=1 OK
+Test test36     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test26     expect=0 actual=0 OK
+Test test39     expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test41     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test25     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test16     expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test31     expect=1 actual=0 FAIL
+Test test35     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test40     expect=1 actual=0 FAIL
+Test test22     expect=0 actual=0 OK
+Test test10     expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test13     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test37     expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test27     expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test12     expect=1 actual=1 OK
+Test test29     expect=1 actual=0 FAIL
+Test test11     expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 42/42)
+
+==============================
+Candidate 7
+s in a.associated_with.assistant_for and (s in Student implies s not in a.assigned_to)
+
+Test test1001   expect=1 actual=1 OK
+Test test36     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test26     expect=0 actual=0 OK
+Test test39     expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test41     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test25     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test16     expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test31     expect=1 actual=0 FAIL
+Test test35     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test40     expect=1 actual=0 FAIL
+Test test22     expect=0 actual=0 OK
+Test test10     expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test13     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test37     expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test27     expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test12     expect=1 actual=1 OK
+Test test29     expect=1 actual=0 FAIL
+Test test11     expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 42/42)
+
+==============================
+Candidate 8
+s in a.associated_with.assistant_for and s != (a.assigned_to & s)
+
+Test test1001   expect=1 actual=1 OK
+Test test36     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test26     expect=0 actual=0 OK
+Test test39     expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test41     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test25     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test16     expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test31     expect=1 actual=0 FAIL
+Test test35     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test40     expect=1 actual=0 FAIL
+Test test22     expect=0 actual=0 OK
+Test test10     expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test13     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test37     expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test27     expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test12     expect=1 actual=1 OK
+Test test29     expect=1 actual=0 FAIL
+Test test11     expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 42/42)
+
+==============================
+Candidate 9
+s in a.associated_with.assistant_for and s not in (a.assigned_to)
+
+Test test1001   expect=1 actual=1 OK
+Test test36     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test26     expect=0 actual=0 OK
+Test test39     expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test41     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test25     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test16     expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test31     expect=1 actual=0 FAIL
+Test test35     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test40     expect=1 actual=0 FAIL
+Test test22     expect=0 actual=0 OK
+Test test10     expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test13     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test37     expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test27     expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test12     expect=1 actual=1 OK
+Test test29     expect=1 actual=0 FAIL
+Test test11     expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 42/42)
+
+==============================
+Candidate 10
+s in a.associated_with.assistant_for and lone (a.assigned_to & s) and no (a.assigned_to & s)
+
+Test test1001   expect=1 actual=1 OK
+Test test36     expect=0 actual=0 OK
+Test test5      expect=1 actual=1 OK
+Test test26     expect=0 actual=0 OK
+Test test39     expect=0 actual=0 OK
+Test test2      expect=1 actual=1 OK
+Test test3      expect=1 actual=1 OK
+Test test14     expect=0 actual=0 OK
+Test test41     expect=0 actual=0 OK
+Test test21     expect=0 actual=0 OK
+Test test25     expect=0 actual=0 OK
+Test test7      expect=1 actual=1 OK
+Test test24     expect=1 actual=1 OK
+Test test1      expect=1 actual=1 OK
+Test test38     expect=1 actual=0 FAIL
+Test test16     expect=0 actual=0 OK
+Test test20     expect=0 actual=0 OK
+Test test18     expect=1 actual=1 OK
+Test test31     expect=1 actual=0 FAIL
+Test test35     expect=0 actual=0 OK
+Test test9      expect=1 actual=1 OK
+Test test40     expect=1 actual=0 FAIL
+Test test22     expect=0 actual=0 OK
+Test test10     expect=1 actual=1 OK
+Test test6      expect=1 actual=1 OK
+Test test13     expect=1 actual=1 OK
+Test test19     expect=0 actual=0 OK
+Test test37     expect=0 actual=0 OK
+Test test4      expect=1 actual=1 OK
+Test test33     expect=0 actual=0 OK
+Test test17     expect=1 actual=1 OK
+Test test27     expect=0 actual=0 OK
+Test test15     expect=0 actual=0 OK
+Test test12     expect=1 actual=1 OK
+Test test29     expect=1 actual=0 FAIL
+Test test11     expect=1 actual=1 OK
+Test test23     expect=0 actual=0 OK
+Test test28     expect=0 actual=0 OK
+Test test32     expect=1 actual=1 OK
+Test test8      expect=1 actual=1 OK
+Test test30     expect=1 actual=1 OK
+Test test34     expect=1 actual=1 OK
+
+Result: Wrong (Tests run: 42/42)
+

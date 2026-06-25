@@ -1,0 +1,65 @@
+all s: S | #s.r = 1
+Correct
+
+all s: S | some s.r and lone s.r
+Correct
+
+r in S -> one S
+Correct
+
+~r.r in iden and S = r.S
+Correct
+
+#r = #S and S = r.S
+Wrong
+
+#r = #S and ~r.r in iden
+Correct
+
+S = {s: S | one s.r}
+Correct
+
+no s: S | #s.r != 1
+Correct
+
+all s: S | one x: S | s->x in r
+Correct
+
+iden & S->S in r.~r and ~r.r in iden
+Correct
+
+(all s: S | some s.r) and (all s: S | lone s.r)
+Correct
+
+no s: S | (no s.r or not lone s.r)
+Correct
+
+r in S -> lone S and S = r.S
+Correct
+
+all s: S | some x: S | r & s->S = s->x
+Correct
+
+all s: S | #s.r >= 1 and #s.r <= 1
+Correct
+
+all s: S | one x: S | s.r = x
+Correct
+
+no s: S | #s.r < 1 or #s.r > 1
+Correct
+
+S = r.univ and ~r.r in iden
+Correct
+
+all s: S | some s.r and (no s2: S | not lone s2.r)
+Correct
+
+all s: S | some x: S | s->x in r and (all y: S
+Syntax Error
+
+Total: 20
+Unique: 20
+Correct: 18
+Syntax Error: 1
+Wrong: 1

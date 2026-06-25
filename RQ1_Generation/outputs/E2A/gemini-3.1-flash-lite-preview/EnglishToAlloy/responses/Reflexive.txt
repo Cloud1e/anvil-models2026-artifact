@@ -1,0 +1,20 @@
+all x: S | x in x.r
+all x: S | x -> x in r
+S <: iden in r
+iden & (S -> S) in r
+no x: S | x not in x.r
+all x: S | x.r = x.r + x
+all x: S | some x.r & x
+all x: S | x in {y: S | y in x.r}
+r.univ = S and all x: S | x in x.r
+all x: S | x in r[x]
+all s: S | s in s.r
+all s: S | s -> s in r
+no s: S | s not in s.r
+all s: S | r[s] = s + r[s]
+all s: S | some r.s & s
+all s: S | s in {x: S | x in s.r}
+r.iden = iden
+all s: S | s in r.s
+all s: S | s in s.^r
+all s: S | some s.r & s

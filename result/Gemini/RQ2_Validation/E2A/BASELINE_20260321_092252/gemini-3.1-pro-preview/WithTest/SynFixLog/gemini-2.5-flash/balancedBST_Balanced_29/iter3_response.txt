@@ -1,0 +1,4 @@
+```alloy
+pred Balanced() {
+  all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies Int.abs[Depth[n1] - Depth[n2]] <= 1
+```

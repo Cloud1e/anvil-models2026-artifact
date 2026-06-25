@@ -1,0 +1,35 @@
+some e: Employee | some disj k1, k2: p.owns & e.~authorized | k1.opened_by = r
+Wrong
+
+some k1: p.owns, k2: p.owns | k1.opened_by = r and k1.authorized = k2.authorized and k1 != k2
+Wrong
+
+some k: p.owns | k.opened_by = r and some k2: p.owns - k | k.authorized = k2.authorized
+Wrong
+
+some k: p.owns | k.opened_by = r and k.authorized in (p.owns - k).authorized
+Wrong
+
+some e: Employee | some k: p.owns & authorized.e | k.opened_by = r and #(p.owns & authorized.e) > 1
+Wrong
+
+some e: Employee | some k1: p.owns, k2: p.owns | k1.opened_by = r and k1 != k2 and k1.authorized = e and k2.authorized = e
+Wrong
+
+some k: p.owns | k.opened_by = r and some k2: p.owns | k != k2 and k.authorized = k2.authorized
+Wrong
+
+some k: p.owns | k.opened_by = r and #(p.owns & authorized.(k.authorized)) > 1
+Wrong
+
+some k: p.owns | k.opened_by = r and p.owns - k & authorized.(k.authorized) != none
+Wrong
+
+some e: Employee | some k: p.owns & authorized.e | k.opened_by = r and some (p.owns & authorized.e - k)
+Wrong
+
+Total: 10
+Unique: 10
+Correct: 0
+Syntax Error: 0
+Wrong: 10

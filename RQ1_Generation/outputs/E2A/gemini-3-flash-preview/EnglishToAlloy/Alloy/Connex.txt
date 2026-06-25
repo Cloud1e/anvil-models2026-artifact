@@ -1,0 +1,65 @@
+all s1, s2: S | s1->s2 in r or s2->s1 in r
+Correct
+
+all x, y: S | x in y.r or y in x.r
+Correct
+
+all a, b: S | a->b in r or b in r.a
+Correct
+
+all s: S | S in s.r + r.s
+Correct
+
+all s: S | s.r + r.s = S
+Correct
+
+all s: S | s.r + s.~r = S
+Correct
+
+all s: S | S = s.~r + s.r
+Correct
+
+S->S in r + ~r
+Correct
+
+S->S = r + ~r
+Correct
+
+r + ~r = S->S
+Correct
+
+no (S->S) - (r + ~r)
+Correct
+
+no (S->S) - r - ~r
+Correct
+
+all x, y: S | x->y !in r implies y->x in r
+Correct
+
+not some s1, s2: S | s1->s2 !in r and s2->s1 !in r
+Correct
+
+all x: S | S - x.r in r.x
+Correct
+
+all x: S | S - r.x in x.r
+Correct
+
+all x: S | S - x.r - r.x = none
+Correct
+
+univ->univ in r + ~r
+Correct
+
+(S->S) - r in ~r
+Correct
+
+(S->S) - ~r in r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 20
+Syntax Error: 0
+Wrong: 0

@@ -1,0 +1,158 @@
+Sorted: all n: This.header.*link | n.link.elem in (none) + {e: Int | e >= n.elem}
+Correct
+
+Sorted: all n: This.header.*link | all next: n.link | n.elem <= next.elem
+Correct
+
+Sorted: all n: This.header.*link | (some n.link) implies n.elem <= n.link.elem
+Correct
+
+Sorted: no n: This.header.*link | some n.link and n.elem > n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | n.link = none or n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | (n.link = none) or (n.elem <= n.link.elem)
+Correct
+
+Sorted: all n: This.header.*link | n.link != none implies n.elem <= n.link.elem
+Correct
+
+Sorted: not some n: This.header.*link | n.elem > n.link.elem
+Wrong
+
+Sorted: all n: This.header.*link | n.link in {m: Node | n.elem <= m.elem} or no n.link
+Correct
+
+Sorted: all n: This.header.*link | n.link in Node implies n.elem <= n.link.elem
+Wrong
+
+Count: result = #{n: This.header.*link | n.elem = x}
+Wrong
+
+Count: {n: This.header.*link | n.elem = x} = (result <: Int)
+Wrong
+
+Count: result = count[n: This.header.*link | n.elem = x]
+Syntax Error
+SYN_MSG:
+There are 1 possible tokens that can appear here:
+] 
+END_SYN_MSG
+
+Count: result = (#{n: This.header.*link & {m: Node | m.elem = x}})
+Wrong
+
+Count: result = #{n: This.header.*link | x = n.elem}
+Wrong
+
+Count: result = #{n: Node | n in This.header.*link and n.elem = x}
+Wrong
+
+Count: result = #{n: This.header.*link | n.elem in x}
+Wrong
+
+Count: result = #(This.header.*link & {n: Node | n.elem = x})
+Wrong
+
+Count: result = #{n: This.header.*link | not (n.elem != x)}
+Wrong
+
+Count: result = #{n: This.header.*link | x in n.elem}
+Wrong
+
+Contains: result = (some n: This.header.*link | n.elem = x) => True else False
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Boolean}
+Right type = {PrimitiveBoolean}
+END_SYN_MSG
+
+Contains: result = (some n: This.header.*link & {m: Node | m.elem = x}) => True else False
+Syntax Error
+SYN_MSG:
+There are 3 possible tokens that can appear here:
+,  { | 
+END_SYN_MSG
+
+Contains: (some n: This.header.*link | n.elem = x) implies result = True else result = False
+Wrong
+
+Contains: (some {n: This.header.*link | n.elem = x}) implies result = True else result = False
+Wrong
+
+Contains: result = (some {n: Node | n in This.header.*link and n.elem = x}) => True else False
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Boolean}
+Right type = {PrimitiveBoolean}
+END_SYN_MSG
+
+Contains: result = (#(This.header.*link & {n: Node | n.elem = x}) > 0) => True else False
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Boolean}
+Right type = {PrimitiveBoolean}
+END_SYN_MSG
+
+Contains: result = (x in This.header.*link.elem) => True else False
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Boolean}
+Right type = {PrimitiveBoolean}
+END_SYN_MSG
+
+Contains: (x in This.header.*link.elem) implies result = True else result = False
+Wrong
+
+Contains: result = {b: Boolean | (some n: This.header.*link | n.elem = x) => b = True else b = False}
+Wrong
+
+Contains: result = (some n: This.header.*link | n.elem = x) = (result = True)
+Syntax Error
+SYN_MSG:
+= can be used only between 2 expressions of the same arity, or between 2 integer expressions.
+Left type = {this/Boolean}
+Right type = {PrimitiveBoolean}
+END_SYN_MSG
+
+Loop: no This.header or (some n: This.header.*link | n.link = n)
+Correct
+
+Loop: no This.header or (one n: Node | n in This.header.*link and n.link = n)
+Correct
+
+Loop: (all n: This.header.*link | n.link != n) implies no This.header
+Correct
+
+Loop: no This.header or (some n: This.header.*link | n = n.link)
+Correct
+
+Loop: no This.header or (some n: Node | n in This.header.*link and n = n.link)
+Correct
+
+Loop: (no This.header) or (some n: This.header.*link | n.link in n)
+Wrong
+
+Loop: (no This.header) or (one n: This.header.*link | n in n.link)
+Correct
+
+Loop: no This.header or (some n: This.header.*link | n.link in n)
+Wrong
+
+Loop: (no This.header) or (some n: Node | n in This.header.*link and n.link = n)
+Correct
+
+Loop: no This.header or (some n: This.header.*link | n.link = n) -- aug10
+Correct
+
+Total: 40
+Unique: 40
+Correct: 16
+Syntax Error: 7
+Wrong: 17

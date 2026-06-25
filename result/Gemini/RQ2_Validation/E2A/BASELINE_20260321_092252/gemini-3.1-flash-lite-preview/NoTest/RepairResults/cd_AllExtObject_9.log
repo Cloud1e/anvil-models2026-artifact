@@ -1,0 +1,173 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+((({ c: (one Class) {
+(c != Object)
+} }).ext) = Object)
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 3466876877
+ [INFO] Expression generation time: 125224208
+ [INFO] Search space: 48
+ [INFO] Fix failed, number of combinations tried: 11
+ [INFO] Expression generation time: 41857708
+ [INFO] Search space: 192
+ [INFO] Fix failed, number of combinations tried: 15
+ [INFO] Expression generation time: 159361542
+ [INFO] Search space: 8192
+ [INFO] Fix succeeded, number of combinations tried: 44
+ [INFO] Fixed by synthesizer:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+((({ c: (one (ext.Object)) {
+(c != Object)
+} }).ext) = Object)
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+ [INFO] Fault localization time: 1331547834
+ [INFO] Expression generation time: 26538458
+ [INFO] Search space: 6
+ [INFO] Fix failed, number of combinations tried: 5
+ [INFO] Expression generation time: 19938875
+ [INFO] Search space: 48
+ [INFO] Fix failed, number of combinations tried: 11
+ [INFO] Expression generation time: 57974958
+ [INFO] Search space: 8192
+ [INFO] Fix failed, number of combinations tried: 44
+ [INFO] Expression generation time: 184860958
+ [INFO] Search space: 27648
+ [INFO] Fix failed, number of combinations tried: 64
+ [INFO] Expression generation time: 2804416
+ [INFO] Search space: 718848
+ [INFO] Fix failed, number of combinations tried: 90
+ [INFO] Expression generation time: 1384917
+ [INFO] Search space: 144
+ [INFO] Fix failed, number of combinations tried: 24
+ [INFO] Expression generation time: 3196625
+ [INFO] Search space: 576
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 92167
+ [INFO] Search space: 312
+ [INFO] Fix failed, number of combinations tried: 38
+ [INFO] Expression generation time: 161375
+ [INFO] Search space: 6912
+ [INFO] Fix failed, number of combinations tried: 60
+ [INFO] Expression generation time: 297334
+ [INFO] Search space: 27648
+ [INFO] Fix failed, number of combinations tried: 64
+ [INFO] Expression generation time: 666500
+ [INFO] Search space: 27648
+ [INFO] Fix failed, number of combinations tried: 64
+ [INFO] Expression generation time: 995167
+ [INFO] Search space: 718848
+ [INFO] Fix failed, number of combinations tried: 90
+ [INFO] Expression generation time: 1327750
+ [INFO] Search space: 144
+ [INFO] Fix failed, number of combinations tried: 24
+ [INFO] Expression generation time: 91541
+ [INFO] Search space: 576
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Expression generation time: 358000
+ [INFO] Search space: 576
+ [INFO] Fix failed, number of combinations tried: 28
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+((({ c: (one (ext.Object)) {
+(c != Object)
+} }).ext) = Object)
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Class {
+ext: (lone Class)
+}
+one sig Object extends Class {}
+pred ObjectNoExt[] {
+(no (Object.ext))
+}
+pred Acyclic[] {
+(all c: (one Class) {
+(c !in (c.(^ext)))
+})
+}
+pred AllExtObject[] {
+((({ c: (one (ext.Object)) {
+(c != Object)
+} }).ext) = Object)
+}
+pred ClassHierarchy[] {
+((ObjectNoExt[]) && (Acyclic[]) && (AllExtObject[]))
+}
+
+
+
+run ClassHierarchy for 3
+

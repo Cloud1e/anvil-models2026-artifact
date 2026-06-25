@@ -1,0 +1,65 @@
+all s, t: S | s != t implies (s->t in r or t->s in r) and (all s: S | s->s in r)
+Wrong
+
+all s, t: S | not (s->t not in r and t->s not in r)
+Correct
+
+all s, t: S | s->t + t->s in r
+Wrong
+
+all s: S | all t: S | s->t in r or t->s in r
+Correct
+
+all disj s, t: S | s->t in r or t->s in r
+Wrong
+
+all s, t: S | s->t in r or (s != t implies t->s in r)
+Wrong
+
+all s, t: S | not (s->t not in r) or t->s in r
+Correct
+
+all s, t: S | s->t in r or not (t->s not in r)
+Correct
+
+all s, t: S | (s->t in r and t->s not in r) or (t->s in r and s->t not in r) or (s->t in r and t->s in r)
+Correct
+
+all s, t: S | (r + ~r).s = S
+Correct
+
+all s: S | S in (r.s + (~r).s)
+Correct
+
+all s: S | S in (r[s] + r.s)
+Correct
+
+all s: S | S = (r[s] + r.s + s)
+Wrong
+
+all s: S | all t: S | t in r[s] or t in (~r)[s]
+Correct
+
+all s: S | S = r.s + ~r.s
+Correct
+
+all s, t: S | r[s][t] or r[t][s]
+Syntax Error
+
+all s, t: S | s in (r.t + ~r.t)
+Correct
+
+all s, t: S | (s->t in r) or (s->t in ~r)
+Correct
+
+all s, t: S | (r.s + ~r.s) = S
+Correct
+
+all s: S | all t: S | (s->t in r) or (s->t in ~r)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 14
+Syntax Error: 1
+Wrong: 5

@@ -1,0 +1,35 @@
+CanEnter: p.member_of & r.located_in = p.member_of
+Correct
+
+CanEnter: no (p.member_of - r.located_in)
+Correct
+
+CanEnter: all g: p.member_of | g in r.located_in
+Correct
+
+CanEnter: p.member_of + r.located_in = r.located_in
+Correct
+
+CanEnter: all g: Group | g in p.member_of implies g in r.located_in
+Correct
+
+CanEnter: #(p.member_of - r.located_in) = 0
+Correct
+
+CanEnter: p.member_of - r.located_in = none
+Correct
+
+CanEnter: not some g: p.member_of | g !in r.located_in
+Correct
+
+CanEnter: no g: Group | g in p.member_of and g !in r.located_in
+Correct
+
+CanEnter: #(p.member_of & r.located_in) = #p.member_of
+Correct
+
+Total: 10
+Unique: 10
+Correct: 10
+Syntax Error: 0
+Wrong: 0

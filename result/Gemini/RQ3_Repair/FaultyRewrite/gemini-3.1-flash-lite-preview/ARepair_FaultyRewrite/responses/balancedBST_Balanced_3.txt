@@ -1,0 +1,5 @@
+pred Balanced() {
+  all n1, n2: Node | {
+    let diff = #n1.(left + right) - #n2.(left + right) | diff in -1..1
+  }
+}

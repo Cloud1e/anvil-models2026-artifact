@@ -1,0 +1,6 @@
+sig S {
+   r: set S
+}
+pred Symmetric{
+all s, t: S | s->t in r implies t->s in r
+}

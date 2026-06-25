@@ -1,0 +1,40 @@
+ObjectNoExt: no Object.ext
+ObjectNoExt: Object.ext = none
+ObjectNoExt: none = Object.ext
+ObjectNoExt: #(Object.ext) = 0
+ObjectNoExt: not some Object.ext
+ObjectNoExt: all c: Class | c not in Object.ext
+ObjectNoExt: no c: Class | Object->c in ext
+ObjectNoExt: no c: Class | c in Object.ext
+ObjectNoExt: not (some c: Class | c in Object.ext)
+ObjectNoExt: not (some c: Class | Object->c in ext)
+Acyclic: no c: Class | c in c.^ext
+Acyclic: all c: Class | c not in c.^ext
+Acyclic: no iden & ^ext
+Acyclic: no ^ext & iden
+Acyclic: all c: Class | not (c in c.^ext)
+Acyclic: not some c: Class | c in c.^ext
+Acyclic: no c: Class | c->c in ^ext
+Acyclic: all c: Class | c->c not in ^ext
+Acyclic: not some c: Class | c->c in ^ext
+Acyclic: all x: Class | x not in x.^ext
+AllExtObject: all c: Class - Object | Object in c.^ext
+AllExtObject: no c: Class - Object | Object not in c.^ext
+AllExtObject: not some c: Class - Object | Object not in c.^ext
+AllExtObject: all c: Class | c != Object implies Object in c.^ext
+AllExtObject: no c: Class | c != Object and Object not in c.^ext
+AllExtObject: not some c: Class | c != Object and Object not in c.^ext
+AllExtObject: all c: Class | not (c = Object) implies Object in c.^ext
+AllExtObject: all x: Class - Object | Object in x.^ext
+AllExtObject: all x: Class | x != Object implies Object in x.^ext
+AllExtObject: no x: Class - Object | Object not in x.^ext
+ClassHierarchy: ObjectNoExt() and Acyclic() and AllExtObject()
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and AllExtObject[]
+ClassHierarchy: Acyclic() and ObjectNoExt() and AllExtObject()
+ClassHierarchy: Acyclic[] and ObjectNoExt[] and AllExtObject[]
+ClassHierarchy: AllExtObject() and Acyclic() and ObjectNoExt()
+ClassHierarchy: AllExtObject[] and Acyclic[] and ObjectNoExt[]
+ClassHierarchy: ObjectNoExt() and AllExtObject() and Acyclic()
+ClassHierarchy: ObjectNoExt[] and AllExtObject[] and Acyclic[]
+ClassHierarchy: Acyclic() and AllExtObject() and ObjectNoExt()
+ClassHierarchy: Acyclic[] and AllExtObject[] and ObjectNoExt[]

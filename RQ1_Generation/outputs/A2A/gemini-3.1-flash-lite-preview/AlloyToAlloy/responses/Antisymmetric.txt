@@ -1,0 +1,20 @@
+all s, t: S | s in t.r and t in s.r implies s = t
+all s: S | all t: S - s | not (s->t in r and t->s in r)
+no (r & ~r) - iden
+all disj s, t: S | not (s->t in r and t->s in r)
+all s, t: S | (s->t in r and s != t) implies not (t->s in r)
+all s, t: S | s->t in r implies t->s not in r or s = t
+r & ~r in iden
+all s: S | s.r & ~s.r in none
+all s: S | no (s.r & {t: S | t->s in r} - s)
+all s, t: S | (s->t in r and t->s in r) => s = t
+all s, t: S | s->t in r implies not t->s in r or s = t
+all s, t: S | s->t in r and s != t implies not t->s in r
+no s, t: S | s != t and s->t in r and t->s in r
+all s: S | all t: r[s] | s in r[t] implies s = t
+all s: S | (r.s & r[s]) in s
+all s: S | s.r & r.s = (s in s.r implies s else none)
+(r & ~r) in iden
+all s, t: S | s->t in r and t->s in r => s = t
+all s: S | s.r & r.s = (s->s in r => s else none)
+all s, t: S | (s->t in r and t->s in r) implies s = t

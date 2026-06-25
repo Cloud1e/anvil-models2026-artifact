@@ -1,0 +1,65 @@
+all x, y: S | x->y in r or y->x in r
+Correct
+
+all x, y: S | x != y implies (x->y in r or y->x in r)
+Wrong
+
+all disj x, y: S | x->y in r or y->x in r
+Wrong
+
+all x: S | S in (x.r + x.~r + x)
+Wrong
+
+all x: S | S = (x.r + x.~r + x)
+Wrong
+
+all x: S | S - x in (x.r + x.~r)
+Wrong
+
+no x: S | x not in (S.^(r + ~r)) and x not in (S.(r + ~r))
+Wrong
+
+all x: S | all y: S | y in x.r or x in y.r
+Correct
+
+all x: S | S = x.^(r + ~r) + x
+Wrong
+
+all x: S | all y: S | y in x.(r + ~r) or x = y
+Wrong
+
+all disj x, y: S | y in x.(r + ~r)
+Wrong
+
+all x: S | S = x.(r + ~r) + x
+Wrong
+
+all x, y: S | x in y.(r + ~r) or x = y
+Wrong
+
+all x: S | all y: S | x->y in r + ~r + iden
+Wrong
+
+all x: S | all y: S | x->y in (r + ~r) or x = y
+Wrong
+
+all x: S | S = x.*(r + ~r)
+Wrong
+
+all x: S | all y: S | y in x.*(r + ~r)
+Wrong
+
+all x: S | S = x.(r + ~r + iden)
+Wrong
+
+all x: S | all y: S | x->y in (r + ~r) or x->y in iden
+Wrong
+
+all x, y: S | x->y in (r + ~r) + iden
+Wrong
+
+Total: 20
+Unique: 20
+Correct: 2
+Syntax Error: 0
+Wrong: 18

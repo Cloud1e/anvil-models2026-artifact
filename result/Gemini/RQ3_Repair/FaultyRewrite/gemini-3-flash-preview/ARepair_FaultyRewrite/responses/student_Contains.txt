@@ -1,0 +1,49 @@
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( x ! in This.header.*link.elem implies result = False ) or result = True
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    result = True or ( x ! in This.header.*link.elem => result = False )
+    RepOk [ This ]
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( ( not x in This.header.*link.elem => result = False ) || result = True )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( x in This.header.*link.elem or result = False or result = True )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( ( result = True ) || ( result = False ) || ( x in This.header.*link.elem ) )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( ( x ! in This.header.*link.elem and result = True ) => result = True )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( result != True implies ( x ! in This.header.*link.elem implies result = False ) else True )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( result in True or ( x ! in This.header.*link.elem => result in False ) )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( all b : result | b = True or ( x ! in This.header.*link.elem => b = False ) )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    ( ( ( x ! in This.header.*link.elem ) => ( result = False ) ) || ( result = True ) )
+    RepOk [ This ]
+}

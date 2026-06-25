@@ -1,0 +1,35 @@
+s in a.associated_with.(instructor_of + assistant_for) - a.assigned_to
+Correct
+
+s in a.associated_with.instructor_of + a.associated_with.assistant_for - a.assigned_to
+Correct
+
+s in a.associated_with.instructor_of + (a.associated_with.assistant_for - a.assigned_to)
+Correct
+
+(s in a.associated_with.instructor_of or s in a.associated_with.assistant_for) and s not in a.assigned_to
+Correct
+
+s in a.associated_with.instructor_of or (s in a.associated_with.assistant_for and s not in a.assigned_to)
+Correct
+
+s not in a.assigned_to and s in a.associated_with.(instructor_of + assistant_for)
+Correct
+
+s in (a.associated_with.instructor_of + a.associated_with.assistant_for) and not s in a.assigned_to
+Correct
+
+let c = a.associated_with | s in c.(instructor_of + assistant_for) - a.assigned_to
+Correct
+
+let c = a.associated_with | s in c.instructor_of + c.assistant_for - a.assigned_to
+Correct
+
+not s in a.assigned_to and (s in a.associated_with.instructor_of or s in a.associated_with.assistant_for)
+Correct
+
+Total: 10
+Unique: 10
+Correct: 10
+Syntax Error: 0
+Wrong: 0

@@ -1,0 +1,474 @@
+[
+  {
+    "unique_id": "balancedBST_Balanced_0",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Balanced_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) implies (Depth[n1] - Depth[n2] in -1 + 0 + 1)"
+  },
+  {
+    "unique_id": "balancedBST_Balanced_1",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Balanced_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] - Depth[n2] >= -1 and Depth[n1] - Depth[n2] <= 1)"
+  },
+  {
+    "unique_id": "balancedBST_Balanced_2",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Balanced_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] < Depth[n2] + 2 and Depth[n2] < Depth[n1] + 2)"
+  },
+  {
+    "unique_id": "balancedBST_Balanced_3",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Balanced_3.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies not (Depth[n1] - Depth[n2] > 1 or Depth[n2] - Depth[n1] > 1)"
+  },
+  {
+    "unique_id": "balancedBST_Sorted_4",
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Sorted_4.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n: Node | (n.left.*(left + right)).elem.max < n.elem and (n.right.*(left + right)).elem.min > n.elem"
+  },
+  {
+    "unique_id": "balancedBST_Sorted_5",
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Sorted_5.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n: Node | (no n.left or n.left.*(left + right).elem < n.elem) and (no n.right or n.right.*(left + right).elem > n.elem)"
+  },
+  {
+    "unique_id": "balancedBST_Sorted_6",
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Sorted_6.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n: Node, nl: n.left.*(left + right), nr: n.right.*(left + right) | nl.elem < n.elem and nr.elem > n.elem"
+  },
+  {
+    "unique_id": "balancedBST_Sorted_7",
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/balancedBST_Sorted_7.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n: Node | (all d: n.^left + n.left | d.*(left + right).elem < n.elem) and (all d: n.^right + n.right | d.*(left + right).elem > n.elem)"
+  },
+  {
+    "unique_id": "bempl_CanEnter_0",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k : p.owns | k.opened_by = r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_1",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "p.owns.opened_by & r != none"
+  },
+  {
+    "unique_id": "bempl_CanEnter_2",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "r in (p.owns).opened_by"
+  },
+  {
+    "unique_id": "bempl_CanEnter_3",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_3.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "not no p.owns & opened_by.r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_4",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_4.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "(p.owns).opened_by in r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_5",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_5.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "#{p.owns & opened_by.r} > 0"
+  },
+  {
+    "unique_id": "bempl_CanEnter_6",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_6.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "p.owns & opened_by.r != none"
+  },
+  {
+    "unique_id": "bempl_CanEnter_7",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_7.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k : Key | k in p.owns and k.opened_by = r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_8",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_8.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "r in {room : Room | some k : p.owns | k.opened_by = room}"
+  },
+  {
+    "unique_id": "bempl_CanEnter_9",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/bempl_CanEnter_9.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k : p.owns | r = k.opened_by"
+  },
+  {
+    "unique_id": "cd_Acyclic_0",
+    "model_name": "cd",
+    "predicate_name": "Acyclic",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/cd_Acyclic_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/cd.als",
+    "predicate_body": "iden not in ^ext"
+  },
+  {
+    "unique_id": "cd_AllExtObject_1",
+    "model_name": "cd",
+    "predicate_name": "AllExtObject",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/cd_AllExtObject_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/cd.als",
+    "predicate_body": "all c: Class - Object | some ext.c & Object.*ext"
+  },
+  {
+    "unique_id": "cd_ClassHierarchy_2",
+    "model_name": "cd",
+    "predicate_name": "ClassHierarchy",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/cd_ClassHierarchy_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/cd.als",
+    "predicate_body": "ObjectNoExt[] => (Acyclic[] and AllExtObject[])"
+  },
+  {
+    "unique_id": "cd_ObjectNoExt_3",
+    "model_name": "cd",
+    "predicate_name": "ObjectNoExt",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/cd_ObjectNoExt_3.als",
+    "test_suite_path": "ARepair/experiments/test-suite/cd.als",
+    "predicate_body": "no ext.Object"
+  },
+  {
+    "unique_id": "dll_ConsistentPreAndNxt_0",
+    "model_name": "dll",
+    "predicate_name": "ConsistentPreAndNxt",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/dll_ConsistentPreAndNxt_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/dll.als",
+    "predicate_body": "all n: Node | n.nxt.pre = n and n.pre.nxt = n"
+  },
+  {
+    "unique_id": "dll_ConsistentPreAndNxt_1",
+    "model_name": "dll",
+    "predicate_name": "ConsistentPreAndNxt",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/dll_ConsistentPreAndNxt_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/dll.als",
+    "predicate_body": "nxt.~pre = iden & (nxt . ~nxt + iden) and pre.~nxt = iden & (pre . ~pre + iden)"
+  },
+  {
+    "unique_id": "dll_ConsistentPreAndNxt_2",
+    "model_name": "dll",
+    "predicate_name": "ConsistentPreAndNxt",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/dll_ConsistentPreAndNxt_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/dll.als",
+    "predicate_body": "all n: Node | n in n.nxt.pre iff n in n.pre.nxt"
+  },
+  {
+    "unique_id": "dll_Sorted_3",
+    "model_name": "dll",
+    "predicate_name": "Sorted",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/dll_Sorted_3.als",
+    "test_suite_path": "ARepair/experiments/test-suite/dll.als",
+    "predicate_body": "all n: Node | n.nxt.elem >= n.elem"
+  },
+  {
+    "unique_id": "dll_Sorted_4",
+    "model_name": "dll",
+    "predicate_name": "Sorted",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/dll_Sorted_4.als",
+    "test_suite_path": "ARepair/experiments/test-suite/dll.als",
+    "predicate_body": "all n: Node | n.nxt in Node => n.elem <= n.nxt.elem"
+  },
+  {
+    "unique_id": "dll_UniqueElem_5",
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/dll_UniqueElem_5.als",
+    "test_suite_path": "ARepair/experiments/test-suite/dll.als",
+    "predicate_body": "all n: Node | # (elem.n.elem) = 1"
+  },
+  {
+    "unique_id": "dll_UniqueElem_6",
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/dll_UniqueElem_6.als",
+    "test_suite_path": "ARepair/experiments/test-suite/dll.als",
+    "predicate_body": "(elem.~elem) = iden"
+  },
+  {
+    "unique_id": "dll_UniqueElem_7",
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/dll_UniqueElem_7.als",
+    "test_suite_path": "ARepair/experiments/test-suite/dll.als",
+    "predicate_body": "all n: Node | n = (elem.n.elem)"
+  },
+  {
+    "unique_id": "dll_UniqueElem_8",
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/dll_UniqueElem_8.als",
+    "test_suite_path": "ARepair/experiments/test-suite/dll.als",
+    "predicate_body": "lone n: Node | n.elem = n.elem"
+  },
+  {
+    "unique_id": "farmer_crossRiver_0",
+    "model_name": "farmer",
+    "predicate_name": "crossRiver",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/farmer_crossRiver_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/farmer.als",
+    "predicate_body": "(from' = (from - Farmer) - (from - Farmer).eats and to' = to + Farmer) or (some item : from - Farmer | from' = (from - Farmer - item) - (from - Farmer - item).eats and to' = to + Farmer + item)"
+  },
+  {
+    "unique_id": "farmer_crossRiver_1",
+    "model_name": "farmer",
+    "predicate_name": "crossRiver",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/farmer_crossRiver_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/farmer.als",
+    "predicate_body": "(no i : from - Farmer | i in from'.eats) and (from' = from - Farmer and to' = to + Farmer) or (some item : from - Farmer | from' = from - Farmer - item and no i : from' | i in from'.eats and to' = to + Farmer + item)"
+  },
+  {
+    "unique_id": "grade_PolicyAllowsGrading_0",
+    "model_name": "grade",
+    "predicate_name": "PolicyAllowsGrading",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/grade_PolicyAllowsGrading_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/grade.als",
+    "predicate_body": "s in a.associated_with.assistant_for or s in a.associated_with.instructor_of and not (s in a.assigned_to)"
+  },
+  {
+    "unique_id": "student_Contains_0",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Contains_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "(some n: This.header.*link | n.elem = x) => result = True else result = False"
+  },
+  {
+    "unique_id": "student_Contains_1",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Contains_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = True <=> (some n: This.header.*link | n.elem = x) and result = False <=> (no n: This.header.*link | n.elem = x)"
+  },
+  {
+    "unique_id": "student_Contains_2",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Contains_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "(result = True and some n: This.header.*link | n.elem = x) or (result = False and no n: This.header.*link | n.elem = x)"
+  },
+  {
+    "unique_id": "student_Contains_3",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Contains_3.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "(all n: This.header.*link | n.elem != x) => result = False else result = True"
+  },
+  {
+    "unique_id": "student_Contains_4",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Contains_4.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "(some n: This.header.*link | n.elem = x) and result = True or (all n: This.header.*link | n.elem != x) and result = False"
+  },
+  {
+    "unique_id": "student_Contains_5",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Contains_5.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "{result = True} <=> {some n: This.header.*link | n.elem = x}"
+  },
+  {
+    "unique_id": "student_Contains_6",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Contains_6.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "{result = False} <=> {no n: This.header.*link | n.elem = x}"
+  },
+  {
+    "unique_id": "student_Count_7",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Count_7.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = #{n: This.header.*link | n.elem = x}"
+  },
+  {
+    "unique_id": "student_Count_8",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Count_8.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "#( {n: This.header.*link | n.elem = x} ) = result"
+  },
+  {
+    "unique_id": "student_Count_9",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Count_9.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = # ( (This.header.*link) :> x & elem.x )"
+  },
+  {
+    "unique_id": "student_Count_10",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Count_10.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = #(This.header.*link) - #( {n: This.header.*link | n.elem != x} )"
+  },
+  {
+    "unique_id": "student_Count_11",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Count_11.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "{n: This.header.*link | n.elem = x}.elem = x and result = #( {n: This.header.*link | n.elem = x} )"
+  },
+  {
+    "unique_id": "student_Count_12",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Count_12.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = # ( (This.header.*link) & elem.x )"
+  },
+  {
+    "unique_id": "student_Count_13",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Count_13.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = #(This.header.*link & elem.x)"
+  },
+  {
+    "unique_id": "student_Loop_14",
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Loop_14.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "no This.header or (all n: This.header.*link | lone n.link) and (all n: This.header.*link | n.link != n)"
+  },
+  {
+    "unique_id": "student_Loop_15",
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Loop_15.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "no This.header or (all n: This.header.*link | one n.link => n != n.link)"
+  },
+  {
+    "unique_id": "student_Loop_16",
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Loop_16.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "no This.header or (all n: This.header.*link | n.link != n)"
+  },
+  {
+    "unique_id": "student_Loop_17",
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Loop_17.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "no This.header or (all n: This.header.*link | n not in n.link)"
+  },
+  {
+    "unique_id": "student_Loop_18",
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Loop_18.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "no This.header or no {n: This.header.*link | n = n.link}"
+  },
+  {
+    "unique_id": "student_Loop_19",
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Loop_19.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "no This.header or (all n: This.header.*link | n.link in (This.header.*link - n))"
+  },
+  {
+    "unique_id": "student_Loop_20",
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Loop_20.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "no This.header or (all n: This.header.*link | n !in n.^link)"
+  },
+  {
+    "unique_id": "student_Loop_21",
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Loop_21.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "no This.header or (all n: This.header.*link | no n.^link & n)"
+  },
+  {
+    "unique_id": "student_Loop_22",
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Loop_22.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "no This.header or (all n: This.header.*link | (n.link = n) => none = n)"
+  },
+  {
+    "unique_id": "student_Loop_23",
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Loop_23.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "no This.header or (all n: This.header.*link | lone n.link) and (all n: This.header.*link | n.link != n) -- aug10"
+  },
+  {
+    "unique_id": "student_Sorted_24",
+    "model_name": "student",
+    "predicate_name": "Sorted",
+    "model_path": "result/Gemini/ARepair_Alloy2Alloy_WithTest/WrongForRepair/student_Sorted_24.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "all n: This.header.*link | (n.link in Node) => n.elem <= n.link.elem"
+  }
+]

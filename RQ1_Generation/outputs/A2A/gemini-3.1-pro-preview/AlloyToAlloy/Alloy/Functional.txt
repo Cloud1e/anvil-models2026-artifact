@@ -1,0 +1,65 @@
+all s: S | #s.r <= 1
+Wrong
+
+r in S -> lone S
+Correct
+
+~r.r in iden
+Correct
+
+all s: S | lone r[s]
+Correct
+
+all s: S | s.r = none or one s.r
+Correct
+
+all s: S | #s.r = 0 or #s.r = 1
+Correct
+
+all s: S | #s.r < 2
+Wrong
+
+no s: S | #s.r > 1
+Wrong
+
+no s: S | #s.r >= 2
+Wrong
+
+all x, y, z: S | x->y in r and x->z in r implies y = z
+Correct
+
+no x, y, z: S | x->y in r and x->z in r and y != z
+Correct
+
+all s: S | no disj a, b: S | a in s.r and b in s.r
+Correct
+
+no s: S | some disj y, z: S | s->y in r and s->z in r
+Correct
+
+all s: S | lone y: S | s->y in r
+Correct
+
+all s: S, a, b: s.r | a = b
+Correct
+
+no s: S, a, b: s.r | a != b
+Correct
+
+all s: S | some y: S | s.r in y
+Correct
+
+all s: S | let dest = s.r | lone dest
+Correct
+
+all s: S | no a, b: S | s->a in r and s->b in r and a != b
+Correct
+
+all s: S | #(s <: r) <= 1
+Wrong
+
+Total: 20
+Unique: 20
+Correct: 15
+Syntax Error: 0
+Wrong: 5

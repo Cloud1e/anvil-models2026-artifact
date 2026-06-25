@@ -1,0 +1,20 @@
+all n: Node | n in n.^link and lone n.link and #link = #Node
+all n: Node | n in n.^link and one n.link and all m: Node | m in n.^link
+#Node = #link and all n: Node | one n.link and Node in n.^link
+all n: Node | one n.link and all m: Node | m in n.^link and #Node = #link
+all n: Node | one n.link and all disj m, k: Node | m.^link = k.^link and #link = #Node
+all n: Node | one n.link and (all m: Node | some m.link) and Node in n.^link
+#link = #Node and all n: Node | one n.link and n.^link = Node
+all n: Node | one n.link and #link = #Node and (all m: Node | m in n.^link)
+all n: Node | one n.link and n.^link = Node - n and #Node = #link
+all n: Node | {n.link} = {m: Node | m != n} and all n: Node | one n.link
+all n: Node | {n.link} = Node - n and all n: Node | one n.link
+all n: Node | one n.link and all n: Node | Node in n.^link
+all n: Node | one n.link and no n & n.^link and all n: Node | Node in n.^link
+all n: Node | one n.link and all n: Node | {m: Node | m in n.^link} = Node
+all n: Node | one n.link and all disj n, m: Node | m in n.^link
+all n: Node | one n.link and all n: Node | Node - n in n.^link
+all n: Node | one n.link and all n: Node | #n.^link = #Node - 1
+all n: Node | one n.link and all n: Node | n.^link = Node - n
+all n: Node | one n.link and all n: Node | {n}.*link = Node
+#Node = #link and (all n: Node | lone n.link) and (all n: Node | n in n.^link)

@@ -1,0 +1,125 @@
+Contains: RepOk[This] (some n: This.header.*link | n.elem = x) => result = True else result = False
+Correct
+
+Contains: RepOk[This] and ((some n: This.header.*link | n.elem = x) => result = True else result = False)
+Correct
+
+Contains: RepOk[This] (x in This.header.*link.elem => result = True else result = False)
+Correct
+
+Contains: RepOk[This] ((some node: This.header.*link | node.elem = x) => result = True else result = False)
+Correct
+
+Contains: RepOk[This] (some n: This.header.*link | x = n.elem) => result = True else result = False
+Correct
+
+Contains: RepOk[This] and (x in This.header.*link.elem => result = True else result = False)
+Correct
+
+Contains: RepOk[This] (some n: This.header.*link | n.elem in x) => result = True else result = False
+Correct
+
+Contains: RepOk[This] (result = True <=> some n: This.header.*link | n.elem = x)
+Correct
+
+Contains: RepOk[This] and (result = True <=> some n: This.header.*link | n.elem = x)
+Correct
+
+Contains: RepOk[This] (result = True <=> x in This.header.*link.elem)
+Correct
+
+Count: RepOk[This] result = #{n: This.header.*link | n.elem = x}
+Correct
+
+Count: RepOk[This] and result = #{n: This.header.*link | n.elem = x}
+Correct
+
+Count: RepOk[This] result = #{node: This.header.*link | node.elem = x}
+Correct
+
+Count: RepOk[This] result = #{n: This.header.*link | x = n.elem}
+Correct
+
+Count: RepOk[This] result = #{n: This.header.*link | n.elem in x}
+Correct
+
+Count: RepOk[This] and result = #{node: This.header.*link | node.elem = x}
+Correct
+
+Count: RepOk[This] #{n: This.header.*link | n.elem = x} = result
+Correct
+
+Count: result = #{n: This.header.*link | n.elem = x} RepOk[This]
+Correct
+
+Count: result = #{n: This.header.*link | n.elem = x} and RepOk[This]
+Correct
+
+Count: RepOk[This] result = #{x_node: This.header.*link | x_node.elem = x}
+Correct
+
+Loop: no This.header or one n: This.header.*link | n = n.link
+Correct
+
+Loop: no This.header or (one n: This.header.*link | n in n.link)
+Correct
+
+Loop: This.header = none or one n: This.header.*link | n = n.link
+Correct
+
+Loop: no This.header || one n: This.header.*link | n = n.link
+Correct
+
+Loop: no This.header or (one x: This.header.*link | x = x.link)
+Correct
+
+Loop: no This.header or one node: This.header.*link | node = node.link
+Correct
+
+Loop: some This.header implies one n: This.header.*link | n = n.link
+Correct
+
+Loop: some This.header => one n: This.header.*link | n = n.link
+Correct
+
+Loop: no This.header or one n: This.header.*link | n.link = n
+Correct
+
+Loop: This.header in none or one n: This.header.*link | n = n.link
+Correct
+
+Sorted: all n: This.header.*link | no n.link or n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | some n.link implies n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | n.link != none implies n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | some n.link => n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | n.link != none => n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | n.link = none or n.elem <= n.link.elem
+Correct
+
+Sorted: all x: This.header.*link | no x.link or x.elem <= x.link.elem
+Correct
+
+Sorted: all node: This.header.*link | no node.link or node.elem <= node.link.elem
+Correct
+
+Sorted: all n: This.header.*link | not some n.link or n.elem <= n.link.elem
+Correct
+
+Sorted: all n: This.header.*link | n.link in none or n.elem <= n.link.elem
+Correct
+
+Total: 40
+Unique: 40
+Correct: 40
+Syntax Error: 0
+Wrong: 0

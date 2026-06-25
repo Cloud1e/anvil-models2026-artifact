@@ -1,0 +1,13 @@
+Give me 20 unique solutions to the problem of creating a new Alloy predicate that is equivalent to the following Alloy predicate (without markdown or comments or ```) with respect to the property described in the comments:
+
+Note: In Alloy, "Function" is only the predicate name (a constraint on relation r), not a programming-language function or API.
+
+sig S {
+  r: set S
+}
+pred Function {
+  // Every element in S is related to exactly one element (making r a total function)
+  all s: S | one s.r
+}
+
+List each solution on a new line. Do not include the sig and pred declarations, and sequence numbers

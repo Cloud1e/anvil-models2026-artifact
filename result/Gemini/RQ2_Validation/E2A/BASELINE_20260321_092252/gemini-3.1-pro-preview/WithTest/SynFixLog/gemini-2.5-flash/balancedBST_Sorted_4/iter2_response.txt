@@ -1,0 +1,9 @@
+```alloy
+pred Sorted() {
+  all n : Node {
+    (n.left in n.left.^(left + right) => n.left.elem < n.elem) and
+    (n.right in n.right.^(left + right) => n.right.elem > n.elem) and
+    (all l : n.left.^(left + right) {l.elem < n.elem})
+  }
+}
+```

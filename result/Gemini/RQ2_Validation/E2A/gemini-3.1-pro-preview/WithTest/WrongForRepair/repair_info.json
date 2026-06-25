@@ -1,0 +1,346 @@
+[
+  {
+    "unique_id": "balancedBST_Balanced_0",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/balancedBST_Balanced_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n1, n2: Node | HasAtMostOneChild[n1] and HasAtMostOneChild[n2] => (Depth[n1] - Depth[n2]) <= 1 and (Depth[n2] - Depth[n1]) <= 1"
+  },
+  {
+    "unique_id": "balancedBST_Balanced_1",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/balancedBST_Balanced_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all x, y: Node | HasAtMostOneChild[x] and HasAtMostOneChild[y] => (Depth[x] - Depth[y]) <= 1 and (Depth[y] - Depth[x]) <= 1"
+  },
+  {
+    "unique_id": "balancedBST_Balanced_2",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/balancedBST_Balanced_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all a, b: Node | HasAtMostOneChild[a] and HasAtMostOneChild[b] => (Depth[a] - Depth[b]) <= 1 and (Depth[b] - Depth[a]) <= 1"
+  },
+  {
+    "unique_id": "balancedBST_Balanced_3",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/balancedBST_Balanced_3.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all n1, n2: Node | (HasAtMostOneChild[n1] and HasAtMostOneChild[n2]) => (Depth[n1] - Depth[n2]) <= 1 and (Depth[n2] - Depth[n1]) <= 1"
+  },
+  {
+    "unique_id": "balancedBST_Balanced_4",
+    "model_name": "balancedBST",
+    "predicate_name": "Balanced",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/balancedBST_Balanced_4.als",
+    "test_suite_path": "ARepair/experiments/test-suite/balancedBST.als",
+    "predicate_body": "all x, y: Node | (HasAtMostOneChild[x] and HasAtMostOneChild[y]) => (Depth[x] - Depth[y]) <= 1 and (Depth[y] - Depth[x]) <= 1"
+  },
+  {
+    "unique_id": "bempl_CanEnter_0",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/bempl_CanEnter_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "r in p.owns.opened_by"
+  },
+  {
+    "unique_id": "bempl_CanEnter_1",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/bempl_CanEnter_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k: p.owns | k.opened_by = r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_2",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/bempl_CanEnter_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k: Key | k in p.owns and k.opened_by = r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_3",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/bempl_CanEnter_3.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some p.owns & opened_by.r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_4",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/bempl_CanEnter_4.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "r in opened_by[p.owns]"
+  },
+  {
+    "unique_id": "bempl_CanEnter_5",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/bempl_CanEnter_5.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k: p.owns | r = k.opened_by"
+  },
+  {
+    "unique_id": "bempl_CanEnter_6",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/bempl_CanEnter_6.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k: Key | k.opened_by = r and p->k in owns"
+  },
+  {
+    "unique_id": "bempl_CanEnter_7",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/bempl_CanEnter_7.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "p.owns.opened_by & r = r"
+  },
+  {
+    "unique_id": "bempl_CanEnter_8",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/bempl_CanEnter_8.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some opened_by.r & p.owns"
+  },
+  {
+    "unique_id": "bempl_CanEnter_9",
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/bempl_CanEnter_9.als",
+    "test_suite_path": "ARepair/experiments/test-suite/bempl.als",
+    "predicate_body": "some k: p.owns | r in k.opened_by"
+  },
+  {
+    "unique_id": "farmer_crossRiver_0",
+    "model_name": "farmer",
+    "predicate_name": "crossRiver",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/farmer_crossRiver_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/farmer.als",
+    "predicate_body": "to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - from'.eats - eats.from'"
+  },
+  {
+    "unique_id": "farmer_crossRiver_1",
+    "model_name": "farmer",
+    "predicate_name": "crossRiver",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/farmer_crossRiver_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/farmer.als",
+    "predicate_body": "to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = (from - (to' - to)) - from'.eats - eats.from'"
+  },
+  {
+    "unique_id": "farmer_crossRiver_2",
+    "model_name": "farmer",
+    "predicate_name": "crossRiver",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/farmer_crossRiver_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/farmer.als",
+    "predicate_body": "to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - (from'.eats + eats.from')"
+  },
+  {
+    "unique_id": "farmer_crossRiver_3",
+    "model_name": "farmer",
+    "predicate_name": "crossRiver",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/farmer_crossRiver_3.als",
+    "test_suite_path": "ARepair/experiments/test-suite/farmer.als",
+    "predicate_body": "to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = (from - (to' - to)) - (from'.eats + eats.from')"
+  },
+  {
+    "unique_id": "farmer_crossRiver_4",
+    "model_name": "farmer",
+    "predicate_name": "crossRiver",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/farmer_crossRiver_4.als",
+    "test_suite_path": "ARepair/experiments/test-suite/farmer.als",
+    "predicate_body": "to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = from - (to' - to) - eats.from' - from'.eats"
+  },
+  {
+    "unique_id": "farmer_crossRiver_5",
+    "model_name": "farmer",
+    "predicate_name": "crossRiver",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/farmer_crossRiver_5.als",
+    "test_suite_path": "ARepair/experiments/test-suite/farmer.als",
+    "predicate_body": "to in to' and Farmer in to' - to and #(to' - to) <= 2 and (to' - to) - Farmer in from and from' = (from - (to' - to)) - eats.from' - from'.eats"
+  },
+  {
+    "unique_id": "farmer_crossRiver_6",
+    "model_name": "farmer",
+    "predicate_name": "crossRiver",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/farmer_crossRiver_6.als",
+    "test_suite_path": "ARepair/experiments/test-suite/farmer.als",
+    "predicate_body": "let c = to' - to | to in to' and Farmer in c and #c <= 2 and c - Farmer in from and from' = from - c - from'.eats - eats.from'"
+  },
+  {
+    "unique_id": "farmer_crossRiver_7",
+    "model_name": "farmer",
+    "predicate_name": "crossRiver",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/farmer_crossRiver_7.als",
+    "test_suite_path": "ARepair/experiments/test-suite/farmer.als",
+    "predicate_body": "let c = to' - to | to in to' and Farmer in c and #c <= 2 and c - Farmer in from and from' = from - c - (from'.eats + eats.from')"
+  },
+  {
+    "unique_id": "student_Contains_0",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Contains_0.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "(x in This.header.*link.elem and result = True) or (x not in This.header.*link.elem and result = False)"
+  },
+  {
+    "unique_id": "student_Contains_1",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Contains_1.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "(x in This.header.*link.elem implies result = True) and (x not in This.header.*link.elem implies result = False)"
+  },
+  {
+    "unique_id": "student_Contains_2",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Contains_2.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = True <=> x in This.header.*link.elem"
+  },
+  {
+    "unique_id": "student_Contains_3",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Contains_3.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = True iff x in This.header.*link.elem"
+  },
+  {
+    "unique_id": "student_Contains_4",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Contains_4.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "x in This.header.*link.elem <=> result = True"
+  },
+  {
+    "unique_id": "student_Contains_5",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Contains_5.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "x in This.header.*link.elem iff result = True"
+  },
+  {
+    "unique_id": "student_Contains_6",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Contains_6.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "(x not in This.header.*link.elem and result = False) or (x in This.header.*link.elem and result = True)"
+  },
+  {
+    "unique_id": "student_Contains_7",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Contains_7.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "(x not in This.header.*link.elem implies result = False) and (x in This.header.*link.elem implies result = True)"
+  },
+  {
+    "unique_id": "student_Contains_8",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Contains_8.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = False <=> x not in This.header.*link.elem"
+  },
+  {
+    "unique_id": "student_Contains_9",
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Contains_9.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = False iff x not in This.header.*link.elem"
+  },
+  {
+    "unique_id": "student_Count_10",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Count_10.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = #{n: This.header.*link | n.elem = x}"
+  },
+  {
+    "unique_id": "student_Count_11",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Count_11.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "#{n: This.header.*link | n.elem = x} = result"
+  },
+  {
+    "unique_id": "student_Count_12",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Count_12.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = #{x': This.header.*link | x'.elem = x}"
+  },
+  {
+    "unique_id": "student_Count_13",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Count_13.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "#{x': This.header.*link | x'.elem = x} = result"
+  },
+  {
+    "unique_id": "student_Count_14",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Count_14.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = #{y: This.header.*link | y.elem = x}"
+  },
+  {
+    "unique_id": "student_Count_15",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Count_15.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "#{y: This.header.*link | y.elem = x} = result"
+  },
+  {
+    "unique_id": "student_Count_16",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Count_16.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = #{z: This.header.*link | z.elem = x}"
+  },
+  {
+    "unique_id": "student_Count_17",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Count_17.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "#{z: This.header.*link | z.elem = x} = result"
+  },
+  {
+    "unique_id": "student_Count_18",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Count_18.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "result = #{n: This.header.*link | x = n.elem}"
+  },
+  {
+    "unique_id": "student_Count_19",
+    "model_name": "student",
+    "predicate_name": "Count",
+    "model_path": "result/Gemini/RQ2_Validation/E2A/gemini-3.1-pro-preview/WithTest/WrongForRepair/student_Count_19.als",
+    "test_suite_path": "ARepair/experiments/test-suite/student.als",
+    "predicate_body": "#{n: This.header.*link | x = n.elem} = result"
+  }
+]

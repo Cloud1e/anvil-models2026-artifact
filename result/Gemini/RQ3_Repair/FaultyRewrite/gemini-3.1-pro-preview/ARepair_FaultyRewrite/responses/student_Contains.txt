@@ -1,0 +1,51 @@
+```alloy
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( x not in This.header.*link.elem implies result = False ) or result = True
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    result = True or ( x not in This.header.*link.elem implies result = False )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    x in This.header.*link.elem or result = False or result = True
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    x in This.header.*link.elem or ( result = False or result = True )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( result != False and result != True ) implies x in This.header.*link.elem
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    not ( x not in This.header.*link.elem and result != False and result != True )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    result != True implies ( x not in This.header.*link.elem implies result = False )
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    not ( x not in This.header.*link.elem implies result = False ) implies result = True
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    ( x not in This.header.*link.elem and result != False ) implies result = True
+}
+
+pred Contains ( This : List , x : Int , result : Boolean ) {
+    RepOk [ This ]
+    let S = This.header.*link.elem | ( x not in S implies result = False ) or result = True
+}
+```

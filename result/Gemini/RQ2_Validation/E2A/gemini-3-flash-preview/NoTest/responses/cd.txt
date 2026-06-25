@@ -1,0 +1,40 @@
+ObjectNoExt: no Object.ext
+ObjectNoExt: Object.ext = none
+ObjectNoExt: all c: Object | no c.ext
+ObjectNoExt: all c: Class | c = Object implies no c.ext
+ObjectNoExt: no c: Class | c = Object and some c.ext
+ObjectNoExt: all c: Class | c = Object implies c.ext = none
+ObjectNoExt: Object.ext in none
+ObjectNoExt: #Object.ext = 0
+ObjectNoExt: Object.ext in (Class - Class)
+ObjectNoExt: all c: Class | c in Object implies no c.ext
+Acyclic: no c: Class | c in c.^ext
+Acyclic: all c: Class | c not in c.^ext
+Acyclic: no ^ext & iden
+Acyclic: all c: Class | no (c.^ext & c)
+Acyclic: iden & ^ext = none
+Acyclic: all c: Class | not (c in c.^ext)
+Acyclic: no c: Class | some c.ext and c in c.^ext
+Acyclic: all c: Class | c.^ext & c = none
+Acyclic: no c: Class | c in c.ext.^ext or c = c.ext
+Acyclic: all c: Class | no d: c.^ext | d = c
+AllExtObject: all c: Class - Object | Object in c.^ext
+AllExtObject: all c: Class | c != Object implies Object in c.^ext
+AllExtObject: Class - Object in (^ext).Object
+AllExtObject: all c: Class | c not in Object implies Object in c.^ext
+AllExtObject: no c: Class - Object | Object not in c.^ext
+AllExtObject: all c: Class | c = Object or Object in c.^ext
+AllExtObject: all c: Class | c != Object implies Object in c.*ext
+AllExtObject: all c: Class - Object | some (c.^ext & Object)
+AllExtObject: all c: Class | c != Object implies some d: Object | d in c.^ext
+AllExtObject: all c: Class - Object | Object in c.ext.*ext
+ClassHierarchy: ObjectNoExt and Acyclic and AllExtObject
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and AllExtObject[]
+ClassHierarchy: Acyclic and AllExtObject and ObjectNoExt
+ClassHierarchy: AllExtObject and Acyclic and ObjectNoExt
+ClassHierarchy: ObjectNoExt[] and (Acyclic[] and AllExtObject[])
+ClassHierarchy: (ObjectNoExt and Acyclic) and AllExtObject
+ClassHierarchy: Acyclic[] and (AllExtObject[] and ObjectNoExt[])
+ClassHierarchy: AllExtObject[] and (ObjectNoExt[] and Acyclic[])
+ClassHierarchy: (AllExtObject and ObjectNoExt) and Acyclic
+ClassHierarchy: (Acyclic[] and ObjectNoExt[]) and AllExtObject[]

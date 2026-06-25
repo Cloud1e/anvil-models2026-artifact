@@ -1,0 +1,614 @@
+[
+  {
+    "model_name": "arr",
+    "predicate_name": "NoConflict",
+    "predicate_name_original": "all i",
+    "body": "Int | lone (Array.i2e).i",
+    "output_file": "arr_NoConflict_1.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/arr_NoConflict_1.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/arr.als"
+  },
+  {
+    "model_name": "arr",
+    "predicate_name": "NoConflict",
+    "predicate_name_original": "NoConflict",
+    "body": "(Array.i2e).Int in Element",
+    "output_file": "arr_NoConflict_2.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/arr_NoConflict_2.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/arr.als"
+  },
+  {
+    "model_name": "arr",
+    "predicate_name": "NoConflict",
+    "predicate_name_original": "NoConflict",
+    "body": "Array.i2e in Int one -> Element",
+    "output_file": "arr_NoConflict_3.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/arr_NoConflict_3.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/arr.als"
+  },
+  {
+    "model_name": "arr",
+    "predicate_name": "NoConflict",
+    "predicate_name_original": "NoConflict",
+    "body": "Array.i2e in Int -> one Element",
+    "output_file": "arr_NoConflict_4.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/arr_NoConflict_4.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/arr.als"
+  },
+  {
+    "model_name": "arr",
+    "predicate_name": "NoConflict",
+    "predicate_name_original": "all e",
+    "body": "Element | lone (Array.i2e).e",
+    "output_file": "arr_NoConflict_5.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/arr_NoConflict_5.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/arr.als"
+  },
+  {
+    "model_name": "arr",
+    "predicate_name": "NoConflict",
+    "predicate_name_original": "all e",
+    "body": "Element | e in Array.i2e.Int implies lone (Array.i2e).e",
+    "output_file": "arr_NoConflict_6.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/arr_NoConflict_6.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/arr.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "Sorted",
+    "body": "all n : Node {n.left.^(left + right).elem < n.elem and n.right.^(left + right).elem > n.elem}",
+    "output_file": "balancedBST_Sorted_1.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_1.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "Sorted",
+    "body": "all n : Node {n.left.^(left+right).elem < n.elem and n.right.^(left+right).elem > n.elem and (no n.left or n.left.elem < n.elem) and (no n.right or n.right.elem > n.elem)}",
+    "output_file": "balancedBST_Sorted_2.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_2.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "Sorted",
+    "body": "all n : Node {no (n.left.^(left + right)) & {m : Node | m.elem >= n.elem} and no (n.right.^(left + right)) & {m : Node | m.elem <= n.elem}}",
+    "output_file": "balancedBST_Sorted_3.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_3.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "Sorted",
+    "body": "all n : Node {n.left.^(left + right).elem !in {e: Int | e >= n.elem} and n.right.^(left + right).elem !in {e: Int | e <= n.elem}}",
+    "output_file": "balancedBST_Sorted_4.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_4.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "HasAtMostOneChild",
+    "body": "one n.left or one n.right",
+    "output_file": "balancedBST_Sorted_5.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_5.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "HasAtMostOneChild",
+    "body": "(no n.left or no n.right) and (n.left != n.right)",
+    "output_file": "balancedBST_Sorted_6.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_6.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "HasAtMostOneChild",
+    "body": "(n.left in Node implies n.right not in Node) or (n.right in Node implies n.left not in Node) or (no n.left and no n.right)",
+    "output_file": "balancedBST_Sorted_7.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_7.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "Balanced",
+    "body": "all n1 : Node, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies Depth[n1] - Depth[n2] <= 1 and Depth[n2] - Depth[n1] <= 1}",
+    "output_file": "balancedBST_Sorted_8.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_8.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "Balanced",
+    "body": "all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies (Depth[n1] = Depth[n2] or Depth[n1] = Depth[n2] + 1 or Depth[n2] = Depth[n1] + 1)}",
+    "output_file": "balancedBST_Sorted_9.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_9.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "Balanced",
+    "body": "all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies #{n1.*~(left + right)} - #{n2.*~(left + right)} <= 1 and #{n2.*~(left + right)} - #{n1.*~(left + right)} <= 1}",
+    "output_file": "balancedBST_Sorted_10.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_10.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "balancedBST",
+    "predicate_name": "Sorted",
+    "predicate_name_original": "Balanced",
+    "body": "all n1, n2 : Node {HasAtMostOneChild[n1] and HasAtMostOneChild[n2] implies #{n1.*~(left + right)} in #{n2.*~(left + right)} + (-1 + 1)}",
+    "output_file": "balancedBST_Sorted_11.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/balancedBST_Sorted_11.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/balancedBST.als"
+  },
+  {
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "some k",
+    "body": "p.owns | k.opened_by = r",
+    "output_file": "bempl_CanEnter_1.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/bempl_CanEnter_1.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/bempl.als"
+  },
+  {
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "some k",
+    "body": "Key | p in k.~owns and r = k.opened_by",
+    "output_file": "bempl_CanEnter_2.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/bempl_CanEnter_2.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/bempl.als"
+  },
+  {
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "CanEnter",
+    "body": "r in p.owns.opened_by",
+    "output_file": "bempl_CanEnter_3.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/bempl_CanEnter_3.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/bempl.als"
+  },
+  {
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "some k",
+    "body": "Key | p in k.~owns and k.opened_by = r",
+    "output_file": "bempl_CanEnter_4.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/bempl_CanEnter_4.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/bempl.als"
+  },
+  {
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "CanEnter",
+    "body": "p.owns in r.~opened_by",
+    "output_file": "bempl_CanEnter_5.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/bempl_CanEnter_5.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/bempl.als"
+  },
+  {
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "CanEnter",
+    "body": "r in p.owns.~opened_by",
+    "output_file": "bempl_CanEnter_6.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/bempl_CanEnter_6.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/bempl.als"
+  },
+  {
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "some k",
+    "body": "p.owns | k.opened_by in r",
+    "output_file": "bempl_CanEnter_7.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/bempl_CanEnter_7.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/bempl.als"
+  },
+  {
+    "model_name": "bempl",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "some k",
+    "body": "Key | p in k.~owns and k.opened_by in r",
+    "output_file": "bempl_CanEnter_8.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/bempl_CanEnter_8.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/bempl.als"
+  },
+  {
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "predicate_name_original": "UniqueElem",
+    "body": "elem in Node one -> Int",
+    "output_file": "dll_UniqueElem_1.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/dll_UniqueElem_1.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/dll.als"
+  },
+  {
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "predicate_name_original": "UniqueElem",
+    "body": "all i: Int | lone (~elem).i",
+    "output_file": "dll_UniqueElem_2.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/dll_UniqueElem_2.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/dll.als"
+  },
+  {
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "predicate_name_original": "Sorted",
+    "body": "all n: Node - nxt.Node | n.elem <= n.nxt.elem",
+    "output_file": "dll_UniqueElem_3.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/dll_UniqueElem_3.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/dll.als"
+  },
+  {
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "predicate_name_original": "Sorted",
+    "body": "all n: Node | lone n.nxt implies n.elem <= n.nxt.elem",
+    "output_file": "dll_UniqueElem_4.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/dll_UniqueElem_4.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/dll.als"
+  },
+  {
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "predicate_name_original": "Sorted",
+    "body": "all n: Node | n.nxt.elem >= n.elem",
+    "output_file": "dll_UniqueElem_5.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/dll_UniqueElem_5.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/dll.als"
+  },
+  {
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "predicate_name_original": "Sorted",
+    "body": "all n: Node - Node.nxt | n.elem <= n.nxt.elem",
+    "output_file": "dll_UniqueElem_6.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/dll_UniqueElem_6.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/dll.als"
+  },
+  {
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "predicate_name_original": "Sorted",
+    "body": "all n: Node | n.nxt in Node implies n.elem <= n.nxt.elem",
+    "output_file": "dll_UniqueElem_7.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/dll_UniqueElem_7.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/dll.als"
+  },
+  {
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "predicate_name_original": "Sorted",
+    "body": "all n: Node | n.nxt in Node implies n.nxt.elem >= n.elem",
+    "output_file": "dll_UniqueElem_8.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/dll_UniqueElem_8.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/dll.als"
+  },
+  {
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "predicate_name_original": "ConsistentPreAndNxt",
+    "body": "all n1: Node | n1.nxt = pre[n1]",
+    "output_file": "dll_UniqueElem_9.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/dll_UniqueElem_9.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/dll.als"
+  },
+  {
+    "model_name": "dll",
+    "predicate_name": "UniqueElem",
+    "predicate_name_original": "ConsistentPreAndNxt",
+    "body": "all n2: Node | n2.pre = nxt[n2]",
+    "output_file": "dll_UniqueElem_10.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/dll_UniqueElem_10.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/dll.als"
+  },
+  {
+    "model_name": "other",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "CanEnter",
+    "body": "r in p.member_of.~located_in",
+    "output_file": "other_CanEnter_1.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/other_CanEnter_1.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/other.als"
+  },
+  {
+    "model_name": "other",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "CanEnter",
+    "body": "p.member_of & r.located_in != none",
+    "output_file": "other_CanEnter_2.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/other_CanEnter_2.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/other.als"
+  },
+  {
+    "model_name": "other",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "some g",
+    "body": "p.member_of | g in r.located_in",
+    "output_file": "other_CanEnter_3.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/other_CanEnter_3.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/other.als"
+  },
+  {
+    "model_name": "other",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "CanEnter",
+    "body": "p.member_of & r.located_in in Group",
+    "output_file": "other_CanEnter_4.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/other_CanEnter_4.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/other.als"
+  },
+  {
+    "model_name": "other",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "some g",
+    "body": "Group | g in p.member_of and g in r.located_in",
+    "output_file": "other_CanEnter_5.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/other_CanEnter_5.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/other.als"
+  },
+  {
+    "model_name": "other",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "some g",
+    "body": "Group | p->g in member_of and r->g in located_in",
+    "output_file": "other_CanEnter_6.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/other_CanEnter_6.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/other.als"
+  },
+  {
+    "model_name": "other",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "CanEnter",
+    "body": "r.located_in & p.member_of != none",
+    "output_file": "other_CanEnter_7.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/other_CanEnter_7.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/other.als"
+  },
+  {
+    "model_name": "other",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "CanEnter",
+    "body": "p.member_of & r.located_in in alas + peds + (Group - alas - peds)",
+    "output_file": "other_CanEnter_8.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/other_CanEnter_8.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/other.als"
+  },
+  {
+    "model_name": "other",
+    "predicate_name": "CanEnter",
+    "predicate_name_original": "CanEnter",
+    "body": "r in (p.member_of & Group).~located_in",
+    "output_file": "other_CanEnter_9.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/other_CanEnter_9.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/other.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "predicate_name_original": "Loop",
+    "body": "all n: Node | n not in n.^link",
+    "output_file": "student_Loop_1.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Loop_1.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "predicate_name_original": "Loop",
+    "body": "all n: Node | n !in n.^link",
+    "output_file": "student_Loop_2.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Loop_2.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "predicate_name_original": "Loop",
+    "body": "all n: Node | n.^link & n = none",
+    "output_file": "student_Loop_3.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Loop_3.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "predicate_name_original": "Loop",
+    "body": "all n: Node | n.^link in Node - n",
+    "output_file": "student_Loop_4.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Loop_4.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "predicate_name_original": "Sorted",
+    "body": "all n: Node - link.Node | n.elem <= n.link.elem",
+    "output_file": "student_Loop_5.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Loop_5.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "predicate_name_original": "Sorted",
+    "body": "all n: Node | (n -> n.link in link) implies n.elem <= n.link.elem",
+    "output_file": "student_Loop_6.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Loop_6.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Loop",
+    "predicate_name_original": "Sorted",
+    "body": "all n: Node | n.link.elem - n.elem >= 0 or no n.link",
+    "output_file": "student_Loop_7.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Loop_7.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Count",
+    "predicate_name_original": "Count",
+    "body": "result = #(x.~elem)",
+    "output_file": "student_Count_8.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Count_8.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Count",
+    "predicate_name_original": "Count",
+    "body": "result = #({n: Node | n.elem = x})",
+    "output_file": "student_Count_9.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Count_9.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Count",
+    "predicate_name_original": "Count",
+    "body": "result = #(Node & x.~elem)",
+    "output_file": "student_Count_10.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Count_10.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Count",
+    "predicate_name_original": "Count",
+    "body": "result = #({n: Node | n.elem in x})",
+    "output_file": "student_Count_11.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Count_11.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Count",
+    "predicate_name_original": "Count",
+    "body": "result = #({n: Node | n -> x in elem})",
+    "output_file": "student_Count_12.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Count_12.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Count",
+    "predicate_name_original": "Count",
+    "body": "result = #{n: Node | n.elem = x}",
+    "output_file": "student_Count_13.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Count_13.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Count",
+    "predicate_name_original": "Count",
+    "body": "result = #({n: Node | x = n.elem})",
+    "output_file": "student_Count_14.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Count_14.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Count",
+    "predicate_name_original": "Count",
+    "body": "result = #(elem & Node -> x)",
+    "output_file": "student_Count_15.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Count_15.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "predicate_name_original": "Contains",
+    "body": "(x in Node.elem and result = True) or (x not in Node.elem and result = False)",
+    "output_file": "student_Contains_16.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Contains_16.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "predicate_name_original": "Contains",
+    "body": "result = True and x in Node.elem or result = False and x not in Node.elem",
+    "output_file": "student_Contains_17.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Contains_17.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "predicate_name_original": "Contains",
+    "body": "x in Node.elem <=> result = True",
+    "output_file": "student_Contains_18.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Contains_18.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "predicate_name_original": "Contains",
+    "body": "(x in Node.elem and result = True) or (x !in Node.elem and result = False)",
+    "output_file": "student_Contains_19.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Contains_19.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "predicate_name_original": "Contains",
+    "body": "result = True <=> x in Node.elem",
+    "output_file": "student_Contains_20.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Contains_20.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "predicate_name_original": "Contains",
+    "body": "result = True and x in elem.Node or result = False and x not in elem.Node",
+    "output_file": "student_Contains_21.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Contains_21.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "predicate_name_original": "Contains",
+    "body": "result = True and some x.~elem or result = False and no x.~elem",
+    "output_file": "student_Contains_22.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Contains_22.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "predicate_name_original": "Contains",
+    "body": "x in Node.elem implies result = True and result = True implies x in Node.elem",
+    "output_file": "student_Contains_23.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Contains_23.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  },
+  {
+    "model_name": "student",
+    "predicate_name": "Contains",
+    "predicate_name_original": "Contains",
+    "body": "result = True and (x in Node.elem) or result = False and not (x in Node.elem)",
+    "output_file": "student_Contains_24.als",
+    "output_path": "<REPOSITORY_ROOT>/ARepair/experiments/models_for_repair/models/student_Contains_24.als",
+    "test_file": "<REPOSITORY_ROOT>/ARepair/experiments/test-suite/student.als"
+  }
+]

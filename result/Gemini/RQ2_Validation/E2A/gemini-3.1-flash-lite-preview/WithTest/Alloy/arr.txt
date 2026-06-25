@@ -1,0 +1,49 @@
+all i: Int | lone Array.i2e[i]
+Correct
+
+no i: Int | #(Array.i2e[i]) > 1
+Correct
+
+all i: Int | # (Array.i2e[i]) <= 1
+Correct
+
+all i: Int | {e1, e2: Element | i->e1 in Array.i2e and i->e2 in Array.i2e implies e1 = e2}
+Syntax Error
+SYN_MSG:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{this/Element->this/Element}
+END_SYN_MSG
+
+all idx: Int | lone e: Element | idx->e in Array.i2e
+Correct
+
+all idx: Int | {e1, e2: Element | i2e[idx][e1] and i2e[idx][e2] implies e1 = e2}
+Syntax Error
+SYN_MSG:
+This must be a formula expression.
+Instead, it has the following possible type(s):
+{none}
+END_SYN_MSG
+
+all i: Int | # (Array.i2e.Element & (Array.i2e[i] <: Element)) <= 1
+Wrong
+
+all i: Int, e1, e2: Element | i->e1 in Array.i2e and i->e2 in Array.i2e implies e1 = e2
+Correct
+
+all i: Int | (Array.i2e[i]) in lone Element
+Syntax Error
+SYN_MSG:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+END_SYN_MSG
+
+all idx: Int | lone (Array.i2e[idx])
+Correct
+
+Total: 10
+Unique: 10
+Correct: 6
+Syntax Error: 3
+Wrong: 1

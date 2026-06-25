@@ -1,0 +1,42 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(no idx: (one Int) {
+(some e1,e2: (one Element) {
+((e1 != e2) && ((idx.(Array.i2e)) = e1) && ((idx.(Array.i2e)) = e2))
+})
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+Exception in thread "main" java.util.NoSuchElementException: No value present
+	at java.util.Optional.get(Optional.java:135)
+	at mualloy.util.MutantEquivalenceChecker.checkEquivalenceAndGenerateTest(MutantEquivalenceChecker.java:172)
+	at mualloy.rule.MOR.mutate(MOR.java:48)
+	at fl.FaultLocator.visit(FaultLocator.java:100)
+	at parser.ast.nodes.SigDecl.accept(SigDecl.java:151)
+	at parser.ast.visitor.VoidVisitorAdapter.lambda$visit$1(VoidVisitorAdapter.java:42)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at parser.ast.visitor.VoidVisitorAdapter.visit(VoidVisitorAdapter.java:42)
+	at fl.FaultLocator.visit(FaultLocator.java:90)
+	at parser.ast.nodes.ModelUnit.accept(ModelUnit.java:174)
+	at patcher.Patcher.patch(Patcher.java:100)
+	at patcher.Patcher.main(Patcher.java:341)

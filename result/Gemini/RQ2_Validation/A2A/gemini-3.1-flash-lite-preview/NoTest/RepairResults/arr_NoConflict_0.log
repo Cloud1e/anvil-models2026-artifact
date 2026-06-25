@@ -1,0 +1,1314 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) & (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) & (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx !< 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) & (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx !>= (Array.length)))
+}) && ((Array.length) >= 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) & (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) !< 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+ [INFO] Fault localization time: 11784880131
+[DEBUG] Most suspicious node: ((i.(Array.i2e)) & (j.(Array.i2e)))
+[DEBUG] Score: 0.5773502691896258, FailToPass: 1, PassToFail: 0
+ [INFO] Fixed by mutation:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+pred NoConflictMUTATED[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((j.(Array.i2e)) - (i.(Array.i2e))))
+})
+}
+EQUIV: check { NoConflict[] <=> NoConflictMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx !< 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx !>= (Array.length)))
+}) && ((Array.length) >= 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+pred InBound[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+
+
+pred InBoundMUTATED[] {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) !< 0))
+}
+EQUIV: check { InBound[] <=> InBoundMUTATED[] } for 3
+ [INFO] Fault localization time: 5347561211
+[DEBUG] Test num: 37
+[DEBUG] Rank Node 0:
+[DEBUG] (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})
+[DEBUG] Affected paragraph names: [NoConflict]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 5): [test12, test10, test11, test13, test14]
+[DEBUG] Hole Array
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Array]
+[DEBUG] Hole i2e
+[DEBUG] Size: 2
+[DEBUG] Fragments: [i2e, (none->none->none)]
+[DEBUG] Hole Array
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Array]
+[DEBUG] Hole i2e
+[DEBUG] Size: 2
+[DEBUG] Fragments: [i2e, (none->none->none)]
+ [INFO] Expression generation time: 215444084
+ [INFO] Search space: 16
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, i2e, Array, i2e]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, Array, i2e]
+[DEBUG] Hole 1, Fragment: Array, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, Array, i2e]
+[DEBUG] Hole 0, Fragment: i2e, FailToPass: 0
+[DEBUG] Hole values: [Array, (none->none->none), Array, i2e]
+[DEBUG] Hole 1, Fragment: (none->none->none), FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, none, i2e]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [Array, i2e, Array, i2e]
+[DEBUG] Hole 1, Fragment: Array, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, Array, i2e]
+[DEBUG] Hole 0, Fragment: i2e, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, Array, (none->none->none)]
+[DEBUG] Test from pass to fail: test12
+ [INFO] Fix failed, number of combinations tried: 8
+[DEBUG] Hole Array
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Array]
+[DEBUG] Hole i2e
+[DEBUG] Size: 2
+[DEBUG] Fragments: [i2e, (none->none->none)]
+[DEBUG] Hole i
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, i, j]
+[DEBUG] Hole (Array.i2e)
+[DEBUG] Size: 1
+[DEBUG] Fragments: [(none->none)]
+[DEBUG] Hole j
+[DEBUG] Size: 6
+[DEBUG] Fragments: [none, Int, 0, 1, i, j]
+[DEBUG] Hole (Array.i2e)
+[DEBUG] Size: 1
+[DEBUG] Fragments: [(none->none)]
+ [INFO] Expression generation time: 12072708
+ [INFO] Search space: 144
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, i2e, i, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, i, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 1, Fragment: Array, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, i, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 0, Fragment: i2e, FailToPass: 0
+[DEBUG] Hole values: [Array, (none->none->none), i, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 1, Fragment: (none->none->none), FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, none, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, Int, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 1, Fragment: Int, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, 0, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 2, Fragment: 0, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, 1, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 3, Fragment: 1, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, i, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 4, Fragment: i, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, j, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 5, Fragment: j, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, i, (none->none), j, (Array.i2e)]
+[DEBUG] Hole 0, Fragment: (none->none), FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, i, (Array.i2e), none, (Array.i2e)]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [Array, i2e, i, (Array.i2e), Int, (Array.i2e)]
+[DEBUG] Hole 1, Fragment: Int, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, i, (Array.i2e), 0, (Array.i2e)]
+[DEBUG] Hole 2, Fragment: 0, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, i, (Array.i2e), 1, (Array.i2e)]
+[DEBUG] Hole 3, Fragment: 1, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, i, (Array.i2e), i, (Array.i2e)]
+[DEBUG] Hole 4, Fragment: i, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, i, (Array.i2e), j, (Array.i2e)]
+[DEBUG] Hole 5, Fragment: j, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, i, (Array.i2e), j, (none->none)]
+[DEBUG] Test from pass to fail: test12
+ [INFO] Fix failed, number of combinations tried: 18
+[DEBUG] Hole (Array.i2e)
+[DEBUG] Size: 2
+[DEBUG] Fragments: [(none->none), (Array.i2e)]
+[DEBUG] Hole Element
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Element]
+[DEBUG] Hole (i.(Array.i2e))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Element]
+[DEBUG] Hole (j.(Array.i2e))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Element]
+ [INFO] Expression generation time: 1137517833
+ [INFO] Search space: 16
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [(none->none), Element, (i.(Array.i2e)), (j.(Array.i2e))]
+[DEBUG] Hole 0, Fragment: (none->none), FailToPass: 0
+[DEBUG] Hole values: [(Array.i2e), Element, (i.(Array.i2e)), (j.(Array.i2e))]
+[DEBUG] Hole 1, Fragment: (Array.i2e), FailToPass: 0
+[DEBUG] Hole values: [(Array.i2e), none, (i.(Array.i2e)), (j.(Array.i2e))]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [(Array.i2e), Element, (i.(Array.i2e)), (j.(Array.i2e))]
+[DEBUG] Hole 1, Fragment: Element, FailToPass: 0
+[DEBUG] Hole values: [(Array.i2e), Element, none, (j.(Array.i2e))]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [(Array.i2e), Element, Element, (j.(Array.i2e))]
+[DEBUG] Hole 1, Fragment: Element, FailToPass: 0
+[DEBUG] Hole values: [(Array.i2e), Element, (i.(Array.i2e)), none]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [(Array.i2e), Element, (i.(Array.i2e)), Element]
+[DEBUG] Hole 1, Fragment: Element, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 8
+[DEBUG] Hole ((Array.i2e).Element)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, (Array.length)]
+[DEBUG] Hole ((i.(Array.i2e)) - (j.(Array.i2e)))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Element]
+ [INFO] Expression generation time: 197239417
+ [INFO] Search space: 10
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((i.(Array.i2e)) - (j.(Array.i2e)))]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Int, ((i.(Array.i2e)) - (j.(Array.i2e)))]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [0, ((i.(Array.i2e)) - (j.(Array.i2e)))]
+[DEBUG] Hole 2, Fragment: 0, FailToPass: 0
+[DEBUG] Hole values: [1, ((i.(Array.i2e)) - (j.(Array.i2e)))]
+[DEBUG] Hole 3, Fragment: 1, FailToPass: 0
+[DEBUG] Hole values: [(Array.length), ((i.(Array.i2e)) - (j.(Array.i2e)))]
+[DEBUG] Hole 4, Fragment: (Array.length), FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), none]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), Element]
+[DEBUG] Test from pass to fail: test12
+ [INFO] Fix failed, number of combinations tried: 7
+[DEBUG] Hole ((Array.i2e).Element)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, (Array.length)]
+[DEBUG] Hole ((i.(Array.i2e)) - (j.(Array.i2e)))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Element]
+[DEBUG] Hole (no ((i.(Array.i2e)) - (j.(Array.i2e))))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 1331125
+ [INFO] Search space: 40
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Int, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [0, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Hole 2, Fragment: 0, FailToPass: 0
+[DEBUG] Hole values: [1, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Hole 3, Fragment: 1, FailToPass: 0
+[DEBUG] Hole values: [(Array.length), ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Hole 4, Fragment: (Array.length), FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), none, (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), Element, (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), some ]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), no ]
+[DEBUG] Hole 1, Fragment: no, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), one ]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), lone ]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 11
+[DEBUG] Hole ((Array.i2e).Element)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, (Array.length)]
+[DEBUG] Hole ((i.(Array.i2e)) - (j.(Array.i2e)))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Element]
+[DEBUG] Hole (no ((i.(Array.i2e)) - (j.(Array.i2e))))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+ [INFO] Expression generation time: 336375
+ [INFO] Search space: 40
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Int, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [0, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Hole 2, Fragment: 0, FailToPass: 0
+[DEBUG] Hole values: [1, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Hole 3, Fragment: 1, FailToPass: 0
+[DEBUG] Hole values: [(Array.length), ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Hole 4, Fragment: (Array.length), FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), none, (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), Element, (no ((i.(Array.i2e)) - (j.(Array.i2e))))]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), some ]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), no ]
+[DEBUG] Hole 1, Fragment: no, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), one ]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), lone ]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 11
+[DEBUG] Hole ((Array.i2e).Element)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, (Array.length)]
+[DEBUG] Hole ((i.(Array.i2e)) - (j.(Array.i2e)))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Element]
+[DEBUG] Hole (no ((i.(Array.i2e)) - (j.(Array.i2e))))
+[DEBUG] Size: 4
+[DEBUG] Fragments: [some, no, one, lone]
+[DEBUG] Hole (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})
+[DEBUG] Size: 5
+[DEBUG] Fragments: [all, some, no, one, lone]
+ [INFO] Expression generation time: 2823541
+ [INFO] Search space: 200
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e)))), (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [Int, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e)))), (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [0, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e)))), (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Hole 2, Fragment: 0, FailToPass: 0
+[DEBUG] Hole values: [1, ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e)))), (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Hole 3, Fragment: 1, FailToPass: 0
+[DEBUG] Hole values: [(Array.length), ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e)))), (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Hole 4, Fragment: (Array.length), FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), none, (no ((i.(Array.i2e)) - (j.(Array.i2e)))), (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Hole 0, Fragment: none, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), Element, (no ((i.(Array.i2e)) - (j.(Array.i2e)))), (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), some , (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), no , (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Hole 1, Fragment: no, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), one , (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), lone , (all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})]
+[DEBUG] Hole 3, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e)))), all ]
+[DEBUG] Hole 0, Fragment: all, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e)))), some ]
+[DEBUG] Test from fail to pass: test10
+[DEBUG] Test from pass to fail: test11
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e)))), no ]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e)))), one ]
+[DEBUG] Test from pass to fail: test12
+[DEBUG] Hole values: [((Array.i2e).Element), ((i.(Array.i2e)) - (j.(Array.i2e))), (no ((i.(Array.i2e)) - (j.(Array.i2e)))), lone ]
+[DEBUG] Test from pass to fail: test12
+ [INFO] Fix failed, number of combinations tried: 16
+[DEBUG] Rank Node 1:
+[DEBUG] sig Element {}
+[DEBUG] Affected paragraph names: [Element_sig_mult]
+[DEBUG] Affected facts: []
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole sig Element {}
+[DEBUG] Size: 4
+[DEBUG] Fragments: [one, set, lone, some]
+ [INFO] Expression generation time: 159875
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [one ]
+[DEBUG] Hole 0, Fragment: one, FailToPass: 0
+[DEBUG] Hole values: []
+[DEBUG] Hole 1, Fragment: set, FailToPass: 0
+[DEBUG] Hole values: [lone ]
+[DEBUG] Hole 2, Fragment: lone, FailToPass: 0
+[DEBUG] Hole values: [some ]
+[DEBUG] Hole 3, Fragment: some, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Rank Node 2:
+[DEBUG] (idx >= 0)
+[DEBUG] Affected paragraph names: [InBound]
+[DEBUG] Affected facts: [InBound]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole idx
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, idx]
+ [INFO] Expression generation time: 24873209
+ [INFO] Search space: 5
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [0]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [1]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [idx]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Hole idx
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, idx]
+ [INFO] Expression generation time: 2285916
+ [INFO] Search space: 5
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [0]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [1]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [idx]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Rank Node 3:
+[DEBUG] ((Array.length) >= 0)
+[DEBUG] Affected paragraph names: [InBound]
+[DEBUG] Affected facts: [InBound]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Array
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Array, (length.Int)]
+[DEBUG] Hole length
+[DEBUG] Size: 3
+[DEBUG] Fragments: [length, (none->none), (i2e.Element)]
+ [INFO] Expression generation time: 1551500
+ [INFO] Search space: 9
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, length]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Array, length]
+[DEBUG] Hole 1, Fragment: Array, FailToPass: 0
+[DEBUG] Hole values: [(length.Int), length]
+[DEBUG] Hole 2, Fragment: (length.Int), FailToPass: 0
+[DEBUG] Hole values: [Array, length]
+[DEBUG] Hole 0, Fragment: length, FailToPass: 0
+[DEBUG] Hole values: [Array, (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [Array, (i2e.Element)]
+[DEBUG] Test from pass to fail: test36
+ [INFO] Fix failed, number of combinations tried: 6
+[DEBUG] Hole (Array.length)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, (Array.length)]
+ [INFO] Expression generation time: 707958
+ [INFO] Search space: 5
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [0]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [1]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Array.length)]
+[DEBUG] Hole 4, Fragment: (Array.length), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Hole (Array.length)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, (Array.length)]
+ [INFO] Expression generation time: 122833
+ [INFO] Search space: 5
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [0]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [1]
+[DEBUG] Test from pass to fail: test36
+[DEBUG] Hole values: [(Array.length)]
+[DEBUG] Hole 4, Fragment: (Array.length), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 5
+[DEBUG] Rank Node 4:
+[DEBUG] (idx < (Array.length))
+[DEBUG] Affected paragraph names: [InBound]
+[DEBUG] Affected facts: [InBound]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Array
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Array]
+[DEBUG] Hole length
+[DEBUG] Size: 2
+[DEBUG] Fragments: [length, (none->none)]
+ [INFO] Expression generation time: 685041
+ [INFO] Search space: 4
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, length]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Array, length]
+[DEBUG] Hole 1, Fragment: Array, FailToPass: 0
+[DEBUG] Hole values: [Array, length]
+[DEBUG] Hole 0, Fragment: length, FailToPass: 0
+[DEBUG] Hole values: [Array, (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+ [INFO] Fix failed, number of combinations tried: 4
+[DEBUG] Hole idx
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, idx]
+[DEBUG] Hole (Array.length)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, idx]
+ [INFO] Expression generation time: 718458
+ [INFO] Search space: 25
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [0, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [1, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [idx, (Array.length)]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [idx, none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [idx, Int]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [idx, 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [idx, 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [idx, idx]
+[DEBUG] Test from pass to fail: test32
+ [INFO] Fix failed, number of combinations tried: 10
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole (Array.length)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+ [INFO] Expression generation time: 64529750
+ [INFO] Search space: 49
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [0, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [1, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [idx, (Array.length)]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [(Int-idx), (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.length), (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [idx, none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [idx, Int]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [idx, 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [idx, 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [idx, idx]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [idx, (Int-idx)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [idx, (Array.length)]
+[DEBUG] Hole 6, Fragment: (Array.length), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 14
+[DEBUG] Rank Node 5:
+[DEBUG] (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})
+[DEBUG] Affected paragraph names: [InBound]
+[DEBUG] Affected facts: [InBound]
+[DEBUG] Affected tests (Size 0): []
+[DEBUG] Hole Array
+[DEBUG] Size: 3
+[DEBUG] Fragments: [none, Array, (length.Int)]
+[DEBUG] Hole i2e
+[DEBUG] Size: 2
+[DEBUG] Fragments: [i2e, (none->none->none)]
+[DEBUG] Hole Array
+[DEBUG] Size: 4
+[DEBUG] Fragments: [none, Array, (length.Int), (length.idx)]
+[DEBUG] Hole length
+[DEBUG] Size: 3
+[DEBUG] Fragments: [length, (none->none), (i2e.Element)]
+ [INFO] Expression generation time: 466000
+ [INFO] Search space: 72
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, i2e, Array, length]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Array, i2e, Array, length]
+[DEBUG] Hole 1, Fragment: Array, FailToPass: 0
+[DEBUG] Hole values: [(length.Int), i2e, Array, length]
+[DEBUG] Hole 2, Fragment: (length.Int), FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, Array, length]
+[DEBUG] Hole 0, Fragment: i2e, FailToPass: 0
+[DEBUG] Hole values: [Array, (none->none->none), Array, length]
+[DEBUG] Evaluation error when hole is (none->none->none)
+[DEBUG] Hole values: [Array, i2e, none, length]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Array, i2e, Array, length]
+[DEBUG] Hole 1, Fragment: Array, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, (length.Int), length]
+[DEBUG] Hole 2, Fragment: (length.Int), FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, (length.idx), length]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [Array, i2e, Array, length]
+[DEBUG] Hole 0, Fragment: length, FailToPass: 0
+[DEBUG] Hole values: [Array, i2e, Array, (none->none)]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [Array, i2e, Array, (i2e.Element)]
+[DEBUG] Test from pass to fail: test32
+ [INFO] Fix failed, number of combinations tried: 12
+[DEBUG] Hole (Array.i2e)
+[DEBUG] Size: 2
+[DEBUG] Fragments: [(none->none), (Array.i2e)]
+[DEBUG] Hole Element
+[DEBUG] Size: 2
+[DEBUG] Fragments: [none, Element]
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole (Array.length)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+ [INFO] Expression generation time: 3156417
+ [INFO] Search space: 1372
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [(none->none), Element, idx, idx, (Array.length)]
+[DEBUG] Evaluation error when hole is (none->none)
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, (Array.length)]
+[DEBUG] Hole 1, Fragment: (Array.i2e), FailToPass: 0
+[DEBUG] Hole values: [(Array.i2e), none, idx, idx, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, (Array.length)]
+[DEBUG] Hole 1, Fragment: Element, FailToPass: 0
+[DEBUG] Hole values: [(Array.i2e), Element, none, idx, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [(Array.i2e), Element, Int, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.i2e), Element, 0, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Array.i2e), Element, 1, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, (Array.length)]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [(Array.i2e), Element, (Int-idx), idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.i2e), Element, (Array.length), idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [(Array.i2e), Element, idx, none, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [(Array.i2e), Element, idx, Int, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.i2e), Element, idx, 0, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Array.i2e), Element, idx, 1, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, (Array.length)]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [(Array.i2e), Element, idx, (Int-idx), (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.i2e), Element, idx, (Array.length), (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, Int]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, idx]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, (Int-idx)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [(Array.i2e), Element, idx, idx, (Array.length)]
+[DEBUG] Hole 6, Fragment: (Array.length), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 25
+[DEBUG] Hole ((Array.i2e).Element)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, (Array.length)]
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole (Array.length)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+ [INFO] Expression generation time: 184541
+ [INFO] Search space: 1715
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, idx, idx, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int, idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [0, idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test20
+[DEBUG] Hole values: [1, idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test3
+[DEBUG] Hole values: [(Array.length), idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), none, idx, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), Int, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), 0, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), 1, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), idx, idx, (Array.length)]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), (Int-idx), idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), (Array.length), idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), idx, none, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), idx, Int, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), idx, 0, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [((Array.i2e).Element), idx, 1, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [((Array.i2e).Element), idx, idx, (Array.length)]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), idx, (Int-idx), (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), idx, (Array.length), (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), idx, idx, none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), idx, idx, Int]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), idx, idx, 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), idx, idx, 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), idx, idx, idx]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), idx, idx, (Int-idx)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), idx, idx, (Array.length)]
+[DEBUG] Hole 6, Fragment: (Array.length), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 26
+[DEBUG] Hole ((Array.i2e).Element)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, (Array.length)]
+[DEBUG] Hole ((idx >= 0) && (idx < (Array.length)))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [&&, ||]
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole (Array.length)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+ [INFO] Expression generation time: 14675041
+ [INFO] Search space: 3430
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [0, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test20
+[DEBUG] Hole values: [1, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test3
+[DEBUG] Hole values: [(Array.length), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element),  && , idx, idx, (Array.length)]
+[DEBUG] Hole 0, Fragment: &&, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element),  || , idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test20
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), none, idx, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), Int, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), 0, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), 1, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), (Int-idx), idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), (Array.length), idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, none, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, Int, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, 0, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, 1, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, (Int-idx), (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, (Array.length), (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, Int]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, idx]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Int-idx)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Hole 6, Fragment: (Array.length), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Hole ((Array.i2e).Element)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, (Array.length)]
+[DEBUG] Hole ((idx >= 0) && (idx < (Array.length)))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [&&, ||]
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole (Array.length)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+ [INFO] Expression generation time: 289084
+ [INFO] Search space: 3430
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [0, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test20
+[DEBUG] Hole values: [1, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test3
+[DEBUG] Hole values: [(Array.length), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element),  && , idx, idx, (Array.length)]
+[DEBUG] Hole 0, Fragment: &&, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element),  || , idx, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test20
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), none, idx, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), Int, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), 0, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), 1, idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), (Int-idx), idx, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), (Array.length), idx, (Array.length)]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, none, (Array.length)]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, Int, (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, 0, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, 1, (Array.length)]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, (Int-idx), (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, (Array.length), (Array.length)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, none]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, Int]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, 0]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, 1]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, idx]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Int-idx)]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length)]
+[DEBUG] Hole 6, Fragment: (Array.length), FailToPass: 0
+ [INFO] Fix failed, number of combinations tried: 28
+[DEBUG] Hole ((Array.i2e).Element)
+[DEBUG] Size: 5
+[DEBUG] Fragments: [none, Int, 0, 1, (Array.length)]
+[DEBUG] Hole ((idx >= 0) && (idx < (Array.length)))
+[DEBUG] Size: 2
+[DEBUG] Fragments: [&&, ||]
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole idx
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole (Array.length)
+[DEBUG] Size: 7
+[DEBUG] Fragments: [none, Int, 0, 1, idx, (Int-idx), (Array.length)]
+[DEBUG] Hole (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})
+[DEBUG] Size: 5
+[DEBUG] Fragments: [all, some, no, one, lone]
+ [INFO] Expression generation time: 1243917
+ [INFO] Search space: 17150
+[DEBUG] Enumerating:
+[DEBUG] Hole values: [none, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [Int, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [0, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test20
+[DEBUG] Hole values: [1, ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test3
+[DEBUG] Hole values: [(Array.length), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element),  && , idx, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Hole 0, Fragment: &&, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element),  || , idx, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test20
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), none, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), Int, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), 0, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), 1, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), (Int-idx), idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), (Array.length), idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test22
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, none, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, Int, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, 0, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, 1, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test30
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Hole 4, Fragment: idx, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, (Int-idx), (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, (Array.length), (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, none, (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Evaluation error when hole is none
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, Int, (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, 0, (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, 1, (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, idx, (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Int-idx), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), (all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+})]
+[DEBUG] Hole 6, Fragment: (Array.length), FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), all ]
+[DEBUG] Hole 0, Fragment: all, FailToPass: 0
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), some ]
+[DEBUG] Test from pass to fail: test20
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), no ]
+[DEBUG] Test from pass to fail: test32
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), one ]
+[DEBUG] Test from pass to fail: test20
+[DEBUG] Hole values: [((Array.i2e).Element), ((idx >= 0) && (idx < (Array.length))), idx, idx, (Array.length), lone ]
+[DEBUG] Test from pass to fail: test20
+ [INFO] Fix failed, number of combinations tried: 33
+ [INFO] Cannot fix the model.
+ [INFO] Raw patched model:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+
+ [INFO] After simplification:
+module unknown
+open util/integer [] as integer
+sig Element {}
+one sig Array {
+i2e: (Int->Element),
+length: (one Int)
+}
+pred NoConflict[] {
+(all disj i,j: (one ((Array.i2e).Element)) {
+(no ((i.(Array.i2e)) - (j.(Array.i2e))))
+})
+}
+
+fact Reachable {
+(Element = (Int.(Array.i2e)))
+}
+fact InBound {
+((all idx: (one ((Array.i2e).Element)) {
+((idx >= 0) && (idx < (Array.length)))
+}) && ((Array.length) >= 0))
+}
+
+run NoConflict for 3
+

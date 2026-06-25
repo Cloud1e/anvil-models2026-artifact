@@ -1,0 +1,10 @@
+CanEnter: some (p.member_of & r.located_in)
+CanEnter: p.member_of & r.located_in != none
+CanEnter: some g: p.member_of | g in r.located_in
+CanEnter: some g: r.located_in | g in p.member_of
+CanEnter: #(p.member_of & r.located_in) > 0
+CanEnter: not no (p.member_of & r.located_in)
+CanEnter: some (r.located_in & p.member_of)
+CanEnter: some g: Group | g in p.member_of and g in r.located_in
+CanEnter: #(p.member_of & r.located_in) != 0
+CanEnter: not (p.member_of & r.located_in = none)

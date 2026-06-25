@@ -1,0 +1,31 @@
+ [INFO] Original model:
+module unknown
+open util/integer [] as integer
+sig Person {
+member_of: (some Group)
+}
+sig Group {}
+one sig alas extends Group {}
+one sig peds extends Group {}
+sig Room {
+located_in: (set Group)
+}
+one sig seclab extends Room {}
+pred CanEnter[p: Person,r: Room] {
+(some ((p.member_of) & (r.located_in)))
+}
+
+fact fact_1 {
+((alas + peds) = (seclab.located_in))
+}
+
+
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+ [INFO] Fault localization time: 5734315586
+Exception in thread "main" java.lang.RuntimeException: Test test1005 fails for normalized model.
+	at generator.Generator.initializeTests(Generator.java:100)
+	at generator.Generator.<init>(Generator.java:80)
+	at patcher.Patcher.patch(Patcher.java:134)
+	at patcher.Patcher.main(Patcher.java:341)

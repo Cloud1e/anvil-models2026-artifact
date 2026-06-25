@@ -1,0 +1,6 @@
+```alloy
+pred NoConflict() {
+  // Each index maps to at most one element.
+  all idx: Int | lone (Array.i2e[idx])
+}
+```

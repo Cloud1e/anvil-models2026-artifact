@@ -1,0 +1,387 @@
+RQ2 quick: model=gemini-3.1-flash-lite-preview benchmark=arr
+[smoke] AREPAIR_BENCH_MODELS=arr (extract_wrong + ARepair --filter; compare table rows only)
+Log: logs/rq1_e2a_gemini-3.1-flash-lite-preview_20260624_104027.log
+============================================================
+RQ1 E2A: gemini-3.1-flash-lite-preview
+  WithTest: result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/WithTest
+  NoTest:   result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/NoTest
+============================================================
+
+=== Step 1: Java eval (NoTest then WithTest) ===
+[arepair] bench filter (arepair.bench.models): [arr]
+
+=== Debug for arr predicate NoConflict ===
+Predicates to repair: [NoConflict]
+Other predicates (not repaired): [NoConflict]
+Response line: all i: Int | lone Array.i2e[i]
+Extracted predName: NoConflict
+Extracted predBody: all i: Int | lone Array.i2e[i]
+Predicate signature from model: pred NoConflict() {
+Predicate signature only: pred NoConflict()
+Other predicates string length: 0
+
+Predicate section in test model (around position 513):
+y.length
+  // Array length should be greater than or equal to 0.
+  Array.length >= 0
+}
+
+// Part (b)
+pred NoConflict() {
+
+  // Each index maps to at most one element.
+  all i: Int | lone Array.i2e[i]
+
+}
+
+run NoConflict for 3
+
+
+-- Automatically generated tests.
+
+pred test20 {
+some disj Element0: Element {some disj Array0: Array {
+Element = Element0
+Array = Array0
+i2e = Array0->-8->Element0 + Array0-
+...
+
+Solutions
+true
+---INSTANCE---
+integers={-8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7}
+univ={Element$0, Array$0, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7}
+Int={-8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7}
+seq/Int={0, 1, 2}
+String={}
+none={}
+this/Element={Element$0}
+this/Array={Array$0}
+this/Array<:i2e={Array$0->0->Element$0, Array$0->1->Element$0, Array$0->2->Element$0, Array$0->3->Element$0, Array$0->4->Element$0}
+this/Array<:length={Array$0->5}
+
+DIFF_OUTPUT
+DEBUG: Parsing test26: line='run test26 for 3 expect 1', testName='test26', expectStr='1', expectedResult=1
+Command for first test: label=test20, cmd=Run test20 for 3 expect 0
+Test test20: expected=0, actual=0
+Test test36: expected=0, actual=0
+Test test32: expected=1, actual=1
+Test test7: expected=0, actual=0
+Test test6: expected=0, actual=0
+Detailed test report written to: log/Results/arr_test_details_2026-06-24_10-40-29.log
+
+\begin{table}
+\centering
+\caption{ARepair Results}\label{tab_arepair}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Model & Unique & Cor & Syn & Sem \\
+\hline
+arr & 10 & 7 & 1 & 2 \\
+\hline
+\end{tabular}
+\end{table}
+
+Bench filter: arr
+Running Java (NoTest), result.dir= result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/NoTest , validation= ['-Darepair.validation=testsuite']
+Done. NoTest evaluation written to result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/NoTest/Alloy
+[arepair] bench filter (arepair.bench.models): [arr]
+
+=== Debug for arr predicate NoConflict ===
+Predicates to repair: [NoConflict]
+Other predicates (not repaired): [NoConflict]
+Response line: all i: Int | lone Array.i2e[i]
+Extracted predName: NoConflict
+Extracted predBody: all i: Int | lone Array.i2e[i]
+Predicate signature from model: pred NoConflict() {
+Predicate signature only: pred NoConflict()
+Other predicates string length: 0
+
+Predicate section in test model (around position 513):
+y.length
+  // Array length should be greater than or equal to 0.
+  Array.length >= 0
+}
+
+// Part (b)
+pred NoConflict() {
+
+  // Each index maps to at most one element.
+  all i: Int | lone Array.i2e[i]
+
+}
+
+run NoConflict for 3
+
+
+-- Automatically generated tests.
+
+pred test20 {
+some disj Element0: Element {some disj Array0: Array {
+Element = Element0
+Array = Array0
+i2e = Array0->-8->Element0 + Array0-
+...
+
+Solutions
+true
+---INSTANCE---
+integers={-8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7}
+univ={Element$0, Array$0, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7}
+Int={-8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7}
+seq/Int={0, 1, 2}
+String={}
+none={}
+this/Element={Element$0}
+this/Array={Array$0}
+this/Array<:i2e={Array$0->0->Element$0, Array$0->1->Element$0, Array$0->2->Element$0, Array$0->3->Element$0, Array$0->4->Element$0}
+this/Array<:length={Array$0->5}
+
+DIFF_OUTPUT
+DEBUG: Parsing test26: line='run test26 for 3 expect 1', testName='test26', expectStr='1', expectedResult=1
+Command for first test: label=test20, cmd=Run test20 for 3 expect 0
+Test test20: expected=0, actual=0
+Test test36: expected=0, actual=0
+Test test32: expected=1, actual=1
+Test test7: expected=0, actual=0
+Test test6: expected=0, actual=0
+Detailed test report written to: log/Results/arr_test_details_2026-06-24_10-40-33.log
+
+\begin{table}
+\centering
+\caption{ARepair Results}\label{tab_arepair}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Model & Unique & Cor & Syn & Sem \\
+\hline
+arr & 10 & 6 & 3 & 1 \\
+\hline
+\end{tabular}
+\end{table}
+
+Bench filter: arr
+Running Java (WithTest), result.dir= result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/WithTest , validation= ['-Darepair.validation=testsuite']
+Done. WithTest evaluation written to result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/WithTest/Alloy
+
+=== Step 2: Compare (Cor/Syn/Sem; preliminary) ===
+Bench filter (table rows): ['arr']
+Data: WithTest = result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/WithTest/Alloy | NoTest = result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/NoTest/Alloy
+
+Model-Predicate        | WithTest (Cor / Syn / Sem) | NoTest (Cor / Syn / Sem) | Delta (Cor / Syn / Sem)
+--------------------------------------------------------------------------------------------------------
+arr-NoConflict         | 6 / 3 / 1            | 7 / 1 / 2            | +1 / -2 / +1
+--------------------------------------------------------------------------------------------------------
+Total                  | 6 / 3 / 1            | 7 / 1 / 2           
+
+Cor = Correct, Syn = Syntax Error, Sem = Semantic error (Wrong). Delta = NoTest - WithTest.
+LaTeX table written to: /Users/chenbo/Desktop/anvil-final-isolation-test/anvil-artifact/result/thesis/RQ1_TestVsNoTest/tables/with_vs_no_test_by_predicate_gemini-3.1-flash-lite-preview.tex
+
+=== Step 3: extract_wrong (NoTest then WithTest) ===
+Extracted 2 Wrong predicates for repair
+Info saved to /Users/chenbo/Desktop/anvil-final-isolation-test/anvil-artifact/result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/NoTest/WrongForRepair/repair_info.json
+Models saved to /Users/chenbo/Desktop/anvil-final-isolation-test/anvil-artifact/result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/NoTest/WrongForRepair
+Extracted 1 Wrong predicates for repair
+Info saved to /Users/chenbo/Desktop/anvil-final-isolation-test/anvil-artifact/result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/WithTest/WrongForRepair/repair_info.json
+Models saved to /Users/chenbo/Desktop/anvil-final-isolation-test/anvil-artifact/result/Gemini/RQ2_Validation/E2A/gemini-3.1-flash-lite-preview/WithTest/WrongForRepair
+
+SKIP_REPAIR=1 — done (no ARepair).
+LaTeX: result/thesis/RQ1_TestVsNoTest/tables/with_vs_no_test_by_predicate_gemini-3.1-flash-lite-preview.tex
+mesg: ttyname failed: Inappropriate ioctl for device
+[filter] AREPAIR_BENCH_MODELS=arr
+[path] Using out-root: result/Gemini/RQ2_Validation/A2A/gemini-3.1-flash-lite-preview
+[path] Legacy ARepair_Alloy2Alloy_WithTest -> result/Gemini/RQ2_Validation/A2A/gemini-3.1-flash-lite-preview/WithTest
+[path] Legacy ARepair_Alloy2Alloy_NoTest -> result/Gemini/RQ2_Validation/A2A/gemini-3.1-flash-lite-preview/NoTest
+
+=== Alloy-to-Alloy: Evaluate WithTest + NoTest (Java) ===
+[arepair] bench filter (arepair.bench.models): [arr]
+
+
+y.length
+  // Array length should be greater than or equal to 0.
+  Array.length >= 0
+}
+
+// Part (b)
+pred NoConflict() {
+
+  // Each index maps to at most one element.
+  all i: Array.i2e.Element | no Array.i2e[i].(Element - Array.i2e[i])
+
+}
+
+run NoConflict for 3
+
+
+-- Automatically generated tests.
+
+pred test20 {
+some disj Element0: Element {some disj Array0: Array {
+Element = Element0
+Array = Array0
+...
+Type error in /tmp/alloy_heredoc2233043388992845960.als at line 28 column 45:
+This cannot be a legal relational join where
+left hand side is i . this/Array . (this/Array <: i2e) (type = {this/Element})
+right hand side is this/Element - i . this/Array . (this/Array <: i2e) (type = {this/Element})
+
+	at edu.mit.csail.sdg.ast.ExprBadJoin.make(ExprBadJoin.java:87)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:432)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:467)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBadJoin.accept(ExprBadJoin.java:110)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessARepairResults(Example.java:1727)
+	at Example.main(Example.java:2317)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.lang.Thread.run(Thread.java:750)
+SYNTAX_ERROR
+
+\begin{table}
+\centering
+\caption{ARepair Results}\label{tab_arepair}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Model & Unique & Cor & Syn & Sem \\
+\hline
+arr & 10 & 7 & 3 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+[arepair] bench filter (arepair.bench.models): [arr]
+
+
+y.length
+  // Array length should be greater than or equal to 0.
+  Array.length >= 0
+}
+
+// Part (b)
+pred NoConflict() {
+
+  // Each index maps to at most one element.
+  all i: Array.i2e.Element | no (Array.i2e[i] & (Array.i2e.Element - i).Array.i2e)
+
+}
+
+run NoConflict for 3
+
+
+-- Automatically generated tests.
+
+pred test20 {
+some disj Element0: Element {some disj Array0: Array {
+Element = Element0
+A
+...
+Type error in /tmp/alloy_heredoc4573711895881558891.als at line 28 column 72:
+This cannot be a legal relational join where
+left hand side is this/Array . (this/Array <: i2e) . this/Element - i (type = {Int})
+right hand side is this/Array (type = {this/Array})
+
+	at edu.mit.csail.sdg.ast.ExprBadJoin.make(ExprBadJoin.java:87)
+	at edu.mit.csail.sdg.ast.ExprBinary$Op.make(ExprBinary.java:432)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:467)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBadJoin.accept(ExprBadJoin.java:110)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:456)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBadJoin.accept(ExprBadJoin.java:110)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:476)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprBinary.accept(ExprBinary.java:751)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:589)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprQt.accept(ExprQt.java:354)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:613)
+	at edu.mit.csail.sdg.parser.CompModule$Context.visit(CompModule.java:230)
+	at edu.mit.csail.sdg.ast.ExprUnary.accept(ExprUnary.java:492)
+	at edu.mit.csail.sdg.ast.VisitReturn.visitThis(VisitReturn.java:35)
+	at edu.mit.csail.sdg.parser.CompModule$Context.check(CompModule.java:374)
+	at edu.mit.csail.sdg.parser.CompModule.resolveFuncBody(CompModule.java:1605)
+	at edu.mit.csail.sdg.parser.CompModule.resolveAll(CompModule.java:2084)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromFile(CompUtil.java:366)
+	at edu.mit.csail.sdg.parser.CompUtil.parseEverything_fromString(CompUtil.java:436)
+	at Example.AlloyProcess(Example.java:196)
+	at Example.ProcessARepairResults(Example.java:1727)
+	at Example.main(Example.java:2317)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:279)
+	at java.lang.Thread.run(Thread.java:750)
+SYNTAX_ERROR
+
+\begin{table}
+\centering
+\caption{ARepair Results}\label{tab_arepair}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Model & Unique & Cor & Syn & Sem \\
+\hline
+arr & 10 & 6 & 2 & 2 \\
+\hline
+\end{tabular}
+\end{table}
+
+Bench filter: arr
+Validation MAVEN args: ['-Darepair.validation=testsuite']
+=== Evaluate Alloy-to-Alloy WithTest ===
+  -> /workspace/result/Gemini/ARepair_Alloy2Alloy_WithTest/Alloy
+
+=== Evaluate Alloy-to-Alloy NoTest ===
+  -> /workspace/result/Gemini/ARepair_Alloy2Alloy_NoTest/Alloy
+
+=== Alloy-to-Alloy: Compare WithTest vs NoTest (Cor/Syn/Sem) ===
+Bench filter (table rows): ['arr']
+Data: WithTest = /workspace/result/Gemini/ARepair_Alloy2Alloy_WithTest/Alloy | NoTest = /workspace/result/Gemini/ARepair_Alloy2Alloy_NoTest/Alloy
+
+Model-Predicate        | WithTest (Cor / Syn / Sem) | NoTest (Cor / Syn / Sem) | Delta (Cor / Syn / Sem)
+--------------------------------------------------------------------------------------------------------
+arr-NoConflict         | 7 / 3 / 0            | 6 / 2 / 2            | -1 / -1 / +2
+--------------------------------------------------------------------------------------------------------
+Total                  | 7 / 3 / 0            | 6 / 2 / 2           
+
+Cor = Correct, Syn = Syntax Error, Sem = Semantic error (Wrong). Delta = NoTest - WithTest.
+
+=== ARepair steps skipped (--no-repair) ===
+
+=== Alloy-to-Alloy: Compare (write LaTeX; Rep only after repair) ===
+[tex] Writing per-run file: result/with_vs_no_test_alloy2alloy_by_predicate_gemini-3.1-flash-lite-preview.tex
+Bench filter (table rows): ['arr']
+Data: WithTest = /workspace/result/Gemini/ARepair_Alloy2Alloy_WithTest/Alloy | NoTest = /workspace/result/Gemini/ARepair_Alloy2Alloy_NoTest/Alloy
+
+Model-Predicate        | WithTest (Cor / Syn / Sem) | NoTest (Cor / Syn / Sem) | Delta (Cor / Syn / Sem)
+--------------------------------------------------------------------------------------------------------
+arr-NoConflict         | 7 / 3 / 0            | 6 / 2 / 2            | -1 / -1 / +2
+--------------------------------------------------------------------------------------------------------
+Total                  | 7 / 3 / 0            | 6 / 2 / 2           
+
+Cor = Correct, Syn = Syntax Error, Sem = Semantic error (Wrong). Delta = NoTest - WithTest.
+LaTeX written to: /workspace/result/thesis/RQ1_TestVsNoTest/tables/with_vs_no_test_alloy2alloy_by_predicate_gemini-3.1-flash-lite-preview.tex
+
+Done. LaTeX table: result/with_vs_no_test_alloy2alloy_by_predicate_gemini-3.1-flash-lite-preview.tex
+RQ2 quick completed.

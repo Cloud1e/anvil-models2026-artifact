@@ -1,0 +1,20 @@
+all s, t: S | s != t implies (s->t in r or t->s in r) and (all s: S | s->s in r)
+all s, t: S | not (s->t not in r and t->s not in r)
+all s, t: S | s->t + t->s in r
+all s: S | all t: S | s->t in r or t->s in r
+all disj s, t: S | s->t in r or t->s in r
+all s, t: S | s->t in r or (s != t implies t->s in r)
+all s, t: S | not (s->t not in r) or t->s in r
+all s, t: S | s->t in r or not (t->s not in r)
+all s, t: S | (s->t in r and t->s not in r) or (t->s in r and s->t not in r) or (s->t in r and t->s in r)
+all s, t: S | (r + ~r).s = S
+all s: S | S in (r.s + (~r).s)
+all s: S | S in (r[s] + r.s)
+all s: S | S = (r[s] + r.s + s)
+all s: S | all t: S | t in r[s] or t in (~r)[s]
+all s: S | S = r.s + ~r.s
+all s, t: S | r[s][t] or r[t][s]
+all s, t: S | s in (r.t + ~r.t)
+all s, t: S | (s->t in r) or (s->t in ~r)
+all s, t: S | (r.s + ~r.s) = S
+all s: S | all t: S | (s->t in r) or (s->t in ~r)

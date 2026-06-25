@@ -1,0 +1,34 @@
+Give me exactly 10 unique solutions to the problem of synthesizing the body of the following Alloy predicate (without markdown or comments or ```) that are equivalent to the given predicate but syntactically different.
+
+sig Element {}
+
+one sig Array {
+  // Maps indexes to elements of Element.
+  i2e: Int -> Element,
+  // Represents the length of the array.
+  length: Int
+}
+
+// Assume all objects are in the array.
+fact Reachable {
+  Element = Array.i2e[Int]
+}
+
+// Part (a)
+fact InBound {
+  // All indexes should be greater than or equal to 0 and less than
+  // the array length.
+  all idx: Array.i2e.Element | idx >= 0 && idx < Array.length
+  // Array length should be greater than or equal to 0.
+  Array.length >= 0
+}
+
+// Part (b)
+pred NoConflict() {
+  // Each index maps to at most one element.
+  all idx: Array.i2e.Element | lone Array.i2e[idx]
+}
+
+run NoConflict for 3
+
+Return exactly 10 lines for the predicate NoConflict only, each line containing one predicate body. Do not include RepOk, any fact, or any other predicate. No numbering, bullet points, explanations, or other text before/after these lines. Only return the predicate body (the expression inside the braces).

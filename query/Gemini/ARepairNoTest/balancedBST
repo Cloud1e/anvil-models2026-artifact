@@ -1,0 +1,68 @@
+Synthesize the following Alloy model by filling in the predicate bodies marked with '// your code go here'. The predicates should be correct with respect to the properties described in the comments.
+For each predicate that needs repair, provide exactly 10 unique solutions. Format: each line should be "predicateName: body", where body is the expression inside the braces.
+
+one sig BinaryTree {
+  root: lone Node
+}
+
+sig Node {
+  left, right: lone Node,
+  elem: Int
+}
+
+// All nodes are in the tree.
+fact Reachable {
+  Node = BinaryTree.root.*(left + right)
+}
+
+// Part (a)
+fact Acyclic {
+  all n : Node {
+    // There are no directed cycles, i.e., a node is not reachable
+    // from itself along one or more traversals of left or right.
+    n !in n.^(left + right)
+
+    // A node cannot have more than one parent.
+    lone n.~(left + right) 
+
+    // A node cannot have another node as both its left child and
+    // right child.
+    no n.left & n.right
+  }
+}
+
+// Part (b)
+pred Sorted() {
+    // All elements in the n's left subtree are smaller than the n's elem.
+    // All elements in the n's right subtree are bigger than the n's elem.
+  // your code go here
+}
+
+// Part (c.1)
+pred HasAtMostOneChild(n: Node) {
+  // Node n has at most one child.
+  // your code go here
+}
+
+// Part (c.2)
+fun Depth(n: Node): one Int {
+  // The number of nodes from the tree's root to n.
+  #{n.*~(left + right)}
+}
+
+// Part (c.3)
+pred Balanced() {
+    // If n1 has at most one child and n2 has at most one child,
+    // then the depths of n1 and n2 differ by at most 1.
+    // Hint: Be careful about the operator priority.
+  // your code go here
+}
+
+pred RepOk() {
+  Sorted
+  Balanced
+}
+
+run RepOk for 5
+
+Return exactly 10 lines per predicate (total = 10 × number of predicates), each line formatted as "predicateName: body" with no numbering or commentary before/after the list. Do not include introductions, explanations, or any extra text outside these lines.

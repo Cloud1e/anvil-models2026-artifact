@@ -1,0 +1,6 @@
+sig S {
+   r: set S
+}
+pred Irreflexive{
+all s, t: S | s->t in r implies s != t
+}

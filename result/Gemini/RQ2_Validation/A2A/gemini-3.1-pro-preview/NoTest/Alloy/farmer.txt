@@ -1,0 +1,65 @@
+crossRiver: (from' = from - Farmer - from'.eats and to' = to + Farmer) or (one item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = to + Farmer + item)
+Correct
+
+crossRiver: (one item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = to + Farmer + item) or (from' = from - Farmer - from'.eats and to' = to + Farmer)
+Correct
+
+crossRiver: (from' = from - Farmer - from'.eats && to' = to + Farmer) || (one x : from - Farmer | from' = from - Farmer - x - from'.eats && to' = to + Farmer + x)
+Correct
+
+crossRiver: (to' = to + Farmer and from' = from - Farmer - from'.eats) or (one item : from - Farmer | to' = to + Farmer + item and from' = from - Farmer - item - from'.eats)
+Correct
+
+crossRiver: ((from' = (from - Farmer) - from'.eats) and (to' = to + Farmer)) or (one i : from - Farmer | (from' = (from - Farmer) - i - from'.eats) and (to' = to + Farmer + i))
+Correct
+
+crossRiver: (from' = from - Farmer - from'.eats and to' = Farmer + to) or (one item : from - Farmer | from' = from - Farmer - item - from'.eats and to' = Farmer + item + to)
+Correct
+
+crossRiver: let s = from - Farmer | (from' = s - from'.eats and to' = to + Farmer) or (one item : s | from' = s - item - from'.eats and to' = to + Farmer + item)
+Correct
+
+crossRiver: (from' = from - (Farmer + from'.eats) and to' = to + Farmer) or (one item : from - Farmer | from' = from - (Farmer + item + from'.eats) and to' = to + Farmer + item)
+Correct
+
+crossRiver: (from' = from - from'.eats - Farmer and to' = to + Farmer) or (one item : from - Farmer | from' = from - from'.eats - Farmer - item and to' = to + Farmer + item)
+Correct
+
+crossRiver: (((from' = from - Farmer - from'.eats) and (to' = to + Farmer))) or (one obj : from - Farmer | (((from' = from - Farmer - obj - from'.eats) and (to' = to + Farmer + obj))))
+Correct
+
+solvePuzzle: ord/last.far = Object
+Correct
+
+solvePuzzle: Object = ord/last.far
+Correct
+
+solvePuzzle: all x: Object | x in ord/last.far
+Correct
+
+solvePuzzle: no Object - ord/last.far
+Correct
+
+solvePuzzle: Object in ord/last.far and ord/last.far in Object
+Correct
+
+solvePuzzle: #ord/last.far = #Object
+Correct
+
+solvePuzzle: Object in ord/last.far
+Correct
+
+solvePuzzle: no x: Object | x not in ord/last.far
+Correct
+
+solvePuzzle: ord/last.far = Farmer + Fox + Chicken + Grain
+Correct
+
+solvePuzzle: Object - ord/last.far = none
+Correct
+
+Total: 20
+Unique: 20
+Correct: 20
+Syntax Error: 0
+Wrong: 0

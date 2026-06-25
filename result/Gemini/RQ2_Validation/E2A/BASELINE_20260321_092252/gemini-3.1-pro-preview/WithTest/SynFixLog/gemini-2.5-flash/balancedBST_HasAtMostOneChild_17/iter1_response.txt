@@ -1,0 +1,7 @@
+pred HasAtMostOneChild(n: Node) {
+  (no n.left and no n.right)
+  or
+  (one n.left and no n.right)
+  or
+  (no n.left and one n.right)
+}

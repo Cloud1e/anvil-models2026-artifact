@@ -1,0 +1,65 @@
+r in ~r
+Correct
+
+~r in r
+Correct
+
+r = ~r
+Correct
+
+r & ~r = r
+Correct
+
+r + ~r = r
+Correct
+
+no r - ~r
+Correct
+
+no ~r - r
+Correct
+
+r - ~r = none
+Syntax Error
+
+~r - r = none
+Syntax Error
+
+all x, y: S | x->y in r implies y->x in r
+Correct
+
+all x, y: S | y in x.r implies x in y.r
+Correct
+
+all x: S, y: x.r | x in y.r
+Correct
+
+no x, y: S | x->y in r and y->x not in r
+Correct
+
+no x, y: S | y in x.r and x not in y.r
+Correct
+
+all x: S | x.r in x.~r
+Correct
+
+all x: S | x.~r in x.r
+Correct
+
+all x: S | x.r = x.~r
+Correct
+
+all x, y: S | x in r.y implies y in r.x
+Correct
+
+all x, y: S | x->y in r <=> y->x in r
+Correct
+
+all x, y: S | y in x.r <=> x in y.r
+Correct
+
+Total: 20
+Unique: 20
+Correct: 18
+Syntax Error: 2
+Wrong: 0

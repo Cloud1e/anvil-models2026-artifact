@@ -1,0 +1,95 @@
+ConsistentPreAndNxt: nxt = ~pre
+Correct
+
+ConsistentPreAndNxt: ~nxt = pre
+Correct
+
+ConsistentPreAndNxt: pre = ~nxt
+Correct
+
+ConsistentPreAndNxt: all n1, n2: Node | n1->n2 in nxt <=> n2->n1 in pre
+Correct
+
+ConsistentPreAndNxt: all a, b: Node | a->b in nxt <=> b->a in pre
+Correct
+
+ConsistentPreAndNxt: all x, y: Node | x->y in nxt <=> y->x in pre
+Correct
+
+ConsistentPreAndNxt: all n1, n2: Node | n2 in n1.nxt <=> n1 in n2.pre
+Correct
+
+ConsistentPreAndNxt: all a, b: Node | b in a.nxt <=> a in b.pre
+Correct
+
+ConsistentPreAndNxt: all x, y: Node | y in x.nxt <=> x in y.pre
+Correct
+
+ConsistentPreAndNxt: all n: Node | n.nxt = {m: Node | n in m.pre}
+Correct
+
+Sorted: all n: Node | some n.nxt => n.elem <= n.nxt.elem
+Correct
+
+Sorted: all x: Node | some x.nxt => x.elem <= x.nxt.elem
+Correct
+
+Sorted: all a: Node | some a.nxt => a.elem <= a.nxt.elem
+Correct
+
+Sorted: all n1, n2: Node | n2 in n1.nxt => n1.elem <= n2.elem
+Correct
+
+Sorted: all a, b: Node | b in a.nxt => a.elem <= b.elem
+Correct
+
+Sorted: all x, y: Node | y in x.nxt => x.elem <= y.elem
+Correct
+
+Sorted: all n1, n2: Node | n1->n2 in nxt => n1.elem <= n2.elem
+Correct
+
+Sorted: all a, b: Node | a->b in nxt => a.elem <= b.elem
+Correct
+
+Sorted: all x, y: Node | x->y in nxt => x.elem <= y.elem
+Correct
+
+Sorted: all n: Node, m: Node | m in n.nxt => n.elem <= m.elem
+Correct
+
+UniqueElem: no disj n1, n2: Node | n1.elem = n2.elem
+Correct
+
+UniqueElem: all n1, n2: Node | n1 != n2 => n1.elem != n2.elem
+Correct
+
+UniqueElem: all a, b: Node | a != b => a.elem != b.elem
+Correct
+
+UniqueElem: all x, y: Node | x != y => x.elem != y.elem
+Correct
+
+UniqueElem: all disj n1, n2: Node | n1.elem != n2.elem
+Correct
+
+UniqueElem: all disj a, b: Node | a.elem != b.elem
+Correct
+
+UniqueElem: all disj x, y: Node | x.elem != y.elem
+Correct
+
+UniqueElem: all n1, n2: Node | n1.elem = n2.elem => n1 = n2
+Correct
+
+UniqueElem: all a, b: Node | a.elem = b.elem => a = b
+Correct
+
+UniqueElem: all x, y: Node | x.elem = y.elem => x = y
+Correct
+
+Total: 30
+Unique: 30
+Correct: 30
+Syntax Error: 0
+Wrong: 0

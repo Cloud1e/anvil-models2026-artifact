@@ -1,0 +1,20 @@
+r + ~r = S -> S
+S -> S in r + ~r
+all s, t: S | s->t in r + ~r
+all s: S | s.(r + ~r) = S
+all s: S | r.s + s.r = S
+all s, t: S | s in r.t or t in r.s
+no (S -> S) - (r + ~r)
+not (some s, t: S | s->t !in r and t->s !in r)
+all s, t: S | s->t !in r implies t->s in r
+all s, t: S | s->t !in ~r implies s->t in r
+(S -> S) - r in ~r
+(S -> S) - ~r in r
+all s: S | S - s.r in r.s
+all s: S | S - r.s in s.r
+all s: S | S in s.r + r.s
+univ -> univ = r + ~r
+all s, t: S | s->t in r or s->t in ~r
+all s: S | (r + ~r).s = S
+all s, t: S | some (s->t & (r + ~r))
+no s, t: S | s->t !in r and t->s !in r

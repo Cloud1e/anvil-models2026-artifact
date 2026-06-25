@@ -1,0 +1,40 @@
+no idx: Array.i2e.Element | some e: Element | idx = some otherIdx: Array.i2e.Element | otherIdx != idx && Array.i2e[idx] = Array.i2e[otherIdx]
+Syntax Error
+SYN_MSG:
+There are 22 possible tokens that can appear here:
+# ( * @ Int NAME NUMBER STRING String ^ disj fun iden int none pred seq sum this univ { ~ 
+END_SYN_MSG
+
+no disj idx1, idx2: Int, e: Element | (idx1 != idx2 && Array.i2e[idx1] = e && Array.i2e[idx2] = e)
+Wrong
+
+no disj idx: Int, e1, e2: Element | (e1 != e2 && Array.i2e[idx] = e1 && Array.i2e[idx] = e2)
+Wrong
+
+no disj idx: Int | #(Array.i2e[idx]) > 1
+Correct
+
+no idx: Int, e1, e2: Element | (idx in dom(Array.i2e) && e1 != e2 && Array.i2e[idx] = e1 && Array.i2e[idx] = e2)
+Syntax Error
+SYN_MSG:
+There are 1 possible tokens that can appear here:
+) 
+END_SYN_MSG
+
+no disj idx: Int, e: Element | some e2: Element | (e != e2 && Array.i2e[idx] = e && Array.i2e[idx] = e2)
+Wrong
+
+no e: Element | some disj idx1, idx2: Int | (idx1 != idx2 && Array.i2e[idx1] = e && Array.i2e[idx2] = e)
+Wrong
+
+no idx: Int | some e1, e2: Element | (e1 != e2 && Array.i2e[idx] = e1 && Array.i2e[idx] = e2)
+Wrong
+
+no idx: Int, e: Element | some e2: Element | (e != e2 && Array.i2e[idx] = e && Array.i2e[idx] = e2)
+Wrong
+
+Total: 9
+Unique: 9
+Correct: 1
+Syntax Error: 2
+Wrong: 6

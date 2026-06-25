@@ -1,0 +1,4 @@
+pred Sorted() {
+  all n: Node | let val = n.elem |
+    (all n2: n.^left | n2.elem < val) and (all n2: n.^right | n2.elem > val)
+}

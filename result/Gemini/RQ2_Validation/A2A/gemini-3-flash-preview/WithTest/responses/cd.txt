@@ -1,0 +1,40 @@
+Acyclic: all c: Class | c !in c.^ext
+Acyclic: no c: Class | c in c.^ext
+Acyclic: iden & ^ext = none
+Acyclic: no ^ext & iden
+Acyclic: all c: Class | no (c & c.^ext)
+Acyclic: all c: Class | c.^ext & c = none
+Acyclic: all c: Class | c not in c.ext.*ext
+Acyclic: no (iden & ^ext)
+Acyclic: all c, d: Class | c in d.^ext implies d not in c
+Acyclic: all c: Class | no d: c.^ext | d = c
+AllExtObject: all c: Class - Object | c in Object.^~ext
+AllExtObject: all c: Class | c != Object implies Object in c.^ext
+AllExtObject: Class - Object in Object.^~ext
+AllExtObject: all c: Class - Object | Object in c.ext.*ext
+AllExtObject: all c: Class | c !in Object implies Object in c.^ext
+AllExtObject: all c: Class | c = Object or Object in c.^ext
+AllExtObject: Class in Object.^~ext + Object
+AllExtObject: all c: Class | c != Object => some d: Class | d = Object and d in c.^ext
+AllExtObject: all c: Class - Object | some d: c.^ext | d = Object
+AllExtObject: all c: Class | c !in Object.^~ext implies c = Object
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and AllExtObject[]
+ClassHierarchy: Acyclic[] and AllExtObject[] and ObjectNoExt[]
+ClassHierarchy: AllExtObject[] and ObjectNoExt[] and Acyclic[]
+ClassHierarchy: ObjectNoExt[] and (Acyclic[] and AllExtObject[])
+ClassHierarchy: (ObjectNoExt[] and Acyclic[]) and AllExtObject[]
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and (all c: Class - Object | Object in c.^ext)
+ClassHierarchy: ObjectNoExt[] and (all c: Class | c !in c.^ext) and AllExtObject[]
+ClassHierarchy: (no Object.ext) and Acyclic[] and AllExtObject[]
+ClassHierarchy: ObjectNoExt[] and (no ^ext & iden) and AllExtObject[]
+ClassHierarchy: ObjectNoExt[] and Acyclic[] and (no c: Class - Object | c !in Object.^~ext)
+ObjectNoExt: no Object.ext
+ObjectNoExt: Object.ext = none
+ObjectNoExt: all c: Object | no c.ext
+ObjectNoExt: no ext & (Object -> Class)
+ObjectNoExt: ext & (Object -> Class) = none
+ObjectNoExt: Object not in ext.Class
+ObjectNoExt: ext.Class & Object = none
+ObjectNoExt: no c: Class | c in Object.ext
+ObjectNoExt: Object.ext in none
+ObjectNoExt: all c: Class | c !in Object.ext

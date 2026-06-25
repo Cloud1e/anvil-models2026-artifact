@@ -1,0 +1,5205 @@
+ [INFO] Original model:
+module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+
+ [INFO] ==========
+ [INFO] Iteration 1:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { lone Object } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Object } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { some Object } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { all o: Object | lone o.eats } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { all o: Object | one o.eats } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { all o: Object | some o.eats } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Farmer <=> some Farmer } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Fox <=> some Fox } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Chicken <=> lone Chicken } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Chicken <=> some Chicken } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Chicken } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Grain <=> some Grain } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { lone State } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one State } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { some State } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { all s: State | lone s.near } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { all s: State | one s.near } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { all s: State | some s.near } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { all s: State | lone s.far } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { all s: State | one s.far } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { all s: State | some s.far } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) || (to in to') || ((from - from') = (to' - to)) || (Farmer in (to' - to)) || ((#(to' - to)) <= 2) || (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' = from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' != from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' !in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from in from') && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to = to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to != to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to !in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to' in to) && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') != (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') in (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') !in (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from & from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from + from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from' - from) = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' & to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' + to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to - to')) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer = (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer != (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer !in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && ((to' - to) in Farmer) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' & to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' + to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to - to')) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) = 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) != 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) < 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) > 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) >= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) !< 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) !<= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) !> 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) !>= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' & to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' + to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to - to')) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (all x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (lone x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (one x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (some x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) = from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) != from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) !in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+(from' in (x.eats))
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.(~eats)) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.(*eats)) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.(^eats)) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+pred eating[] {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred eatingMUTATED[] {
+(eats in ((Fox->Chicken) + (Chicken->Grain)))
+}
+EQUIV: check { eating[] <=> eatingMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+pred eating[] {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred eatingMUTATED[] {
+((~eats) = ((Fox->Chicken) + (Chicken->Grain)))
+}
+EQUIV: check { eating[] <=> eatingMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+pred eating[] {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred eatingMUTATED[] {
+((*eats) = ((Fox->Chicken) + (Chicken->Grain)))
+}
+EQUIV: check { eating[] <=> eatingMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+pred eating[] {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred eatingMUTATED[] {
+((^eats) = ((Fox->Chicken) + (Chicken->Grain)))
+}
+EQUIV: check { eating[] <=> eatingMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+pred eating[] {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred eatingMUTATED[] {
+(eats = ((Fox->Chicken) & (Chicken->Grain)))
+}
+EQUIV: check { eating[] <=> eatingMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+pred eating[] {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred eatingMUTATED[] {
+(eats = ((Fox->Chicken) - (Chicken->Grain)))
+}
+EQUIV: check { eating[] <=> eatingMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+pred initialState[] {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred initialStateMUTATED[] {
+(let s0 = (ord/first[]) {
+((s0.near) = Object)
+})
+}
+EQUIV: check { initialState[] <=> initialStateMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+pred initialState[] {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred initialStateMUTATED[] {
+(let s0 = (ord/first[]) {
+(((s0.near) !in Object) && (no (s0.far)))
+})
+}
+EQUIV: check { initialState[] <=> initialStateMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+pred initialState[] {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred initialStateMUTATED[] {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (lone (s0.far)))
+})
+}
+EQUIV: check { initialState[] <=> initialStateMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+pred initialState[] {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred initialStateMUTATED[] {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (one (s0.far)))
+})
+}
+EQUIV: check { initialState[] <=> initialStateMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+pred initialState[] {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred initialStateMUTATED[] {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (some (s0.far)))
+})
+}
+EQUIV: check { initialState[] <=> initialStateMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+pred stateTransition[] {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred stateTransitionMUTATED[] {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]) else (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]))
+})
+}
+EQUIV: check { stateTransition[] <=> stateTransitionMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+pred stateTransition[] {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred stateTransitionMUTATED[] {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer = (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+EQUIV: check { stateTransition[] <=> stateTransitionMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+pred stateTransition[] {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred stateTransitionMUTATED[] {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer != (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+EQUIV: check { stateTransition[] <=> stateTransitionMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+pred stateTransition[] {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred stateTransitionMUTATED[] {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer !in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+EQUIV: check { stateTransition[] <=> stateTransitionMUTATED[] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+pred stateTransition[] {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred stateTransitionMUTATED[] {
+(all s: (one State),s': (one (s.(ord/next[]))) {
+(((s.near) in Farmer) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+EQUIV: check { stateTransition[] <=> stateTransitionMUTATED[] } for 3
+ [INFO] Fault localization time: 15409035924
+[DEBUG] Most suspicious node: (all s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+[DEBUG] Score: 0.42365927286816174, FailToPass: 7, PassToFail: 0
+ [INFO] Fixed by mutation:
+module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(some s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+
+ [INFO] ==========
+ [INFO] Iteration 2:
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(some s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { some Object } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(some s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { all o: Object | lone o.eats } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(some s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Farmer <=> some Farmer } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(some s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Fox <=> some Fox } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(some s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Chicken <=> some Chicken } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(some s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { one Grain <=> some Grain } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(some s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+EQUIV: check { some State } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+fact stateTransition {
+(some s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+run solvePuzzle for 8 State expect 1
+check NoQuantumObjects for 8 State expect 0
+pred crossRiverMUTATED[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) !> 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+EQUIV: check { all from,from',to,to': (set Object) | crossRiver[from,from',to,to'] <=> crossRiverMUTATED[from,from',to,to'] } for 3
+[DEBUG] Equivalent mutant is detected with the following model:
+[DEBUG] module farmer
+open util/integer [] as integer
+open util/ordering [State] as ord
+abstract sig Object {
+eats: (set Object)
+}
+one sig Farmer extends Object {}
+one sig Fox extends Object {}
+one sig Chicken extends Object {}
+one sig Grain extends Object {}
+sig State {
+near: (set Object),
+far: (set Object)
+}
+pred crossRiver[from,from',to,to': (set Object)] {
+((from' in from) && (to in to') && ((from - from') = (to' - to)) && (Farmer in (to' - to)) && ((#(to' - to)) <= 2) && (no x: (one from') {
+((x.eats) in from')
+}))
+}
+pred solvePuzzle[] {
+(((ord/last[]).far) = Object)
+}
+
+fact eating {
+(eats = ((Fox->Chicken) + (Chicken->Grain)))
+}
+fact initialState {
+(let s0 = (ord/first[]) {
+(((s0.near) = Object) && (no (s0.far)))
+})
+}
+pred stateTransition[] {
+(some s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+assert NoQuantumObjects {
+(no s: (one State) {
+(some x: (one Object) {
+((x in (s.near)) && (x in (s.far)))
+})
+})
+}
+
+
+pred stateTransitionMUTATED[] {
+(one s: (one State),s': (one (s.(ord/next[]))) {
+((Farmer in (s.near)) => (crossRiver[(s.near),(s'.near),(s.far),(s'.far)]) else (crossRiver[(s.far),(s'.far),(s.near),(s'.near)]))
+})
+}
+EQUIV: check { stateTransition[] <=> stateTransitionMUTATED[] } for 3
+ [INFO] Fault localization time: 30346904180
+Exception in thread "main" java.lang.RuntimeException: Test test1001 fails for normalized model.
+	at generator.Generator.initializeTests(Generator.java:100)
+	at generator.Generator.<init>(Generator.java:80)
+	at patcher.Patcher.patch(Patcher.java:168)
+	at patcher.Patcher.main(Patcher.java:389)

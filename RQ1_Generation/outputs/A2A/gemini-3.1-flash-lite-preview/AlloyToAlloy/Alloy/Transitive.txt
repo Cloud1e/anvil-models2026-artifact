@@ -1,0 +1,65 @@
+all s, t, u: S | s->t in r and t->u in r => s->u in r
+Correct
+
+all s: S | s.r.r in s.r
+Correct
+
+r.r in r
+Correct
+
+no s, t, u: S | s->t in r and t->u in r and s->u not in r
+Correct
+
+r = r.^r
+Wrong
+
+all s: S | s.r in s.^r and s.^r.r in s.^r
+Wrong
+
+r in ^r and r.r in r
+Correct
+
+all s: S | (s.r).r in s.r
+Correct
+
+all s: S | (r.r) in r
+Correct
+
+r = r + (r.r) implies r = r
+Wrong
+
+all x: S | x.r.r in x.r
+Correct
+
+r in ^r
+Wrong
+
+no x, y, z: S | x->y in r and y->z in r and x->z not in r
+Correct
+
+all x: S | (x.r).r in x.r
+Correct
+
+r.r = r & r
+Wrong
+
+all x: S | x.^r = x.r
+Correct
+
+all x: S | r.r[x] in r[x]
+Correct
+
+r = r + r.r
+Correct
+
+r in r.r
+Wrong
+
+r.r subset r
+Syntax Error
+
+Total: 20
+Unique: 20
+Correct: 13
+Syntax Error: 1
+Wrong: 6

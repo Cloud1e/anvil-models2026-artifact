@@ -1,0 +1,65 @@
+crossRiver: (some x: (from - Farmer) | from' = from - x - Farmer and to' = to + x + Farmer) or (from' = from - Farmer and to' = to + Farmer)
+Wrong
+
+crossRiver: (from' = from - Farmer and to' = to + Farmer) or (some x: from - Farmer | from' = from - x - Farmer and to' = to + x + Farmer)
+Wrong
+
+crossRiver: (some obj: from - Farmer | from' = from - Farmer - obj and to' = to + Farmer + obj) or (from' = from - Farmer and to' = to + Farmer)
+Wrong
+
+crossRiver: (from' = from - Farmer and to' = to + Farmer) or (some y: from - Farmer | from' = from - y - Farmer and to' = to + y + Farmer)
+Wrong
+
+crossRiver: (some z: from - Farmer | from' = from - z - Farmer and to' = to + z + Farmer) or (from' = from - Farmer and to' = to + Farmer)
+Wrong
+
+crossRiver: (from' = from - Farmer and to' = to + Farmer) or (some o: from - Farmer | to' = to + o + Farmer and from' = from - o - Farmer)
+Wrong
+
+crossRiver: (some a: from - Farmer | from' = from - Farmer - a and to' = to + Farmer + a) or (from' = from - Farmer and to' = to + Farmer)
+Wrong
+
+crossRiver: (from' = from - Farmer and to' = to + Farmer) or (some b: from - Farmer | from' = from - b - Farmer and to' = to + b + Farmer)
+Wrong
+
+crossRiver: (some c: from - Farmer | to' = to + Farmer + c and from' = from - Farmer - c) or (from' = from - Farmer and to' = to + Farmer)
+Wrong
+
+crossRiver: (from' = from - Farmer and to' = to + Farmer) or (some d: from - Farmer | from' = from - Farmer - d and to' = to + Farmer + d)
+Wrong
+
+solvePuzzle: (let last = ord/last | last.far = Object) and (all s: State | all o: Object | (o in s.near and eats.o in s.near => Farmer in s.near) and (o in s.far and eats.o in s.far => Farmer in s.far))
+Correct
+
+solvePuzzle: (all s: State | all o: Object | (o in s.near and eats.o in s.near => Farmer in s.near) and (o in s.far and eats.o in s.far => Farmer in s.far)) and (ord/last.far = Object)
+Correct
+
+solvePuzzle: (ord/last.far = Object) and (all s: State | all x, y: Object | (y in s.near and x in s.near and x in eats.y implies Farmer in s.near) and (y in s.far and x in s.far and x in eats.y implies Farmer in s.far))
+Correct
+
+solvePuzzle: (all s: State | all x, y: Object | (y in s.near and x in s.near and x in eats.y implies Farmer in s.near) and (y in s.far and x in s.far and x in eats.y implies Farmer in s.far)) and (ord/last.far = Object)
+Correct
+
+solvePuzzle: (ord/last.far = Object) and (all s: State | all o1, o2: Object | (o1->o2 in eats and o1 in s.near and o2 in s.near => Farmer in s.near) and (o1->o2 in eats and o1 in s.far and o2 in s.far => Farmer in s.far))
+Correct
+
+solvePuzzle: (all s: State | all o1, o2: Object | (o1->o2 in eats and o1 in s.near and o2 in s.near => Farmer in s.near) and (o1->o2 in eats and o1 in s.far and o2 in s.far => Farmer in s.far)) and (ord/last.far = Object)
+Correct
+
+solvePuzzle: (ord/last.far = Object) and (all s: State | all o: Object | (eats.o in s.near and o in s.near => Farmer in s.near) and (eats.o in s.far and o in s.far => Farmer in s.far))
+Correct
+
+solvePuzzle: (all s: State | all o: Object | (eats.o in s.near and o in s.near => Farmer in s.near) and (eats.o in s.far and o in s.far => Farmer in s.far)) and (ord/last.far = Object)
+Correct
+
+solvePuzzle: (ord/last.far = Object) and (all s: State | all x: Object | (x in s.near and (eats.x) in s.near => Farmer in s.near) and (x in s.far and (eats.x) in s.far => Farmer in s.far))
+Correct
+
+solvePuzzle: (all s: State | all x: Object | (x in s.near and (eats.x) in s.near => Farmer in s.near) and (x in s.far and (eats.x) in s.far => Farmer in s.far)) and (ord/last.far = Object)
+Correct
+
+Total: 20
+Unique: 20
+Correct: 10
+Syntax Error: 0
+Wrong: 10

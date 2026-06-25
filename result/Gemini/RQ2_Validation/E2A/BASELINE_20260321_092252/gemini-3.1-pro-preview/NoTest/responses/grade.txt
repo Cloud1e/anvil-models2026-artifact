@@ -1,0 +1,10 @@
+s in a.associated_with.instructor_of
+s not in a.assigned_to
+s in Professor
+s in a.associated_with.assistant_for and s not in a.assigned_to
+s in a.associated_with.instructor_of or (s in a.associated_with.assistant_for and s not in a.assigned_to)
+s in Student and s not in a.assigned_to
+s in Professor or s not in a.assigned_to
+s in Class.instructor_of
+no s & a.assigned_to
+s in a.associated_with.(instructor_of + assistant_for) - a.assigned_to
