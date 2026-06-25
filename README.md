@@ -149,9 +149,7 @@ The historically discussed `183/369` vs `181/369` RQ3 repair accounting is a den
 
 ## Artifact Availability
 
-The artifact will be archived on Zenodo and assigned a DOI. GitHub/GitLab alone are not archival repositories for ACM artifact badges, so the public GitHub repository must be paired with a Zenodo or equivalent archival DOI.
-
-After archiving, insert the Zenodo DOI here and in `STATUS.md`.
+The artifact is archived on Zenodo at https://doi.org/10.5281/zenodo.20838661. GitHub/GitLab alone are not archival repositories for ACM artifact badges, so this GitHub repository is paired with the Zenodo archival DOI.
 
 ## License
 
