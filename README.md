@@ -2,6 +2,8 @@
 
 Archived on Zenodo: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20838661.svg)](https://doi.org/10.5281/zenodo.20838661)
 
+GitHub repository: https://github.com/Cloud1e/anvil-models2026-artifact
+
 This artifact accompanies the MODELS 2026 paper *"Anvil: LLM-Powered Synthesis, Validation, and Repair of Alloy Specifications"* (Yang Hong, Chenbo Yin, Shan Jiang, Yulei Fu, Sarfraz Khurshid).
 
 The artifact supports three research questions:
