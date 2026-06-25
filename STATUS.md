@@ -12,9 +12,7 @@ The 5 remaining mismatches are documented and explained in `README.md` under "Kn
 
 ### Artifacts Available
 
-This artifact will be archived on Zenodo with a DOI under the MIT License; see `LICENSE`.
-
-DOI: to be inserted once archived.
+This artifact is archived on Zenodo: https://doi.org/10.5281/zenodo.20838661
 
 GitHub/GitLab alone are not archival repositories for the ACM artifact badge, so the GitHub repository should be paired with the Zenodo DOI before final submission.
 
